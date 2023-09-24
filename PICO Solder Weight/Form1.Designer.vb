@@ -315,7 +315,7 @@ Partial Class Form1
         Me.lblDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblDate.Location = New System.Drawing.Point(569, 772)
         Me.lblDate.Name = "lblDate"
-        Me.lblDate.Size = New System.Drawing.Size(54, 23)
+        Me.lblDate.Size = New System.Drawing.Size(43, 18)
         Me.lblDate.TabIndex = 34
         Me.lblDate.Text = "Date"
         '
@@ -326,7 +326,7 @@ Partial Class Form1
         Me.lblTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTime.Location = New System.Drawing.Point(596, 750)
         Me.lblTime.Name = "lblTime"
-        Me.lblTime.Size = New System.Drawing.Size(56, 23)
+        Me.lblTime.Size = New System.Drawing.Size(45, 18)
         Me.lblTime.TabIndex = 33
         Me.lblTime.Text = "Time"
         '

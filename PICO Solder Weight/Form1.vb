@@ -247,7 +247,7 @@ Public Class Form1
         Try
             con.Open()
 
-            Dim query As String = "SELECT * FROM SolderWeight_tb WHERE part_number = @inputText"
+            Dim query As String = "SELECT * FROM SolderWeight_tb WHERE barcode_partnum = @inputText"
             Using cmd As New OleDbCommand(query, con)
                 cmd.Parameters.AddWithValue("@inputText", inputText)
 
@@ -293,7 +293,7 @@ Public Class Form1
 
 
     End Sub
-
+    Public infi As String
     Public Sub EmployeeBasis()
 
         Dim con As OleDbConnection = New OleDbConnection
@@ -307,7 +307,7 @@ Public Class Form1
             Dim adap As New OleDbDataAdapter
             con.Open()
 
-            MyData = "SELECT * From SolderWeight_tb WHERE part_number Like '%" & txtPartNo.Text & "%'"
+            MyData = "SELECT * From SolderWeight_tb WHERE barcode_partnum Like '" & txtPartNo.Text & "'"
             cmd.Connection = con
             cmd.CommandText = MyData
             adap.SelectCommand = cmd
@@ -318,6 +318,8 @@ Public Class Form1
 
                 txtEmployee.Text = Data.Rows(0).Item("_sample").ToString
                 txtEmployee.ForeColor = Color.Black
+                infi = Data.Rows(0).Item("part_number").ToString
+                'Console.WriteLine(infi)
 
             End If
         Catch ex As Exception
@@ -602,7 +604,7 @@ Public Class Form1
     Public dateNtime As String = DateTime.Now.ToString("yyyy_MM_dd_HHmmtt ")
 
     Public get_FolderPath As String = "\\lffile001\infinity\Philippines\Buffer File\PICO\PICO Solder Weight.csv"
-    Public get_FolderPath2 As String = "\\lffile001\infinity\Philippines\Nano Log\PICO Solder Weight.csv"
+    'Public get_FolderPath2 As String = "\\lffile001\infinity\Philippines\Nano Log\PICO Solder Weight.csv"
     Public get_message As String
     Public get_message2 As String
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
@@ -613,7 +615,7 @@ Public Class Form1
             If isFileEmpty Then
                 For n As Integer = 0 To data.Length - 1
                     If data(n) > 0 Then
-                        get_message = get_message & txtPartNo.Text & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & vbCrLf
+                        get_message = get_message & infi & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & vbCrLf
                         'get_message2 = get_message2 & txtPartNo.Text & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & dateNtime & vbCrLf
                     End If
                 Next
@@ -702,5 +704,4 @@ Public Class Form1
         btnReset.Visible = True
         btnSave.Focus()
     End Sub
-
 End Class
