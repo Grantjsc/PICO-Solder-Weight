@@ -62,8 +62,8 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Windows.Forms.Control.CheckForIllegalCrossThreadCalls = False
 
-        Get_portname()
-        SerialName()
+        'Get_portname()
+        'SerialName()
         'SerialPort1.Open()
         'SerialPort1.WriteLine("Z")
 
@@ -211,7 +211,7 @@ Public Class Form1
     Private Sub txtEmployee_Leave(sender As Object, e As EventArgs) Handles txtEmployee.Leave
         If txtEmployee.Text = "" Then
 
-            txtEmployee.Text = "Employee"
+            txtEmployee.Text = "Samples"
             txtEmployee.ForeColor = Color.Silver
         End If
     End Sub
@@ -307,7 +307,7 @@ Public Class Form1
             Dim adap As New OleDbDataAdapter
             con.Open()
 
-            MyData = "SELECT * From SolderWeight_tb WHERE barcode_partnum Like '" & txtPartNo.Text & "'"
+            MyData = "SELECT * From SolderWeight_tb WHERE barcode_partnum = '" + txtPartNo.Text + "'"
             cmd.Connection = con
             cmd.CommandText = MyData
             adap.SelectCommand = cmd
@@ -320,7 +320,10 @@ Public Class Form1
                 txtEmployee.ForeColor = Color.Black
                 infi = Data.Rows(0).Item("part_number").ToString
                 'Console.WriteLine(infi)
-
+                txtLotNo.Focus()
+                txtPartNo.ReadOnly = True
+            Else
+                MsgBox("Part number does not exist in the database.", MessageBoxIcon.Error)
             End If
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical)
@@ -382,7 +385,8 @@ Public Class Form1
                 MsgBox("Please enter Part Number!", MsgBoxStyle.Exclamation)
                 txtPartNo.Text = ""
             Else
-                CheckPartNo()
+                'CheckPartNo()
+                EmployeeBasis()
                 'txtPartNo.Enabled = False
             End If
         End If
@@ -419,7 +423,7 @@ Public Class Form1
                 MsgBox("Please enter Lot Number!", MsgBoxStyle.Exclamation)
                 txtLotNo.Text = ""
             Else
-                cboAssociate.Focus()
+                cboShift.Focus()
                 txtLotNo.ReadOnly = True
             End If
         End If
@@ -461,12 +465,12 @@ Public Class Form1
 
     Private Sub cboProcess_SelectedValueChanged(sender As Object, e As EventArgs) Handles cboProcess.SelectedValueChanged
 
-        cboShift.Focus()
+        cboAssociate.Focus()
     End Sub
 
     Private Sub cboShift_SelectedValueChanged(sender As Object, e As EventArgs) Handles cboShift.SelectedValueChanged
 
-        txtLotNo.Focus()
+        cboProcess.Focus()
     End Sub
 
     'Private Sub cboAssociate_SelectedValueChanged(sender As Object, e As EventArgs) Handles cboAssociate.SelectedValueChanged
@@ -678,7 +682,7 @@ Public Class Form1
             txtPartNo.ForeColor = Color.Silver
             cboProcess.Text = Nothing
 
-            txtEmployee.Text = "Employee"
+            txtEmployee.Text = "Samples"
             txtEmployee.ForeColor = Color.Silver
             cboShift.Text = Nothing
 

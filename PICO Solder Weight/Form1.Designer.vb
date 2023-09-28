@@ -220,7 +220,7 @@ Partial Class Form1
         Me.txtLotNo.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLotNo.ForeColor = System.Drawing.Color.Silver
         Me.txtLotNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtLotNo.Location = New System.Drawing.Point(43, 498)
+        Me.txtLotNo.Location = New System.Drawing.Point(43, 209)
         Me.txtLotNo.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
         Me.txtLotNo.Name = "txtLotNo"
         Me.txtLotNo.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -444,7 +444,7 @@ Partial Class Form1
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(51, 464)
+        Me.Label5.Location = New System.Drawing.Point(51, 175)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(130, 25)
         Me.Label5.TabIndex = 27
@@ -454,7 +454,7 @@ Partial Class Form1
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(51, 169)
+        Me.Label8.Location = New System.Drawing.Point(51, 468)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(97, 25)
         Me.Label8.TabIndex = 26
@@ -586,7 +586,7 @@ Partial Class Form1
         Me.cboProcess.FormattingEnabled = True
         Me.cboProcess.IntegralHeight = False
         Me.cboProcess.ItemHeight = 30
-        Me.cboProcess.Location = New System.Drawing.Point(43, 208)
+        Me.cboProcess.Location = New System.Drawing.Point(43, 507)
         Me.cboProcess.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cboProcess.MaxDropDownItems = 15
         Me.cboProcess.Name = "cboProcess"
@@ -706,6 +706,7 @@ Partial Class Form1
         '
         'SerialPort1
         '
+        Me.SerialPort1.PortName = "COM8"
         '
         'Timer1
         '
