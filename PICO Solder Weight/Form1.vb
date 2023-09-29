@@ -59,6 +59,8 @@ Public Class Form1
     Public stopwatch As New Stopwatch()
     Public isTimerRunning As Boolean = False
 
+
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Windows.Forms.Control.CheckForIllegalCrossThreadCalls = False
 
@@ -112,7 +114,7 @@ Public Class Form1
                 Thread.Sleep(500)
                 SerialPort1.WriteLine("CP")
 
-                If count >= CDec(txtEmployee.Text) Then
+                If count = CInt(txtEmployee.Text) Then
                     btnNewLot.Enabled = True
                     btnWeight.Enabled = False
                     btnSave.Enabled = True
@@ -430,6 +432,7 @@ Public Class Form1
     End Sub
 
     Private Sub cboAssociate_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAssociate.SelectedIndexChanged
+
         If txtPartNo.Text = "" Or txtPartNo.Text = "Enter Part Number" Then
             cboAssociate.Text = Nothing
             MsgBox("Please enter Part Number!", MsgBoxStyle.Exclamation)
@@ -440,11 +443,12 @@ Public Class Form1
             cboAssociate.Text = Nothing
             MsgBox("Please enter your shift!", MsgBoxStyle.Exclamation)
         ElseIf txtLotNo.Text = "" Or txtPartNo.Text = "Enter Lot Number" Then
-             cboAssociate.Text = Nothing
+            cboAssociate.Text = Nothing
             MsgBox("Please enter Lot Numbwe!", MsgBoxStyle.Exclamation)
         Else
 
             Associate()
+
             'btnWeight.Focus()
             SerialPort1.Open()
 
@@ -545,7 +549,7 @@ Public Class Form1
             count += 1
             lstResult.Items.Add(count & ". " & RealData)
             btnReset.Enabled = False
-            If count >= CDec(txtEmployee.Text) Then
+            If count = CInt(txtEmployee.Text) Then
                 btnNewLot.Enabled = True
                 btnWeight.Enabled = False
                 btnSave.Enabled = True
@@ -583,7 +587,7 @@ Public Class Form1
                 count += 1
                 lstResult.Items.Add(count & ". " & RealData)
                 btnReset.Enabled = False
-                If count >= CDec(txtEmployee.Text) Then
+                If count = CDec(txtEmployee.Text) Then
                     btnNewLot.Enabled = False
                     btnWeight.Enabled = False
                     btnSave.Enabled = True
