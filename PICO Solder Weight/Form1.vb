@@ -77,6 +77,8 @@ Public Class Form1
         'Timer1.Enabled = True
         Timer2.Enabled = True
 
+        btnNewLot.Focus()
+
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -425,7 +427,7 @@ Public Class Form1
                 MsgBox("Please enter Lot Number!", MsgBoxStyle.Exclamation)
                 txtLotNo.Text = ""
             Else
-                cboShift.Focus()
+                txtSolderWire.Focus()
                 txtLotNo.ReadOnly = True
             End If
         End If
@@ -512,6 +514,18 @@ Public Class Form1
         txtLotNo.Text = "Enter Lot Number"
         txtLotNo.ForeColor = Color.Silver
         cboAssociate.Text = Nothing
+
+        txtWeight.Text = "Enter weight"
+        txtWeight.ForeColor = Color.Silver
+
+        txtSolderWire.Text = "Enter Solder Wire Part #"
+        txtSolderWire.ForeColor = Color.Silver
+
+        txtBareWire.Text = "Enter Bare Wire Lot #"
+        txtBareWire.ForeColor = Color.Silver
+
+        txtCutterSet.Text = "Enter Cutter Setting"
+        txtCutterSet.ForeColor = Color.Silver
 
         Timer1.Enabled = False
 
@@ -609,13 +623,15 @@ Public Class Form1
 
     '\\lffile001\infinity\Philippines\Buffer File\PICO
 
-    Public dateNtime As String = DateTime.Now.ToString("yyyy_MM_dd_HHmmtt ")
+    Public dateNtime As String '= DateTime.Now.ToString("yyyy_MM_dd_HHmmtt ")
 
     Public get_FolderPath As String = "\\lffile001\infinity\Philippines\Buffer File\PICO\PICO Solder Weight.csv"
     'Public get_FolderPath2 As String = "\\lffile001\infinity\Philippines\Nano Log\PICO Solder Weight.csv"
     Public get_message As String
     Public get_message2 As String
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        dateNtime = Date.Now.ToString("yyyy_MM_dd_HHmmtt ")
+
         Dim isFileEmpty As Boolean = IsCSVFileEmpty(get_FolderPath)
         get_message = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & vbCrLf
         'get_message2 = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & "," & """Date and Time,""" & vbCrLf
@@ -695,6 +711,18 @@ Public Class Form1
             txtLotNo.ForeColor = Color.Silver
             cboAssociate.Text = Nothing
 
+            txtWeight.Text = "Enter weight"
+            txtWeight.ForeColor = Color.Silver
+
+            txtSolderWire.Text = "Enter Solder Wire Part #"
+            txtSolderWire.ForeColor = Color.Silver
+
+            txtBareWire.Text = "Enter Bare Wire Lot #"
+            txtBareWire.ForeColor = Color.Silver
+
+            txtCutterSet.Text = "Enter Cutter Setting"
+            txtCutterSet.ForeColor = Color.Silver
+
         Else
             Return
         End If
@@ -711,5 +739,144 @@ Public Class Form1
         btnEnable.Visible = False
         btnReset.Visible = True
         btnSave.Focus()
+    End Sub
+
+    Private Sub txtWeight_KeyUp(sender As Object, e As KeyEventArgs) Handles txtWeight.KeyUp
+
+        If e.KeyCode = Keys.Enter Then
+            If txtWeight.Text = "" Then
+                MsgBox("Please enter the weight!", MsgBoxStyle.Exclamation)
+                txtWeight.Text = ""
+            Else
+                txtPartNo.Focus()
+            End If
+        End If
+    End Sub
+
+    Private Sub txtWeight_Leave(sender As Object, e As EventArgs) Handles txtWeight.Leave
+        If txtWeight.Text = "" Then
+
+            txtWeight.Text = "Enter weight"
+            txtWeight.ForeColor = Color.Silver
+        End If
+    End Sub
+
+    Private Sub txtSolderWire_KeyUp(sender As Object, e As KeyEventArgs) Handles txtSolderWire.KeyUp
+
+        If e.KeyCode = Keys.Enter Then
+            If txtSolderWire.Text = "" Then
+                MsgBox("Please enter solder wire part number!", MsgBoxStyle.Exclamation)
+                txtSolderWire.Text = ""
+            Else
+                txtBareWire.Focus()
+            End If
+        End If
+    End Sub
+
+    Private Sub txtSolderWire_Leave(sender As Object, e As EventArgs) Handles txtSolderWire.Leave
+        If txtSolderWire.Text = "" Then
+
+            txtSolderWire.Text = "Enter Solder Wire Part #"
+            txtSolderWire.ForeColor = Color.Silver
+        End If
+    End Sub
+
+    Private Sub txtBareWire_KeyUp(sender As Object, e As KeyEventArgs) Handles txtBareWire.KeyUp
+
+        If e.KeyCode = Keys.Enter Then
+            If txtBareWire.Text = "" Then
+                MsgBox("Please enter Bare wire lot number!", MsgBoxStyle.Exclamation)
+                txtBareWire.Text = ""
+            Else
+                txtCutterSet.Focus()
+            End If
+        End If
+    End Sub
+
+    Private Sub txtBareWire_Leave(sender As Object, e As EventArgs) Handles txtBareWire.Leave
+        If txtBareWire.Text = "" Then
+
+            txtBareWire.Text = "Enter Bare Wire Lot #"
+            txtBareWire.ForeColor = Color.Silver
+        End If
+    End Sub
+
+    Private Sub txtCutterSet_KeyUp(sender As Object, e As KeyEventArgs) Handles txtCutterSet.KeyUp
+
+        If e.KeyCode = Keys.Enter Then
+            If txtCutterSet.Text = "" Then
+                MsgBox("Please enter Cutter Setting!", MsgBoxStyle.Exclamation)
+                txtCutterSet.Text = ""
+            Else
+                cboShift.Focus()
+            End If
+        End If
+    End Sub
+
+    Private Sub txtCutterSet_Leave(sender As Object, e As EventArgs) Handles txtCutterSet.Leave
+        If txtCutterSet.Text = "" Then
+
+            txtCutterSet.Text = "Enter Cutter Setting"
+            txtCutterSet.ForeColor = Color.Silver
+        End If
+    End Sub
+
+    Private Sub txtWeight_Enter(sender As Object, e As EventArgs) Handles txtWeight.Enter
+        If txtWeight.Text = "Enter weight" Then
+
+            txtWeight.Text = ""
+            txtWeight.ForeColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub txtSolderWire_Enter(sender As Object, e As EventArgs) Handles txtSolderWire.Enter
+        If txtSolderWire.Text = "Enter Solder Wire Part #" Then
+
+            txtSolderWire.Text = ""
+            txtSolderWire.ForeColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub txtBareWire_Enter(sender As Object, e As EventArgs) Handles txtBareWire.Enter
+        If txtBareWire.Text = "Enter Bare Wire Lot #" Then
+
+            txtBareWire.Text = ""
+            txtBareWire.ForeColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub txtCutterSet_Enter(sender As Object, e As EventArgs) Handles txtCutterSet.Enter
+        If txtCutterSet.Text = "Enter Cutter Setting" Then
+
+            txtCutterSet.Text = ""
+            txtCutterSet.ForeColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Function_Module.GetOldmg()
+        Function_Module.GetOldOCAP()
+        'If IsNumeric(txtWeight.Text) Then
+        '    Console.WriteLine("Numeric")
+        'Else
+        '    Console.WriteLine("Error")
+        'End If
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Function_Module.GetNewmg()
+        Function_Module.ChangeMg()
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Function_Module.GetOldOCAP()
+        If OldOCAP >= 1 Then
+            MsgBox("Need Tech/P03")
+            Function_Module.ResetOCAP()
+            Function_Module.ChangeOCAP()
+        Else
+            Function_Module.IncOCAP()
+            Function_Module.ChangeOCAP()
+        End If
     End Sub
 End Class

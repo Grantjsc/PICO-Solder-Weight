@@ -31,6 +31,18 @@ Partial Class Form1
         Me.txtEmployee = New Guna.UI2.WinForms.Guna2TextBox()
         Me.txtLotNo = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.txtWeight = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtCutterSet = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtBareWire = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.txtSolderWire = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.btnEnable = New Guna.UI2.WinForms.Guna2Button()
         Me.lblDate = New System.Windows.Forms.Label()
         Me.lblTime = New System.Windows.Forms.Label()
@@ -45,7 +57,6 @@ Partial Class Form1
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.btnReset = New Guna.UI2.WinForms.Guna2Button()
         Me.lstResult = New System.Windows.Forms.ListBox()
         Me.cboShift = New Guna.UI2.WinForms.Guna2ComboBox()
@@ -54,13 +65,12 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel2 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AddAssociateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Guna2ContextMenuStrip2 = New Guna.UI2.WinForms.Guna2ContextMenuStrip()
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AddAssociateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         Me.Guna2CustomGradientPanel2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -82,7 +92,7 @@ Partial Class Form1
         Me.txtPartNo.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPartNo.ForeColor = System.Drawing.Color.Silver
         Me.txtPartNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtPartNo.Location = New System.Drawing.Point(43, 103)
+        Me.txtPartNo.Location = New System.Drawing.Point(48, 202)
         Me.txtPartNo.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
         Me.txtPartNo.Name = "txtPartNo"
         Me.txtPartNo.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -93,7 +103,7 @@ Partial Class Form1
         Me.txtPartNo.ShadowDecoration.Enabled = True
         Me.txtPartNo.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 15, 15)
         Me.txtPartNo.Size = New System.Drawing.Size(299, 43)
-        Me.txtPartNo.TabIndex = 0
+        Me.txtPartNo.TabIndex = 1
         '
         'Guna2ContextMenuStrip1
         '
@@ -131,7 +141,7 @@ Partial Class Form1
         Me.btnNewLot.HoverState.ForeColor = System.Drawing.Color.White
         Me.btnNewLot.Image = CType(resources.GetObject("btnNewLot.Image"), System.Drawing.Image)
         Me.btnNewLot.ImageSize = New System.Drawing.Size(30, 30)
-        Me.btnNewLot.Location = New System.Drawing.Point(91, 681)
+        Me.btnNewLot.Location = New System.Drawing.Point(55, 562)
         Me.btnNewLot.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnNewLot.Name = "btnNewLot"
         Me.btnNewLot.ShadowDecoration.BorderRadius = 18
@@ -164,7 +174,7 @@ Partial Class Form1
         Me.btnSave.HoverState.ForeColor = System.Drawing.Color.White
         Me.btnSave.Image = CType(resources.GetObject("btnSave.Image"), System.Drawing.Image)
         Me.btnSave.ImageSize = New System.Drawing.Size(30, 30)
-        Me.btnSave.Location = New System.Drawing.Point(294, 684)
+        Me.btnSave.Location = New System.Drawing.Point(293, 562)
         Me.btnSave.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.ShadowDecoration.BorderRadius = 18
@@ -191,7 +201,7 @@ Partial Class Form1
         Me.txtEmployee.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtEmployee.ForeColor = System.Drawing.Color.Silver
         Me.txtEmployee.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtEmployee.Location = New System.Drawing.Point(43, 304)
+        Me.txtEmployee.Location = New System.Drawing.Point(51, 382)
         Me.txtEmployee.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
         Me.txtEmployee.Name = "txtEmployee"
         Me.txtEmployee.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -203,7 +213,7 @@ Partial Class Form1
         Me.txtEmployee.ShadowDecoration.Enabled = True
         Me.txtEmployee.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 15, 15)
         Me.txtEmployee.Size = New System.Drawing.Size(299, 43)
-        Me.txtEmployee.TabIndex = 2
+        Me.txtEmployee.TabIndex = 3
         '
         'txtLotNo
         '
@@ -220,7 +230,7 @@ Partial Class Form1
         Me.txtLotNo.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtLotNo.ForeColor = System.Drawing.Color.Silver
         Me.txtLotNo.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtLotNo.Location = New System.Drawing.Point(43, 209)
+        Me.txtLotNo.Location = New System.Drawing.Point(51, 295)
         Me.txtLotNo.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
         Me.txtLotNo.Name = "txtLotNo"
         Me.txtLotNo.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -231,12 +241,24 @@ Partial Class Form1
         Me.txtLotNo.ShadowDecoration.Enabled = True
         Me.txtLotNo.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 15, 15)
         Me.txtLotNo.Size = New System.Drawing.Size(299, 43)
-        Me.txtLotNo.TabIndex = 4
+        Me.txtLotNo.TabIndex = 2
         '
         'Guna2CustomGradientPanel1
         '
         Me.Guna2CustomGradientPanel1.BackColor = System.Drawing.Color.Transparent
         Me.Guna2CustomGradientPanel1.BorderRadius = 15
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Button3)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Button2)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Button1)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label13)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.txtWeight)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label12)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label2)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.txtCutterSet)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label11)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.txtBareWire)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.txtSolderWire)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label10)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.btnEnable)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.lblDate)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.lblTime)
@@ -251,7 +273,6 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label6)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label4)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label3)
-        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label2)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.btnReset)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.lstResult)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.btnNewLot)
@@ -267,12 +288,204 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel1.FillColor2 = System.Drawing.SystemColors.Control
         Me.Guna2CustomGradientPanel1.FillColor3 = System.Drawing.SystemColors.Control
         Me.Guna2CustomGradientPanel1.FillColor4 = System.Drawing.SystemColors.Control
-        Me.Guna2CustomGradientPanel1.Location = New System.Drawing.Point(0, 122)
+        Me.Guna2CustomGradientPanel1.Location = New System.Drawing.Point(0, 152)
         Me.Guna2CustomGradientPanel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Guna2CustomGradientPanel1.Name = "Guna2CustomGradientPanel1"
         Me.Guna2CustomGradientPanel1.ShadowDecoration.BorderRadius = 35
-        Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(731, 802)
+        Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(1079, 680)
         Me.Guna2CustomGradientPanel1.TabIndex = 6
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(15, 14)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(83, 50)
+        Me.Button3.TabIndex = 46
+        Me.Button3.Text = "OCAP"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(635, 14)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(131, 50)
+        Me.Button2.TabIndex = 45
+        Me.Button2.Text = "Change MG"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(480, 14)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(131, 50)
+        Me.Button1.TabIndex = 44
+        Me.Button1.Text = "Get mg and OCAP"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(43, 80)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(132, 25)
+        Me.Label13.TabIndex = 43
+        Me.Label13.Text = "Weight(mg):"
+        '
+        'txtWeight
+        '
+        Me.txtWeight.BackColor = System.Drawing.Color.Transparent
+        Me.txtWeight.BorderColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.txtWeight.BorderRadius = 20
+        Me.txtWeight.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtWeight.DefaultText = "Enter weight"
+        Me.txtWeight.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.txtWeight.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txtWeight.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtWeight.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtWeight.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtWeight.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtWeight.ForeColor = System.Drawing.Color.Silver
+        Me.txtWeight.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtWeight.Location = New System.Drawing.Point(43, 114)
+        Me.txtWeight.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
+        Me.txtWeight.Name = "txtWeight"
+        Me.txtWeight.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.txtWeight.PlaceholderText = ""
+        Me.txtWeight.SelectedText = ""
+        Me.txtWeight.ShadowDecoration.BorderRadius = 30
+        Me.txtWeight.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.txtWeight.ShadowDecoration.Enabled = True
+        Me.txtWeight.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 15, 15)
+        Me.txtWeight.Size = New System.Drawing.Size(299, 43)
+        Me.txtWeight.TabIndex = 0
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(389, 174)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(152, 25)
+        Me.Label12.TabIndex = 41
+        Me.Label12.Text = "Cutter Setting:"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Imprint MT Shadow", 24.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(221, 20)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(222, 47)
+        Me.Label2.TabIndex = 20
+        Me.Label2.Text = "Lot Details"
+        '
+        'txtCutterSet
+        '
+        Me.txtCutterSet.BackColor = System.Drawing.Color.Transparent
+        Me.txtCutterSet.BorderColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.txtCutterSet.BorderRadius = 20
+        Me.txtCutterSet.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtCutterSet.DefaultText = "Enter Cutter Setting"
+        Me.txtCutterSet.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.txtCutterSet.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txtCutterSet.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtCutterSet.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtCutterSet.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtCutterSet.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCutterSet.ForeColor = System.Drawing.Color.Silver
+        Me.txtCutterSet.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtCutterSet.Location = New System.Drawing.Point(395, 203)
+        Me.txtCutterSet.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
+        Me.txtCutterSet.Name = "txtCutterSet"
+        Me.txtCutterSet.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.txtCutterSet.PlaceholderText = ""
+        Me.txtCutterSet.SelectedText = ""
+        Me.txtCutterSet.ShadowDecoration.BorderRadius = 30
+        Me.txtCutterSet.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.txtCutterSet.ShadowDecoration.Enabled = True
+        Me.txtCutterSet.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 15, 15)
+        Me.txtCutterSet.Size = New System.Drawing.Size(299, 43)
+        Me.txtCutterSet.TabIndex = 5
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(389, 85)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(232, 25)
+        Me.Label11.TabIndex = 39
+        Me.Label11.Text = "Bare Wire Lot Number:"
+        '
+        'txtBareWire
+        '
+        Me.txtBareWire.BackColor = System.Drawing.Color.Transparent
+        Me.txtBareWire.BorderColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.txtBareWire.BorderRadius = 20
+        Me.txtBareWire.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtBareWire.DefaultText = "Enter Bare Wire Lot #"
+        Me.txtBareWire.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.txtBareWire.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txtBareWire.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtBareWire.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtBareWire.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtBareWire.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBareWire.ForeColor = System.Drawing.Color.Silver
+        Me.txtBareWire.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtBareWire.Location = New System.Drawing.Point(395, 116)
+        Me.txtBareWire.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
+        Me.txtBareWire.Name = "txtBareWire"
+        Me.txtBareWire.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.txtBareWire.PlaceholderText = ""
+        Me.txtBareWire.SelectedText = ""
+        Me.txtBareWire.ShadowDecoration.BorderRadius = 30
+        Me.txtBareWire.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.txtBareWire.ShadowDecoration.Enabled = True
+        Me.txtBareWire.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 15, 15)
+        Me.txtBareWire.Size = New System.Drawing.Size(299, 43)
+        Me.txtBareWire.TabIndex = 4
+        '
+        'txtSolderWire
+        '
+        Me.txtSolderWire.BackColor = System.Drawing.Color.Transparent
+        Me.txtSolderWire.BorderColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.txtSolderWire.BorderRadius = 20
+        Me.txtSolderWire.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtSolderWire.DefaultText = "Enter Solder Wire Part #"
+        Me.txtSolderWire.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.txtSolderWire.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txtSolderWire.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtSolderWire.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtSolderWire.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtSolderWire.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSolderWire.ForeColor = System.Drawing.Color.Silver
+        Me.txtSolderWire.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtSolderWire.Location = New System.Drawing.Point(48, 478)
+        Me.txtSolderWire.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
+        Me.txtSolderWire.Name = "txtSolderWire"
+        Me.txtSolderWire.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.txtSolderWire.PlaceholderText = ""
+        Me.txtSolderWire.SelectedText = ""
+        Me.txtSolderWire.ShadowDecoration.BorderRadius = 30
+        Me.txtSolderWire.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.txtSolderWire.ShadowDecoration.Enabled = True
+        Me.txtSolderWire.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 15, 15)
+        Me.txtSolderWire.Size = New System.Drawing.Size(299, 43)
+        Me.txtSolderWire.TabIndex = 3
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(43, 447)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(259, 25)
+        Me.Label10.TabIndex = 36
+        Me.Label10.Text = "Solder Wire Part Number:"
         '
         'btnEnable
         '
@@ -295,7 +508,7 @@ Partial Class Form1
         Me.btnEnable.HoverState.ForeColor = System.Drawing.Color.White
         Me.btnEnable.Image = CType(resources.GetObject("btnEnable.Image"), System.Drawing.Image)
         Me.btnEnable.ImageSize = New System.Drawing.Size(30, 30)
-        Me.btnEnable.Location = New System.Drawing.Point(508, 681)
+        Me.btnEnable.Location = New System.Drawing.Point(536, 562)
         Me.btnEnable.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnEnable.Name = "btnEnable"
         Me.btnEnable.ShadowDecoration.BorderRadius = 18
@@ -313,22 +526,24 @@ Partial Class Form1
         Me.lblDate.AutoSize = True
         Me.lblDate.BackColor = System.Drawing.Color.Transparent
         Me.lblDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDate.Location = New System.Drawing.Point(569, 772)
+        Me.lblDate.Location = New System.Drawing.Point(955, 661)
         Me.lblDate.Name = "lblDate"
         Me.lblDate.Size = New System.Drawing.Size(43, 18)
         Me.lblDate.TabIndex = 34
         Me.lblDate.Text = "Date"
+        Me.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lblTime
         '
         Me.lblTime.AutoSize = True
         Me.lblTime.BackColor = System.Drawing.Color.Transparent
         Me.lblTime.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTime.Location = New System.Drawing.Point(596, 750)
+        Me.lblTime.Location = New System.Drawing.Point(981, 641)
         Me.lblTime.Name = "lblTime"
         Me.lblTime.Size = New System.Drawing.Size(45, 18)
         Me.lblTime.TabIndex = 33
         Me.lblTime.Text = "Time"
+        Me.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'btnWeight
         '
@@ -351,7 +566,7 @@ Partial Class Form1
         Me.btnWeight.HoverState.ForeColor = System.Drawing.Color.White
         Me.btnWeight.Image = CType(resources.GetObject("btnWeight.Image"), System.Drawing.Image)
         Me.btnWeight.ImageSize = New System.Drawing.Size(30, 30)
-        Me.btnWeight.Location = New System.Drawing.Point(255, 747)
+        Me.btnWeight.Location = New System.Drawing.Point(407, 641)
         Me.btnWeight.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnWeight.Name = "btnWeight"
         Me.btnWeight.ShadowDecoration.BorderRadius = 18
@@ -370,7 +585,7 @@ Partial Class Form1
         Me.lblCR.BackColor = System.Drawing.Color.Transparent
         Me.lblCR.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCR.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.lblCR.Location = New System.Drawing.Point(7, 779)
+        Me.lblCR.Location = New System.Drawing.Point(17, 661)
         Me.lblCR.Name = "lblCR"
         Me.lblCR.Size = New System.Drawing.Size(158, 13)
         Me.lblCR.TabIndex = 32
@@ -382,7 +597,7 @@ Partial Class Form1
         Me.lblfooter.BackColor = System.Drawing.Color.Transparent
         Me.lblfooter.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblfooter.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.lblfooter.Location = New System.Drawing.Point(7, 766)
+        Me.lblfooter.Location = New System.Drawing.Point(17, 649)
         Me.lblfooter.Name = "lblfooter"
         Me.lblfooter.Size = New System.Drawing.Size(183, 13)
         Me.lblfooter.TabIndex = 31
@@ -404,7 +619,7 @@ Partial Class Form1
         Me.txtReading.Font = New System.Drawing.Font("Lucida Fax", 25.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtReading.ForeColor = System.Drawing.Color.Lime
         Me.txtReading.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtReading.Location = New System.Drawing.Point(389, 68)
+        Me.txtReading.Location = New System.Drawing.Point(744, 69)
         Me.txtReading.Margin = New System.Windows.Forms.Padding(5, 7, 5, 7)
         Me.txtReading.Name = "txtReading"
         Me.txtReading.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -424,7 +639,7 @@ Partial Class Form1
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(51, 69)
+        Me.Label9.Location = New System.Drawing.Point(48, 174)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(139, 25)
         Me.Label9.TabIndex = 29
@@ -434,7 +649,7 @@ Partial Class Form1
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(51, 270)
+        Me.Label7.Location = New System.Drawing.Point(45, 354)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(103, 25)
         Me.Label7.TabIndex = 28
@@ -444,7 +659,7 @@ Partial Class Form1
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(51, 175)
+        Me.Label5.Location = New System.Drawing.Point(48, 262)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(130, 25)
         Me.Label5.TabIndex = 27
@@ -454,7 +669,7 @@ Partial Class Form1
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(51, 468)
+        Me.Label8.Location = New System.Drawing.Point(391, 359)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(97, 25)
         Me.Label8.TabIndex = 26
@@ -464,7 +679,7 @@ Partial Class Form1
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(51, 374)
+        Me.Label6.Location = New System.Drawing.Point(391, 266)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(63, 25)
         Me.Label6.TabIndex = 24
@@ -474,7 +689,7 @@ Partial Class Form1
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(51, 561)
+        Me.Label4.Location = New System.Drawing.Point(403, 449)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(193, 25)
         Me.Label4.TabIndex = 22
@@ -483,22 +698,12 @@ Partial Class Form1
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Imprint MT Shadow", 19.8!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(489, 25)
+        Me.Label3.Font = New System.Drawing.Font("Imprint MT Shadow", 24.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(821, 7)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(114, 39)
+        Me.Label3.Size = New System.Drawing.Size(137, 47)
         Me.Label3.TabIndex = 21
         Me.Label3.Text = "Result"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Imprint MT Shadow", 19.8!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(91, 25)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(186, 39)
-        Me.Label2.TabIndex = 20
-        Me.Label2.Text = "Lot Details"
         '
         'btnReset
         '
@@ -521,7 +726,7 @@ Partial Class Form1
         Me.btnReset.HoverState.ForeColor = System.Drawing.Color.White
         Me.btnReset.Image = CType(resources.GetObject("btnReset.Image"), System.Drawing.Image)
         Me.btnReset.ImageSize = New System.Drawing.Size(30, 30)
-        Me.btnReset.Location = New System.Drawing.Point(500, 681)
+        Me.btnReset.Location = New System.Drawing.Point(545, 562)
         Me.btnReset.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.ShadowDecoration.BorderRadius = 18
@@ -538,10 +743,10 @@ Partial Class Form1
         Me.lstResult.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lstResult.FormattingEnabled = True
         Me.lstResult.ItemHeight = 36
-        Me.lstResult.Location = New System.Drawing.Point(389, 165)
+        Me.lstResult.Location = New System.Drawing.Point(744, 166)
         Me.lstResult.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.lstResult.Name = "lstResult"
-        Me.lstResult.Size = New System.Drawing.Size(304, 472)
+        Me.lstResult.Size = New System.Drawing.Size(304, 436)
         Me.lstResult.TabIndex = 19
         Me.lstResult.TabStop = False
         '
@@ -560,7 +765,7 @@ Partial Class Form1
         Me.cboShift.ForeColor = System.Drawing.Color.Black
         Me.cboShift.IntegralHeight = False
         Me.cboShift.ItemHeight = 30
-        Me.cboShift.Location = New System.Drawing.Point(43, 402)
+        Me.cboShift.Location = New System.Drawing.Point(396, 293)
         Me.cboShift.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cboShift.Name = "cboShift"
         Me.cboShift.ShadowDecoration.BorderRadius = 30
@@ -568,7 +773,7 @@ Partial Class Form1
         Me.cboShift.ShadowDecoration.Enabled = True
         Me.cboShift.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 15, 15)
         Me.cboShift.Size = New System.Drawing.Size(297, 36)
-        Me.cboShift.TabIndex = 3
+        Me.cboShift.TabIndex = 6
         '
         'cboProcess
         '
@@ -586,7 +791,7 @@ Partial Class Form1
         Me.cboProcess.FormattingEnabled = True
         Me.cboProcess.IntegralHeight = False
         Me.cboProcess.ItemHeight = 30
-        Me.cboProcess.Location = New System.Drawing.Point(43, 507)
+        Me.cboProcess.Location = New System.Drawing.Point(396, 386)
         Me.cboProcess.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cboProcess.MaxDropDownItems = 15
         Me.cboProcess.Name = "cboProcess"
@@ -595,7 +800,7 @@ Partial Class Form1
         Me.cboProcess.ShadowDecoration.Enabled = True
         Me.cboProcess.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 15, 15)
         Me.cboProcess.Size = New System.Drawing.Size(297, 36)
-        Me.cboProcess.TabIndex = 1
+        Me.cboProcess.TabIndex = 7
         '
         'cboAssociate
         '
@@ -612,7 +817,7 @@ Partial Class Form1
         Me.cboAssociate.ForeColor = System.Drawing.Color.Black
         Me.cboAssociate.IntegralHeight = False
         Me.cboAssociate.ItemHeight = 30
-        Me.cboAssociate.Location = New System.Drawing.Point(43, 590)
+        Me.cboAssociate.Location = New System.Drawing.Point(395, 478)
         Me.cboAssociate.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cboAssociate.Name = "cboAssociate"
         Me.cboAssociate.ShadowDecoration.BorderRadius = 30
@@ -620,33 +825,32 @@ Partial Class Form1
         Me.cboAssociate.ShadowDecoration.Enabled = True
         Me.cboAssociate.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 15, 15)
         Me.cboAssociate.Size = New System.Drawing.Size(297, 36)
-        Me.cboAssociate.TabIndex = 5
+        Me.cboAssociate.TabIndex = 8
         '
         'Guna2CustomGradientPanel2
         '
         Me.Guna2CustomGradientPanel2.BorderRadius = 15
         Me.Guna2CustomGradientPanel2.Controls.Add(Me.PictureBox1)
         Me.Guna2CustomGradientPanel2.Controls.Add(Me.Label1)
-        Me.Guna2CustomGradientPanel2.Controls.Add(Me.MenuStrip1)
         Me.Guna2CustomGradientPanel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Guna2CustomGradientPanel2.FillColor = System.Drawing.Color.LimeGreen
         Me.Guna2CustomGradientPanel2.FillColor2 = System.Drawing.Color.LimeGreen
         Me.Guna2CustomGradientPanel2.FillColor3 = System.Drawing.Color.DarkGreen
         Me.Guna2CustomGradientPanel2.FillColor4 = System.Drawing.Color.DarkGreen
-        Me.Guna2CustomGradientPanel2.Location = New System.Drawing.Point(0, 0)
+        Me.Guna2CustomGradientPanel2.Location = New System.Drawing.Point(0, 30)
         Me.Guna2CustomGradientPanel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Guna2CustomGradientPanel2.Name = "Guna2CustomGradientPanel2"
-        Me.Guna2CustomGradientPanel2.Size = New System.Drawing.Size(731, 122)
+        Me.Guna2CustomGradientPanel2.Size = New System.Drawing.Size(1079, 122)
         Me.Guna2CustomGradientPanel2.TabIndex = 7
         '
         'PictureBox1
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(20, 18)
+        Me.PictureBox1.Location = New System.Drawing.Point(21, 5)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(105, 94)
+        Me.PictureBox1.Size = New System.Drawing.Size(139, 111)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 3
         Me.PictureBox1.TabStop = False
@@ -655,54 +859,13 @@ Partial Class Form1
         '
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Impact", 25.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Impact", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(145, 42)
+        Me.Label1.Location = New System.Drawing.Point(229, 22)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(534, 53)
+        Me.Label1.Size = New System.Drawing.Size(748, 75)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "PICO Solder Weight to Infinity"
-        '
-        'MenuStrip1
-        '
-        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(5, 2, 0, 2)
-        Me.MenuStrip1.Size = New System.Drawing.Size(731, 28)
-        Me.MenuStrip1.TabIndex = 22
-        Me.MenuStrip1.Text = "MenuStrip1"
-        Me.MenuStrip1.Visible = False
-        '
-        'MenuToolStripMenuItem
-        '
-        Me.MenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddAssociateToolStripMenuItem})
-        Me.MenuToolStripMenuItem.Name = "MenuToolStripMenuItem"
-        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(60, 24)
-        Me.MenuToolStripMenuItem.Text = "Menu"
-        '
-        'AddAssociateToolStripMenuItem
-        '
-        Me.AddAssociateToolStripMenuItem.Image = CType(resources.GetObject("AddAssociateToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.AddAssociateToolStripMenuItem.Name = "AddAssociateToolStripMenuItem"
-        Me.AddAssociateToolStripMenuItem.Size = New System.Drawing.Size(187, 26)
-        Me.AddAssociateToolStripMenuItem.Text = "Add Associate"
-        '
-        'Guna2ContextMenuStrip2
-        '
-        Me.Guna2ContextMenuStrip2.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.Guna2ContextMenuStrip2.Name = "Guna2ContextMenuStrip2"
-        Me.Guna2ContextMenuStrip2.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(CType(CType(151, Byte), Integer), CType(CType(143, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ContextMenuStrip2.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro
-        Me.Guna2ContextMenuStrip2.RenderStyle.ColorTable = Nothing
-        Me.Guna2ContextMenuStrip2.RenderStyle.RoundedEdges = True
-        Me.Guna2ContextMenuStrip2.RenderStyle.SelectionArrowColor = System.Drawing.Color.White
-        Me.Guna2ContextMenuStrip2.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Guna2ContextMenuStrip2.RenderStyle.SelectionForeColor = System.Drawing.Color.White
-        Me.Guna2ContextMenuStrip2.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro
-        Me.Guna2ContextMenuStrip2.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault
-        Me.Guna2ContextMenuStrip2.Size = New System.Drawing.Size(61, 4)
         '
         'SerialPort1
         '
@@ -715,20 +878,45 @@ Partial Class Form1
         'Timer2
         '
         '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(5, 2, 0, 2)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1079, 30)
+        Me.MenuStrip1.TabIndex = 8
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'MenuToolStripMenuItem
+        '
+        Me.MenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddAssociateToolStripMenuItem})
+        Me.MenuToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MenuToolStripMenuItem.Name = "MenuToolStripMenuItem"
+        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(63, 26)
+        Me.MenuToolStripMenuItem.Text = "Menu"
+        '
+        'AddAssociateToolStripMenuItem
+        '
+        Me.AddAssociateToolStripMenuItem.Image = CType(resources.GetObject("AddAssociateToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.AddAssociateToolStripMenuItem.Name = "AddAssociateToolStripMenuItem"
+        Me.AddAssociateToolStripMenuItem.Size = New System.Drawing.Size(192, 26)
+        Me.AddAssociateToolStripMenuItem.Text = "Add Associate"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(731, 924)
+        Me.ClientSize = New System.Drawing.Size(1079, 832)
         Me.Controls.Add(Me.Guna2CustomGradientPanel1)
         Me.Controls.Add(Me.Guna2CustomGradientPanel2)
+        Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MainMenuStrip = Me.MenuStrip1
         Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.MaximizeBox = False
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "PICO Solder Weight"
         Me.Guna2CustomGradientPanel1.ResumeLayout(False)
         Me.Guna2CustomGradientPanel1.PerformLayout()
         Me.Guna2CustomGradientPanel2.ResumeLayout(False)
@@ -737,6 +925,7 @@ Partial Class Form1
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Guna2ContextMenuStrip1 As Guna.UI2.WinForms.Guna2ContextMenuStrip
@@ -753,10 +942,6 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents Guna2ContextMenuStrip2 As Guna.UI2.WinForms.Guna2ContextMenuStrip
-    Friend WithEvents MenuToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents AddAssociateToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Label4 As Label
     Friend WithEvents cboShift As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents cboProcess As Guna.UI2.WinForms.Guna2ComboBox
@@ -776,4 +961,18 @@ Partial Class Form1
     Friend WithEvents lblDate As Label
     Friend WithEvents lblTime As Label
     Friend WithEvents btnEnable As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents txtBareWire As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents txtSolderWire As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Label12 As Label
+    Friend WithEvents txtCutterSet As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents txtWeight As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents MenuToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AddAssociateToolStripMenuItem As ToolStripMenuItem
 End Class
