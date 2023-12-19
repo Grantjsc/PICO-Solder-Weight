@@ -69,6 +69,8 @@ Partial Class Form1
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddAssociateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SerialPort2 = New System.IO.Ports.SerialPort(Me.components)
+        Me.TimerErrorMsg = New System.Windows.Forms.Timer(Me.components)
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         Me.Guna2CustomGradientPanel2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -285,11 +287,11 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel1.FillColor2 = System.Drawing.SystemColors.Control
         Me.Guna2CustomGradientPanel1.FillColor3 = System.Drawing.SystemColors.Control
         Me.Guna2CustomGradientPanel1.FillColor4 = System.Drawing.SystemColors.Control
-        Me.Guna2CustomGradientPanel1.Location = New System.Drawing.Point(0, 44)
+        Me.Guna2CustomGradientPanel1.Location = New System.Drawing.Point(0, 124)
         Me.Guna2CustomGradientPanel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Guna2CustomGradientPanel1.Name = "Guna2CustomGradientPanel1"
         Me.Guna2CustomGradientPanel1.ShadowDecoration.BorderRadius = 35
-        Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(865, 721)
+        Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(1081, 770)
         Me.Guna2CustomGradientPanel1.TabIndex = 6
         '
         'Button3
@@ -735,7 +737,7 @@ Partial Class Form1
         Me.lstResult.Location = New System.Drawing.Point(734, 195)
         Me.lstResult.Margin = New System.Windows.Forms.Padding(2)
         Me.lstResult.Name = "lstResult"
-        Me.lstResult.Size = New System.Drawing.Size(282, 410)
+        Me.lstResult.Size = New System.Drawing.Size(282, 381)
         Me.lstResult.TabIndex = 19
         Me.lstResult.TabStop = False
         '
@@ -826,10 +828,10 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel2.FillColor2 = System.Drawing.Color.LimeGreen
         Me.Guna2CustomGradientPanel2.FillColor3 = System.Drawing.Color.DarkGreen
         Me.Guna2CustomGradientPanel2.FillColor4 = System.Drawing.Color.DarkGreen
-        Me.Guna2CustomGradientPanel2.Location = New System.Drawing.Point(0, 19)
+        Me.Guna2CustomGradientPanel2.Location = New System.Drawing.Point(0, 24)
         Me.Guna2CustomGradientPanel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Guna2CustomGradientPanel2.Name = "Guna2CustomGradientPanel2"
-        Me.Guna2CustomGradientPanel2.Size = New System.Drawing.Size(865, 31)
+        Me.Guna2CustomGradientPanel2.Size = New System.Drawing.Size(1081, 100)
         Me.Guna2CustomGradientPanel2.TabIndex = 7
         '
         'PictureBox1
@@ -851,7 +853,7 @@ Partial Class Form1
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Impact", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(222, 19)
+        Me.Label1.Location = New System.Drawing.Point(268, 26)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(601, 60)
@@ -885,7 +887,7 @@ Partial Class Form1
         Me.MenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddAssociateToolStripMenuItem})
         Me.MenuToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuToolStripMenuItem.Name = "MenuToolStripMenuItem"
-        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(51, 19)
+        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(51, 20)
         Me.MenuToolStripMenuItem.Text = "Menu"
         '
         'AddAssociateToolStripMenuItem
@@ -895,12 +897,16 @@ Partial Class Form1
         Me.AddAssociateToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
         Me.AddAssociateToolStripMenuItem.Text = "Add Associate"
         '
+        'TimerErrorMsg
+        '
+        Me.TimerErrorMsg.Interval = 1000
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(1081, 956)
+        Me.ClientSize = New System.Drawing.Size(1081, 894)
         Me.Controls.Add(Me.Guna2CustomGradientPanel1)
         Me.Controls.Add(Me.Guna2CustomGradientPanel2)
         Me.Controls.Add(Me.MenuStrip1)
@@ -966,4 +972,6 @@ Partial Class Form1
     Friend WithEvents MenuStrip1 As MenuStrip
     Friend WithEvents MenuToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AddAssociateToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SerialPort2 As IO.Ports.SerialPort
+    Friend WithEvents TimerErrorMsg As Timer
 End Class

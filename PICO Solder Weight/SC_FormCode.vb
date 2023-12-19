@@ -16,6 +16,7 @@
 End Module
 
 Module Cutter2_Module
+
     Sub C2_ButtonStart()
         If SolderCutter_Form.btnC2Start.Text = "Start" Then
             SolderCutter_Form.btnC2Start.Text = "Stop"

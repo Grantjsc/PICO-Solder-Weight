@@ -633,13 +633,13 @@ Public Class Form1
         dateNtime = Date.Now.ToString("yyyy_MM_dd_HHmmtt ")
 
         Dim isFileEmpty As Boolean = IsCSVFileEmpty(get_FolderPath)
-        get_message = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & vbCrLf
+        get_message = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & "," & """Solder Wire part number,""" & "," & """Bare Wire Lot #,""" & "," & """Cutter setting,""" & vbCrLf
         'get_message2 = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & "," & """Date and Time,""" & vbCrLf
         Try
             If isFileEmpty Then
                 For n As Integer = 0 To data.Length - 1
                     If data(n) > 0 Then
-                        get_message = get_message & infi & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & vbCrLf
+                        get_message = get_message & infi & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & txtSolderWire.Text & "," & txtBareWire.Text & "," & txtCutterSet.Text & vbCrLf
                         'get_message2 = get_message2 & txtPartNo.Text & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & dateNtime & vbCrLf
                     End If
                 Next
@@ -869,15 +869,7 @@ Public Class Form1
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Function_Module.GetOldOCAP()
-        If OldOCAP = 2 Then
-            MsgBox("Need Tech/P03")
-            Function_Module.ResetOCAP()
-            Function_Module.ChangeOCAP()
-        Else
-            Function_Module.IncOCAP()
-            Function_Module.ChangeOCAP()
-        End If
+        Function_Module.BiometricsOCAP()
     End Sub
 
     Private Sub txtWeight_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtWeight.KeyPress
@@ -890,6 +882,18 @@ Public Class Form1
                 End If
             End If
             'End If
+        End If
+    End Sub
+
+    Private Sub AddAssociateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AddAssociateToolStripMenuItem.Click
+        Function_Module.BiometricsRegisterUser()
+    End Sub
+
+    Private Sub TimerErrorMsg_Tick(sender As Object, e As EventArgs) Handles TimerErrorMsg.Tick
+        If Master_login.lblErrorMsg.Visible = False Then
+            Master_login.lblErrorMsg.Visible = True
+        Else
+            Master_login.lblErrorMsg.Visible = False
         End If
     End Sub
 End Class
