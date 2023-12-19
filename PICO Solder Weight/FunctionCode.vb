@@ -38,7 +38,7 @@ Module Function_Module
         NewOCAP = CInt(OldOCAP) + 1
     End Sub
     Sub ResetOCAP()
-        NewOCAP = 0
+        NewOCAP = 1
     End Sub
 
     Public config As Configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None)

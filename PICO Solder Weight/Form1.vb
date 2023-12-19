@@ -870,13 +870,26 @@ Public Class Form1
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Function_Module.GetOldOCAP()
-        If OldOCAP >= 1 Then
+        If OldOCAP = 2 Then
             MsgBox("Need Tech/P03")
             Function_Module.ResetOCAP()
             Function_Module.ChangeOCAP()
         Else
             Function_Module.IncOCAP()
             Function_Module.ChangeOCAP()
+        End If
+    End Sub
+
+    Private Sub txtWeight_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtWeight.KeyPress
+        If Asc(e.KeyChar) <> 8 Then
+            'If Asc(e.KeyChar) <> 45 Then
+            If Asc(e.KeyChar) <> 46 Then
+                If (Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57) Then
+                    e.Handled = True
+                    'MessageBox.Show("Please enter numeric value!", "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            End If
+            'End If
         End If
     End Sub
 End Class
