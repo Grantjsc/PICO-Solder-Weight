@@ -1,5 +1,6 @@
 ﻿Imports System.Configuration
 Imports System.IO.Ports
+Imports System.Threading
 
 Module Function_Module
 
@@ -26,6 +27,52 @@ Module Function_Module
         Console.WriteLine(Oldmg)
 
         OldWeight = Oldmg
+    End Sub
+
+    Sub CheckMg()
+        Dim PurgeDone = False
+        Dim Samples = False
+
+        If NewWeightmg = OldWeight Then
+            SolderCutter_Form.btnC2Start.Enabled = False
+            SolderCutter_Form.to_PLC("@00WD00060025")
+            While Samples = False
+                If SolderCutter_Form.lblSamples106.Text = CInt("100") Then
+                    SolderCutter_Form.btnC2Start.Enabled = True
+                    Samples = True
+                End If
+            End While
+
+        Else
+            SolderCutter_Form.btnC2Start.Enabled = False
+            SolderCutter_Form.to_PLC("@00WD00050010")
+
+            With Purging_Form
+                .TopLevel = False
+                Main_Form.PanelMain.Controls.Add(Purging_Form)
+                .WindowState = FormWindowState.Maximized
+                .BringToFront()
+                .Show()
+            End With
+            While PurgeDone = False
+                If SolderCutter_Form.lblPurge105.Text = CInt("100") Then
+                    Purging_Form.lblMsg.Text = "The machine is cutting samples ..."
+                    SolderCutter_Form.to_PLC("@00WD00060025")
+                    'PurgeDone = True
+
+                    While Samples = False
+                        If SolderCutter_Form.lblSamples106.Text = CInt("100") Then
+                            SolderCutter_Form.btnC2Start.Enabled = True
+                            Samples = True
+                            PurgeDone = True
+
+                            Purging_Form.Close()
+                        End If
+
+                    End While
+                End If
+            End While
+        End If
     End Sub
 
     Sub GetOldOCAP()
@@ -112,6 +159,122 @@ Module Function_Module
 
             MsgBox("Authorized personnel only!", MsgBoxStyle.Exclamation)
             Master_login.Close()
+        End If
+    End Sub
+
+    Sub RunMachine()
+        Dim CutQty As String
+        Dim QtyLength As String
+
+        CutQty = CInt(Form1.txtQty.Text)
+        QtyLength = CInt(CutQty.Length.ToString)
+
+
+        Select Case QtyLength
+
+            Case 2 'Tens
+                SolderCutter_Form.to_PLC("@00WD00000001") 'Start Machine
+                SolderCutter_Form.TimerQtyChecking.Enabled = True
+                Thread.Sleep(500)
+                SolderCutter_Form.to_PLC("@00WD00080000")
+                Thread.Sleep(500)
+                SolderCutter_Form.to_PLC("@00WD0007" & CInt(Form1.txtQty.Text).ToString("0000"))
+
+            Case 3 'Hundreds
+                SolderCutter_Form.to_PLC("@00WD00000001") 'Start Machine
+                SolderCutter_Form.TimerQtyChecking.Enabled = True
+                Thread.Sleep(500)
+                SolderCutter_Form.to_PLC("@00WD00080000")
+                Thread.Sleep(500)
+                SolderCutter_Form.to_PLC("@00WD0007" & CInt(Form1.txtQty.Text).ToString("0000"))
+
+            Case 4 'One Thousands
+                SolderCutter_Form.to_PLC("@00WD00000001") 'Start Machine
+                SolderCutter_Form.TimerQtyChecking.Enabled = True
+                Thread.Sleep(500)
+                SolderCutter_Form.to_PLC("@00WD00080000")
+                Thread.Sleep(500)
+                SolderCutter_Form.to_PLC("@00WD0007" & CInt(Form1.txtQty.Text).ToString("0000"))
+
+            Case 5 'Ten Thousands
+                Dim str As String
+                Dim FirstDgt As String
+                Dim LastDgts As String
+                str = Form1.txtQty.Text
+                FirstDgt = str.Substring(0, 1)
+                LastDgts = str.Substring(1, 4)
+
+                SolderCutter_Form.to_PLC("@00WD00000001") 'Start Machine
+                SolderCutter_Form.TimerQtyChecking.Enabled = True
+                Thread.Sleep(500)
+                SolderCutter_Form.to_PLC("@00WD0008" & CInt(FirstDgt).ToString("0000"))
+                Thread.Sleep(500)
+                SolderCutter_Form.to_PLC("@00WD0007" & CInt(LastDgts).ToString("0000"))
+
+            Case 6 'Hundred Thousands
+                Dim str As String
+                Dim FirstDgt As String
+                Dim LastDgts As String
+                str = Form1.txtQty.Text
+                FirstDgt = str.Substring(0, 2)
+                LastDgts = str.Substring(2, 4)
+
+                SolderCutter_Form.to_PLC("@00WD00000001") 'Start Machine
+                SolderCutter_Form.TimerQtyChecking.Enabled = True
+                Thread.Sleep(500)
+                SolderCutter_Form.to_PLC("@00WD0008" & CInt(FirstDgt).ToString("0000"))
+                Thread.Sleep(500)
+                SolderCutter_Form.to_PLC("@00WD0007" & CInt(LastDgts).ToString("0000"))
+
+            Case Else
+
+        End Select
+    End Sub
+
+    Sub QuantityChecking()
+        If CInt(SolderCutter_Form.lblC2counter.Text) = CInt(Form1.txtQty.Text) Then
+            SolderCutter_Form.to_PLC("@00WD00000000")
+            SolderCutter_Form.TimerQtyChecking.Enabled = False
+        End If
+    End Sub
+
+    Sub ChangeSpool()
+        If SolderCutter_Form.lblSpool107.Text = CInt("100") And CInt(SolderCutter_Form.lblC2counter.Text) <> CInt(Form1.txtQty.Text) Then
+            'SerialPort2.WriteLine("A") 'deactivate door lock
+            'Form1.txtQty.Text = ""
+
+            Dim PurgeDone = False
+            Dim Samples = False
+
+            SolderCutter_Form.btnC2Start.Enabled = False
+            SolderCutter_Form.to_PLC("@00WD00050010")
+
+            With Purging_Form
+                .TopLevel = False
+                Main_Form.PanelMain.Controls.Add(Purging_Form)
+                .WindowState = FormWindowState.Maximized
+                .BringToFront()
+                .Show()
+            End With
+
+            While PurgeDone = False
+                If SolderCutter_Form.lblPurge105.Text = CInt("100") Then
+                    Purging_Form.lblMsg.Text = "The machine is cutting samples ..."
+                    SolderCutter_Form.to_PLC("@00WD00060025")
+                    'PurgeDone = True
+
+                    While Samples = False
+                        If SolderCutter_Form.lblSamples106.Text = CInt("100") Then
+                            SolderCutter_Form.btnC2Start.Enabled = True
+                            Samples = True
+                            PurgeDone = True
+
+                            Purging_Form.Close()
+                        End If
+
+                    End While
+                End If
+            End While
         End If
     End Sub
 

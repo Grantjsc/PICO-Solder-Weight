@@ -451,6 +451,10 @@ Public Class Form1
 
             Associate()
 
+            Function_Module.GetNewmg()
+            Function_Module.GetOldmg()
+            Function_Module.CheckMg()
+
             'btnWeight.Focus()
             SerialPort1.Open()
 
@@ -656,6 +660,13 @@ Public Class Form1
 
                 btnEnable.Focus()
 
+                Function_Module.GetNewmg()
+                Function_Module.ChangeMg()
+
+                Function_Module.RunMachine()
+                SolderCutter_Form.TimerQtyChecking.Enabled = True
+
+                'SerialPort2.WriteLine("A")
 
                 'txtReading.Text = ""
                 'SerialPort1.Close()
@@ -894,6 +905,47 @@ Public Class Form1
             Master_login.lblErrorMsg.Visible = True
         Else
             Master_login.lblErrorMsg.Visible = False
+        End If
+    End Sub
+
+    Private Sub Guna2TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtQty.KeyPress
+        If Asc(e.KeyChar) <> 8 Then
+            'If Asc(e.KeyChar) <> 45 Then
+            If Asc(e.KeyChar) <> 46 Then
+                If (Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57) Then
+                    e.Handled = True
+                    'MessageBox.Show("Please enter numeric value!", "Invalid Entry", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            End If
+            'End If
+        End If
+    End Sub
+
+    Private Sub Guna2TextBox1_KeyUp(sender As Object, e As KeyEventArgs) Handles txtQty.KeyUp
+
+        If e.KeyCode = Keys.Enter Then
+            If txtQty.Text = "" Then
+                MsgBox("Please enter quantity!", MsgBoxStyle.Exclamation)
+                txtQty.Text = ""
+            Else
+                txtWeight.Focus()
+            End If
+        End If
+    End Sub
+
+    Private Sub Guna2TextBox1_Leave(sender As Object, e As EventArgs) Handles txtQty.Leave
+        If txtQty.Text = "" Then
+
+            txtQty.Text = "Enter quantity"
+            txtQty.ForeColor = Color.Silver
+        End If
+    End Sub
+
+    Private Sub txtQty_Enter(sender As Object, e As EventArgs) Handles txtQty.Enter
+        If txtQty.Text = "Enter quantity" Then
+
+            txtQty.Text = ""
+            txtQty.ForeColor = Color.Black
         End If
     End Sub
 End Class

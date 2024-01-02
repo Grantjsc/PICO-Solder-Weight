@@ -13,6 +13,7 @@
         With Form1
             .TopLevel = False
             Main_Form.PanelMain.Controls.Add(Form1)
+            .WindowState = FormWindowState.Maximized
             .BringToFront()
             .Show()
         End With
@@ -31,6 +32,7 @@
         With SolderCutter_Form
             .TopLevel = False
             Main_Form.PanelMain.Controls.Add(SolderCutter_Form)
+            .WindowState = FormWindowState.Maximized
             .BringToFront()
             .Show()
         End With

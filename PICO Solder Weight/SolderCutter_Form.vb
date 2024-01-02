@@ -15,6 +15,10 @@
         Cutter4_Module.C4_ButtonStart()
     End Sub
 
+    Private Sub SolderCutter_Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Timer1.Enabled = True
+    End Sub
+
     Public TX As String
     Public FCS As String
     Public RXD As String
@@ -22,7 +26,7 @@
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Timer1.Enabled = False
         'Display current date and time
-        timetoday.Text = System.DateTime.Now
+        'timetoday.Text = System.DateTime.Now
         Try
             If SerialPort1.IsOpen = False Then
                 SerialPort1.Open()
@@ -32,16 +36,22 @@
             End
         End Try
         'Check DM AREA DM486 data update; range: 9
-        TX = "@00RD04860009"
+        TX = "@00RD01050005"
         GetFCS()
         'Console.WriteLine(FCS)
         communicate()
         SerialPort1.Close()
         ' Set information on the screen
 
-        Console.WriteLine(RXD)
-        actual_temp1_lbl.Text = RXD.Substring(7, 4) 'CInt("&H" & RXD.Substring(7, 4))
-        'actual_temp2_lbl.Text = CInt(RXD.Substring(11, 4)) 'CInt("&H" & RXD.Substring(11, 4))
+        'Console.WriteLine(RXD)
+        'lblPurge105.Text = RXD.Substring(7, 4) 'CInt("&H" & RXD.Substring(7, 4))
+        'lblSamples106.Text = RXD.Substring(11, 4) 'CInt("&H" & RXD.Substring(11, 4))
+        'lblSpool107.Text = RXD.Substring(15, 4)
+        lblQty108.Text = RXD.Substring(19, 4)
+        lblQty109.Text = RXD.Substring(23, 4)
+
+        lblC2counter.Text = (CInt(RXD.Substring(23, 4) & RXD.Substring(19, 4))).ToString("N0")
+
         ''actl_qty_lbl.Text = (CInt(RXD.Substring(15, 4))).ToString("N0")
         'actl_tray_qty_lbl.Text = (CInt(RXD.Substring(19, 4))).ToString("N0")
         'actl_qty_lbl.Text = ((CDec(RXD.Substring(19, 4))) * slide_qty).ToString("N0")
@@ -117,10 +127,6 @@
         End If
     End Sub
 
-    Private Sub btnC2JogPlus_Click(sender As Object, e As EventArgs) Handles btnC2JogPlus.Click
-        to_PLC("@00WD05000003") 'Start run = #3
-    End Sub
-
     Public tosend As String
 
     Public Sub to_PLC(mystring As String)
@@ -172,5 +178,78 @@
             'If an error occurs then indicate communication error
             MsgBox(ex.Message, vbCritical)
         End Try
+    End Sub
+
+
+    '********************* CUTTER 1 Buttons *********************
+    Private Sub btnC1JogPlus_Click(sender As Object, e As EventArgs) Handles btnC1JogPlus.Click
+        Cutter1_Module.C1_JogPlus()
+    End Sub
+
+    Private Sub btnC1JogMinus_Click(sender As Object, e As EventArgs) Handles btnC1JogMinus.Click
+        Cutter1_Module.C1_JogMinus()
+    End Sub
+
+    Private Sub btnC1cut_Click(sender As Object, e As EventArgs) Handles btnC1cut.Click
+        Cutter1_Module.C1_Cut()
+    End Sub
+
+    Private Sub btnC1Reset_Click(sender As Object, e As EventArgs) Handles btnC1Reset.Click
+        Cutter1_Module.C1_Reset()
+    End Sub
+
+    '********************* CUTTER 2 Buttons *********************
+    Private Sub btnC2JogPlus_Click(sender As Object, e As EventArgs) Handles btnC2JogPlus.Click
+        Cutter2_Module.C2_JogPlus()
+    End Sub
+
+    Private Sub btnC2JogMinus_Click(sender As Object, e As EventArgs) Handles btnC2JogMinus.Click
+        Cutter2_Module.C2_JogMinus()
+    End Sub
+
+    Private Sub btnC2cut_Click(sender As Object, e As EventArgs) Handles btnC2cut.Click
+        Cutter2_Module.C2_Cut()
+    End Sub
+
+    Private Sub btnC2Reset_Click(sender As Object, e As EventArgs) Handles btnC2Reset.Click
+        Cutter2_Module.C2_Reset()
+    End Sub
+
+    '********************* CUTTER 3 Buttons *********************
+    Private Sub btnC3JogPlus_Click(sender As Object, e As EventArgs) Handles btnC3JogPlus.Click
+        Cutter3_Module.C3_JogPlus()
+    End Sub
+
+    Private Sub btnC3JogMinus_Click(sender As Object, e As EventArgs) Handles btnC3JogMinus.Click
+        Cutter3_Module.C3_JogMinus()
+    End Sub
+
+    Private Sub btnC3cut_Click(sender As Object, e As EventArgs) Handles btnC3cut.Click
+        Cutter3_Module.C3_Cut()
+    End Sub
+
+    Private Sub btnC3Reset_Click(sender As Object, e As EventArgs) Handles btnC3Reset.Click
+        Cutter3_Module.C3_Reset()
+    End Sub
+
+    '********************* CUTTER 4 Buttons *********************
+    Private Sub btnC4JogPlus_Click(sender As Object, e As EventArgs) Handles btnC4JogPlus.Click
+        Cutter4_Module.C4_JogPlus()
+    End Sub
+
+    Private Sub btnC4JogMinus_Click(sender As Object, e As EventArgs) Handles btnC4JogMinus.Click
+        Cutter4_Module.C4_JogMinus()
+    End Sub
+
+    Private Sub btnC4cut_Click(sender As Object, e As EventArgs) Handles btnC4cut.Click
+        Cutter4_Module.C4_Cut()
+    End Sub
+
+    Private Sub btnC4Reset_Click(sender As Object, e As EventArgs) Handles btnC4Reset.Click
+        Cutter4_Module.C4_Reset()
+    End Sub
+
+    Private Sub TimerQtyChecking_Tick(sender As Object, e As EventArgs) Handles TimerQtyChecking.Tick
+        Function_Module.QuantityChecking()
     End Sub
 End Class

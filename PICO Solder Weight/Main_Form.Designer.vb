@@ -54,28 +54,28 @@ Partial Class Main_Form
         Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(196, 956)
+        Me.Panel1.Size = New System.Drawing.Size(280, 1061)
         Me.Panel1.TabIndex = 0
         '
         'PanelSC
         '
         Me.PanelSC.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.PanelSC.Location = New System.Drawing.Point(0, 294)
-        Me.PanelSC.Margin = New System.Windows.Forms.Padding(2)
+        Me.PanelSC.Location = New System.Drawing.Point(0, 362)
+        Me.PanelSC.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PanelSC.Name = "PanelSC"
-        Me.PanelSC.Size = New System.Drawing.Size(8, 37)
+        Me.PanelSC.Size = New System.Drawing.Size(11, 46)
         Me.PanelSC.TabIndex = 36
         Me.PanelSC.Visible = False
         '
         'PanelSW
         '
         Me.PanelSW.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.PanelSW.Location = New System.Drawing.Point(0, 258)
-        Me.PanelSW.Margin = New System.Windows.Forms.Padding(2)
+        Me.PanelSW.Location = New System.Drawing.Point(0, 318)
+        Me.PanelSW.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PanelSW.Name = "PanelSW"
-        Me.PanelSW.Size = New System.Drawing.Size(8, 37)
+        Me.PanelSW.Size = New System.Drawing.Size(11, 46)
         Me.PanelSW.TabIndex = 37
         Me.PanelSW.Visible = False
         '
@@ -94,10 +94,10 @@ Partial Class Main_Form
         Me.btnSolderCutter.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.btnSolderCutter.ImageOffset = New System.Drawing.Point(5, 0)
         Me.btnSolderCutter.ImageSize = New System.Drawing.Size(35, 35)
-        Me.btnSolderCutter.Location = New System.Drawing.Point(0, 295)
-        Me.btnSolderCutter.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnSolderCutter.Location = New System.Drawing.Point(0, 364)
+        Me.btnSolderCutter.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnSolderCutter.Name = "btnSolderCutter"
-        Me.btnSolderCutter.Size = New System.Drawing.Size(196, 37)
+        Me.btnSolderCutter.Size = New System.Drawing.Size(280, 46)
         Me.btnSolderCutter.TabIndex = 37
         Me.btnSolderCutter.Text = "Solder Cutter"
         '
@@ -116,20 +116,20 @@ Partial Class Main_Form
         Me.btnSolderWeight.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.btnSolderWeight.ImageOffset = New System.Drawing.Point(5, 0)
         Me.btnSolderWeight.ImageSize = New System.Drawing.Size(35, 35)
-        Me.btnSolderWeight.Location = New System.Drawing.Point(0, 258)
-        Me.btnSolderWeight.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnSolderWeight.Location = New System.Drawing.Point(0, 318)
+        Me.btnSolderWeight.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnSolderWeight.Name = "btnSolderWeight"
-        Me.btnSolderWeight.Size = New System.Drawing.Size(196, 37)
+        Me.btnSolderWeight.Size = New System.Drawing.Size(280, 46)
         Me.btnSolderWeight.TabIndex = 35
         Me.btnSolderWeight.Text = "Solder Weight"
         '
         'Panel2
         '
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 168)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
+        Me.Panel2.Location = New System.Drawing.Point(0, 207)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(196, 90)
+        Me.Panel2.Size = New System.Drawing.Size(280, 111)
         Me.Panel2.TabIndex = 0
         '
         'lblCR
@@ -138,8 +138,7 @@ Partial Class Main_Form
         Me.lblCR.BackColor = System.Drawing.Color.Transparent
         Me.lblCR.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCR.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.lblCR.Location = New System.Drawing.Point(27, 938)
-        Me.lblCR.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblCR.Location = New System.Drawing.Point(36, 1154)
         Me.lblCR.Name = "lblCR"
         Me.lblCR.Size = New System.Drawing.Size(124, 9)
         Me.lblCR.TabIndex = 34
@@ -151,8 +150,7 @@ Partial Class Main_Form
         Me.lblfooter.BackColor = System.Drawing.Color.Transparent
         Me.lblfooter.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblfooter.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.lblfooter.Location = New System.Drawing.Point(27, 929)
-        Me.lblfooter.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblfooter.Location = New System.Drawing.Point(36, 1143)
         Me.lblfooter.Name = "lblfooter"
         Me.lblfooter.Size = New System.Drawing.Size(145, 9)
         Me.lblfooter.TabIndex = 33
@@ -164,9 +162,9 @@ Partial Class Main_Form
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(196, 168)
+        Me.PictureBox1.Size = New System.Drawing.Size(280, 207)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 4
         Me.PictureBox1.TabStop = False
@@ -177,20 +175,20 @@ Partial Class Main_Form
         Me.PanelMain.Controls.Add(Me.PictureBox2)
         Me.PanelMain.Controls.Add(Me.Label1)
         Me.PanelMain.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelMain.Location = New System.Drawing.Point(196, 0)
-        Me.PanelMain.Margin = New System.Windows.Forms.Padding(2)
+        Me.PanelMain.Location = New System.Drawing.Point(280, 0)
+        Me.PanelMain.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PanelMain.Name = "PanelMain"
-        Me.PanelMain.Size = New System.Drawing.Size(1081, 956)
+        Me.PanelMain.Size = New System.Drawing.Size(1420, 1061)
         Me.PanelMain.TabIndex = 1
         '
         'PictureBox2
         '
         Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(352, 305)
-        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(2)
+        Me.PictureBox2.Location = New System.Drawing.Point(530, 428)
+        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(370, 103)
+        Me.PictureBox2.Size = New System.Drawing.Size(493, 127)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox2.TabIndex = 5
         Me.PictureBox2.TabStop = False
@@ -201,8 +199,7 @@ Partial Class Main_Form
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Modern No. 20", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))
-        Me.Label1.Location = New System.Drawing.Point(197, 435)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label1.Location = New System.Drawing.Point(324, 588)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(697, 50)
         Me.Label1.TabIndex = 4
@@ -210,13 +207,13 @@ Partial Class Main_Form
         '
         'Main_Form
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1277, 956)
+        Me.ClientSize = New System.Drawing.Size(1700, 1061)
         Me.Controls.Add(Me.PanelMain)
         Me.Controls.Add(Me.Panel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(2)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "Main_Form"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Panel1.ResumeLayout(False)
