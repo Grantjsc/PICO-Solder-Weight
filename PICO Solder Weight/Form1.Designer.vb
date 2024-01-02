@@ -31,6 +31,7 @@ Partial Class Form1
         Me.txtEmployee = New Guna.UI2.WinForms.Guna2TextBox()
         Me.txtLotNo = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.txtQty = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Button3 = New System.Windows.Forms.Button()
@@ -250,6 +251,7 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel1.AutoScroll = True
         Me.Guna2CustomGradientPanel1.BackColor = System.Drawing.Color.Transparent
         Me.Guna2CustomGradientPanel1.BorderRadius = 15
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Button4)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label14)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.txtQty)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Button3)
@@ -291,12 +293,23 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel1.FillColor2 = System.Drawing.SystemColors.Control
         Me.Guna2CustomGradientPanel1.FillColor3 = System.Drawing.SystemColors.Control
         Me.Guna2CustomGradientPanel1.FillColor4 = System.Drawing.SystemColors.Control
-        Me.Guna2CustomGradientPanel1.Location = New System.Drawing.Point(0, 171)
+        Me.Guna2CustomGradientPanel1.Location = New System.Drawing.Point(0, 216)
         Me.Guna2CustomGradientPanel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Guna2CustomGradientPanel1.Name = "Guna2CustomGradientPanel1"
         Me.Guna2CustomGradientPanel1.ShadowDecoration.BorderRadius = 35
-        Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(1416, 931)
+        Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(1770, 1161)
         Me.Guna2CustomGradientPanel1.TabIndex = 0
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(915, 762)
+        Me.Button4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(94, 50)
+        Me.Button4.TabIndex = 49
+        Me.Button4.Text = "Set Qty"
+        Me.Button4.UseVisualStyleBackColor = True
+        Me.Button4.Visible = False
         '
         'Label14
         '
@@ -345,7 +358,6 @@ Partial Class Form1
         Me.Button3.TabIndex = 46
         Me.Button3.Text = "OCAP"
         Me.Button3.UseVisualStyleBackColor = True
-        Me.Button3.Visible = False
         '
         'Button2
         '
@@ -859,10 +871,10 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel2.FillColor2 = System.Drawing.Color.LimeGreen
         Me.Guna2CustomGradientPanel2.FillColor3 = System.Drawing.Color.DarkGreen
         Me.Guna2CustomGradientPanel2.FillColor4 = System.Drawing.Color.DarkGreen
-        Me.Guna2CustomGradientPanel2.Location = New System.Drawing.Point(0, 28)
+        Me.Guna2CustomGradientPanel2.Location = New System.Drawing.Point(0, 38)
         Me.Guna2CustomGradientPanel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Guna2CustomGradientPanel2.Name = "Guna2CustomGradientPanel2"
-        Me.Guna2CustomGradientPanel2.Size = New System.Drawing.Size(1416, 143)
+        Me.Guna2CustomGradientPanel2.Size = New System.Drawing.Size(1770, 143)
         Me.Guna2CustomGradientPanel2.TabIndex = 7
         '
         'PictureBox1
@@ -908,7 +920,7 @@ Partial Class Form1
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(5, 2, 0, 2)
-        Me.MenuStrip1.Size = New System.Drawing.Size(1416, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1416, 30)
         Me.MenuStrip1.TabIndex = 8
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -917,7 +929,7 @@ Partial Class Form1
         Me.MenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddAssociateToolStripMenuItem})
         Me.MenuToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuToolStripMenuItem.Name = "MenuToolStripMenuItem"
-        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(63, 24)
+        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(63, 26)
         Me.MenuToolStripMenuItem.Text = "Menu"
         '
         'AddAssociateToolStripMenuItem
@@ -1006,4 +1018,5 @@ Partial Class Form1
     Friend WithEvents TimerErrorMsg As Timer
     Friend WithEvents Label14 As Label
     Friend WithEvents txtQty As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Button4 As Button
 End Class

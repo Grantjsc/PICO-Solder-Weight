@@ -117,13 +117,21 @@ Module Function_Module
                 'SerialPort1.WriteLine("B")
                 'Write to PLC Error
 
-                Master_login.Label1.Text = "Please scan your finger. Tech or PO3"
+                Master_login.Label1.Text = "Perform OCAP, please scan your finger. Tech only"
                 Master_login.ShowDialog()
-                If Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "PO3" Then
+                If Master_login.F1_get_title = "Technician" Then
                     'SerialPort1.WriteLine("A")
                     'Wite to PLC Reset Error
                     ResetOCAP()
                     ChangeOCAP()
+                    With OCAP_Form
+                        .TopLevel = False
+                        Main_Form.PanelMain.Controls.Add(OCAP_Form)
+                        .WindowState = FormWindowState.Maximized
+                        OCAP_Form.txtAssociate.Text = Master_login.F1_get_user
+                        .BringToFront()
+                        .Show()
+                    End With
                     Master_login.Close()
                     Fngerprint = True
                 Else
@@ -135,8 +143,28 @@ Module Function_Module
             End While
 
         Else
+
             IncOCAP()
             ChangeOCAP()
+            With OCAP_Form
+                .TopLevel = False
+                Main_Form.PanelMain.Controls.Add(OCAP_Form)
+                .WindowState = FormWindowState.Maximized
+
+                If Form1.txtWeight.Text >= 12.57 Then
+                ElseIf Form1.txtWeight.Text <= 11.41 Then
+
+                End If
+
+                If Form1.txtWeight.Text >= 14.62 Or Form1.txtWeight.Text <= 13.33 Then
+                    BiometricsOCAP()
+                End If
+                OCAP_Form.txtAssociate.Text = Form1.cboAssociate.Text
+                OCAP_Form.txtPartNum.Text = Form1.txtPartNo.Text
+
+                .BringToFront()
+                .Show()
+            End With
         End If
     End Sub
 
@@ -152,6 +180,7 @@ Module Function_Module
             With Add_Form
                 .TopLevel = False
                 Main_Form.PanelMain.Controls.Add(Add_Form)
+                .WindowState = FormWindowState.Maximized
                 .BringToFront()
                 .Show()
             End With
@@ -276,6 +305,25 @@ Module Function_Module
                 End If
             End While
         End If
+    End Sub
+
+    Sub WeightLimits()
+        Dim Limit As String
+        Limit = CDec(Form1.txtWeight.Text)
+
+        Select Case Limit
+
+            Case 12
+                If Form1.txtWeight.Text >= 12.57 Or Form1.txtWeight.Text <= 11.41 Then
+                    BiometricsOCAP()
+                End If
+
+            Case 14
+                If Form1.txtWeight.Text >= 14.62 Or Form1.txtWeight.Text <= 13.33 Then
+                    BiometricsOCAP()
+                End If
+
+        End Select
     End Sub
 
 End Module

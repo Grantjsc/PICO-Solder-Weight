@@ -663,6 +663,9 @@ Public Class Form1
                 Function_Module.GetNewmg()
                 Function_Module.ChangeMg()
 
+                Function_Module.ResetOCAP()
+                Function_Module.ChangeOCAP()
+
                 Function_Module.RunMachine()
                 SolderCutter_Form.TimerQtyChecking.Enabled = True
 
@@ -947,5 +950,9 @@ Public Class Form1
             txtQty.Text = ""
             txtQty.ForeColor = Color.Black
         End If
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Function_Module.RunMachine()
     End Sub
 End Class
