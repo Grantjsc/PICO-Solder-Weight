@@ -293,11 +293,11 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel1.FillColor2 = System.Drawing.SystemColors.Control
         Me.Guna2CustomGradientPanel1.FillColor3 = System.Drawing.SystemColors.Control
         Me.Guna2CustomGradientPanel1.FillColor4 = System.Drawing.SystemColors.Control
-        Me.Guna2CustomGradientPanel1.Location = New System.Drawing.Point(0, 216)
+        Me.Guna2CustomGradientPanel1.Location = New System.Drawing.Point(0, 173)
         Me.Guna2CustomGradientPanel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Guna2CustomGradientPanel1.Name = "Guna2CustomGradientPanel1"
         Me.Guna2CustomGradientPanel1.ShadowDecoration.BorderRadius = 35
-        Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(1770, 1161)
+        Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(1416, 929)
         Me.Guna2CustomGradientPanel1.TabIndex = 0
         '
         'Button4
@@ -358,6 +358,7 @@ Partial Class Form1
         Me.Button3.TabIndex = 46
         Me.Button3.Text = "OCAP"
         Me.Button3.UseVisualStyleBackColor = True
+        Me.Button3.Visible = False
         '
         'Button2
         '
@@ -871,10 +872,10 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel2.FillColor2 = System.Drawing.Color.LimeGreen
         Me.Guna2CustomGradientPanel2.FillColor3 = System.Drawing.Color.DarkGreen
         Me.Guna2CustomGradientPanel2.FillColor4 = System.Drawing.Color.DarkGreen
-        Me.Guna2CustomGradientPanel2.Location = New System.Drawing.Point(0, 38)
+        Me.Guna2CustomGradientPanel2.Location = New System.Drawing.Point(0, 30)
         Me.Guna2CustomGradientPanel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Guna2CustomGradientPanel2.Name = "Guna2CustomGradientPanel2"
-        Me.Guna2CustomGradientPanel2.Size = New System.Drawing.Size(1770, 143)
+        Me.Guna2CustomGradientPanel2.Size = New System.Drawing.Size(1416, 143)
         Me.Guna2CustomGradientPanel2.TabIndex = 7
         '
         'PictureBox1

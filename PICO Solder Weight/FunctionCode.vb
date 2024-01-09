@@ -1,6 +1,8 @@
 ﻿Imports System.Configuration
 Imports System.IO.Ports
+Imports System.Reflection
 Imports System.Threading
+Imports DPFP
 
 Module Function_Module
 
@@ -29,24 +31,61 @@ Module Function_Module
         OldWeight = Oldmg
     End Sub
 
+    Sub PurgeAndCutSamples()
+        Dim PurgeDone = False
+        Dim Samples = False
+
+        If PurgeDone = False Then
+            If SolderCutter_Form.lblPurge105.Text = 100 Then
+                Purging_Form.lblMsg.Text = "The machine is cutting samples ..."
+                SolderCutter_Form.to_PLC("@00WD00060025")
+                PurgeDone = True
+                Samples = True
+            End If
+        End If
+
+        If Samples = True Then
+            If SolderCutter_Form.lblSamples106.Text = 100 Then
+                SolderCutter_Form.btnC2Start.Enabled = True
+                Samples = False
+                Purging_Form.TimerPurgingAndSamples.Enabled = False
+                Purging_Form.Close()
+            End If
+        End If
+    End Sub
+
+    Sub CutSamples()
+        Dim Samples = False
+        If Samples = False Then
+            If SolderCutter_Form.lblSamples106.Text = 100 Then
+                SolderCutter_Form.btnC2Start.Enabled = True
+                Samples = True
+                Purging_Form.TimerCutSamples.Enabled = False
+                Purging_Form.Close()
+            End If
+        End If
+    End Sub
+
     Sub CheckMg()
         Dim PurgeDone = False
         Dim Samples = False
 
         If NewWeightmg = OldWeight Then
+            With Purging_Form
+                .TopLevel = False
+                Main_Form.PanelMain.Controls.Add(Purging_Form)
+                .WindowState = FormWindowState.Maximized
+                Purging_Form.lblMsg.Text = "The machine is cutting samples ..."
+                .BringToFront()
+                .Show()
+            End With
+
             SolderCutter_Form.btnC2Start.Enabled = False
             SolderCutter_Form.to_PLC("@00WD00060025")
-            While Samples = False
-                If SolderCutter_Form.lblSamples106.Text = CInt("100") Then
-                    SolderCutter_Form.btnC2Start.Enabled = True
-                    Samples = True
-                End If
-            End While
+
+            Purging_Form.TimerCutSamples.Enabled = True
 
         Else
-            SolderCutter_Form.btnC2Start.Enabled = False
-            SolderCutter_Form.to_PLC("@00WD00050010")
-
             With Purging_Form
                 .TopLevel = False
                 Main_Form.PanelMain.Controls.Add(Purging_Form)
@@ -54,24 +93,11 @@ Module Function_Module
                 .BringToFront()
                 .Show()
             End With
-            While PurgeDone = False
-                If SolderCutter_Form.lblPurge105.Text = CInt("100") Then
-                    Purging_Form.lblMsg.Text = "The machine is cutting samples ..."
-                    SolderCutter_Form.to_PLC("@00WD00060025")
-                    'PurgeDone = True
 
-                    While Samples = False
-                        If SolderCutter_Form.lblSamples106.Text = CInt("100") Then
-                            SolderCutter_Form.btnC2Start.Enabled = True
-                            Samples = True
-                            PurgeDone = True
+            SolderCutter_Form.btnC2Start.Enabled = False
+            SolderCutter_Form.to_PLC("@00WD00050010")
 
-                            Purging_Form.Close()
-                        End If
-
-                    End While
-                End If
-            End While
+            Purging_Form.TimerPurgingAndSamples.Enabled = True
         End If
     End Sub
 
@@ -110,6 +136,7 @@ Module Function_Module
         If OldOCAP = 2 Then
             While Fngerprint = False
                 'Invoke(Sub()
+                'SolderCutter_Form.to_PLC("@00WD00000000")
                 Master_login.lblErrorMsg.Text = "2nd OCAP!"
                 Master_login.PanelWarning.Visible = True
                 Form1.TimerErrorMsg.Enabled = True
@@ -128,7 +155,32 @@ Module Function_Module
                         .TopLevel = False
                         Main_Form.PanelMain.Controls.Add(OCAP_Form)
                         .WindowState = FormWindowState.Maximized
+
+                        Dim Limit As String
+                        Limit = CDec(Form1.txtWeight.Text)
+                        Select Case Limit
+
+                            Case 12
+                                If CDec(Form1.RealData) >= 12.57 Then
+                                    OCAP_Form.txtAlarm.Text = ">UWL"
+
+                                ElseIf CDec(Form1.RealData) <= 11.41 Then
+                                    OCAP_Form.txtAlarm.Text = "<LWL"
+
+                                End If
+
+                            Case 14
+                                If CDec(Form1.RealData) >= 14.62 Then
+                                    OCAP_Form.txtAlarm.Text = ">UWL"
+
+                                ElseIf CDec(Form1.RealData) <= 13.33 Then
+                                    OCAP_Form.txtAlarm.Text = "<LWL"
+
+                                End If
+
+                        End Select
                         OCAP_Form.txtAssociate.Text = Master_login.F1_get_user
+                        OCAP_Form.txtPartNum.Text = Form1.txtPartNo.Text
                         .BringToFront()
                         .Show()
                     End With
@@ -146,19 +198,36 @@ Module Function_Module
 
             IncOCAP()
             ChangeOCAP()
+            'SolderCutter_Form.to_PLC("@00WD00000000")
             With OCAP_Form
                 .TopLevel = False
                 Main_Form.PanelMain.Controls.Add(OCAP_Form)
                 .WindowState = FormWindowState.Maximized
 
-                If Form1.txtWeight.Text >= 12.57 Then
-                ElseIf Form1.txtWeight.Text <= 11.41 Then
+                Dim Limit As String
+                Limit = CDec(Form1.txtWeight.Text)
+                Select Case Limit
 
-                End If
+                    Case 12
+                        If Form1.RealData >= 12.57 Then
+                            OCAP_Form.txtAlarm.Text = ">UWL"
 
-                If Form1.txtWeight.Text >= 14.62 Or Form1.txtWeight.Text <= 13.33 Then
-                    BiometricsOCAP()
-                End If
+                        ElseIf Form1.RealData <= 11.41 Then
+                            OCAP_Form.txtAlarm.Text = "<LWL"
+
+                        End If
+
+                    Case 14
+                        If Form1.RealData >= 14.62 Then
+                            OCAP_Form.txtAlarm.Text = ">UWL"
+
+                        ElseIf Form1.RealData <= 13.33 Then
+                            OCAP_Form.txtAlarm.Text = "<LWL"
+
+                        End If
+
+                End Select
+
                 OCAP_Form.txtAssociate.Text = Form1.cboAssociate.Text
                 OCAP_Form.txtPartNum.Text = Form1.txtPartNo.Text
 
@@ -166,6 +235,22 @@ Module Function_Module
                 .Show()
             End With
         End If
+    End Sub
+
+    Sub PurgeAfterOCAP()
+        With Purging_Form
+            .TopLevel = False
+            Main_Form.PanelMain.Controls.Add(Purging_Form)
+            .WindowState = FormWindowState.Maximized
+            .BringToFront()
+            .Show()
+        End With
+
+        SolderCutter_Form.btnC2Start.Enabled = False
+        SolderCutter_Form.to_PLC("@00WD00050010")
+
+        Purging_Form.TimerPurgingAndSamples.Enabled = True
+
     End Sub
 
     Sub BiometricsRegisterUser()
@@ -268,42 +353,21 @@ Module Function_Module
     End Sub
 
     Sub ChangeSpool()
-        If SolderCutter_Form.lblSpool107.Text = CInt("100") And CInt(SolderCutter_Form.lblC2counter.Text) <> CInt(Form1.txtQty.Text) Then
-            'SerialPort2.WriteLine("A") 'deactivate door lock
-            'Form1.txtQty.Text = ""
-
-            Dim PurgeDone = False
-            Dim Samples = False
-
-            SolderCutter_Form.btnC2Start.Enabled = False
-            SolderCutter_Form.to_PLC("@00WD00050010")
-
-            With Purging_Form
+        If SolderCutter_Form.lblSpool107.Text = CInt("100") Then 'And CInt(SolderCutter_Form.lblC2counter.Text) <> CInt(Form1.txtQty.Text)
+            MsgBox("Change Spool and enter new set quantity!", MessageBoxIcon.Information)
+            With Form1
                 .TopLevel = False
-                Main_Form.PanelMain.Controls.Add(Purging_Form)
+                Main_Form.PanelMain.Controls.Add(Form1)
                 .WindowState = FormWindowState.Maximized
                 .BringToFront()
                 .Show()
+
+                'SerialPort2.WriteLine("B") 'deactivate door lock
+                Form1.txtQty.Text = ""
+                Form1.txtQty.Focus()
+                Form1.cboAssociate.Text = Nothing
+                SolderCutter_Form.TimerChangeSpool.Enabled = False
             End With
-
-            While PurgeDone = False
-                If SolderCutter_Form.lblPurge105.Text = CInt("100") Then
-                    Purging_Form.lblMsg.Text = "The machine is cutting samples ..."
-                    SolderCutter_Form.to_PLC("@00WD00060025")
-                    'PurgeDone = True
-
-                    While Samples = False
-                        If SolderCutter_Form.lblSamples106.Text = CInt("100") Then
-                            SolderCutter_Form.btnC2Start.Enabled = True
-                            Samples = True
-                            PurgeDone = True
-
-                            Purging_Form.Close()
-                        End If
-
-                    End While
-                End If
-            End While
         End If
     End Sub
 
@@ -314,16 +378,76 @@ Module Function_Module
         Select Case Limit
 
             Case 12
-                If Form1.txtWeight.Text >= 12.57 Or Form1.txtWeight.Text <= 11.41 Then
+                If Form1.RealData >= 12.57 Or Form1.RealData <= 11.41 Then
+                    Main_Form.btnSolderCutter.Enabled = False
+                    Main_Form.btnSolderWeight.Enabled = False
+
+                    Form1.Timer1.Enabled = False
+                    Form1.SerialPort1.WriteLine("Z")
+                    Form1.txtReading.Text = ""
+
+                    Form1.count = 0
+                    Form1.lstResult.Items.Clear()
+                    Array.Clear(Form1.data, 0, Form1.data.Length)
+                    Form1.cboAssociate.Text = Nothing
+                    Thread.Sleep(500)
+                    Form1.SerialPort1.Close()
+
                     BiometricsOCAP()
+
                 End If
 
             Case 14
-                If Form1.txtWeight.Text >= 14.62 Or Form1.txtWeight.Text <= 13.33 Then
+                If Form1.RealData >= 14.62 Or Form1.RealData <= 13.33 Then
+                    Main_Form.btnSolderCutter.Enabled = False
+                    Main_Form.btnSolderWeight.Enabled = False
+
+                    Form1.Timer1.Enabled = False
+                    Form1.SerialPort1.WriteLine("Z")
+                    Form1.txtReading.Text = ""
+
+                    Form1.count = 0
+                    Form1.lstResult.Items.Clear()
+                    Array.Clear(Form1.data, 0, Form1.data.Length)
+                    Form1.cboAssociate.Text = Nothing
+                    Thread.Sleep(500)
+                    Form1.SerialPort1.Close()
+
                     BiometricsOCAP()
+
                 End If
 
         End Select
+    End Sub
+
+
+    Sub PurgingSample()
+        Dim PurgeDone = False
+        Dim Samples = False
+
+        SolderCutter_Form.btnC2Start.Enabled = False
+        'SolderCutter_Form.to_PLC("@00WD00050010")
+
+        If PurgeDone = False Then
+            If Main_Form.TextBox1.Text = 100 Then
+                Purging_Form.lblMsg.Text = "The machine is cutting samples ..."
+                'SolderCutter_Form.to_PLC("@00WD00060025")
+                PurgeDone = True
+                Samples = True
+            End If
+        End If
+
+        If Samples = True Then
+            If Main_Form.TextBox2.Text = 100 Then
+                SolderCutter_Form.btnC2Start.Enabled = True
+                Samples = False
+                'PurgeDone = True
+
+                Purging_Form.Close()
+                Main_Form.Timer1.Enabled = False
+            End If
+        End If
+
     End Sub
 
 End Module

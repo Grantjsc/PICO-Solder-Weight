@@ -15,7 +15,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\btwebdev01\Websites\WindowsAppUpdater\TSG_Shared\PICO Solder Weight\</PublishUrl>
+    <PublishUrl>\\btwebdev01\Websites\WindowsAppUpdater\TSG_Shared\PICO Solder Weight Closed Loop\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ProductName>PICO Solder Weight Software</ProductName>
+    <ProductName>PICO Solder Weight Closed Loop</ProductName>
     <PublisherName>Littelfuse Philippines %28TSG%29 - GCatapang</PublisherName>
     <ApplicationRevision>16</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
@@ -34,7 +34,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
@@ -199,6 +199,7 @@
     <Compile Include="OCAP_Form.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="OCAP_FormCode.vb" />
     <Compile Include="PICO_Solder_WeightDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

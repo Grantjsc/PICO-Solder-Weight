@@ -22,8 +22,12 @@ Partial Class Main_Form
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main_Form))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.PanelSC = New System.Windows.Forms.Panel()
         Me.PanelSW = New System.Windows.Forms.Panel()
         Me.btnSolderCutter = New Guna.UI2.WinForms.Guna2Button()
@@ -35,6 +39,7 @@ Partial Class Main_Form
         Me.PanelMain = New System.Windows.Forms.Panel()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelMain.SuspendLayout()
@@ -44,6 +49,9 @@ Partial Class Main_Form
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.ForestGreen
+        Me.Panel1.Controls.Add(Me.TextBox2)
+        Me.Panel1.Controls.Add(Me.TextBox1)
+        Me.Panel1.Controls.Add(Me.Button1)
         Me.Panel1.Controls.Add(Me.PanelSC)
         Me.Panel1.Controls.Add(Me.PanelSW)
         Me.Panel1.Controls.Add(Me.btnSolderCutter)
@@ -56,8 +64,34 @@ Partial Class Main_Form
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(280, 1061)
+        Me.Panel1.Size = New System.Drawing.Size(280, 1055)
         Me.Panel1.TabIndex = 0
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(90, 588)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(100, 22)
+        Me.TextBox2.TabIndex = 80
+        Me.TextBox2.Visible = False
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(90, 552)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(100, 22)
+        Me.TextBox1.TabIndex = 79
+        Me.TextBox1.Visible = False
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(106, 679)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 38
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.Visible = False
         '
         'PanelSC
         '
@@ -140,9 +174,9 @@ Partial Class Main_Form
         Me.lblCR.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.lblCR.Location = New System.Drawing.Point(36, 1154)
         Me.lblCR.Name = "lblCR"
-        Me.lblCR.Size = New System.Drawing.Size(124, 9)
+        Me.lblCR.Size = New System.Drawing.Size(158, 13)
         Me.lblCR.TabIndex = 34
-        Me.lblCR.Text = "© LF Philipines - TSG 2023"
+        Me.lblCR.Text = "© LF Philipines - TSG 2024"
         '
         'lblfooter
         '
@@ -152,7 +186,7 @@ Partial Class Main_Form
         Me.lblfooter.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.lblfooter.Location = New System.Drawing.Point(36, 1143)
         Me.lblfooter.Name = "lblfooter"
-        Me.lblfooter.Size = New System.Drawing.Size(145, 9)
+        Me.lblfooter.Size = New System.Drawing.Size(183, 13)
         Me.lblfooter.TabIndex = 33
         Me.lblfooter.Text = "LITTELFUSE PHILIPPINES INC." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
@@ -178,7 +212,7 @@ Partial Class Main_Form
         Me.PanelMain.Location = New System.Drawing.Point(280, 0)
         Me.PanelMain.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PanelMain.Name = "PanelMain"
-        Me.PanelMain.Size = New System.Drawing.Size(1420, 1061)
+        Me.PanelMain.Size = New System.Drawing.Size(1324, 1055)
         Me.PanelMain.TabIndex = 1
         '
         'PictureBox2
@@ -201,15 +235,18 @@ Partial Class Main_Form
         Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))
         Me.Label1.Location = New System.Drawing.Point(324, 588)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(697, 50)
+        Me.Label1.Size = New System.Drawing.Size(865, 62)
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "PICO Solder Weight Closed Loop" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'Timer1
+        '
         '
         'Main_Form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1700, 1061)
+        Me.ClientSize = New System.Drawing.Size(1604, 1055)
         Me.Controls.Add(Me.PanelMain)
         Me.Controls.Add(Me.Panel1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -238,4 +275,8 @@ Partial Class Main_Form
     Friend WithEvents PanelSW As Panel
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Timer1 As Timer
 End Class

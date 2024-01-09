@@ -11,7 +11,7 @@ Public Class Main_Form
 
     Private Sub Main_Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.WindowState = FormWindowState.Maximized
-        'SolderCutter_Form.Timer1.Enabled = True
+        SolderCutter_Form.Timer1.Enabled = True
     End Sub
 
     Private Sub Main_Form_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -21,7 +21,23 @@ Public Class Main_Form
             e.Cancel = True
         Else
             Form1.SerialPort1.Close()
+            'SerialPort2.WriteLine("B") 'deactivate door lock
             Application.ExitThread()
         End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        With Purging_Form
+            .TopLevel = False
+            PanelMain.Controls.Add(Purging_Form)
+            .WindowState = FormWindowState.Maximized
+            .BringToFront()
+            .Show()
+        End With
+        Timer1.Enabled = True
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Function_Module.PurgingSample()
     End Sub
 End Class

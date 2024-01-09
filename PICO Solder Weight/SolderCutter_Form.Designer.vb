@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class SolderCutter_Form
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class SolderCutter_Form
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SolderCutter_Form))
@@ -80,6 +80,7 @@ Partial Class SolderCutter_Form
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.TimerQtyChecking = New System.Windows.Forms.Timer(Me.components)
+        Me.TimerChangeSpool = New System.Windows.Forms.Timer(Me.components)
         Me.Guna2CustomGradientPanel2.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -247,11 +248,11 @@ Partial Class SolderCutter_Form
         Me.lblC1counter.BackColor = System.Drawing.Color.Transparent
         Me.lblC1counter.Font = New System.Drawing.Font("Arial", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblC1counter.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))
-        Me.lblC1counter.Location = New System.Drawing.Point(67, 572)
+        Me.lblC1counter.Location = New System.Drawing.Point(77, 572)
         Me.lblC1counter.Name = "lblC1counter"
         Me.lblC1counter.Size = New System.Drawing.Size(188, 66)
         Me.lblC1counter.TabIndex = 60
-        Me.lblC1counter.Text = "123,456"
+        Me.lblC1counter.Text = "0"
         Me.lblC1counter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label6
@@ -260,7 +261,7 @@ Partial Class SolderCutter_Form
         Me.Label6.BackColor = System.Drawing.Color.Transparent
         Me.Label6.Font = New System.Drawing.Font("Arial Narrow", 21.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Label6.Location = New System.Drawing.Point(81, 538)
+        Me.Label6.Location = New System.Drawing.Point(98, 538)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(147, 43)
         Me.Label6.TabIndex = 59
@@ -327,11 +328,11 @@ Partial Class SolderCutter_Form
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Arial Narrow", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))
-        Me.Label2.Location = New System.Drawing.Point(60, 18)
+        Me.Label2.Location = New System.Drawing.Point(75, 18)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(215, 69)
+        Me.Label2.Size = New System.Drawing.Size(191, 69)
         Me.Label2.TabIndex = 5
-        Me.Label2.Text = "Cutter 1"
+        Me.Label2.Text = "Head 1"
         '
         'Panel1
         '
@@ -579,7 +580,7 @@ Partial Class SolderCutter_Form
         Me.Label9.BackColor = System.Drawing.Color.Transparent
         Me.Label9.Font = New System.Drawing.Font("Arial Narrow", 21.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.Label9.Location = New System.Drawing.Point(119, 538)
+        Me.Label9.Location = New System.Drawing.Point(97, 538)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(147, 43)
         Me.Label9.TabIndex = 71
@@ -600,11 +601,11 @@ Partial Class SolderCutter_Form
         Me.lblC2counter.BackColor = System.Drawing.Color.Transparent
         Me.lblC2counter.Font = New System.Drawing.Font("Arial", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblC2counter.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))
-        Me.lblC2counter.Location = New System.Drawing.Point(75, 570)
+        Me.lblC2counter.Location = New System.Drawing.Point(53, 570)
         Me.lblC2counter.Name = "lblC2counter"
         Me.lblC2counter.Size = New System.Drawing.Size(240, 70)
         Me.lblC2counter.TabIndex = 72
-        Me.lblC2counter.Text = "123,456"
+        Me.lblC2counter.Text = "0"
         Me.lblC2counter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'btnC2JogPlus
@@ -668,11 +669,11 @@ Partial Class SolderCutter_Form
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("Arial Narrow", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))
-        Me.Label3.Location = New System.Drawing.Point(48, 18)
+        Me.Label3.Location = New System.Drawing.Point(80, 18)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(215, 69)
+        Me.Label3.Size = New System.Drawing.Size(191, 69)
         Me.Label3.TabIndex = 6
-        Me.Label3.Text = "Cutter 2"
+        Me.Label3.Text = "Head 2"
         '
         'Panel3
         '
@@ -823,7 +824,7 @@ Partial Class SolderCutter_Form
         Me.lblC3counter.Name = "lblC3counter"
         Me.lblC3counter.Size = New System.Drawing.Size(192, 69)
         Me.lblC3counter.TabIndex = 72
-        Me.lblC3counter.Text = "123,456"
+        Me.lblC3counter.Text = "0"
         Me.lblC3counter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'btnC3JogPlus
@@ -887,11 +888,11 @@ Partial Class SolderCutter_Form
         Me.Label4.BackColor = System.Drawing.Color.Transparent
         Me.Label4.Font = New System.Drawing.Font("Arial Narrow", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))
-        Me.Label4.Location = New System.Drawing.Point(72, 18)
+        Me.Label4.Location = New System.Drawing.Point(93, 18)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(215, 69)
+        Me.Label4.Size = New System.Drawing.Size(191, 69)
         Me.Label4.TabIndex = 7
-        Me.Label4.Text = "Cutter 3"
+        Me.Label4.Text = "Head 3"
         '
         'Panel4
         '
@@ -1042,7 +1043,7 @@ Partial Class SolderCutter_Form
         Me.lblC4counter.Name = "lblC4counter"
         Me.lblC4counter.Size = New System.Drawing.Size(205, 76)
         Me.lblC4counter.TabIndex = 72
-        Me.lblC4counter.Text = "123,456"
+        Me.lblC4counter.Text = "0"
         Me.lblC4counter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'btnC4JogPlus
@@ -1106,11 +1107,11 @@ Partial Class SolderCutter_Form
         Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Font = New System.Drawing.Font("Arial Narrow", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))
-        Me.Label5.Location = New System.Drawing.Point(60, 18)
+        Me.Label5.Location = New System.Drawing.Point(81, 18)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(215, 69)
+        Me.Label5.Size = New System.Drawing.Size(191, 69)
         Me.Label5.TabIndex = 8
-        Me.Label5.Text = "Cutter 4"
+        Me.Label5.Text = "Head 4"
         '
         'SerialPort1
         '
@@ -1123,6 +1124,9 @@ Partial Class SolderCutter_Form
         '
         '
         'TimerQtyChecking
+        '
+        '
+        'TimerChangeSpool
         '
         '
         'SolderCutter_Form
@@ -1209,4 +1213,5 @@ Partial Class SolderCutter_Form
     Friend WithEvents lblSpool107 As Label
     Friend WithEvents lblQty109 As Label
     Friend WithEvents TimerQtyChecking As Timer
+    Friend WithEvents TimerChangeSpool As Timer
 End Class

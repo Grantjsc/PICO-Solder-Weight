@@ -116,6 +116,8 @@ Public Class Form1
                 Thread.Sleep(500)
                 SerialPort1.WriteLine("CP")
 
+                Function_Module.WeightLimits()
+
                 If count = CInt(txtEmployee.Text) Then
                     btnNewLot.Enabled = True
                     btnWeight.Enabled = False
@@ -435,37 +437,87 @@ Public Class Form1
 
     Private Sub cboAssociate_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAssociate.SelectedIndexChanged
 
-        If txtPartNo.Text = "" Or txtPartNo.Text = "Enter Part Number" Then
+        If txtQty.Text = "" Or txtQty.Text = "Enter quantity" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter Quantity!", MsgBoxStyle.Exclamation)
+            txtQty.Focus()
+
+        ElseIf txtWeight.Text = "" Or txtWeight.Text = "Enter weight" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter weight!", MsgBoxStyle.Exclamation)
+            txtWeight.Focus()
+
+        ElseIf txtPartNo.Text = "" Or txtPartNo.Text = "Enter Part Number" Then
             cboAssociate.Text = Nothing
             MsgBox("Please enter Part Number!", MsgBoxStyle.Exclamation)
+            txtPartNo.Focus()
+
+        ElseIf txtSolderWire.Text = "" Or txtSolderWire.Text = "Enter Solder Wire Part #" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter Solder wire part number!", MsgBoxStyle.Exclamation)
+            txtSolderWire.Focus()
+
+        ElseIf txtBareWire.Text = "" Or txtBareWire.Text = "Enter Bare Wire Lot #" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter Bare wire lot number!", MsgBoxStyle.Exclamation)
+            txtBareWire.Focus()
+
+        ElseIf txtCutterSet.Text = "" Or txtCutterSet.Text = "Enter Cutter Setting" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter cutter setting!", MsgBoxStyle.Exclamation)
+            txtCutterSet.Focus()
+
         ElseIf cboProcess.Text = "" Then
             cboAssociate.Text = Nothing
             MsgBox("Please enter process!", MsgBoxStyle.Exclamation)
+
         ElseIf cboShift.Text = "" Then
             cboAssociate.Text = Nothing
             MsgBox("Please enter your shift!", MsgBoxStyle.Exclamation)
+
         ElseIf txtLotNo.Text = "" Or txtPartNo.Text = "Enter Lot Number" Then
             cboAssociate.Text = Nothing
             MsgBox("Please enter Lot Numbwe!", MsgBoxStyle.Exclamation)
+            txtLotNo.Focus()
+
         Else
 
-            Associate()
+            If SolderCutter_Form.lblSpool107.Text = CInt("100") Then
+                Associate()
 
-            Function_Module.GetNewmg()
-            Function_Module.GetOldmg()
-            Function_Module.CheckMg()
+                SerialPort1.Open()
 
-            'btnWeight.Focus()
-            SerialPort1.Open()
+                SerialPort1.WriteLine("Z")
+                Thread.Sleep(500)
+                SerialPort1.WriteLine("CP")
+                Timer1.Enabled = True
 
-            SerialPort1.WriteLine("Z")
-            Thread.Sleep(500)
-            SerialPort1.WriteLine("CP")
-            Timer1.Enabled = True
+                SolderCutter_Form.to_PLC("@00WD01070000")
+                SolderCutter_Form.TimerChangeSpool.Enabled = True
 
-            btnWeight.Enabled = True
-            btnWeight.Focus()
+                Function_Module.PurgeAfterOCAP() ' Same function if Change Spool
+            Else
+                Associate()
+
+                'SerialPort2.WriteLine("B") 'deactivate door lock
+
+                Function_Module.GetNewmg()
+                Function_Module.GetOldmg()
+                Function_Module.CheckMg()
+
+                'btnWeight.Focus()
+                SerialPort1.Open()
+
+                SerialPort1.WriteLine("Z")
+                Thread.Sleep(500)
+                SerialPort1.WriteLine("CP")
+                Timer1.Enabled = True
+
+                btnWeight.Enabled = True
+                btnWeight.Focus()
+            End If
         End If
+
     End Sub
 
     Private Sub cboAssociate_MouseClick(sender As Object, e As MouseEventArgs) Handles cboAssociate.MouseClick
@@ -622,14 +674,13 @@ Public Class Form1
 
     'Public get_FolderPath2 As String = "\\lffile001\infinity\Philippines\Nano Log\" & dateNtime & "Nano Selas temp.csv"
 
-    'C:\Users\gcatapang\OneDrive - Littelfuse, Inc\Desktop\Selas
-    'C:\Users\gcatapang\OneDrive - Littelfuse, Inc\Desktop\Selas Backup
+    'C:\Trial
 
     '\\lffile001\infinity\Philippines\Buffer File\PICO
 
     Public dateNtime As String '= DateTime.Now.ToString("yyyy_MM_dd_HHmmtt ")
 
-    Public get_FolderPath As String = "\\lffile001\infinity\Philippines\Buffer File\PICO\PICO Solder Weight.csv"
+    Public get_FolderPath As String = "C:\Trial\PICO Solder Weight.csv"
     'Public get_FolderPath2 As String = "\\lffile001\infinity\Philippines\Nano Log\PICO Solder Weight.csv"
     Public get_message As String
     Public get_message2 As String
@@ -639,6 +690,7 @@ Public Class Form1
         Dim isFileEmpty As Boolean = IsCSVFileEmpty(get_FolderPath)
         get_message = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & "," & """Solder Wire part number,""" & "," & """Bare Wire Lot #,""" & "," & """Cutter setting,""" & vbCrLf
         'get_message2 = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & "," & """Date and Time,""" & vbCrLf
+
         Try
             If isFileEmpty Then
                 For n As Integer = 0 To data.Length - 1
@@ -667,9 +719,11 @@ Public Class Form1
                 Function_Module.ChangeOCAP()
 
                 Function_Module.RunMachine()
-                SolderCutter_Form.TimerQtyChecking.Enabled = True
 
-                'SerialPort2.WriteLine("A")
+                SolderCutter_Form.TimerQtyChecking.Enabled = True
+                SolderCutter_Form.TimerChangeSpool.Enabled = True
+
+                'SerialPort2.WriteLine("A") 'activate door lock
 
                 'txtReading.Text = ""
                 'SerialPort1.Close()

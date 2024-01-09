@@ -22,7 +22,10 @@ Partial Class Purging_Form
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.lblMsg = New System.Windows.Forms.Label()
+        Me.TimerPurgingAndSamples = New System.Windows.Forms.Timer(Me.components)
+        Me.TimerCutSamples = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'lblMsg
@@ -36,6 +39,12 @@ Partial Class Purging_Form
         Me.lblMsg.TabIndex = 5
         Me.lblMsg.Text = "The machine is purging ..."
         Me.lblMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'TimerPurgingAndSamples
+        '
+        '
+        'TimerCutSamples
+        '
         '
         'Purging_Form
         '
@@ -51,4 +60,6 @@ Partial Class Purging_Form
     End Sub
 
     Friend WithEvents lblMsg As Label
+    Friend WithEvents TimerPurgingAndSamples As Timer
+    Friend WithEvents TimerCutSamples As Timer
 End Class

@@ -44,9 +44,9 @@
         ' Set information on the screen
 
         'Console.WriteLine(RXD)
-        'lblPurge105.Text = RXD.Substring(7, 4) 'CInt("&H" & RXD.Substring(7, 4))
-        'lblSamples106.Text = RXD.Substring(11, 4) 'CInt("&H" & RXD.Substring(11, 4))
-        'lblSpool107.Text = RXD.Substring(15, 4)
+        lblPurge105.Text = RXD.Substring(7, 4) 'CInt("&H" & RXD.Substring(7, 4))
+        lblSamples106.Text = RXD.Substring(11, 4) 'CInt("&H" & RXD.Substring(11, 4))
+        lblSpool107.Text = RXD.Substring(15, 4)
         lblQty108.Text = RXD.Substring(19, 4)
         lblQty109.Text = RXD.Substring(23, 4)
 
@@ -252,4 +252,9 @@
     Private Sub TimerQtyChecking_Tick(sender As Object, e As EventArgs) Handles TimerQtyChecking.Tick
         Function_Module.QuantityChecking()
     End Sub
+
+    Private Sub TimerChangeSpool_Tick(sender As Object, e As EventArgs) Handles TimerChangeSpool.Tick
+        Function_Module.ChangeSpool()
+    End Sub
+
 End Class
