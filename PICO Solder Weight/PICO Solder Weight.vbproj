@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <StartupObject>PICO_Solder_Weight.My.MyApplication</StartupObject>
     <RootNamespace>PICO_Solder_Weight</RootNamespace>
-    <AssemblyName>PICO Solder Weight</AssemblyName>
+    <AssemblyName>PICO Solder Weight Closed Loop</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -25,11 +25,13 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ProductName>PICO Solder Weight Closed Loop</ProductName>
+    <UpdateUrl>\\btwebdev01\Websites\WindowsAppUpdater\TSG_Shared\PICO Solder Weight Closed Loop\</UpdateUrl>
+    <ProductName>Solder Weight Closed Loop</ProductName>
     <PublisherName>Littelfuse Philippines %28TSG%29 - GCatapang</PublisherName>
-    <ApplicationRevision>16</ApplicationRevision>
+    <ApplicationRevision>18</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -40,7 +42,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>PICO Solder Weight.xml</DocumentationFile>
+    <DocumentationFile>PICO Solder Weight Closed Loop.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
@@ -51,7 +53,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>PICO Solder Weight.xml</DocumentationFile>
+    <DocumentationFile>PICO Solder Weight Closed Loop.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
