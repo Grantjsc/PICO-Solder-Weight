@@ -1,6 +1,7 @@
 ﻿Imports System.Configuration
 Imports System.IO.Ports
 Imports System.Reflection
+Imports System.Runtime.Remoting.Lifetime
 Imports System.Threading
 Imports DPFP
 
@@ -31,24 +32,36 @@ Module Function_Module
         OldWeight = Oldmg
     End Sub
 
+    Public Samples = False
     Sub PurgeAndCutSamples()
         Dim PurgeDone = False
-        Dim Samples = False
 
         If PurgeDone = False Then
-            If SolderCutter_Form.lblPurge105.Text = 100 Then
-                Purging_Form.lblMsg.Text = "The machine is cutting samples ..."
-                SolderCutter_Form.to_PLC("@00WD00060025")
-                PurgeDone = True
-                Samples = True
+            If CInt(SolderCutter_Form.lblPurge105.Text) = 100 Then
+                Purging_Form.TimerPurgingAndSamples.Enabled = False
+                SolderCutter_Form.to_PLC("@00WD01050000")
+                Thread.Sleep(100)
+                Dim dialog As DialogResult
+                dialog = MessageBox.Show("Please replace the NG bin with a sample bin before clicking okay.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                If dialog = DialogResult.OK Then
+                    Purging_Form.lblMsg.Text = "The machine is cutting samples ..."
+                    SolderCutter_Form.to_PLC("@00WD00060025")
+                    Thread.Sleep(500)
+                    Purging_Form.TimerPurgingAndSamples.Enabled = True
+                    PurgeDone = True
+                    Samples = True
+                End If
             End If
         End If
 
         If Samples = True Then
-            If SolderCutter_Form.lblSamples106.Text = 100 Then
+            If CInt(SolderCutter_Form.lblSamples106.Text) = 100 Then
                 SolderCutter_Form.btnC2Start.Enabled = True
                 Samples = False
                 Purging_Form.TimerPurgingAndSamples.Enabled = False
+                SolderCutter_Form.to_PLC("@00WD01060000")
+                Thread.Sleep(100)
+                'Purging_Form.TimerPurgingAndSamples.Enabled = False
                 Purging_Form.Close()
             End If
         End If
@@ -61,6 +74,7 @@ Module Function_Module
                 SolderCutter_Form.btnC2Start.Enabled = True
                 Samples = True
                 Purging_Form.TimerCutSamples.Enabled = False
+                SolderCutter_Form.to_PLC("@00WD01060000")
                 Purging_Form.Close()
             End If
         End If
@@ -144,7 +158,7 @@ Module Function_Module
                 'SerialPort1.WriteLine("B")
                 'Write to PLC Error
 
-                Master_login.Label1.Text = "Perform OCAP, please scan your finger. Tech only"
+                Master_login.Label1.Text = "Perform OCAP, please scan your finger. Technician only"
                 Master_login.ShowDialog()
                 If Master_login.F1_get_title = "Technician" Then
                     'SerialPort1.WriteLine("A")
@@ -199,6 +213,7 @@ Module Function_Module
             IncOCAP()
             ChangeOCAP()
             'SolderCutter_Form.to_PLC("@00WD00000000")
+            MsgBox("Please perform OCAP!", MessageBoxIcon.Error)
             With OCAP_Form
                 .TopLevel = False
                 Main_Form.PanelMain.Controls.Add(OCAP_Form)
@@ -286,6 +301,14 @@ Module Function_Module
 
         Select Case QtyLength
 
+            Case 1 'Ones
+                SolderCutter_Form.to_PLC("@00WD00000001") 'Start Machine
+                SolderCutter_Form.TimerQtyChecking.Enabled = True
+                Thread.Sleep(500)
+                SolderCutter_Form.to_PLC("@00WD00080000")
+                Thread.Sleep(500)
+                SolderCutter_Form.to_PLC("@00WD0007" & CInt(Form1.txtQty.Text).ToString("0000"))
+
             Case 2 'Tens
                 SolderCutter_Form.to_PLC("@00WD00000001") 'Start Machine
                 SolderCutter_Form.TimerQtyChecking.Enabled = True
@@ -354,7 +377,8 @@ Module Function_Module
 
     Sub ChangeSpool()
         If SolderCutter_Form.lblSpool107.Text = CInt("100") Then 'And CInt(SolderCutter_Form.lblC2counter.Text) <> CInt(Form1.txtQty.Text)
-            MsgBox("Change Spool and enter new set quantity!", MessageBoxIcon.Information)
+            SolderCutter_Form.TimerChangeSpool.Enabled = False
+            MessageBox.Show("Change Spool and enter new set quantity!", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Information)
             With Form1
                 .TopLevel = False
                 Main_Form.PanelMain.Controls.Add(Form1)
@@ -363,10 +387,20 @@ Module Function_Module
                 .Show()
 
                 'SerialPort2.WriteLine("B") 'deactivate door lock
+
+                Form1.count = 0
+                Form1.lstResult.Items.Clear()
+                Array.Clear(Form1.data, 0, Form1.data.Length)
+                Form1.cboAssociate.Text = Nothing
+                Thread.Sleep(500)
+                Form1.SerialPort1.Close()
+
                 Form1.txtQty.Text = ""
+                Form1.txtQty.ReadOnly = False
                 Form1.txtQty.Focus()
                 Form1.cboAssociate.Text = Nothing
-                SolderCutter_Form.TimerChangeSpool.Enabled = False
+
+                SolderCutter_Form.to_PLC("@00WD00000000")
             End With
         End If
     End Sub
@@ -384,14 +418,14 @@ Module Function_Module
 
                     Form1.Timer1.Enabled = False
                     Form1.SerialPort1.WriteLine("Z")
-                    Form1.txtReading.Text = ""
+                    'Form1.SerialPort1.Close()
+                    'Form1.txtReading.Text = ""
 
                     Form1.count = 0
                     Form1.lstResult.Items.Clear()
                     Array.Clear(Form1.data, 0, Form1.data.Length)
-                    Form1.cboAssociate.Text = Nothing
+                    'Form1.cboAssociate.Text = Nothing
                     Thread.Sleep(500)
-                    Form1.SerialPort1.Close()
 
                     BiometricsOCAP()
 
@@ -404,14 +438,14 @@ Module Function_Module
 
                     Form1.Timer1.Enabled = False
                     Form1.SerialPort1.WriteLine("Z")
-                    Form1.txtReading.Text = ""
+                    'Form1.SerialPort1.Close()
+                    'Form1.txtReading.Text = ""
 
                     Form1.count = 0
                     Form1.lstResult.Items.Clear()
                     Array.Clear(Form1.data, 0, Form1.data.Length)
-                    Form1.cboAssociate.Text = Nothing
+                    'Form1.cboAssociate.Text = Nothing
                     Thread.Sleep(500)
-                    Form1.SerialPort1.Close()
 
                     BiometricsOCAP()
 

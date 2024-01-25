@@ -67,6 +67,9 @@ Module OCAP_Module
             Main_Form.btnSolderCutter.Enabled = True
             Main_Form.btnSolderWeight.Enabled = True
             Function_Module.PurgeAfterOCAP()
+            'Form1.cboAssociate.Text = Nothing
+            'Form1.SerialPort1.Close()
+            'Form1.txtReading.Text = ""
             OCAP_Form.Close()
         End If
     End Sub

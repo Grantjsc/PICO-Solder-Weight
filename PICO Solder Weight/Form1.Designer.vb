@@ -31,6 +31,9 @@ Partial Class Form1
         Me.txtEmployee = New Guna.UI2.WinForms.Guna2TextBox()
         Me.txtLotNo = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.txtQty = New Guna.UI2.WinForms.Guna2TextBox()
@@ -251,6 +254,9 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel1.AutoScroll = True
         Me.Guna2CustomGradientPanel1.BackColor = System.Drawing.Color.Transparent
         Me.Guna2CustomGradientPanel1.BorderRadius = 15
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Button7)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Button6)
+        Me.Guna2CustomGradientPanel1.Controls.Add(Me.Button5)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Button4)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.Label14)
         Me.Guna2CustomGradientPanel1.Controls.Add(Me.txtQty)
@@ -293,12 +299,45 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel1.FillColor2 = System.Drawing.SystemColors.Control
         Me.Guna2CustomGradientPanel1.FillColor3 = System.Drawing.SystemColors.Control
         Me.Guna2CustomGradientPanel1.FillColor4 = System.Drawing.SystemColors.Control
-        Me.Guna2CustomGradientPanel1.Location = New System.Drawing.Point(0, 173)
+        Me.Guna2CustomGradientPanel1.Location = New System.Drawing.Point(0, 171)
         Me.Guna2CustomGradientPanel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Guna2CustomGradientPanel1.Name = "Guna2CustomGradientPanel1"
         Me.Guna2CustomGradientPanel1.ShadowDecoration.BorderRadius = 35
-        Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(1416, 929)
+        Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(1416, 931)
         Me.Guna2CustomGradientPanel1.TabIndex = 0
+        '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(786, 741)
+        Me.Button7.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(94, 50)
+        Me.Button7.TabIndex = 52
+        Me.Button7.Text = "Serial Open"
+        Me.Button7.UseVisualStyleBackColor = True
+        Me.Button7.Visible = False
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(1137, 762)
+        Me.Button6.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(94, 50)
+        Me.Button6.TabIndex = 51
+        Me.Button6.Text = "OFF"
+        Me.Button6.UseVisualStyleBackColor = True
+        Me.Button6.Visible = False
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(1037, 762)
+        Me.Button5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(94, 50)
+        Me.Button5.TabIndex = 50
+        Me.Button5.Text = "ON"
+        Me.Button5.UseVisualStyleBackColor = True
+        Me.Button5.Visible = False
         '
         'Button4
         '
@@ -616,7 +655,7 @@ Partial Class Form1
         Me.btnWeight.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
         Me.btnWeight.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.btnWeight.FillColor = System.Drawing.Color.White
-        Me.btnWeight.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnWeight.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnWeight.ForeColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.btnWeight.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.btnWeight.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -625,7 +664,7 @@ Partial Class Form1
         Me.btnWeight.HoverState.ForeColor = System.Drawing.Color.White
         Me.btnWeight.Image = CType(resources.GetObject("btnWeight.Image"), System.Drawing.Image)
         Me.btnWeight.ImageSize = New System.Drawing.Size(30, 30)
-        Me.btnWeight.Location = New System.Drawing.Point(563, 900)
+        Me.btnWeight.Location = New System.Drawing.Point(12, 821)
         Me.btnWeight.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnWeight.Name = "btnWeight"
         Me.btnWeight.ShadowDecoration.BorderRadius = 18
@@ -633,7 +672,7 @@ Partial Class Form1
         Me.btnWeight.ShadowDecoration.Depth = 20
         Me.btnWeight.ShadowDecoration.Enabled = True
         Me.btnWeight.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(8)
-        Me.btnWeight.Size = New System.Drawing.Size(145, 55)
+        Me.btnWeight.Size = New System.Drawing.Size(100, 52)
         Me.btnWeight.TabIndex = 7
         Me.btnWeight.Text = "Weight"
         Me.btnWeight.Visible = False
@@ -659,7 +698,6 @@ Partial Class Form1
         Me.txtReading.Name = "txtReading"
         Me.txtReading.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtReading.PlaceholderText = ""
-        Me.txtReading.ReadOnly = True
         Me.txtReading.SelectedText = ""
         Me.txtReading.ShadowDecoration.BorderRadius = 30
         Me.txtReading.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -872,7 +910,7 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel2.FillColor2 = System.Drawing.Color.LimeGreen
         Me.Guna2CustomGradientPanel2.FillColor3 = System.Drawing.Color.DarkGreen
         Me.Guna2CustomGradientPanel2.FillColor4 = System.Drawing.Color.DarkGreen
-        Me.Guna2CustomGradientPanel2.Location = New System.Drawing.Point(0, 30)
+        Me.Guna2CustomGradientPanel2.Location = New System.Drawing.Point(0, 28)
         Me.Guna2CustomGradientPanel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Guna2CustomGradientPanel2.Name = "Guna2CustomGradientPanel2"
         Me.Guna2CustomGradientPanel2.Size = New System.Drawing.Size(1416, 143)
@@ -921,7 +959,7 @@ Partial Class Form1
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(5, 2, 0, 2)
-        Me.MenuStrip1.Size = New System.Drawing.Size(1416, 30)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1416, 28)
         Me.MenuStrip1.TabIndex = 8
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -930,7 +968,7 @@ Partial Class Form1
         Me.MenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddAssociateToolStripMenuItem})
         Me.MenuToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuToolStripMenuItem.Name = "MenuToolStripMenuItem"
-        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(63, 26)
+        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(63, 24)
         Me.MenuToolStripMenuItem.Text = "Menu"
         '
         'AddAssociateToolStripMenuItem
@@ -1020,4 +1058,7 @@ Partial Class Form1
     Friend WithEvents Label14 As Label
     Friend WithEvents txtQty As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Button4 As Button
+    Friend WithEvents Button6 As Button
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Button7 As Button
 End Class

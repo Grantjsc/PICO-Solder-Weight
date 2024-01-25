@@ -12,6 +12,7 @@ Public Class Main_Form
     Private Sub Main_Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.WindowState = FormWindowState.Maximized
         SolderCutter_Form.Timer1.Enabled = True
+        'Form1.SerialPort1.Open()
     End Sub
 
     Private Sub Main_Form_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing

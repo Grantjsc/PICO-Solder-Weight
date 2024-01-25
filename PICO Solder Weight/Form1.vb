@@ -495,6 +495,11 @@ Public Class Form1
                 SolderCutter_Form.to_PLC("@00WD01070000")
                 SolderCutter_Form.TimerChangeSpool.Enabled = True
 
+                Thread.Sleep(500)
+                SolderCutter_Form.to_PLC("@00WD01080000")
+                Thread.Sleep(500)
+                SolderCutter_Form.to_PLC("@00WD01090000")
+
                 Function_Module.PurgeAfterOCAP() ' Same function if Change Spool
             Else
                 Associate()
@@ -515,6 +520,11 @@ Public Class Form1
 
                 btnWeight.Enabled = True
                 btnWeight.Focus()
+
+                Thread.Sleep(500)
+                SolderCutter_Form.to_PLC("@00WD01080000")
+                Thread.Sleep(500)
+                SolderCutter_Form.to_PLC("@00WD01090000")
             End If
         End If
 
@@ -557,12 +567,15 @@ Public Class Form1
         count = 0
         lstResult.Items.Clear()
 
+        txtQty.Text = ""
+        txtQty.ReadOnly = False
+
         txtPartNo.ReadOnly = False
         txtPartNo.Text = "Enter Part Number"
         txtPartNo.ForeColor = Color.Silver
         cboProcess.Text = Nothing
 
-        txtEmployee.Text = "Employee"
+        txtEmployee.Text = "Samples"
         txtEmployee.ForeColor = Color.Silver
         cboShift.Text = Nothing
 
@@ -573,22 +586,26 @@ Public Class Form1
 
         txtWeight.Text = "Enter weight"
         txtWeight.ForeColor = Color.Silver
+        txtWeight.ReadOnly = False
 
         txtSolderWire.Text = "Enter Solder Wire Part #"
         txtSolderWire.ForeColor = Color.Silver
+        txtSolderWire.ReadOnly = False
 
         txtBareWire.Text = "Enter Bare Wire Lot #"
         txtBareWire.ForeColor = Color.Silver
+        txtBareWire.ReadOnly = False
 
         txtCutterSet.Text = "Enter Cutter Setting"
         txtCutterSet.ForeColor = Color.Silver
+        txtCutterSet.ReadOnly = False
 
         Timer1.Enabled = False
 
         txtReading.Text = ""
         Array.Clear(data, 0, data.Length)
 
-        txtPartNo.Focus()
+        txtQty.Focus()
     End Sub
 
     Private Sub btnWeight_Click(sender As Object, e As EventArgs) Handles btnWeight.Click
@@ -602,15 +619,52 @@ Public Class Form1
         ' T = Same as pressing Tare Key
         ' CP = Continuous Print
 
-        If txtPartNo.Text = "" Or txtPartNo.Text = "Enter Part Number" Then
+
+        If txtQty.Text = "" Or txtQty.Text = "Enter quantity" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter Quantity!", MsgBoxStyle.Exclamation)
+            txtQty.Focus()
+
+        ElseIf txtWeight.Text = "" Or txtWeight.Text = "Enter weight" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter weight!", MsgBoxStyle.Exclamation)
+            txtWeight.Focus()
+
+        ElseIf txtPartNo.Text = "" Or txtPartNo.Text = "Enter Part Number" Then
+            cboAssociate.Text = Nothing
             MsgBox("Please enter Part Number!", MsgBoxStyle.Exclamation)
+            txtPartNo.Focus()
+
+        ElseIf txtSolderWire.Text = "" Or txtSolderWire.Text = "Enter Solder Wire Part #" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter Solder wire part number!", MsgBoxStyle.Exclamation)
+            txtSolderWire.Focus()
+
+        ElseIf txtBareWire.Text = "" Or txtBareWire.Text = "Enter Bare Wire Lot #" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter Bare wire lot number!", MsgBoxStyle.Exclamation)
+            txtBareWire.Focus()
+
+        ElseIf txtCutterSet.Text = "" Or txtCutterSet.Text = "Enter Cutter Setting" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter cutter setting!", MsgBoxStyle.Exclamation)
+            txtCutterSet.Focus()
+
         ElseIf cboProcess.Text = "" Then
+            cboAssociate.Text = Nothing
             MsgBox("Please enter process!", MsgBoxStyle.Exclamation)
+
         ElseIf cboShift.Text = "" Then
+            cboAssociate.Text = Nothing
             MsgBox("Please enter your shift!", MsgBoxStyle.Exclamation)
+
         ElseIf txtLotNo.Text = "" Or txtPartNo.Text = "Enter Lot Number" Then
+            cboAssociate.Text = Nothing
             MsgBox("Please enter Lot Numbwe!", MsgBoxStyle.Exclamation)
+            txtLotNo.Focus()
+
         Else
+            RealData = CDec(txtReading.Text)
 
             SerialPort1.WriteLine("SP")
             Thread.Sleep(100)
@@ -618,7 +672,15 @@ Public Class Form1
             data(count) = RealData
             count += 1
             lstResult.Items.Add(count & ". " & RealData)
+            lstResult.SelectedIndex = lstResult.Items.Count - 1
             btnReset.Enabled = False
+
+            SerialPort1.WriteLine("Z")
+            Thread.Sleep(500)
+            SerialPort1.WriteLine("CP")
+
+            Function_Module.WeightLimits()
+
             If count = CInt(txtEmployee.Text) Then
                 btnNewLot.Enabled = True
                 btnWeight.Enabled = False
@@ -626,11 +688,39 @@ Public Class Form1
                 btnReset.Enabled = False
                 btnSave.Focus()
 
+                SerialPort1.WriteLine("Z")
+
                 MsgBox("DONE!", MsgBoxStyle.Information)
+                txtReading.Text = ""
+                SerialPort1.Close()
             End If
 
-            Thread.Sleep(100)
-            SerialPort1.WriteLine("CP")
+            'SerialPort1.WriteLine("SP")
+            'Thread.Sleep(100)
+
+            'data(count) = RealData
+            'count += 1
+            'lstResult.Items.Add(count & ". " & RealData)
+            'btnReset.Enabled = False
+
+            'SerialPort1.WriteLine("Z")
+            'Thread.Sleep(500)
+            'SerialPort1.WriteLine("CP")
+
+            'If count = CInt(txtEmployee.Text) Then
+            '    btnNewLot.Enabled = True
+            '    btnWeight.Enabled = False
+            '    btnSave.Enabled = True
+            '    btnReset.Enabled = False
+            '    btnSave.Focus()
+
+            '    MsgBox("DONE!", MsgBoxStyle.Information)
+            '    txtReading.Text = ""
+            '    SerialPort1.Close()
+            'End If
+
+            'Thread.Sleep(100)
+            'SerialPort1.WriteLine("CP")
 
         End If
 
@@ -719,8 +809,9 @@ Public Class Form1
                 Function_Module.ChangeOCAP()
 
                 Function_Module.RunMachine()
+                Cutter2_Module.C2_ChagetoStop()
 
-                SolderCutter_Form.TimerQtyChecking.Enabled = True
+                'SolderCutter_Form.TimerQtyChecking.Enabled = True
                 SolderCutter_Form.TimerChangeSpool.Enabled = True
 
                 'SerialPort2.WriteLine("A") 'activate door lock
@@ -765,6 +856,9 @@ Public Class Form1
             count = 0
             lstResult.Items.Clear()
 
+            txtQty.Text = ""
+            txtQty.ReadOnly = False
+
             txtPartNo.ReadOnly = False
             txtPartNo.Text = "Enter Part Number"
             txtPartNo.ForeColor = Color.Silver
@@ -781,15 +875,19 @@ Public Class Form1
 
             txtWeight.Text = "Enter weight"
             txtWeight.ForeColor = Color.Silver
+            txtWeight.ReadOnly = False
 
             txtSolderWire.Text = "Enter Solder Wire Part #"
             txtSolderWire.ForeColor = Color.Silver
+            txtSolderWire.ReadOnly = False
 
             txtBareWire.Text = "Enter Bare Wire Lot #"
             txtBareWire.ForeColor = Color.Silver
+            txtBareWire.ReadOnly = False
 
             txtCutterSet.Text = "Enter Cutter Setting"
             txtCutterSet.ForeColor = Color.Silver
+            txtCutterSet.ReadOnly = False
 
         Else
             Return
@@ -817,6 +915,7 @@ Public Class Form1
                 txtWeight.Text = ""
             Else
                 txtPartNo.Focus()
+                txtWeight.ReadOnly = True
             End If
         End If
     End Sub
@@ -837,6 +936,7 @@ Public Class Form1
                 txtSolderWire.Text = ""
             Else
                 txtBareWire.Focus()
+                txtSolderWire.ReadOnly = True
             End If
         End If
     End Sub
@@ -857,6 +957,7 @@ Public Class Form1
                 txtBareWire.Text = ""
             Else
                 txtCutterSet.Focus()
+                txtBareWire.ReadOnly = True
             End If
         End If
     End Sub
@@ -877,6 +978,7 @@ Public Class Form1
                 txtCutterSet.Text = ""
             Else
                 cboShift.Focus()
+                txtCutterSet.ReadOnly = True
             End If
         End If
     End Sub
@@ -932,8 +1034,17 @@ Public Class Form1
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Function_Module.GetNewmg()
-        Function_Module.ChangeMg()
+        If txtWeight.Text = "" Or txtWeight.Text = "Enter weight" Then
+            MsgBox("Please enter weight(mg)!", MessageBoxIcon.Error)
+        Else
+            Function_Module.GetNewmg()
+            Function_Module.GetOldmg()
+            Function_Module.CheckMg()
+
+            SolderCutter_Form.TimerChangeSpool.Enabled = True
+            Function_Module.GetNewmg()
+            Function_Module.ChangeMg()
+        End If
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -986,6 +1097,7 @@ Public Class Form1
                 txtQty.Text = ""
             Else
                 txtWeight.Focus()
+                txtQty.ReadOnly = True
             End If
         End If
     End Sub
@@ -1007,6 +1119,27 @@ Public Class Form1
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Function_Module.RunMachine()
+        If txtQty.Text = "" Or txtQty.Text = "Enter quantity" Then
+            MsgBox("Plese enter quantity", MessageBoxIcon.Error)
+        Else
+            Function_Module.RunMachine()
+            Cutter2_Module.C2_ChagetoStop()
+            Thread.Sleep(500)
+            SolderCutter_Form.to_PLC("@00WD01080000")
+            Thread.Sleep(500)
+            SolderCutter_Form.to_PLC("@00WD01090000")
+        End If
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        SerialPort1.WriteLine("ON")
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        SerialPort1.WriteLine("OFF")
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        SerialPort1.Open()
     End Sub
 End Class

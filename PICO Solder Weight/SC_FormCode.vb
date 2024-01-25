@@ -67,6 +67,13 @@
         'SolderCutter_Form.to_PLC("@00WD00020002")
     End Sub
 
+    Sub C1_ChagetoStop()
+        SolderCutter_Form.btnC1Start.Text = "Stop"
+        SolderCutter_Form.btnC1Start.FillColor = Color.Maroon
+        SolderCutter_Form.btnC1Start.FillColor2 = Color.Red
+        SolderCutter_Form.btnC1Start.ForeColor = Color.White
+    End Sub
+
 End Module
 
 Module Cutter2_Module
@@ -150,6 +157,13 @@ Module Cutter2_Module
         End If
     End Sub
 
+    Sub C2_ChagetoStop()
+        SolderCutter_Form.btnC2Start.Text = "Stop"
+        SolderCutter_Form.btnC2Start.FillColor = Color.Maroon
+        SolderCutter_Form.btnC2Start.FillColor2 = Color.Red
+        SolderCutter_Form.btnC2Start.ForeColor = Color.White
+    End Sub
+
 End Module
 
 Module Cutter3_Module
@@ -221,6 +235,13 @@ Module Cutter3_Module
         'SolderCutter_Form.to_PLC("@00WD00020002")
     End Sub
 
+    Sub C3_ChagetoStop()
+        SolderCutter_Form.btnC3Start.Text = "Stop"
+        SolderCutter_Form.btnC3Start.FillColor = Color.Maroon
+        SolderCutter_Form.btnC3Start.FillColor2 = Color.Red
+        SolderCutter_Form.btnC3Start.ForeColor = Color.White
+    End Sub
+
 End Module
 Module Cutter4_Module
     Sub C4_ButtonStart()
@@ -289,6 +310,13 @@ Module Cutter4_Module
 
     Sub C4_Reset()
         'SolderCutter_Form.to_PLC("@00WD00020002")
+    End Sub
+
+    Sub C4_ChagetoStop()
+        SolderCutter_Form.btnC4Start.Text = "Stop"
+        SolderCutter_Form.btnC4Start.FillColor = Color.Maroon
+        SolderCutter_Form.btnC4Start.FillColor2 = Color.Red
+        SolderCutter_Form.btnC4Start.ForeColor = Color.White
     End Sub
 
 End Module
