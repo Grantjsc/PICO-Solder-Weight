@@ -45,6 +45,8 @@ Partial Class OCAP_Form
         Me.Label9 = New System.Windows.Forms.Label()
         Me.cboAction = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.btnSave = New Guna.UI2.WinForms.Guna2Button()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtLotNum = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2CustomGradientPanel2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -86,7 +88,7 @@ Partial Class OCAP_Form
         Me.Label1.ForeColor = System.Drawing.Color.White
         Me.Label1.Location = New System.Drawing.Point(585, 28)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(232, 60)
+        Me.Label1.Size = New System.Drawing.Size(291, 75)
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "OCAP Form"
         '
@@ -96,7 +98,7 @@ Partial Class OCAP_Form
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.Location = New System.Drawing.Point(120, 222)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(79, 25)
+        Me.Label14.Size = New System.Drawing.Size(98, 31)
         Me.Label14.TabIndex = 50
         Me.Label14.Text = "Alarm:"
         '
@@ -136,7 +138,7 @@ Partial Class OCAP_Form
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(120, 349)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(122, 25)
+        Me.Label2.Size = New System.Drawing.Size(151, 31)
         Me.Label2.TabIndex = 52
         Me.Label2.Text = "Associate:"
         '
@@ -176,7 +178,7 @@ Partial Class OCAP_Form
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.Location = New System.Drawing.Point(120, 484)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(108, 25)
+        Me.Label6.Size = New System.Drawing.Size(132, 31)
         Me.Label6.TabIndex = 54
         Me.Label6.Text = "Machine:"
         '
@@ -210,9 +212,9 @@ Partial Class OCAP_Form
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(120, 740)
+        Me.Label3.Location = New System.Drawing.Point(735, 223)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(65, 25)
+        Me.Label3.Size = New System.Drawing.Size(81, 31)
         Me.Label3.TabIndex = 56
         Me.Label3.Text = "Test:"
         '
@@ -232,7 +234,7 @@ Partial Class OCAP_Form
         Me.cboTest.IntegralHeight = False
         Me.cboTest.ItemHeight = 30
         Me.cboTest.Items.AddRange(New Object() {"Solder Weight - Bottom (Pico)", "Solder Weight - (Pico)"})
-        Me.cboTest.Location = New System.Drawing.Point(121, 772)
+        Me.cboTest.Location = New System.Drawing.Point(736, 255)
         Me.cboTest.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cboTest.Name = "cboTest"
         Me.cboTest.ShadowDecoration.BorderRadius = 30
@@ -246,9 +248,9 @@ Partial Class OCAP_Form
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(120, 604)
+        Me.Label4.Location = New System.Drawing.Point(120, 597)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(150, 25)
+        Me.Label4.Size = New System.Drawing.Size(187, 31)
         Me.Label4.TabIndex = 58
         Me.Label4.Text = "Part Number:"
         '
@@ -267,7 +269,7 @@ Partial Class OCAP_Form
         Me.txtPartNum.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtPartNum.ForeColor = System.Drawing.Color.Black
         Me.txtPartNum.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtPartNum.Location = New System.Drawing.Point(120, 637)
+        Me.txtPartNum.Location = New System.Drawing.Point(120, 630)
         Me.txtPartNum.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
         Me.txtPartNum.Name = "txtPartNum"
         Me.txtPartNum.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -286,9 +288,9 @@ Partial Class OCAP_Form
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(763, 223)
+        Me.Label5.Location = New System.Drawing.Point(735, 360)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(142, 25)
+        Me.Label5.Size = New System.Drawing.Size(177, 31)
         Me.Label5.TabIndex = 60
         Me.Label5.Text = "Root Cause:"
         '
@@ -307,15 +309,15 @@ Partial Class OCAP_Form
         Me.cboRootCause.ForeColor = System.Drawing.Color.Black
         Me.cboRootCause.IntegralHeight = False
         Me.cboRootCause.ItemHeight = 30
-        Me.cboRootCause.Items.AddRange(New Object() {"1. Wrong Encode", "2. MeasurementEquipment Problem", "3. Wrong Solder Part Number", "4. Others (Input root Cause)"})
-        Me.cboRootCause.Location = New System.Drawing.Point(764, 255)
+        Me.cboRootCause.Items.AddRange(New Object() {"1. Wrong Encode", "2. MeasurementEquipment Problem", "3. Wrong Solder Part Number", "4. Others (Input root Cause):"})
+        Me.cboRootCause.Location = New System.Drawing.Point(736, 392)
         Me.cboRootCause.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cboRootCause.Name = "cboRootCause"
         Me.cboRootCause.ShadowDecoration.BorderRadius = 30
         Me.cboRootCause.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.cboRootCause.ShadowDecoration.Enabled = True
         Me.cboRootCause.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0)
-        Me.cboRootCause.Size = New System.Drawing.Size(428, 36)
+        Me.cboRootCause.Size = New System.Drawing.Size(564, 36)
         Me.cboRootCause.TabIndex = 2
         '
         'txtOtherRC
@@ -334,7 +336,7 @@ Partial Class OCAP_Form
         Me.txtOtherRC.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtOtherRC.ForeColor = System.Drawing.Color.Black
         Me.txtOtherRC.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtOtherRC.Location = New System.Drawing.Point(921, 311)
+        Me.txtOtherRC.Location = New System.Drawing.Point(893, 448)
         Me.txtOtherRC.Margin = New System.Windows.Forms.Padding(6, 7, 6, 7)
         Me.txtOtherRC.Name = "txtOtherRC"
         Me.txtOtherRC.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -352,9 +354,9 @@ Partial Class OCAP_Form
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(801, 327)
+        Me.Label7.Location = New System.Drawing.Point(773, 464)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(89, 25)
+        Me.Label7.Size = New System.Drawing.Size(111, 31)
         Me.Label7.TabIndex = 62
         Me.Label7.Text = "Others:"
         '
@@ -362,9 +364,9 @@ Partial Class OCAP_Form
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(801, 522)
+        Me.Label8.Location = New System.Drawing.Point(773, 673)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(89, 25)
+        Me.Label8.Size = New System.Drawing.Size(111, 31)
         Me.Label8.TabIndex = 66
         Me.Label8.Text = "Others:"
         '
@@ -384,7 +386,7 @@ Partial Class OCAP_Form
         Me.txtOthersA.Font = New System.Drawing.Font("Segoe UI", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtOthersA.ForeColor = System.Drawing.Color.Black
         Me.txtOthersA.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtOthersA.Location = New System.Drawing.Point(921, 506)
+        Me.txtOthersA.Location = New System.Drawing.Point(893, 657)
         Me.txtOthersA.Margin = New System.Windows.Forms.Padding(6, 7, 6, 7)
         Me.txtOthersA.Name = "txtOthersA"
         Me.txtOthersA.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -402,9 +404,9 @@ Partial Class OCAP_Form
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(763, 413)
+        Me.Label9.Location = New System.Drawing.Point(735, 564)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(85, 25)
+        Me.Label9.Size = New System.Drawing.Size(105, 31)
         Me.Label9.TabIndex = 64
         Me.Label9.Text = "Action:"
         '
@@ -423,15 +425,15 @@ Partial Class OCAP_Form
         Me.cboAction.ForeColor = System.Drawing.Color.Black
         Me.cboAction.IntegralHeight = False
         Me.cboAction.ItemHeight = 30
-        Me.cboAction.Items.AddRange(New Object() {"1. Call PE/ QA to edit the data", "2.a Clean the surface", "2.b Call Calibration-fix machine", "3.a Stop Production", "3.b Adjust Solder Cutter mc", "4. Inform PE/Tech (Update Note)", "5. Others ( Input Action)"})
-        Me.cboAction.Location = New System.Drawing.Point(764, 445)
+        Me.cboAction.Items.AddRange(New Object() {"1. Call PE/ QA to edit the data", "2.a Clean the surface", "2.b Call Calibration-fix machine", "3.a Stop Production", "3.b Adjust Solder Cutter mc", "4. Inform PE/Tech (Update Note)", "5. Others ( Input Action):"})
+        Me.cboAction.Location = New System.Drawing.Point(736, 596)
         Me.cboAction.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.cboAction.Name = "cboAction"
         Me.cboAction.ShadowDecoration.BorderRadius = 30
         Me.cboAction.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.cboAction.ShadowDecoration.Enabled = True
         Me.cboAction.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0)
-        Me.cboAction.Size = New System.Drawing.Size(428, 36)
+        Me.cboAction.Size = New System.Drawing.Size(564, 36)
         Me.cboAction.TabIndex = 3
         '
         'btnSave
@@ -466,11 +468,53 @@ Partial Class OCAP_Form
         Me.btnSave.TabIndex = 4
         Me.btnSave.Text = "Save"
         '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(120, 724)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(174, 31)
+        Me.Label10.TabIndex = 68
+        Me.Label10.Text = "Lot Number:"
+        '
+        'txtLotNum
+        '
+        Me.txtLotNum.BackColor = System.Drawing.Color.Transparent
+        Me.txtLotNum.BorderColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.txtLotNum.BorderRadius = 20
+        Me.txtLotNum.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtLotNum.DefaultText = ""
+        Me.txtLotNum.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.txtLotNum.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txtLotNum.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtLotNum.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtLotNum.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtLotNum.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtLotNum.ForeColor = System.Drawing.Color.Black
+        Me.txtLotNum.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtLotNum.Location = New System.Drawing.Point(120, 757)
+        Me.txtLotNum.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
+        Me.txtLotNum.Name = "txtLotNum"
+        Me.txtLotNum.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.txtLotNum.PlaceholderForeColor = System.Drawing.Color.Black
+        Me.txtLotNum.PlaceholderText = ""
+        Me.txtLotNum.ReadOnly = True
+        Me.txtLotNum.SelectedText = ""
+        Me.txtLotNum.ShadowDecoration.BorderRadius = 30
+        Me.txtLotNum.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.txtLotNum.ShadowDecoration.Enabled = True
+        Me.txtLotNum.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0)
+        Me.txtLotNum.Size = New System.Drawing.Size(429, 62)
+        Me.txtLotNum.TabIndex = 67
+        '
         'OCAP_Form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1300, 1044)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.txtLotNum)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.txtOthersA)
@@ -524,4 +568,6 @@ Partial Class OCAP_Form
     Friend WithEvents Label9 As Label
     Friend WithEvents cboAction As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents btnSave As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Label10 As Label
+    Friend WithEvents txtLotNum As Guna.UI2.WinForms.Guna2TextBox
 End Class

@@ -82,7 +82,7 @@ Public Class Form1
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        If RealData > 0.1 Then
+        If RealData > 3.0 Then
             If RealData > Weight Then
                 Weight = RealData
                 stopwatch.Restart()
@@ -115,6 +115,8 @@ Public Class Form1
                 SerialPort1.WriteLine("Z")
                 Thread.Sleep(500)
                 SerialPort1.WriteLine("CP")
+
+
 
                 Function_Module.WeightLimits()
 
@@ -436,95 +438,98 @@ Public Class Form1
     End Sub
 
     Private Sub cboAssociate_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAssociate.SelectedIndexChanged
-
-        If txtQty.Text = "" Or txtQty.Text = "Enter quantity" Then
-            cboAssociate.Text = Nothing
-            MsgBox("Please enter Quantity!", MsgBoxStyle.Exclamation)
-            txtQty.Focus()
-
-        ElseIf txtWeight.Text = "" Or txtWeight.Text = "Enter weight" Then
-            cboAssociate.Text = Nothing
-            MsgBox("Please enter weight!", MsgBoxStyle.Exclamation)
-            txtWeight.Focus()
-
-        ElseIf txtPartNo.Text = "" Or txtPartNo.Text = "Enter Part Number" Then
-            cboAssociate.Text = Nothing
-            MsgBox("Please enter Part Number!", MsgBoxStyle.Exclamation)
-            txtPartNo.Focus()
-
-        ElseIf txtSolderWire.Text = "" Or txtSolderWire.Text = "Enter Solder Wire Part #" Then
-            cboAssociate.Text = Nothing
-            MsgBox("Please enter Solder wire part number!", MsgBoxStyle.Exclamation)
-            txtSolderWire.Focus()
-
-        ElseIf txtBareWire.Text = "" Or txtBareWire.Text = "Enter Bare Wire Lot #" Then
-            cboAssociate.Text = Nothing
-            MsgBox("Please enter Bare wire lot number!", MsgBoxStyle.Exclamation)
-            txtBareWire.Focus()
-
-        ElseIf txtCutterSet.Text = "" Or txtCutterSet.Text = "Enter Cutter Setting" Then
-            cboAssociate.Text = Nothing
-            MsgBox("Please enter cutter setting!", MsgBoxStyle.Exclamation)
-            txtCutterSet.Focus()
-
-        ElseIf cboProcess.Text = "" Then
-            cboAssociate.Text = Nothing
-            MsgBox("Please enter process!", MsgBoxStyle.Exclamation)
-
-        ElseIf cboShift.Text = "" Then
-            cboAssociate.Text = Nothing
-            MsgBox("Please enter your shift!", MsgBoxStyle.Exclamation)
-
-        ElseIf txtLotNo.Text = "" Or txtPartNo.Text = "Enter Lot Number" Then
-            cboAssociate.Text = Nothing
-            MsgBox("Please enter Lot Numbwe!", MsgBoxStyle.Exclamation)
-            txtLotNo.Focus()
+        If cboAssociate.Text = Nothing Then
 
         Else
+            If txtQty.Text = "" Or txtQty.Text = "Enter quantity" Then
+                cboAssociate.Text = Nothing
+                MsgBox("Please enter Quantity!", MsgBoxStyle.Exclamation)
+                txtQty.Focus()
 
-            If SolderCutter_Form.lblSpool107.Text = CInt("100") Then
-                Associate()
+            ElseIf txtWeight.Text = "" Or txtWeight.Text = "Enter weight" Then
+                cboAssociate.Text = Nothing
+                MsgBox("Please enter weight!", MsgBoxStyle.Exclamation)
+                txtWeight.Focus()
 
-                SerialPort1.Open()
+            ElseIf txtPartNo.Text = "" Or txtPartNo.Text = "Enter Part Number" Then
+                cboAssociate.Text = Nothing
+                MsgBox("Please enter Part Number!", MsgBoxStyle.Exclamation)
+                txtPartNo.Focus()
 
-                SerialPort1.WriteLine("Z")
-                Thread.Sleep(500)
-                SerialPort1.WriteLine("CP")
-                Timer1.Enabled = True
+            ElseIf txtSolderWire.Text = "" Or txtSolderWire.Text = "Enter Solder Wire Part #" Then
+                cboAssociate.Text = Nothing
+                MsgBox("Please enter Solder wire part number!", MsgBoxStyle.Exclamation)
+                txtSolderWire.Focus()
 
-                SolderCutter_Form.to_PLC("@00WD01070000")
-                SolderCutter_Form.TimerChangeSpool.Enabled = True
+            ElseIf txtBareWire.Text = "" Or txtBareWire.Text = "Enter Bare Wire Lot #" Then
+                cboAssociate.Text = Nothing
+                MsgBox("Please enter Bare wire lot number!", MsgBoxStyle.Exclamation)
+                txtBareWire.Focus()
 
-                Thread.Sleep(500)
-                SolderCutter_Form.to_PLC("@00WD01080000")
-                Thread.Sleep(500)
-                SolderCutter_Form.to_PLC("@00WD01090000")
+            ElseIf txtCutterSet.Text = "" Or txtCutterSet.Text = "Enter Cutter Setting" Then
+                cboAssociate.Text = Nothing
+                MsgBox("Please enter cutter setting!", MsgBoxStyle.Exclamation)
+                txtCutterSet.Focus()
 
-                Function_Module.PurgeAfterOCAP() ' Same function if Change Spool
+            ElseIf cboProcess.Text = "" Then
+                cboAssociate.Text = Nothing
+                MsgBox("Please enter process!", MsgBoxStyle.Exclamation)
+
+            ElseIf cboShift.Text = "" Then
+                cboAssociate.Text = Nothing
+                MsgBox("Please enter your shift!", MsgBoxStyle.Exclamation)
+
+            ElseIf txtLotNo.Text = "" Or txtPartNo.Text = "Enter Lot Number" Then
+                cboAssociate.Text = Nothing
+                MsgBox("Please enter Lot Numbwe!", MsgBoxStyle.Exclamation)
+                txtLotNo.Focus()
+
             Else
-                Associate()
 
-                'SerialPort2.WriteLine("B") 'deactivate door lock
+                If SolderCutter_Form.lblSpool107.Text = CInt("100") Then
+                    Associate()
 
-                Function_Module.GetNewmg()
-                Function_Module.GetOldmg()
-                Function_Module.CheckMg()
+                    SerialPort1.Open()
 
-                'btnWeight.Focus()
-                SerialPort1.Open()
+                    SerialPort1.WriteLine("Z")
+                    Thread.Sleep(500)
+                    SerialPort1.WriteLine("CP")
+                    Timer1.Enabled = True
 
-                SerialPort1.WriteLine("Z")
-                Thread.Sleep(500)
-                SerialPort1.WriteLine("CP")
-                Timer1.Enabled = True
+                    SolderCutter_Form.to_PLC("@00WD01070000")
+                    SolderCutter_Form.TimerChangeSpool.Enabled = True
 
-                btnWeight.Enabled = True
-                btnWeight.Focus()
+                    Thread.Sleep(500)
+                    SolderCutter_Form.to_PLC("@00WD01080000")
+                    Thread.Sleep(500)
+                    SolderCutter_Form.to_PLC("@00WD01090000")
 
-                Thread.Sleep(500)
-                SolderCutter_Form.to_PLC("@00WD01080000")
-                Thread.Sleep(500)
-                SolderCutter_Form.to_PLC("@00WD01090000")
+                    Function_Module.PurgeAfterOCAP() ' Same function if Change Spool
+                Else
+                    Associate()
+
+                    'SerialPort2.WriteLine("B") 'deactivate door lock
+
+                    Function_Module.GetNewmg()
+                    Function_Module.GetOldmg()
+                    Function_Module.CheckMg()
+
+                    'btnWeight.Focus()
+                    SerialPort1.Open()
+
+                    SerialPort1.WriteLine("Z")
+                    Thread.Sleep(500)
+                    SerialPort1.WriteLine("CP")
+                    Timer1.Enabled = True
+
+                    btnWeight.Enabled = True
+                    btnWeight.Focus()
+
+                    Thread.Sleep(500)
+                    SolderCutter_Form.to_PLC("@00WD01080000")
+                    Thread.Sleep(500)
+                    SolderCutter_Form.to_PLC("@00WD01090000")
+                End If
             End If
         End If
 
@@ -601,6 +606,7 @@ Public Class Form1
         txtCutterSet.ReadOnly = False
 
         Timer1.Enabled = False
+        SolderCutter_Form.TimerChangeSpool.Enabled = False
 
         txtReading.Text = ""
         Array.Clear(data, 0, data.Length)
@@ -808,8 +814,10 @@ Public Class Form1
                 Function_Module.ResetOCAP()
                 Function_Module.ChangeOCAP()
 
-                Function_Module.RunMachine()
-                Cutter2_Module.C2_ChagetoStop()
+                'Function_Module.RunMachine()
+                'Cutter2_Module.C2_ChagetoStop()
+
+                TimerCheckInfi.Enabled = True
 
                 'SolderCutter_Form.TimerQtyChecking.Enabled = True
                 SolderCutter_Form.TimerChangeSpool.Enabled = True
@@ -830,7 +838,7 @@ Public Class Form1
 
     End Sub
 
-    Private Function IsCSVFileEmpty(filePath As String) As Boolean
+    Public Function IsCSVFileEmpty(filePath As String) As Boolean
         ' Check if the file exists
         If File.Exists(filePath) Then
             ' Read the entire file content as a string
@@ -1141,5 +1149,9 @@ Public Class Form1
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         SerialPort1.Open()
+    End Sub
+
+    Private Sub TimerCheckInfi_Tick(sender As Object, e As EventArgs) Handles TimerCheckInfi.Tick
+        Function_Module.CheckInifinity()
     End Sub
 End Class

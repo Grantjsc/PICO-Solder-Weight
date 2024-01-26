@@ -77,6 +77,7 @@ Partial Class Form1
         Me.AddAssociateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SerialPort2 = New System.IO.Ports.SerialPort(Me.components)
         Me.TimerErrorMsg = New System.Windows.Forms.Timer(Me.components)
+        Me.TimerCheckInfi = New System.Windows.Forms.Timer(Me.components)
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         Me.Guna2CustomGradientPanel2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -299,11 +300,11 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel1.FillColor2 = System.Drawing.SystemColors.Control
         Me.Guna2CustomGradientPanel1.FillColor3 = System.Drawing.SystemColors.Control
         Me.Guna2CustomGradientPanel1.FillColor4 = System.Drawing.SystemColors.Control
-        Me.Guna2CustomGradientPanel1.Location = New System.Drawing.Point(0, 171)
+        Me.Guna2CustomGradientPanel1.Location = New System.Drawing.Point(0, 173)
         Me.Guna2CustomGradientPanel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Guna2CustomGradientPanel1.Name = "Guna2CustomGradientPanel1"
         Me.Guna2CustomGradientPanel1.ShadowDecoration.BorderRadius = 35
-        Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(1416, 931)
+        Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(1416, 929)
         Me.Guna2CustomGradientPanel1.TabIndex = 0
         '
         'Button7
@@ -910,7 +911,7 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel2.FillColor2 = System.Drawing.Color.LimeGreen
         Me.Guna2CustomGradientPanel2.FillColor3 = System.Drawing.Color.DarkGreen
         Me.Guna2CustomGradientPanel2.FillColor4 = System.Drawing.Color.DarkGreen
-        Me.Guna2CustomGradientPanel2.Location = New System.Drawing.Point(0, 28)
+        Me.Guna2CustomGradientPanel2.Location = New System.Drawing.Point(0, 30)
         Me.Guna2CustomGradientPanel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Guna2CustomGradientPanel2.Name = "Guna2CustomGradientPanel2"
         Me.Guna2CustomGradientPanel2.Size = New System.Drawing.Size(1416, 143)
@@ -959,7 +960,7 @@ Partial Class Form1
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(5, 2, 0, 2)
-        Me.MenuStrip1.Size = New System.Drawing.Size(1416, 28)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1416, 30)
         Me.MenuStrip1.TabIndex = 8
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -981,6 +982,10 @@ Partial Class Form1
         'TimerErrorMsg
         '
         Me.TimerErrorMsg.Interval = 1000
+        '
+        'TimerCheckInfi
+        '
+        Me.TimerCheckInfi.Interval = 60000
         '
         'Form1
         '
@@ -1061,4 +1066,5 @@ Partial Class Form1
     Friend WithEvents Button6 As Button
     Friend WithEvents Button5 As Button
     Friend WithEvents Button7 As Button
+    Friend WithEvents TimerCheckInfi As Timer
 End Class

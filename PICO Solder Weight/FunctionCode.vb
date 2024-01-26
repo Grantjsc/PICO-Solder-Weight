@@ -195,6 +195,7 @@ Module Function_Module
                         End Select
                         OCAP_Form.txtAssociate.Text = Master_login.F1_get_user
                         OCAP_Form.txtPartNum.Text = Form1.txtPartNo.Text
+                        OCAP_Form.txtLotNum.Text = Form1.txtLotNo.Text
                         .BringToFront()
                         .Show()
                     End With
@@ -245,6 +246,7 @@ Module Function_Module
 
                 OCAP_Form.txtAssociate.Text = Form1.cboAssociate.Text
                 OCAP_Form.txtPartNum.Text = Form1.txtPartNo.Text
+                OCAP_Form.txtLotNum.Text = Form1.txtLotNo.Text
 
                 .BringToFront()
                 .Show()
@@ -391,10 +393,11 @@ Module Function_Module
                 Form1.count = 0
                 Form1.lstResult.Items.Clear()
                 Array.Clear(Form1.data, 0, Form1.data.Length)
-                Form1.cboAssociate.Text = Nothing
+                'Form1.cboAssociate.Text = Nothing
                 Thread.Sleep(500)
                 Form1.SerialPort1.Close()
 
+                Form1.txtReading.Text = ""
                 Form1.txtQty.Text = ""
                 Form1.txtQty.ReadOnly = False
                 Form1.txtQty.Focus()
@@ -482,6 +485,24 @@ Module Function_Module
             End If
         End If
 
+    End Sub
+
+    Sub CheckInifinity()
+        Dim isFileEmpty As Boolean = Form1.IsCSVFileEmpty(Form1.get_FolderPath)
+
+        If isFileEmpty Then
+            Form1.TimerCheckInfi.Enabled = False
+            Function_Module.RunMachine()
+            Cutter2_Module.C2_ChagetoStop()
+        Else
+            Form1.TimerCheckInfi.Enabled = False
+            Dim dialog As DialogResult
+            dialog = MessageBox.Show("Cannot proceed to run the machine!!!" & ControlChars.NewLine & "There is a file for upload at Infinity." & ControlChars.NewLine & "Please add the data in Infinity, before clicking Okay.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            If dialog = DialogResult.OK Then
+                Form1.TimerCheckInfi.Interval = 10000
+                Form1.TimerCheckInfi.Enabled = True
+            End If
+        End If
     End Sub
 
 End Module
