@@ -28,7 +28,7 @@
     <UpdateUrl>\\btwebdev01\Websites\WindowsAppUpdater\TSG_Shared\PICO Solder Weight Closed Loop\</UpdateUrl>
     <ProductName>Solder Weight Closed Loop</ProductName>
     <PublisherName>Littelfuse Philippines %28TSG%29 - GCatapang</PublisherName>
-    <ApplicationRevision>42</ApplicationRevision>
+    <ApplicationRevision>62</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -158,6 +158,25 @@
     <Compile Include="Add_Form.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="askChangeCutterSet_Form.Designer.vb">
+      <DependentUpon>askChangeCutterSet_Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="askChangeCutterSet_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeComPort_Code.vb" />
+    <Compile Include="ChangeComPort_Form.Designer.vb">
+      <DependentUpon>ChangeComPort_Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeComPort_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeSpoolMsg_Form.Designer.vb">
+      <DependentUpon>ChangeSpoolMsg_Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeSpoolMsg_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +214,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="NewCutterSet_Form.Designer.vb">
+      <DependentUpon>NewCutterSet_Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="NewCutterSet_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="OCAP_Form.Designer.vb">
       <DependentUpon>OCAP_Form.vb</DependentUpon>
     </Compile>
@@ -211,6 +236,24 @@
       <DependentUpon>Purging_Form.vb</DependentUpon>
     </Compile>
     <Compile Include="Purging_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReEnterName_Form.Designer.vb">
+      <DependentUpon>ReEnterName_Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReEnterName_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SameLot_Form.Designer.vb">
+      <DependentUpon>SameLot_Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SameLot_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SavingError_Form.Designer.vb">
+      <DependentUpon>SavingError_Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SavingError_Form.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SC_FormCode.vb" />
@@ -230,6 +273,15 @@
     <EmbeddedResource Include="Add_Form.resx">
       <DependentUpon>Add_Form.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="askChangeCutterSet_Form.resx">
+      <DependentUpon>askChangeCutterSet_Form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeComPort_Form.resx">
+      <DependentUpon>ChangeComPort_Form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeSpoolMsg_Form.resx">
+      <DependentUpon>ChangeSpoolMsg_Form.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
@@ -245,11 +297,23 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewCutterSet_Form.resx">
+      <DependentUpon>NewCutterSet_Form.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OCAP_Form.resx">
       <DependentUpon>OCAP_Form.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Purging_Form.resx">
       <DependentUpon>Purging_Form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReEnterName_Form.resx">
+      <DependentUpon>ReEnterName_Form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SameLot_Form.resx">
+      <DependentUpon>SameLot_Form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SavingError_Form.resx">
+      <DependentUpon>SavingError_Form.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SolderCutter_Form.resx">
       <DependentUpon>SolderCutter_Form.vb</DependentUpon>
@@ -297,6 +361,10 @@
     <Content Include="PICO Solder Weight.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\changes.png" />
+    <None Include="Resources\question2.png" />
+    <None Include="Resources\question.png" />
+    <None Include="Resources\info ICON.png" />
     <None Include="Resources\minus_White.png" />
     <None Include="Resources\minus_Blue.png" />
     <None Include="Resources\add_White.png" />

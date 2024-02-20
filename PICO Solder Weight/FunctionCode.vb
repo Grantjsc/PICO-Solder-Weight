@@ -44,8 +44,13 @@ Module Function_Module
                 Dim dialog As DialogResult
                 dialog = MessageBox.Show("Please replace the NG bin with a sample bin before clicking okay.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 If dialog = DialogResult.OK Then
+
+                    'Form1.SerialPort1.WriteLine("Z")
+                    'Thread.Sleep(100)
+                    'Form1.SerialPort1.WriteLine("CP")
+
                     Purging_Form.lblMsg.Text = "The machine is cutting samples ..."
-                    SolderCutter_Form.to_PLC("@00WD00060025")
+                    SolderCutter_Form.to_PLC("@00WD00060010")
                     Thread.Sleep(500)
                     Purging_Form.TimerPurgingAndSamples.Enabled = True
                     PurgeDone = True
@@ -56,13 +61,15 @@ Module Function_Module
 
         If Samples = True Then
             If CInt(SolderCutter_Form.lblSamples106.Text) = 100 Then
+                SolderCutter_Form.to_PLC("@00WD01060000")
                 SolderCutter_Form.btnC2Start.Enabled = True
                 Samples = False
                 Purging_Form.TimerPurgingAndSamples.Enabled = False
-                SolderCutter_Form.to_PLC("@00WD01060000")
+                'SolderCutter_Form.to_PLC("@00WD01060000")
                 Thread.Sleep(100)
                 'Purging_Form.TimerPurgingAndSamples.Enabled = False
                 Purging_Form.Close()
+
             End If
         End If
     End Sub
@@ -95,7 +102,7 @@ Module Function_Module
             End With
 
             SolderCutter_Form.btnC2Start.Enabled = False
-            SolderCutter_Form.to_PLC("@00WD00060025")
+            SolderCutter_Form.to_PLC("@00WD00060010")
 
             Purging_Form.TimerCutSamples.Enabled = True
 
@@ -143,6 +150,7 @@ Module Function_Module
 
         ConfigurationManager.RefreshSection("appSettings") 'refresh
     End Sub
+
 
     Sub BiometricsOCAP()
         Dim Fngerprint = False
@@ -196,6 +204,8 @@ Module Function_Module
                         OCAP_Form.txtAssociate.Text = Master_login.F1_get_user
                         OCAP_Form.txtPartNum.Text = Form1.txtPartNo.Text
                         OCAP_Form.txtLotNum.Text = Form1.txtLotNo.Text
+                        OCAP_Form.txtMachine.Text = Form1.cboProcess.Text
+                        OCAP_Form.txtTest.Text = Form1.txtWeight.Text
                         .BringToFront()
                         .Show()
                     End With
@@ -247,10 +257,81 @@ Module Function_Module
                 OCAP_Form.txtAssociate.Text = Form1.cboAssociate.Text
                 OCAP_Form.txtPartNum.Text = Form1.txtPartNo.Text
                 OCAP_Form.txtLotNum.Text = Form1.txtLotNo.Text
+                OCAP_Form.txtMachine.Text = Form1.cboProcess.Text
+                OCAP_Form.txtTest.Text = Form1.txtWeight.Text
 
                 .BringToFront()
                 .Show()
             End With
+        End If
+    End Sub
+
+    Sub BiometricsOCAPcontinuesRun()
+        Dim Fngerprint = False
+        GetOldOCAP()
+        If OldOCAP = 2 Then
+            While Fngerprint = False
+
+                Master_login.lblErrorMsg.Text = "2nd OCAP!"
+                Master_login.PanelWarning.Visible = True
+                Form1.TimerErrorMsg.Enabled = True
+
+                Master_login.Label1.Text = "Perform OCAP, please scan your finger after performing OCAP. Technician only"
+                Master_login.ShowDialog()
+                If Master_login.F1_get_title = "Technician" Then
+
+                    ResetOCAP()
+                    ChangeOCAP()
+
+                    PurgeAfterOCAP()
+                    WeighingScalebyON()
+                    Thread.Sleep(100)
+                    Form1.SerialPort1.WriteLine("Z")
+                    Thread.Sleep(100)
+                    Form1.SerialPort1.WriteLine("CP")
+                    Form1.Timer1.Enabled = True
+                    Master_login.Close()
+
+                    Fngerprint = True
+                Else
+
+                    MsgBox("Authorized personnel only!", MsgBoxStyle.Exclamation)
+                    Master_login.Close()
+                End If
+
+            End While
+
+        Else
+
+            IncOCAP()
+            ChangeOCAP()
+            While Fngerprint = False
+                'Master_login.lblErrorMsg.Text = "Please perform OCAP!"
+                'Master_login.PanelWarning.Visible = True
+                'Form1.TimerErrorMsg.Enabled = True
+
+                Master_login.Label1.Text = "Perform OCAP, please scan your finger after performing OCAP. SPC only"
+                Master_login.ShowDialog()
+                If Master_login.F1_get_title = "SPC" Then
+
+
+                    PurgeAfterOCAP()
+                    WeighingScalebyON()
+                    Thread.Sleep(100)
+                    Form1.SerialPort1.WriteLine("Z")
+                    Thread.Sleep(100)
+                    Form1.SerialPort1.WriteLine("CP")
+                    Form1.Timer1.Enabled = True
+                    Master_login.Close()
+
+                    Fngerprint = True
+                Else
+
+                    MsgBox("Authorized personnel only!", MsgBoxStyle.Exclamation)
+                    Master_login.Close()
+                End If
+            End While
+
         End If
     End Sub
 
@@ -286,6 +367,23 @@ Module Function_Module
                 .BringToFront()
                 .Show()
             End With
+        Else
+
+            MsgBox("Authorized personnel only!", MsgBoxStyle.Exclamation)
+            Master_login.Close()
+        End If
+    End Sub
+
+    Sub BiometricsChangeCOMName()
+        Master_login.lblErrorMsg.Visible = False
+        Master_login.PanelWarning.Visible = False
+        Form1.TimerErrorMsg.Enabled = False
+
+        Master_login.Label1.Text = "Please scan your finger. Engineer or Technician"
+        Master_login.ShowDialog()
+        If Master_login.F1_get_title = "Engineer" Or Master_login.F1_get_title = "Technician" Then
+            Master_login.Close()
+            ChangeComPort_Form.ShowDialog()
         Else
 
             MsgBox("Authorized personnel only!", MsgBoxStyle.Exclamation)
@@ -372,39 +470,19 @@ Module Function_Module
 
     Sub QuantityChecking()
         If CInt(SolderCutter_Form.lblC2counter.Text) = CInt(Form1.txtQty.Text) Then
-            SolderCutter_Form.to_PLC("@00WD00000000")
+            'SolderCutter_Form.to_PLC("@00WD00000000")
             SolderCutter_Form.TimerQtyChecking.Enabled = False
+            Cutter2_Module.C2_ChagetoStart()
         End If
     End Sub
 
     Sub ChangeSpool()
         If SolderCutter_Form.lblSpool107.Text = CInt("100") Then 'And CInt(SolderCutter_Form.lblC2counter.Text) <> CInt(Form1.txtQty.Text)
             SolderCutter_Form.TimerChangeSpool.Enabled = False
-            MessageBox.Show("Change Spool and enter new set quantity!", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            With Form1
-                .TopLevel = False
-                Main_Form.PanelMain.Controls.Add(Form1)
-                .WindowState = FormWindowState.Maximized
-                .BringToFront()
-                .Show()
-
-                'SerialPort2.WriteLine("B") 'deactivate door lock
-
-                Form1.count = 0
-                Form1.lstResult.Items.Clear()
-                Array.Clear(Form1.data, 0, Form1.data.Length)
-                'Form1.cboAssociate.Text = Nothing
-                Thread.Sleep(500)
-                Form1.SerialPort1.Close()
-
-                Form1.txtReading.Text = ""
-                Form1.txtQty.Text = ""
-                Form1.txtQty.ReadOnly = False
-                Form1.txtQty.Focus()
-                Form1.cboAssociate.Text = Nothing
-
-                SolderCutter_Form.to_PLC("@00WD00000000")
-            End With
+            SolderCutter_Form.to_PLC("@00WD00000000")
+            Cutter2_Module.C2_ChagetoStart()
+            'MessageBox.Show("Please change spool!", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ChangeSpoolMsg_Form.ShowDialog()
         End If
     End Sub
 
@@ -414,8 +492,8 @@ Module Function_Module
 
         Select Case Limit
 
-            Case 12
-                If Form1.RealData >= 12.57 Or Form1.RealData <= 11.41 Then
+            Case 12 '12.57
+                If Form1.RealData >= 12.57 Or Form1.RealData <= 11.41 Then '11.41
                     Main_Form.btnSolderCutter.Enabled = False
                     Main_Form.btnSolderWeight.Enabled = False
 
@@ -458,6 +536,17 @@ Module Function_Module
     End Sub
 
 
+    Sub CheckWTinControl()
+
+        If NewWeightmg = OldWeight Then
+
+        Else
+            WeightLimits()
+        End If
+
+    End Sub
+
+
     Sub PurgingSample()
         Dim PurgeDone = False
         Dim Samples = False
@@ -491,18 +580,91 @@ Module Function_Module
         Dim isFileEmpty As Boolean = Form1.IsCSVFileEmpty(Form1.get_FolderPath)
 
         If isFileEmpty Then
+
             Form1.TimerCheckInfi.Enabled = False
+            SolderCutter_Form.TimerQtyChecking.Enabled = True
+            SolderCutter_Form.TimerChangeSpool.Enabled = True
             Function_Module.RunMachine()
             Cutter2_Module.C2_ChagetoStop()
+            Form1.btnNewLot.Enabled = True
+
+            'OpenSerialPort2()
+            'SerialPort2.WriteLine("A") 'Activate door lock
+
         Else
             Form1.TimerCheckInfi.Enabled = False
-            Dim dialog As DialogResult
-            dialog = MessageBox.Show("Cannot proceed to run the machine!!!" & ControlChars.NewLine & "There is a file for upload at Infinity." & ControlChars.NewLine & "Please add the data in Infinity, before clicking Okay.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            If dialog = DialogResult.OK Then
-                Form1.TimerCheckInfi.Interval = 10000
-                Form1.TimerCheckInfi.Enabled = True
-            End If
+            SavingError_Form.ShowDialog()
+
+            'Dim dialog As DialogResult
+            'dialog = MessageBox.Show("Cannot proceed to run the machine!!!" & ControlChars.NewLine & "There is a file for upload at Infinity." & ControlChars.NewLine & "Please add the data in Infinity.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            'If dialog = DialogResult.OK Then
+            '    Form1.TimerCheckInfi.Interval = 10000
+            '    Form1.TimerCheckInfi.Enabled = True
+            'End If
         End If
     End Sub
 
+    Sub CheckContinuesRun()
+        Dim isFileEmpty As Boolean = Form1.IsCSVFileEmpty(Form1.get_FolderPath)
+
+        If isFileEmpty Then
+            Form1.TimerCheckCR.Enabled = False
+
+            Form1.count = 0
+            Form1.lstResult.Items.Clear()
+            Array.Clear(Form1.data, 0, Form1.data.Length)
+
+            BiometricsOCAPcontinuesRun()
+        Else
+            Form1.TimerCheckCR.Enabled = False
+            SavingError_Form.ShowDialog()
+
+            'Dim dialog As DialogResult
+            'dialog = MessageBox.Show("Cannot proceed to run the machine!!!" & ControlChars.NewLine & "There is a file for upload at Infinity." & ControlChars.NewLine & "Please add the data in Infinity.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            'If dialog = DialogResult.OK Then
+            '    Form1.TimerCheckCR.Interval = 10000
+            '    Form1.TimerCheckCR.Enabled = True
+            'End If
+        End If
+    End Sub
+
+    Sub CheckSavingOption()
+        If Form1.checkSaveCon = True Then
+
+            Form1.TimerCheckInfi.Interval = 10000
+            Form1.TimerCheckInfi.Enabled = True
+            Form1.checkSaveCon = False
+            SavingError_Form.Close()
+        Else
+
+            Form1.TimerCheckCR.Interval = 10000
+            Form1.TimerCheckCR.Enabled = True
+            SavingError_Form.Close()
+        End If
+    End Sub
+
+    Sub WeighingScalebyON()
+        If Not Form1.SerialPort1.IsOpen Then
+            Form1.SerialPort1.Open()
+        End If
+        'Thread.Sleep(100)
+        'Form1.SerialPort1.WriteLine("ON")
+    End Sub
+
+    Sub WeighingScaleOFF()
+        If Form1.SerialPort1.IsOpen Then
+            Form1.SerialPort1.Close()
+        End If
+    End Sub
+
+    Sub OpenSerialPort2()
+        If Not Form1.SerialPort2.IsOpen Then
+            Form1.SerialPort1.Open()
+        End If
+    End Sub
+    Sub CloseSerialPort2()
+        If Form1.SerialPort2.IsOpen Then
+            Form1.SerialPort1.Close()
+        End If
+    End Sub
 End Module

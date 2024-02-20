@@ -164,6 +164,13 @@ Module Cutter2_Module
         SolderCutter_Form.btnC2Start.ForeColor = Color.White
     End Sub
 
+    Sub C2_ChagetoStart()
+        SolderCutter_Form.btnC2Start.Text = "Start"
+        SolderCutter_Form.btnC2Start.FillColor = Color.LightGreen
+        SolderCutter_Form.btnC2Start.FillColor2 = Color.Green
+        SolderCutter_Form.btnC2Start.ForeColor = Color.Black
+    End Sub
+
 End Module
 
 Module Cutter3_Module

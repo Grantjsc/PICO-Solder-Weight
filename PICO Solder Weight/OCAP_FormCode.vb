@@ -2,6 +2,8 @@
 Imports System.Globalization
 
 Module OCAP_Module
+
+    Public CutSetChanged As Boolean = False
     Sub SaveData()
         Dim alarm, associate, mach, _date, partno, lotnum, test, root, action As String
         Dim command As String
@@ -9,10 +11,10 @@ Module OCAP_Module
         alarm = OCAP_Form.txtAlarm.Text
         associate = OCAP_Form.txtAssociate.Text
         _date = Format(Now, "MM/dd/yyyy hh:mm ")
-        mach = OCAP_Form.cboMachine.Text
+        mach = OCAP_Form.txtMachine.Text
         partno = OCAP_Form.txtPartNum.Text
         lotnum = OCAP_Form.txtLotNum.Text
-        test = OCAP_Form.cboTest.Text
+        test = OCAP_Form.txtTest.Text
         root = OCAP_Form.cboRootCause.Text & OCAP_Form.txtOtherRC.Text
         action = OCAP_Form.cboAction.Text & OCAP_Form.txtOthersA.Text
 
@@ -40,15 +42,15 @@ Module OCAP_Module
     End Sub
 
     Sub OCAPForm_Condition()
-        If OCAP_Form.cboMachine.Text = "" Then
-            MsgBox("Please select machine!", MessageBoxIcon.Error)
-            OCAP_Form.cboMachine.Focus()
+        'If OCAP_Form.cboMachine.Text = "" Then
+        '    MsgBox("Please select machine!", MessageBoxIcon.Error)
+        '    OCAP_Form.cboMachine.Focus()
 
-        ElseIf OCAP_Form.cboTest.Text = "" Then
-            MsgBox("Please select test item!", MessageBoxIcon.Error)
-            OCAP_Form.cboTest.Focus()
+        'ElseIf OCAP_Form.cboTest.Text = "" Then
+        '    MsgBox("Please select test item!", MessageBoxIcon.Error)
+        '    OCAP_Form.cboTest.Focus()
 
-        ElseIf OCAP_Form.cboRootCause.Text = "" Then
+        If OCAP_Form.cboRootCause.Text = "" Then
             MsgBox("Please select root cause!", MessageBoxIcon.Error)
             OCAP_Form.cboRootCause.Focus()
 
@@ -68,11 +70,20 @@ Module OCAP_Module
             SaveData()
             Main_Form.btnSolderCutter.Enabled = True
             Main_Form.btnSolderWeight.Enabled = True
-            Function_Module.PurgeAfterOCAP()
+
+            CutSetChanged = True
+
+            If CutSetChanged = True Then
+                CutSetChanged = False
+                askChangeCutterSet_Form.ShowDialog()
+            End If
+
+            'Function_Module.PurgeAfterOCAP()
             'Form1.cboAssociate.Text = Nothing
             'Form1.SerialPort1.Close()
             'Form1.txtReading.Text = ""
             OCAP_Form.Close()
+
         End If
     End Sub
 

@@ -12,7 +12,15 @@ Public Class Main_Form
     Private Sub Main_Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.WindowState = FormWindowState.Maximized
         SolderCutter_Form.Timer1.Enabled = True
+
+        GetLockSerialName()
+        GetWeighingSerialName()
+
+        Form1.SerialPort1.PortName = WeighingSerial
+        Form1.SerialPort2.PortName = LockSerial
+
         'Form1.SerialPort1.Open()
+        'Form1.SerialPort2.Open()
     End Sub
 
     Private Sub Main_Form_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
@@ -21,10 +29,13 @@ Public Class Main_Form
         If dialog = DialogResult.No Then
             e.Cancel = True
         Else
-            Form1.SerialPort1.Close()
-            'SerialPort2.WriteLine("B") 'deactivate door lock
+            If Form1.SerialPort1.IsOpen Then
+                Form1.SerialPort1.Close()
+            End If
+            'SerialPort2.WriteLine("A") 'Activate door lock
+            'CloseSerialPort2()
             Application.ExitThread()
-        End If
+            End If
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
