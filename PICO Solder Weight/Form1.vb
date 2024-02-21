@@ -797,13 +797,13 @@ Public Class Form1
 
     'Public get_FolderPath2 As String = "\\lffile001\infinity\Philippines\Nano Log\" & dateNtime & "Nano Selas temp.csv"
 
-    'C:\Trial
+    'C:\Trial\PICO Solder Weight.csv
 
-    '\\lffile001\infinity\Philippines\Buffer File\PICO
+    '\\lffile001\infinity\Philippines\Buffer File\PICO\PICO Solder Weight NEW.csv
 
     Public dateNtime As String '= DateTime.Now.ToString("yyyy_MM_dd_HHmmtt ")
 
-    Public get_FolderPath As String = "C:\Trial\PICO Solder Weight.csv"
+    Public get_FolderPath As String = "\\lffile001\infinity\Philippines\Buffer File\PICO\PICO Solder Weight NEW.csv"
     'Public get_FolderPath2 As String = "\\lffile001\infinity\Philippines\Nano Log\PICO Solder Weight.csv"
     Public get_message As String
     Public get_message2 As String
