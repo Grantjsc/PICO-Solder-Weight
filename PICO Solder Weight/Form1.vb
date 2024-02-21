@@ -401,9 +401,6 @@ Public Class Form1
                 'CheckPartNo()
                 EmployeeBasis()
 
-                SolderCutter_Form.to_PLC("@00WD01080000")
-                Thread.Sleep(100)
-                SolderCutter_Form.to_PLC("@00WD01090000")
                 'txtPartNo.Enabled = False
             End If
         End If
@@ -440,8 +437,9 @@ Public Class Form1
                 MsgBox("Please enter Lot Number!", MsgBoxStyle.Exclamation)
                 txtLotNo.Text = ""
             Else
-                txtSolderWire.Focus()
-                txtLotNo.ReadOnly = True
+                CheckLotNumber()
+                'txtSolderWire.Focus()
+                'txtLotNo.ReadOnly = True
             End If
         End If
     End Sub
@@ -495,7 +493,7 @@ Public Class Form1
 
             Else
 
-                If SolderCutter_Form.lblSpool107.Text = CInt("100") Then
+                If SolderCutter_Form.lblSpool107.Text = CInt("100") Or InterruptionCheck = True Then
                     Associate()
 
                     'GetLockSerialName()
@@ -1082,6 +1080,10 @@ Public Class Form1
                 MsgBox("Please enter solder wire part number!", MsgBoxStyle.Exclamation)
                 txtSolderWire.Text = ""
             Else
+                SolderCutter_Form.to_PLC("@00WD01080000")
+                Thread.Sleep(100)
+                SolderCutter_Form.to_PLC("@00WD01090000")
+
                 txtBareWire.Focus()
                 txtSolderWire.ReadOnly = True
             End If

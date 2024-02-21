@@ -69,10 +69,10 @@ Partial Class Add_Form
         Me.Panel2.Controls.Add(Me.F4_Username_txt)
         Me.Panel2.Controls.Add(Me.Label7)
         Me.Panel2.Controls.Add(Me.GroupBox1)
-        Me.Panel2.Location = New System.Drawing.Point(41, 531)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
+        Me.Panel2.Location = New System.Drawing.Point(55, 654)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(480, 264)
+        Me.Panel2.Size = New System.Drawing.Size(639, 409)
         Me.Panel2.TabIndex = 79
         '
         'TextBox1
@@ -81,10 +81,10 @@ Partial Class Add_Form
         Me.TextBox1.Font = New System.Drawing.Font("Rockwell", 20.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox1.ForeColor = System.Drawing.Color.White
         Me.TextBox1.Location = New System.Drawing.Point(-1, 0)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(480, 39)
+        Me.TextBox1.Size = New System.Drawing.Size(639, 47)
         Me.TextBox1.TabIndex = 72
         Me.TextBox1.TabStop = False
         Me.TextBox1.Text = "User Name"
@@ -95,10 +95,10 @@ Partial Class Add_Form
         Me.F4_Username_txt.BackColor = System.Drawing.Color.Black
         Me.F4_Username_txt.Font = New System.Drawing.Font("Arial", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.F4_Username_txt.ForeColor = System.Drawing.SystemColors.Menu
-        Me.F4_Username_txt.Location = New System.Drawing.Point(-1, 30)
-        Me.F4_Username_txt.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.F4_Username_txt.Location = New System.Drawing.Point(-1, 37)
+        Me.F4_Username_txt.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.F4_Username_txt.Name = "F4_Username_txt"
-        Me.F4_Username_txt.Size = New System.Drawing.Size(480, 44)
+        Me.F4_Username_txt.Size = New System.Drawing.Size(639, 53)
         Me.F4_Username_txt.TabIndex = 48
         Me.F4_Username_txt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -107,10 +107,9 @@ Partial Class Add_Form
         Me.Label7.BackColor = System.Drawing.Color.Transparent
         Me.Label7.Font = New System.Drawing.Font("Arial", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label7.ForeColor = System.Drawing.Color.Black
-        Me.Label7.Location = New System.Drawing.Point(132, 80)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label7.Location = New System.Drawing.Point(176, 98)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(195, 16)
+        Me.Label7.Size = New System.Drawing.Size(260, 20)
         Me.Label7.TabIndex = 65
         Me.Label7.Text = "(First name Last name)"
         Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -125,11 +124,11 @@ Partial Class Add_Form
         Me.GroupBox1.Controls.Add(Me.PO3_CheckBox)
         Me.GroupBox1.Font = New System.Drawing.Font("Arial", 24.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.Color.Black
-        Me.GroupBox1.Location = New System.Drawing.Point(10, 98)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2)
+        Me.GroupBox1.Location = New System.Drawing.Point(13, 121)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2)
-        Me.GroupBox1.Size = New System.Drawing.Size(457, 158)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.GroupBox1.Size = New System.Drawing.Size(609, 275)
         Me.GroupBox1.TabIndex = 66
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Title:"
@@ -139,10 +138,10 @@ Partial Class Add_Form
         Me.QA_CheckBox.AutoSize = True
         Me.QA_CheckBox.Font = New System.Drawing.Font("Arial", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.QA_CheckBox.ForeColor = System.Drawing.Color.Black
-        Me.QA_CheckBox.Location = New System.Drawing.Point(298, 113)
-        Me.QA_CheckBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.QA_CheckBox.Location = New System.Drawing.Point(397, 139)
+        Me.QA_CheckBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.QA_CheckBox.Name = "QA_CheckBox"
-        Me.QA_CheckBox.Size = New System.Drawing.Size(80, 40)
+        Me.QA_CheckBox.Size = New System.Drawing.Size(100, 49)
         Me.QA_CheckBox.TabIndex = 57
         Me.QA_CheckBox.Text = "QA"
         Me.QA_CheckBox.UseVisualStyleBackColor = True
@@ -152,10 +151,10 @@ Partial Class Add_Form
         Me.Tech_CheckBox.AutoSize = True
         Me.Tech_CheckBox.Font = New System.Drawing.Font("Arial", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Tech_CheckBox.ForeColor = System.Drawing.Color.Black
-        Me.Tech_CheckBox.Location = New System.Drawing.Point(94, 113)
-        Me.Tech_CheckBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Tech_CheckBox.Location = New System.Drawing.Point(125, 139)
+        Me.Tech_CheckBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Tech_CheckBox.Name = "Tech_CheckBox"
-        Me.Tech_CheckBox.Size = New System.Drawing.Size(183, 40)
+        Me.Tech_CheckBox.Size = New System.Drawing.Size(225, 49)
         Me.Tech_CheckBox.TabIndex = 56
         Me.Tech_CheckBox.Text = "Technician"
         Me.Tech_CheckBox.UseVisualStyleBackColor = True
@@ -165,10 +164,10 @@ Partial Class Add_Form
         Me.SPC_CheckBox.AutoSize = True
         Me.SPC_CheckBox.Font = New System.Drawing.Font("Arial", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SPC_CheckBox.ForeColor = System.Drawing.Color.Black
-        Me.SPC_CheckBox.Location = New System.Drawing.Point(298, 38)
-        Me.SPC_CheckBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.SPC_CheckBox.Location = New System.Drawing.Point(397, 47)
+        Me.SPC_CheckBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.SPC_CheckBox.Name = "SPC_CheckBox"
-        Me.SPC_CheckBox.Size = New System.Drawing.Size(99, 40)
+        Me.SPC_CheckBox.Size = New System.Drawing.Size(125, 49)
         Me.SPC_CheckBox.TabIndex = 55
         Me.SPC_CheckBox.Text = "SPC"
         Me.SPC_CheckBox.UseVisualStyleBackColor = True
@@ -178,10 +177,10 @@ Partial Class Add_Form
         Me.Op_CheckBox.AutoSize = True
         Me.Op_CheckBox.Font = New System.Drawing.Font("Arial", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Op_CheckBox.ForeColor = System.Drawing.Color.Black
-        Me.Op_CheckBox.Location = New System.Drawing.Point(94, 38)
-        Me.Op_CheckBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Op_CheckBox.Location = New System.Drawing.Point(125, 47)
+        Me.Op_CheckBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Op_CheckBox.Name = "Op_CheckBox"
-        Me.Op_CheckBox.Size = New System.Drawing.Size(158, 40)
+        Me.Op_CheckBox.Size = New System.Drawing.Size(198, 49)
         Me.Op_CheckBox.TabIndex = 52
         Me.Op_CheckBox.Text = "Operator"
         Me.Op_CheckBox.UseVisualStyleBackColor = True
@@ -191,10 +190,10 @@ Partial Class Add_Form
         Me.Eng_CheckBox.AutoSize = True
         Me.Eng_CheckBox.Font = New System.Drawing.Font("Arial", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Eng_CheckBox.ForeColor = System.Drawing.Color.Black
-        Me.Eng_CheckBox.Location = New System.Drawing.Point(94, 76)
-        Me.Eng_CheckBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Eng_CheckBox.Location = New System.Drawing.Point(125, 94)
+        Me.Eng_CheckBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Eng_CheckBox.Name = "Eng_CheckBox"
-        Me.Eng_CheckBox.Size = New System.Drawing.Size(160, 40)
+        Me.Eng_CheckBox.Size = New System.Drawing.Size(198, 49)
         Me.Eng_CheckBox.TabIndex = 53
         Me.Eng_CheckBox.Text = "Engineer"
         Me.Eng_CheckBox.UseVisualStyleBackColor = True
@@ -204,10 +203,10 @@ Partial Class Add_Form
         Me.PO3_CheckBox.AutoSize = True
         Me.PO3_CheckBox.Font = New System.Drawing.Font("Arial", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.PO3_CheckBox.ForeColor = System.Drawing.Color.Black
-        Me.PO3_CheckBox.Location = New System.Drawing.Point(298, 76)
-        Me.PO3_CheckBox.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PO3_CheckBox.Location = New System.Drawing.Point(397, 94)
+        Me.PO3_CheckBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PO3_CheckBox.Name = "PO3_CheckBox"
-        Me.PO3_CheckBox.Size = New System.Drawing.Size(98, 40)
+        Me.PO3_CheckBox.Size = New System.Drawing.Size(122, 49)
         Me.PO3_CheckBox.TabIndex = 54
         Me.PO3_CheckBox.Text = "PO3"
         Me.PO3_CheckBox.UseVisualStyleBackColor = True
@@ -224,10 +223,10 @@ Partial Class Add_Form
         Me.Panel1.Controls.Add(Me.PictureBox5)
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(555, 145)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
+        Me.Panel1.Location = New System.Drawing.Point(740, 178)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(483, 517)
+        Me.Panel1.Size = New System.Drawing.Size(643, 636)
         Me.Panel1.TabIndex = 78
         '
         'PictureBox2
@@ -235,10 +234,10 @@ Partial Class Add_Form
         Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(88, 26)
-        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PictureBox2.Location = New System.Drawing.Point(117, 32)
+        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(130, 181)
+        Me.PictureBox2.Size = New System.Drawing.Size(173, 223)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox2.TabIndex = 56
         Me.PictureBox2.TabStop = False
@@ -247,10 +246,10 @@ Partial Class Add_Form
         '
         Me.PictureBox3.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(273, 26)
-        Me.PictureBox3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PictureBox3.Location = New System.Drawing.Point(364, 32)
+        Me.PictureBox3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(130, 181)
+        Me.PictureBox3.Size = New System.Drawing.Size(173, 223)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox3.TabIndex = 57
         Me.PictureBox3.TabStop = False
@@ -260,10 +259,9 @@ Partial Class Add_Form
         Me.Label4.BackColor = System.Drawing.Color.Transparent
         Me.Label4.Font = New System.Drawing.Font("Arial", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.Black
-        Me.Label4.Location = New System.Drawing.Point(113, 444)
-        Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label4.Location = New System.Drawing.Point(151, 546)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(87, 20)
+        Me.Label4.Size = New System.Drawing.Size(116, 25)
         Me.Label4.TabIndex = 62
         Me.Label4.Text = "Print 3"
         Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -272,10 +270,10 @@ Partial Class Add_Form
         '
         Me.PictureBox4.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox4.Image = CType(resources.GetObject("PictureBox4.Image"), System.Drawing.Image)
-        Me.PictureBox4.Location = New System.Drawing.Point(88, 256)
-        Me.PictureBox4.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PictureBox4.Location = New System.Drawing.Point(117, 315)
+        Me.PictureBox4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PictureBox4.Name = "PictureBox4"
-        Me.PictureBox4.Size = New System.Drawing.Size(130, 181)
+        Me.PictureBox4.Size = New System.Drawing.Size(173, 223)
         Me.PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox4.TabIndex = 58
         Me.PictureBox4.TabStop = False
@@ -284,10 +282,9 @@ Partial Class Add_Form
         '
         Me.Label5.Font = New System.Drawing.Font("Arial", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.ForeColor = System.Drawing.Color.Black
-        Me.Label5.Location = New System.Drawing.Point(298, 444)
-        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label5.Location = New System.Drawing.Point(397, 546)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(87, 20)
+        Me.Label5.Size = New System.Drawing.Size(116, 25)
         Me.Label5.TabIndex = 63
         Me.Label5.Text = "Print 4"
         Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -297,10 +294,9 @@ Partial Class Add_Form
         Me.Label6.BackColor = System.Drawing.Color.Transparent
         Me.Label6.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.Color.Black
-        Me.Label6.Location = New System.Drawing.Point(22, 474)
-        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label6.Location = New System.Drawing.Point(29, 583)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(444, 18)
+        Me.Label6.Size = New System.Drawing.Size(592, 22)
         Me.Label6.TabIndex = 64
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
@@ -308,10 +304,10 @@ Partial Class Add_Form
         '
         Me.PictureBox5.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox5.Image = CType(resources.GetObject("PictureBox5.Image"), System.Drawing.Image)
-        Me.PictureBox5.Location = New System.Drawing.Point(273, 258)
-        Me.PictureBox5.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PictureBox5.Location = New System.Drawing.Point(364, 318)
+        Me.PictureBox5.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PictureBox5.Name = "PictureBox5"
-        Me.PictureBox5.Size = New System.Drawing.Size(130, 181)
+        Me.PictureBox5.Size = New System.Drawing.Size(173, 223)
         Me.PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox5.TabIndex = 59
         Me.PictureBox5.TabStop = False
@@ -320,10 +316,9 @@ Partial Class Add_Form
         '
         Me.Label3.Font = New System.Drawing.Font("Arial", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Black
-        Me.Label3.Location = New System.Drawing.Point(298, 212)
-        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label3.Location = New System.Drawing.Point(397, 261)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(87, 20)
+        Me.Label3.Size = New System.Drawing.Size(116, 25)
         Me.Label3.TabIndex = 61
         Me.Label3.Text = "Print 2"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -332,10 +327,9 @@ Partial Class Add_Form
         '
         Me.Label1.Font = New System.Drawing.Font("Arial", 13.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(113, 212)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label1.Location = New System.Drawing.Point(151, 261)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(87, 20)
+        Me.Label1.Size = New System.Drawing.Size(116, 25)
         Me.Label1.TabIndex = 60
         Me.Label1.Text = "Print 1"
         Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -352,10 +346,10 @@ Partial Class Add_Form
         Me.F4_Exit_btn.FillColor2 = System.Drawing.Color.Maroon
         Me.F4_Exit_btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.F4_Exit_btn.ForeColor = System.Drawing.SystemColors.Control
-        Me.F4_Exit_btn.Location = New System.Drawing.Point(829, 717)
-        Me.F4_Exit_btn.Margin = New System.Windows.Forms.Padding(2)
+        Me.F4_Exit_btn.Location = New System.Drawing.Point(1105, 882)
+        Me.F4_Exit_btn.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.F4_Exit_btn.Name = "F4_Exit_btn"
-        Me.F4_Exit_btn.Size = New System.Drawing.Size(116, 49)
+        Me.F4_Exit_btn.Size = New System.Drawing.Size(155, 60)
         Me.F4_Exit_btn.TabIndex = 76
         Me.F4_Exit_btn.Text = "Exit"
         '
@@ -372,10 +366,10 @@ Partial Class Add_Form
         Me.F4_Login_btn.FillColor2 = System.Drawing.Color.LimeGreen
         Me.F4_Login_btn.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.F4_Login_btn.ForeColor = System.Drawing.SystemColors.Control
-        Me.F4_Login_btn.Location = New System.Drawing.Point(659, 717)
-        Me.F4_Login_btn.Margin = New System.Windows.Forms.Padding(2)
+        Me.F4_Login_btn.Location = New System.Drawing.Point(879, 882)
+        Me.F4_Login_btn.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.F4_Login_btn.Name = "F4_Login_btn"
-        Me.F4_Login_btn.Size = New System.Drawing.Size(116, 49)
+        Me.F4_Login_btn.Size = New System.Drawing.Size(155, 60)
         Me.F4_Login_btn.TabIndex = 75
         Me.F4_Login_btn.Text = "Add"
         '
@@ -383,10 +377,10 @@ Partial Class Add_Form
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(120, 145)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PictureBox1.Location = New System.Drawing.Point(160, 178)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(259, 360)
+        Me.PictureBox1.Size = New System.Drawing.Size(345, 443)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 74
         Me.PictureBox1.TabStop = False
@@ -397,10 +391,9 @@ Partial Class Add_Form
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Impact", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.Control
-        Me.Label2.Location = New System.Drawing.Point(466, 20)
-        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label2.Location = New System.Drawing.Point(621, 25)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(198, 60)
+        Me.Label2.Size = New System.Drawing.Size(248, 75)
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Add User"
         '
@@ -408,10 +401,10 @@ Partial Class Add_Form
         '
         Me.PictureBox6.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox6.Image = CType(resources.GetObject("PictureBox6.Image"), System.Drawing.Image)
-        Me.PictureBox6.Location = New System.Drawing.Point(7, 2)
-        Me.PictureBox6.Margin = New System.Windows.Forms.Padding(2)
+        Me.PictureBox6.Location = New System.Drawing.Point(9, 2)
+        Me.PictureBox6.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PictureBox6.Name = "PictureBox6"
-        Me.PictureBox6.Size = New System.Drawing.Size(175, 80)
+        Me.PictureBox6.Size = New System.Drawing.Size(233, 98)
         Me.PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox6.TabIndex = 2
         Me.PictureBox6.TabStop = False
@@ -428,16 +421,16 @@ Partial Class Add_Form
         Me.Guna2CustomGradientPanel1.FillColor3 = System.Drawing.Color.Lime
         Me.Guna2CustomGradientPanel1.FillColor4 = System.Drawing.Color.DarkGreen
         Me.Guna2CustomGradientPanel1.Location = New System.Drawing.Point(0, 0)
-        Me.Guna2CustomGradientPanel1.Margin = New System.Windows.Forms.Padding(2)
+        Me.Guna2CustomGradientPanel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Guna2CustomGradientPanel1.Name = "Guna2CustomGradientPanel1"
-        Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(1081, 99)
+        Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(1441, 122)
         Me.Guna2CustomGradientPanel1.TabIndex = 77
         '
         'Add_Form
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1081, 894)
+        Me.ClientSize = New System.Drawing.Size(1441, 1100)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.F4_Exit_btn)
@@ -445,7 +438,7 @@ Partial Class Add_Form
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Guna2CustomGradientPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Name = "Add_Form"
         Me.Text = "Add_Form"
         Me.Panel2.ResumeLayout(False)

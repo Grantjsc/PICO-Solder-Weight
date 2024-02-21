@@ -538,7 +538,7 @@ Module Function_Module
 
     Sub CheckWTinControl()
 
-        If NewWeightmg = OldWeight Then
+        If NewWeightmg = OldWeight Or InterruptionCheck = False Then
 
         Else
             WeightLimits()
@@ -587,6 +587,8 @@ Module Function_Module
             Function_Module.RunMachine()
             Cutter2_Module.C2_ChagetoStop()
             Form1.btnNewLot.Enabled = True
+
+            InterruptionCheck = False
 
             'OpenSerialPort2()
             'SerialPort2.WriteLine("A") 'Activate door lock

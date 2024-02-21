@@ -164,6 +164,12 @@
     <Compile Include="askChangeCutterSet_Form.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="askInterruption_Form.Designer.vb">
+      <DependentUpon>askInterruption_Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="askInterruption_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ChangeComPort_Code.vb" />
     <Compile Include="ChangeComPort_Form.Designer.vb">
       <DependentUpon>ChangeComPort_Form.vb</DependentUpon>
@@ -250,6 +256,7 @@
     <Compile Include="SameLot_Form.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SameLot_FormCode.vb" />
     <Compile Include="SavingError_Form.Designer.vb">
       <DependentUpon>SavingError_Form.vb</DependentUpon>
     </Compile>
@@ -275,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="askChangeCutterSet_Form.resx">
       <DependentUpon>askChangeCutterSet_Form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="askInterruption_Form.resx">
+      <DependentUpon>askInterruption_Form.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeComPort_Form.resx">
       <DependentUpon>ChangeComPort_Form.vb</DependentUpon>

@@ -35,7 +35,7 @@ Partial Class ChangeSpoolMsg_Form
         Me.btnOkay.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnOkay.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnOkay.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnOkay.Location = New System.Drawing.Point(620, 318)
+        Me.btnOkay.Location = New System.Drawing.Point(632, 314)
         Me.btnOkay.Name = "btnOkay"
         Me.btnOkay.Size = New System.Drawing.Size(176, 54)
         Me.btnOkay.TabIndex = 13
@@ -49,22 +49,23 @@ Partial Class ChangeSpoolMsg_Form
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(862, 54)
+        Me.Panel1.Size = New System.Drawing.Size(888, 54)
         Me.Panel1.TabIndex = 12
         '
         'lblSavingError
         '
         Me.lblSavingError.Font = New System.Drawing.Font("Microsoft Sans Serif", 22.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblSavingError.Location = New System.Drawing.Point(219, 126)
+        Me.lblSavingError.Location = New System.Drawing.Point(219, 97)
         Me.lblSavingError.Name = "lblSavingError"
-        Me.lblSavingError.Size = New System.Drawing.Size(643, 199)
+        Me.lblSavingError.Size = New System.Drawing.Size(657, 228)
         Me.lblSavingError.TabIndex = 10
-        Me.lblSavingError.Text = "Install new spool and resetup." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Replace the good bin with an NG bin!"
+        Me.lblSavingError.Text = "Spool is empty!" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Install new spool and resetup." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Replace the good bin with an NG " &
+    "bin."
         '
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.PICO_Solder_Weight.My.Resources.Resources.info_ICON
-        Me.PictureBox1.Location = New System.Drawing.Point(12, 126)
+        Me.PictureBox1.Location = New System.Drawing.Point(12, 97)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(201, 168)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -76,7 +77,7 @@ Partial Class ChangeSpoolMsg_Form
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ScrollBar
-        Me.ClientSize = New System.Drawing.Size(862, 412)
+        Me.ClientSize = New System.Drawing.Size(888, 412)
         Me.Controls.Add(Me.btnOkay)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.lblSavingError)
