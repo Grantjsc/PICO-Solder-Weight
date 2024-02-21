@@ -919,9 +919,9 @@ Public Class Form1
 
 
     Public checkSaveCon As Boolean = False
+    Public saw As Boolean = False
     Public Sub checkSaving()
         Dim Wt As String
-        Dim saw As Boolean = False
         Wt = CInt(txtWeight.Text)
 
         Select Case Wt

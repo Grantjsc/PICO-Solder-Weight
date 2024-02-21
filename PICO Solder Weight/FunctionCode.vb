@@ -283,6 +283,8 @@ Module Function_Module
                     ResetOCAP()
                     ChangeOCAP()
 
+                    Form1.saw = False
+
                     PurgeAfterOCAP()
                     WeighingScalebyON()
                     Thread.Sleep(100)
@@ -314,6 +316,7 @@ Module Function_Module
                 Master_login.ShowDialog()
                 If Master_login.F1_get_title = "SPC" Then
 
+                    Form1.saw = False
 
                     PurgeAfterOCAP()
                     WeighingScalebyON()
