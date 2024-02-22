@@ -994,11 +994,11 @@ Partial Class Form1
         '
         'TimerCheckInfi
         '
-        Me.TimerCheckInfi.Interval = 60000
+        Me.TimerCheckInfi.Interval = 30000
         '
         'TimerCheckCR
         '
-        Me.TimerCheckCR.Interval = 60000
+        Me.TimerCheckCR.Interval = 30000
         '
         'Form1
         '

@@ -14,7 +14,7 @@ Public Class Form1
     Public txt As String
     Public retext As String
 
-    Public data(5000) As Decimal
+    Public data() As Decimal
     Public count As Integer
     Public param As String
     Public RealData As String
@@ -99,7 +99,9 @@ Public Class Form1
                 SerialPort1.WriteLine("SP")
                 Thread.Sleep(100)
 
-                data(count) = RealData
+                ReDim Preserve data(count)
+                data(count) = Decimal.Parse(RealData)
+                'data(count) = RealData
                 count += 1
                 lstResult.Items.Add(count & ". " & RealData)
                 lstResult.SelectedIndex = lstResult.Items.Count - 1
@@ -830,7 +832,7 @@ Public Class Form1
                     My.Computer.FileSystem.WriteAllText(get_FolderPath, get_message, False)
                     'My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message, True)
                     MessageBox.Show("The data is saved in " & get_FolderPath)
-                    btnNewLot.Enabled = True
+                    'btnNewLot.Enabled = True
                     btnSave.Enabled = False
 
                     Timer1.Enabled = False
@@ -872,7 +874,7 @@ Public Class Form1
                     My.Computer.FileSystem.WriteAllText(get_FolderPath, get_message, False)
                     'My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message, True)
                     MessageBox.Show("The data is saved in " & get_FolderPath)
-                    btnNewLot.Enabled = True
+                    'btnNewLot.Enabled = True
                     btnSave.Enabled = False
 
                     Timer1.Enabled = False
@@ -890,7 +892,7 @@ Public Class Form1
 
                     'Function_Module.RunMachine()
                     'Cutter2_Module.C2_ChagetoStop()
-                    TimerCheckInfi.Interval = 60000
+                    TimerCheckInfi.Interval = 30000
                     TimerCheckInfi.Enabled = True
                     checkSaveCon = True
 
@@ -919,10 +921,10 @@ Public Class Form1
 
 
     Public checkSaveCon As Boolean = False
-    Public saw As Boolean = False
     Public Sub checkSaving()
         Dim Wt As String
         Wt = CInt(txtWeight.Text)
+        Dim saw As Boolean = False
 
         Select Case Wt
 
@@ -934,14 +936,14 @@ Public Class Form1
                     End If
                 Next
 
-                If saw Then
+                If saw = True Then
                     TimerCheckCR.Enabled = True
                 Else
 
                     Function_Module.ResetOCAP()
                     Function_Module.ChangeOCAP()
 
-                    TimerCheckInfi.Interval = 60000
+                    TimerCheckInfi.Interval = 30000
                     TimerCheckInfi.Enabled = True
                     checkSaveCon = True
                 End If
@@ -955,14 +957,14 @@ Public Class Form1
                     End If
                 Next
 
-                If saw Then
+                If saw = True Then
                     TimerCheckCR.Enabled = True
                 Else
 
                     Function_Module.ResetOCAP()
                     Function_Module.ChangeOCAP()
 
-                    TimerCheckInfi.Interval = 60000
+                    TimerCheckInfi.Interval = 30000
                     TimerCheckInfi.Enabled = True
                     checkSaveCon = True
                 End If

@@ -283,7 +283,10 @@ Module Function_Module
                     ResetOCAP()
                     ChangeOCAP()
 
-                    Form1.saw = False
+                    Form1.btnEnable.Visible = False
+                    Form1.btnReset.Visible = True
+                    Form1.btnReset.Enabled = False
+                    Array.Clear(Form1.data, 0, Form1.data.Length)
 
                     PurgeAfterOCAP()
                     WeighingScalebyON()
@@ -316,7 +319,10 @@ Module Function_Module
                 Master_login.ShowDialog()
                 If Master_login.F1_get_title = "SPC" Then
 
-                    Form1.saw = False
+                    Form1.btnEnable.Visible = False
+                    Form1.btnReset.Visible = True
+                    Form1.btnReset.Enabled = False
+                    Array.Clear(Form1.data, 0, Form1.data.Length)
 
                     PurgeAfterOCAP()
                     WeighingScalebyON()
