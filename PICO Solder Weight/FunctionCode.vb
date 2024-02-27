@@ -72,14 +72,14 @@ Module Function_Module
                     Thread.Sleep(100)
                     Form1.SerialPort1.WriteLine("CP")
                     Form1.Timer1.Enabled = True
-                Else
-                    'For Evaluation
-                    Eval_Form.SerialPort1.Open()
-                    Thread.Sleep(100)
-                    Eval_Form.SerialPort1.WriteLine("Z")
-                    Thread.Sleep(100)
-                    Eval_Form.SerialPort1.WriteLine("CP")
-                    Eval_Form.Timer1.Enabled = True
+                    'Else
+                    '    'For Evaluation
+                    '    Eval_Form.SerialPort1.Open()
+                    '    Thread.Sleep(100)
+                    '    Eval_Form.SerialPort1.WriteLine("Z")
+                    '    Thread.Sleep(100)
+                    '    Eval_Form.SerialPort1.WriteLine("CP")
+                    '    Eval_Form.Timer1.Enabled = True
                 End If
 
                 'SolderCutter_Form.to_PLC("@00WD01060000")
@@ -107,14 +107,14 @@ Module Function_Module
                     Thread.Sleep(100)
                     Form1.SerialPort1.WriteLine("CP")
                     Form1.Timer1.Enabled = True
-                Else
-                    'For Evaluation
-                    Eval_Form.SerialPort1.Open()
-                    Thread.Sleep(100)
-                    Eval_Form.SerialPort1.WriteLine("Z")
-                    Thread.Sleep(100)
-                    Eval_Form.SerialPort1.WriteLine("CP")
-                    Eval_Form.Timer1.Enabled = True
+                    'Else
+                    '    'For Evaluation
+                    '    Eval_Form.SerialPort1.Open()
+                    '    Thread.Sleep(100)
+                    '    Eval_Form.SerialPort1.WriteLine("Z")
+                    '    Thread.Sleep(100)
+                    '    Eval_Form.SerialPort1.WriteLine("CP")
+                    '    Eval_Form.Timer1.Enabled = True
                 End If
 
                 SolderCutter_Form.to_PLC("@00WD01060000")
@@ -583,6 +583,8 @@ Module Function_Module
                 If Form1.RealData >= 12.57 Or Form1.RealData <= 11.41 Then '11.41
                     Main_Form.btnSolderCutter.Enabled = False
                     Main_Form.btnSolderWeight.Enabled = False
+                    Main_Form.btnBuyOff.Enabled = False
+                    Main_Form.btnEval.Enabled = False
 
                     Form1.Timer1.Enabled = False
                     Form1.SerialPort1.WriteLine("Z")
@@ -604,6 +606,8 @@ Module Function_Module
                 If Form1.RealData >= 14.62 Or Form1.RealData <= 13.33 Then
                     Main_Form.btnSolderCutter.Enabled = False
                     Main_Form.btnSolderWeight.Enabled = False
+                    Main_Form.btnBuyOff.Enabled = False
+                    Main_Form.btnEval.Enabled = False
 
                     Form1.Timer1.Enabled = False
                     Form1.SerialPort1.WriteLine("Z")

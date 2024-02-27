@@ -72,6 +72,8 @@ Module OCAP_Module
             SaveData()
             Main_Form.btnSolderCutter.Enabled = True
             Main_Form.btnSolderWeight.Enabled = True
+            Main_Form.btnBuyOff.Enabled = True
+            Main_Form.btnEval.Enabled = True
 
             CutSetChanged = True
 

@@ -2,8 +2,8 @@
 
 Public Class Eval_Form
     Private Sub Eval_Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Timer1.Enabled = True
-        'SerialPort1.Open()
+        Timer1.Enabled = True
+        SerialPort1.Open()
 
         Main_Form.btnSolderWeight.Enabled = False
         Main_Form.btnSolderCutter.Enabled = False
@@ -51,10 +51,12 @@ Public Class Eval_Form
         Weighing()
     End Sub
     Private Sub txtWeight_KeyUp(sender As Object, e As KeyEventArgs) Handles txtWeight.KeyUp
-        Evaluation = True
-        GetEvalmg()
-        GetOldmg()
-        CheckMg()
+        If e.KeyCode = Keys.Enter Then
+            Evaluation = True
+            GetEvalmg()
+            GetOldmg()
+            CheckMg()
+        End If
     End Sub
 
     Private Sub txtWeight_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtWeight.KeyPress

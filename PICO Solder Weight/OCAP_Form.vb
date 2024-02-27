@@ -11,7 +11,7 @@
         OCAP_Module.ActionSelect()
     End Sub
 
-    Private Sub txtNewCutSet_KeyPress(sender As Object, e As KeyPressEventArgs) 
+    Private Sub txtNewCutSet_KeyPress(sender As Object, e As KeyPressEventArgs)
         If Asc(e.KeyChar) <> 8 Then
             If (Asc(e.KeyChar) < 48 Or Asc(e.KeyChar) > 57) Then
                 e.Handled = True

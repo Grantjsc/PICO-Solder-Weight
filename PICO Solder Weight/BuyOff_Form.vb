@@ -6,6 +6,7 @@ Public Class BuyOff_Form
         Main_Form.btnSolderCutter.Enabled = False
         Main_Form.btnEval.Enabled = False
         btnStart.Enabled = True
+        txtQty.Text = ""
     End Sub
 
     Private Sub btnStart_Click_1(sender As Object, e As EventArgs) Handles btnStart.Click
@@ -13,12 +14,14 @@ Public Class BuyOff_Form
             MsgBox("Please enter quantity!", MsgBoxStyle.Critical)
             txtQty.Focus()
         Else
-            Timer1.Enabled = True
 
             SolderCutter_Form.to_PLC("@00WD01080000")
             Thread.Sleep(100)
             SolderCutter_Form.to_PLC("@00WD01090000")
             Thread.Sleep(100)
+
+            btnStart.Enabled = False
+            Timer1.Enabled = True
 
             Dim CutQty As String
             Dim QtyLength As String
@@ -94,11 +97,6 @@ Public Class BuyOff_Form
 
             End Select
         End If
-
-        btnStart.Enabled = False
-        'txtQty.Text = ""
-        'Cutter2_Module.C2_ChagetoStop()
-        'Me.Close()
     End Sub
 
     Public Sub Done()

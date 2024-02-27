@@ -32,6 +32,7 @@ Partial Class Eval_Form
         Me.lstResult = New System.Windows.Forms.ListBox()
         Me.btnSave = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblWeight = New System.Windows.Forms.Label()
         Me.txtWeight = New Guna.UI2.WinForms.Guna2TextBox()
@@ -41,7 +42,6 @@ Partial Class Eval_Form
         Me.txtName = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Guna2CustomGradientPanel2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -104,7 +104,7 @@ Partial Class Eval_Form
         Me.txtReading.Font = New System.Drawing.Font("Lucida Fax", 25.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtReading.ForeColor = System.Drawing.Color.Lime
         Me.txtReading.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtReading.Location = New System.Drawing.Point(548, 93)
+        Me.txtReading.Location = New System.Drawing.Point(585, 94)
         Me.txtReading.Margin = New System.Windows.Forms.Padding(5, 7, 5, 7)
         Me.txtReading.Name = "txtReading"
         Me.txtReading.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
@@ -123,7 +123,7 @@ Partial Class Eval_Form
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Imprint MT Shadow", 24.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(729, 17)
+        Me.Label3.Location = New System.Drawing.Point(766, 18)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(137, 47)
         Me.Label3.TabIndex = 32
@@ -136,7 +136,7 @@ Partial Class Eval_Form
         Me.lstResult.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lstResult.FormattingEnabled = True
         Me.lstResult.ItemHeight = 36
-        Me.lstResult.Location = New System.Drawing.Point(548, 204)
+        Me.lstResult.Location = New System.Drawing.Point(585, 205)
         Me.lstResult.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.lstResult.Name = "lstResult"
         Me.lstResult.Size = New System.Drawing.Size(495, 436)
@@ -199,13 +199,25 @@ Partial Class Eval_Form
         Me.Panel1.Size = New System.Drawing.Size(1060, 779)
         Me.Panel1.TabIndex = 35
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Red
+        Me.Label4.Location = New System.Drawing.Point(83, 109)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(26, 31)
+        Me.Label4.TabIndex = 47
+        Me.Label4.Text = "*"
+        '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.Location = New System.Drawing.Point(94, 447)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(411, 20)
+        Me.Label2.Size = New System.Drawing.Size(359, 18)
         Me.Label2.TabIndex = 46
         Me.Label2.Text = "Please press enter key after you input the weight(mg)."
         '
@@ -233,7 +245,7 @@ Partial Class Eval_Form
         Me.txtWeight.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.txtWeight.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtWeight.Font = New System.Drawing.Font("Segoe UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtWeight.ForeColor = System.Drawing.Color.Silver
+        Me.txtWeight.ForeColor = System.Drawing.Color.Black
         Me.txtWeight.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtWeight.Location = New System.Drawing.Point(98, 388)
         Me.txtWeight.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
@@ -332,18 +344,6 @@ Partial Class Eval_Form
         'SerialPort1
         '
         Me.SerialPort1.PortName = "COM3"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.Red
-        Me.Label4.Location = New System.Drawing.Point(83, 109)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(26, 31)
-        Me.Label4.TabIndex = 47
-        Me.Label4.Text = "*"
         '
         'Eval_Form
         '

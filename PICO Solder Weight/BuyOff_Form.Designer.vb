@@ -28,11 +28,11 @@ Partial Class BuyOff_Form
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.btnStart = New Guna.UI2.WinForms.Guna2Button()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.txtQty = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblcounter = New System.Windows.Forms.Label()
+        Me.btnStart = New Guna.UI2.WinForms.Guna2Button()
+        Me.lblTitle = New System.Windows.Forms.Label()
+        Me.txtQty = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Guna2CustomGradientPanel2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -89,12 +89,36 @@ Partial Class BuyOff_Form
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.lblcounter)
         Me.Panel1.Controls.Add(Me.btnStart)
-        Me.Panel1.Controls.Add(Me.Label9)
+        Me.Panel1.Controls.Add(Me.lblTitle)
         Me.Panel1.Controls.Add(Me.txtQty)
         Me.Panel1.Location = New System.Drawing.Point(126, 215)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1060, 779)
         Me.Panel1.TabIndex = 36
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Arial Narrow", 28.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Black
+        Me.Label2.Location = New System.Drawing.Point(513, 73)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(186, 55)
+        Me.Label2.TabIndex = 73
+        Me.Label2.Text = "Counter:"
+        '
+        'lblcounter
+        '
+        Me.lblcounter.BackColor = System.Drawing.Color.Transparent
+        Me.lblcounter.Font = New System.Drawing.Font("Arial", 25.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblcounter.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))
+        Me.lblcounter.Location = New System.Drawing.Point(476, 128)
+        Me.lblcounter.Name = "lblcounter"
+        Me.lblcounter.Size = New System.Drawing.Size(240, 70)
+        Me.lblcounter.TabIndex = 74
+        Me.lblcounter.Text = "0"
+        Me.lblcounter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'btnStart
         '
@@ -128,15 +152,15 @@ Partial Class BuyOff_Form
         Me.btnStart.TabIndex = 56
         Me.btnStart.Text = "Start"
         '
-        'Label9
+        'lblTitle
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(462, 242)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(279, 46)
-        Me.Label9.TabIndex = 39
-        Me.Label9.Text = "Enter quantity"
+        Me.lblTitle.AutoSize = True
+        Me.lblTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTitle.Location = New System.Drawing.Point(462, 240)
+        Me.lblTitle.Name = "lblTitle"
+        Me.lblTitle.Size = New System.Drawing.Size(279, 46)
+        Me.lblTitle.TabIndex = 39
+        Me.lblTitle.Text = "Enter quantity"
         '
         'txtQty
         '
@@ -167,30 +191,6 @@ Partial Class BuyOff_Form
         Me.txtQty.TabIndex = 36
         Me.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Arial Narrow", 28.2!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.Black
-        Me.Label2.Location = New System.Drawing.Point(513, 73)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(186, 55)
-        Me.Label2.TabIndex = 73
-        Me.Label2.Text = "Counter:"
-        '
-        'lblcounter
-        '
-        Me.lblcounter.BackColor = System.Drawing.Color.Transparent
-        Me.lblcounter.Font = New System.Drawing.Font("Arial", 25.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblcounter.ForeColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(39, Byte), Integer), CType(CType(46, Byte), Integer))
-        Me.lblcounter.Location = New System.Drawing.Point(476, 128)
-        Me.lblcounter.Name = "lblcounter"
-        Me.lblcounter.Size = New System.Drawing.Size(240, 70)
-        Me.lblcounter.TabIndex = 74
-        Me.lblcounter.Text = "0"
-        Me.lblcounter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
         'Timer1
         '
         '
@@ -217,7 +217,7 @@ Partial Class BuyOff_Form
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Label9 As Label
+    Friend WithEvents lblTitle As Label
     Friend WithEvents txtQty As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents btnStart As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Label2 As Label

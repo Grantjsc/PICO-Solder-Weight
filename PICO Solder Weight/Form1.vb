@@ -14,7 +14,7 @@ Public Class Form1
     Public txt As String
     Public retext As String
 
-    Public data() As Decimal
+    Public data(500) As Decimal
     Public count As Integer
     Public param As String
     Public RealData As String
