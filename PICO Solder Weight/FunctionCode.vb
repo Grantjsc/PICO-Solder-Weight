@@ -25,6 +25,10 @@ Module Function_Module
         NewWeightmg = CDec(Form1.txtWeight.Text)
     End Sub
 
+    Sub GetEvalmg()
+        NewWeightmg = CDec(Eval_Form.txtWeight.Text)
+    End Sub
+
     Sub GetOldmg()
         Dim Oldmg As String = System.Configuration.ConfigurationManager.AppSettings("mg")
         Console.WriteLine(Oldmg)
@@ -41,21 +45,15 @@ Module Function_Module
                 Purging_Form.TimerPurgingAndSamples.Enabled = False
                 SolderCutter_Form.to_PLC("@00WD01050000")
                 Thread.Sleep(100)
-                Dim dialog As DialogResult
-                dialog = MessageBox.Show("Please replace the NG bin with a sample bin before clicking okay.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                If dialog = DialogResult.OK Then
+                'Dim dialog As DialogResult
+                'dialog = MessageBox.Show("Please replace the NG bin with a sample bin before clicking okay.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                'If dialog = DialogResult.OK Then
 
-                    'Form1.SerialPort1.WriteLine("Z")
-                    'Thread.Sleep(100)
-                    'Form1.SerialPort1.WriteLine("CP")
+                PurgeDone = True
+                'Samples = True
+                AfterPurgeSample_Form.ShowDialog()
 
-                    Purging_Form.lblMsg.Text = "The machine is cutting samples ..."
-                    SolderCutter_Form.to_PLC("@00WD00060010")
-                    Thread.Sleep(500)
-                    Purging_Form.TimerPurgingAndSamples.Enabled = True
-                    PurgeDone = True
-                    Samples = True
-                End If
+                'End If
             End If
         End If
 
@@ -65,6 +63,25 @@ Module Function_Module
                 SolderCutter_Form.btnC2Start.Enabled = True
                 Samples = False
                 Purging_Form.TimerPurgingAndSamples.Enabled = False
+
+                If Evaluation = False Then
+                    'Open Weighing Scale after cutting Samples
+                    WeighingScalebyON()
+                    Thread.Sleep(100)
+                    Form1.SerialPort1.WriteLine("Z")
+                    Thread.Sleep(100)
+                    Form1.SerialPort1.WriteLine("CP")
+                    Form1.Timer1.Enabled = True
+                Else
+                    'For Evaluation
+                    Eval_Form.SerialPort1.Open()
+                    Thread.Sleep(100)
+                    Eval_Form.SerialPort1.WriteLine("Z")
+                    Thread.Sleep(100)
+                    Eval_Form.SerialPort1.WriteLine("CP")
+                    Eval_Form.Timer1.Enabled = True
+                End If
+
                 'SolderCutter_Form.to_PLC("@00WD01060000")
                 Thread.Sleep(100)
                 'Purging_Form.TimerPurgingAndSamples.Enabled = False
@@ -81,10 +98,29 @@ Module Function_Module
                 SolderCutter_Form.btnC2Start.Enabled = True
                 Samples = True
                 Purging_Form.TimerCutSamples.Enabled = False
+
+                If Evaluation = False Then
+                    'Open Weighing Scale after cutting Samples
+                    WeighingScalebyON()
+                    Thread.Sleep(100)
+                    Form1.SerialPort1.WriteLine("Z")
+                    Thread.Sleep(100)
+                    Form1.SerialPort1.WriteLine("CP")
+                    Form1.Timer1.Enabled = True
+                Else
+                    'For Evaluation
+                    Eval_Form.SerialPort1.Open()
+                    Thread.Sleep(100)
+                    Eval_Form.SerialPort1.WriteLine("Z")
+                    Thread.Sleep(100)
+                    Eval_Form.SerialPort1.WriteLine("CP")
+                    Eval_Form.Timer1.Enabled = True
+                End If
+
                 SolderCutter_Form.to_PLC("@00WD01060000")
-                Purging_Form.Close()
+                    Purging_Form.Close()
+                End If
             End If
-        End If
     End Sub
 
     Sub CheckMg()
@@ -168,11 +204,16 @@ Module Function_Module
 
                 Master_login.Label1.Text = "Perform OCAP, please scan your finger. Technician only"
                 Master_login.ShowDialog()
-                If Master_login.F1_get_title = "Technician" Then
+                If Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "Engineer" Then
                     'SerialPort1.WriteLine("A")
                     'Wite to PLC Reset Error
                     ResetOCAP()
                     ChangeOCAP()
+
+                    Form1.count = 0
+                    Form1.lstResult.Items.Clear()
+                    Array.Clear(Form1.data, 0, Form1.data.Length)
+
                     With OCAP_Form
                         .TopLevel = False
                         Main_Form.PanelMain.Controls.Add(OCAP_Form)
@@ -225,6 +266,11 @@ Module Function_Module
             ChangeOCAP()
             'SolderCutter_Form.to_PLC("@00WD00000000")
             MsgBox("Please perform OCAP!", MessageBoxIcon.Error)
+
+            Form1.count = 0
+            Form1.lstResult.Items.Clear()
+            Array.Clear(Form1.data, 0, Form1.data.Length)
+
             With OCAP_Form
                 .TopLevel = False
                 Main_Form.PanelMain.Controls.Add(OCAP_Form)
@@ -278,18 +324,27 @@ Module Function_Module
 
                 Master_login.Label1.Text = "Perform OCAP, please scan your finger after performing OCAP. Technician only"
                 Master_login.ShowDialog()
-                If Master_login.F1_get_title = "Technician" Then
+                If Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "Engineer" Then
 
                     ResetOCAP()
                     ChangeOCAP()
 
+                    Form1.btnEnable.Visible = False
+                    Form1.btnReset.Visible = True
+                    Form1.btnReset.Enabled = False
+
+                    Form1.count = 0
+                    Form1.lstResult.Items.Clear()
+                    Array.Clear(Form1.data, 0, Form1.data.Length)
+
                     PurgeAfterOCAP()
-                    WeighingScalebyON()
-                    Thread.Sleep(100)
-                    Form1.SerialPort1.WriteLine("Z")
-                    Thread.Sleep(100)
-                    Form1.SerialPort1.WriteLine("CP")
-                    Form1.Timer1.Enabled = True
+                    ''Moved after cutting samples
+                    'WeighingScalebyON()
+                    'Thread.Sleep(100)
+                    'Form1.SerialPort1.WriteLine("Z")
+                    'Thread.Sleep(100)
+                    'Form1.SerialPort1.WriteLine("CP")
+                    'Form1.Timer1.Enabled = True
                     Master_login.Close()
 
                     Fngerprint = True
@@ -312,16 +367,24 @@ Module Function_Module
 
                 Master_login.Label1.Text = "Perform OCAP, please scan your finger after performing OCAP. SPC only"
                 Master_login.ShowDialog()
-                If Master_login.F1_get_title = "SPC" Then
+                If Master_login.F1_get_title = "SPC" Or Master_login.F1_get_title = "Engineer" Then
 
+                    Form1.btnEnable.Visible = False
+                    Form1.btnReset.Visible = True
+                    Form1.btnReset.Enabled = False
+
+                    Form1.count = 0
+                    Form1.lstResult.Items.Clear()
+                    Array.Clear(Form1.data, 0, Form1.data.Length)
 
                     PurgeAfterOCAP()
-                    WeighingScalebyON()
-                    Thread.Sleep(100)
-                    Form1.SerialPort1.WriteLine("Z")
-                    Thread.Sleep(100)
-                    Form1.SerialPort1.WriteLine("CP")
-                    Form1.Timer1.Enabled = True
+                    ''Chnage to after cutting samples
+                    'WeighingScalebyON()
+                    'Thread.Sleep(100)
+                    'Form1.SerialPort1.WriteLine("Z")
+                    'Thread.Sleep(100)
+                    'Form1.SerialPort1.WriteLine("CP")
+                    'Form1.Timer1.Enabled = True
                     Master_login.Close()
 
                     Fngerprint = True
@@ -483,6 +546,30 @@ Module Function_Module
             Cutter2_Module.C2_ChagetoStart()
             'MessageBox.Show("Please change spool!", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Information)
             ChangeSpoolMsg_Form.ShowDialog()
+
+
+            ''Verrify if need Biometrics if change spool
+            'Dim Fngerprint = False
+            'While Fngerprint = False
+
+            '    Master_login.Label1.Text = "Spool is empty!, Please scan your finger. SPC or Technician only"
+            '    Master_login.ShowDialog()
+            '    If Master_login.F1_get_title = "SPC" Or Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "Engineer" Then
+            '        ChangeSpoolMsg_Form.ShowDialog()
+            '        Fngerprint = True
+            '    Else
+
+            '        MsgBox("Authorized personnel only!", MsgBoxStyle.Exclamation)
+            '        Master_login.Close()
+            '    End If
+            'End While
+        End If
+    End Sub
+
+    Sub ResetChangeSpool()
+        If SolderCutter_Form.lblSpool107.Text = CInt("100") Then
+            SolderCutter_Form.to_PLC("@00WD01070000")
+            SolderCutter_Form.TimerChangeSpool.Enabled = True
         End If
     End Sub
 
@@ -499,12 +586,13 @@ Module Function_Module
 
                     Form1.Timer1.Enabled = False
                     Form1.SerialPort1.WriteLine("Z")
-                    'Form1.SerialPort1.Close()
-                    'Form1.txtReading.Text = ""
+                    Thread.Sleep(100)
+                    Form1.SerialPort1.Close()
+                    Form1.txtReading.Text = ""
 
-                    Form1.count = 0
-                    Form1.lstResult.Items.Clear()
-                    Array.Clear(Form1.data, 0, Form1.data.Length)
+                    'Form1.count = 0
+                    'Form1.lstResult.Items.Clear()
+                    'Array.Clear(Form1.data, 0, Form1.data.Length)
                     'Form1.cboAssociate.Text = Nothing
                     Thread.Sleep(500)
 
@@ -519,12 +607,13 @@ Module Function_Module
 
                     Form1.Timer1.Enabled = False
                     Form1.SerialPort1.WriteLine("Z")
-                    'Form1.SerialPort1.Close()
-                    'Form1.txtReading.Text = ""
+                    Thread.Sleep(100)
+                    Form1.SerialPort1.Close()
+                    Form1.txtReading.Text = ""
 
-                    Form1.count = 0
-                    Form1.lstResult.Items.Clear()
-                    Array.Clear(Form1.data, 0, Form1.data.Length)
+                    'Form1.count = 0
+                    'Form1.lstResult.Items.Clear()
+                    'Array.Clear(Form1.data, 0, Form1.data.Length)
                     'Form1.cboAssociate.Text = Nothing
                     Thread.Sleep(500)
 
@@ -537,8 +626,10 @@ Module Function_Module
 
 
     Sub CheckWTinControl()
+        'Verify if there ia a interruption (Continue/WeightLimit)
+        'NewWeightmg = OldWeight And InterruptionCheck = False
 
-        If NewWeightmg = OldWeight Or InterruptionCheck = False Then
+        If NewWeightmg = OldWeight And InterruptionCheck = False Then
 
         Else
             WeightLimits()
@@ -577,9 +668,23 @@ Module Function_Module
     End Sub
 
     Sub CheckInifinity()
-        Dim isFileEmpty As Boolean = Form1.IsCSVFileEmpty(Form1.get_FolderPath)
+        'Dim isFileEmpty As Boolean = Form1.IsCSVFileEmpty(Form1.get_FolderPath)
+        Dim isFileEmpty12mg As Boolean = Form1.IsCSVFileEmpty(Form1.get_FolderPath)
+        Dim isFileEmpty14mg As Boolean = Form1.IsCSVFileEmpty(Form1.get_FolderPath14mg)
+        Dim isFileEmpty As Boolean
+
+        Select Case CInt(Form1.txtWeight.Text)
+            Case 12
+                isFileEmpty = isFileEmpty12mg
+            Case 14
+                isFileEmpty = isFileEmpty14mg
+        End Select
 
         If isFileEmpty Then
+
+            SolderCutter_Form.to_PLC("@00WD01080000")
+            Thread.Sleep(100)
+            SolderCutter_Form.to_PLC("@00WD01090000")
 
             Form1.TimerCheckInfi.Enabled = False
             SolderCutter_Form.TimerQtyChecking.Enabled = True
@@ -589,6 +694,7 @@ Module Function_Module
             Form1.btnNewLot.Enabled = True
 
             InterruptionCheck = False
+            ResetChangeSpool()
 
             'OpenSerialPort2()
             'SerialPort2.WriteLine("A") 'Activate door lock
@@ -607,14 +713,24 @@ Module Function_Module
     End Sub
 
     Sub CheckContinuesRun()
-        Dim isFileEmpty As Boolean = Form1.IsCSVFileEmpty(Form1.get_FolderPath)
+        'Dim isFileEmpty As Boolean = Form1.IsCSVFileEmpty(Form1.get_FolderPath)
+        Dim isFileEmpty12mg As Boolean = Form1.IsCSVFileEmpty(Form1.get_FolderPath)
+        Dim isFileEmpty14mg As Boolean = Form1.IsCSVFileEmpty(Form1.get_FolderPath14mg)
+        Dim isFileEmpty As Boolean
+
+        Select Case CInt(Form1.txtWeight.Text)
+            Case 12
+                isFileEmpty = isFileEmpty12mg
+            Case 14
+                isFileEmpty = isFileEmpty14mg
+        End Select
 
         If isFileEmpty Then
             Form1.TimerCheckCR.Enabled = False
 
-            Form1.count = 0
-            Form1.lstResult.Items.Clear()
-            Array.Clear(Form1.data, 0, Form1.data.Length)
+            'Form1.count = 0
+            'Form1.lstResult.Items.Clear()
+            'Array.Clear(Form1.data, 0, Form1.data.Length)
 
             BiometricsOCAPcontinuesRun()
         Else

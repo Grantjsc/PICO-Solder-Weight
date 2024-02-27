@@ -14,7 +14,7 @@ Public Class Form1
     Public txt As String
     Public retext As String
 
-    Public data(5000) As Decimal
+    Public data() As Decimal
     Public count As Integer
     Public param As String
     Public RealData As String
@@ -99,7 +99,9 @@ Public Class Form1
                 SerialPort1.WriteLine("SP")
                 Thread.Sleep(100)
 
-                data(count) = RealData
+                ReDim Preserve data(count)
+                data(count) = Decimal.Parse(RealData)
+                'data(count) = RealData
                 count += 1
                 lstResult.Items.Add(count & ". " & RealData)
                 lstResult.SelectedIndex = lstResult.Items.Count - 1
@@ -444,6 +446,61 @@ Public Class Form1
         End If
     End Sub
 
+    Sub cboAssForEval()
+        If txtWeight.Text = "" Or txtWeight.Text = "Enter weight" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter weight!", MsgBoxStyle.Exclamation)
+            txtWeight.Focus()
+
+        ElseIf txtPartNo.Text = "" Or txtPartNo.Text = "Enter Part Number" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter Part Number!", MsgBoxStyle.Exclamation)
+            txtPartNo.Focus()
+
+        ElseIf txtSolderWire.Text = "" Or txtSolderWire.Text = "Enter Solder Wire Part #" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter Solder wire part number!", MsgBoxStyle.Exclamation)
+            txtSolderWire.Focus()
+
+        ElseIf txtBareWire.Text = "" Or txtBareWire.Text = "Enter Bare Wire Lot #" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter Bare wire lot number!", MsgBoxStyle.Exclamation)
+            txtBareWire.Focus()
+
+        ElseIf txtCutterSet.Text = "" Or txtCutterSet.Text = "Enter Cutter Setting" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter cutter setting!", MsgBoxStyle.Exclamation)
+            txtCutterSet.Focus()
+
+        ElseIf cboProcess.Text = "" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter process!", MsgBoxStyle.Exclamation)
+
+        ElseIf cboShift.Text = "" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter your shift!", MsgBoxStyle.Exclamation)
+
+        ElseIf txtLotNo.Text = "" Or txtPartNo.Text = "Enter Lot Number" Then
+            cboAssociate.Text = Nothing
+            MsgBox("Please enter Lot Numbwe!", MsgBoxStyle.Exclamation)
+            txtLotNo.Focus()
+
+        Else
+            Associate()
+
+            SolderCutter_Form.to_PLC("@00WD01080000")
+            Thread.Sleep(100)
+            SolderCutter_Form.to_PLC("@00WD01090000")
+            Thread.Sleep(500)
+
+            Function_Module.GetNewmg()
+            Function_Module.GetOldmg()
+
+            Function_Module.CheckMg()
+
+        End If
+    End Sub
+
     Private Sub cboAssociate_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboAssociate.SelectedIndexChanged
         If cboAssociate.Text = Nothing Then
 
@@ -511,8 +568,9 @@ Public Class Form1
 
                     Timer1.Enabled = True
 
-                    SolderCutter_Form.to_PLC("@00WD01070000")
-                    SolderCutter_Form.TimerChangeSpool.Enabled = True
+                    ''Real flow in prod if change spool always purge
+                    'SolderCutter_Form.to_PLC("@00WD01070000")
+                    'SolderCutter_Form.TimerChangeSpool.Enabled = True
 
                     Thread.Sleep(100)
                     SolderCutter_Form.to_PLC("@00WD01080000")
@@ -538,18 +596,18 @@ Public Class Form1
 
                     Function_Module.CheckMg()
 
+                    ''btnWeight.Focus()
+                    'Function_Module.WeighingScalebyON()
+                    'Thread.Sleep(100)
+                    ''SerialPort1.Open()
+
+                    'SerialPort1.WriteLine("Z")
+                    'Thread.Sleep(100)
+                    'SerialPort1.WriteLine("CP")
+                    'Timer1.Enabled = True
+
+                    'btnWeight.Enabled = True
                     'btnWeight.Focus()
-                    Function_Module.WeighingScalebyON()
-                    Thread.Sleep(100)
-                    'SerialPort1.Open()
-
-                    SerialPort1.WriteLine("Z")
-                    Thread.Sleep(100)
-                    SerialPort1.WriteLine("CP")
-                    Timer1.Enabled = True
-
-                    btnWeight.Enabled = True
-                    btnWeight.Focus()
 
                 End If
             End If
@@ -802,6 +860,8 @@ Public Class Form1
     Public dateNtime As String '= DateTime.Now.ToString("yyyy_MM_dd_HHmmtt ")
 
     Public get_FolderPath As String = "\\lffile001\infinity\Philippines\Buffer File\PICO\PICO Solder Weight NEW.csv"
+    Public get_FolderPath14mg As String = "\\lffile001\infinity\Philippines\Buffer File\PICO\PICO Solder Weight 14mg.csv"
+
     'Public get_FolderPath2 As String = "\\lffile001\infinity\Philippines\Nano Log\PICO Solder Weight.csv"
     Public get_message As String
     Public get_message2 As String
@@ -810,10 +870,19 @@ Public Class Form1
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         dateNtime = Date.Now.ToString("yyyy_MM_dd_HHmmtt ")
 
-        Dim isFileEmpty As Boolean = IsCSVFileEmpty(get_FolderPath)
+        Dim isFileEmpty12mg As Boolean = IsCSVFileEmpty(get_FolderPath)
+        Dim isFileEmpty14mg As Boolean = IsCSVFileEmpty(get_FolderPath14mg)
+        Dim isFileEmpty As Boolean
+
         get_message = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & "," & """Solder Wire part number,""" & "," & """Bare Wire Lot #,""" & "," & """Cutter setting,""" & vbCrLf
         'get_message2 = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & "," & """Date and Time,""" & vbCrLf
 
+        Select Case CInt(txtWeight.Text)
+            Case 12
+                isFileEmpty = isFileEmpty12mg
+            Case 14
+                isFileEmpty = isFileEmpty14mg
+        End Select
 
         If NewWeightmg = OldWeight Then
 
@@ -825,9 +894,19 @@ Public Class Form1
                             'get_message2 = get_message2 & txtPartNo.Text & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & dateNtime & vbCrLf
                         End If
                     Next
-                    My.Computer.FileSystem.WriteAllText(get_FolderPath, get_message, False)
-                    'My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message, True)
-                    MessageBox.Show("The data is saved in " & get_FolderPath)
+
+                    Select Case CInt(txtWeight.Text)
+                        Case 12
+                            My.Computer.FileSystem.WriteAllText(get_FolderPath, get_message, False)
+                            'My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message, True)
+                            MessageBox.Show("The data is saved in " & get_FolderPath)
+
+                        Case 14
+                            My.Computer.FileSystem.WriteAllText(get_FolderPath14mg, get_message, False)
+                            'My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message, True)
+                            MessageBox.Show("The data is saved in " & get_FolderPath14mg)
+                    End Select
+
                     btnNewLot.Enabled = True
                     btnSave.Enabled = False
 
@@ -844,6 +923,8 @@ Public Class Form1
                     btnNewLot.Enabled = False
                     txtReading.Text = ""
                     WeighingScaleOFF()
+
+                    ResetChangeSpool()
 
                     checkSaving()
 
@@ -867,9 +948,19 @@ Public Class Form1
                             'get_message2 = get_message2 & txtPartNo.Text & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & dateNtime & vbCrLf
                         End If
                     Next
-                    My.Computer.FileSystem.WriteAllText(get_FolderPath, get_message, False)
-                    'My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message, True)
-                    MessageBox.Show("The data is saved in " & get_FolderPath)
+
+                    Select Case CInt(txtWeight.Text)
+                        Case 12
+                            My.Computer.FileSystem.WriteAllText(get_FolderPath, get_message, False)
+                            'My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message, True)
+                            MessageBox.Show("The data is saved in " & get_FolderPath)
+
+                        Case 14
+                            My.Computer.FileSystem.WriteAllText(get_FolderPath14mg, get_message, False)
+                            'My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message, True)
+                            MessageBox.Show("The data is saved in " & get_FolderPath14mg)
+                    End Select
+
                     btnNewLot.Enabled = True
                     btnSave.Enabled = False
 
@@ -895,6 +986,8 @@ Public Class Form1
                     btnNewLot.Enabled = False
                     txtReading.Text = ""
                     WeighingScaleOFF()
+
+                    ResetChangeSpool()
 
                     'SolderCutter_Form.TimerQtyChecking.Enabled = True
                     'SolderCutter_Form.TimerChangeSpool.Enabled = True
@@ -939,7 +1032,7 @@ Public Class Form1
                     Function_Module.ResetOCAP()
                     Function_Module.ChangeOCAP()
 
-                    TimerCheckInfi.Interval = 60000
+                    TimerCheckInfi.Interval = 30000
                     TimerCheckInfi.Enabled = True
                     checkSaveCon = True
                 End If
@@ -960,7 +1053,7 @@ Public Class Form1
                     Function_Module.ResetOCAP()
                     Function_Module.ChangeOCAP()
 
-                    TimerCheckInfi.Interval = 60000
+                    TimerCheckInfi.Interval = 30000
                     TimerCheckInfi.Enabled = True
                     checkSaveCon = True
                 End If

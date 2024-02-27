@@ -51,6 +51,7 @@
         lblQty109.Text = RXD.Substring(23, 4)
 
         lblC2counter.Text = (CInt(RXD.Substring(23, 4) & RXD.Substring(19, 4))).ToString("N0")
+        BuyOff_Form.lblcounter.Text = (CInt(RXD.Substring(23, 4) & RXD.Substring(19, 4))).ToString("N0")
 
         ''actl_qty_lbl.Text = (CInt(RXD.Substring(15, 4))).ToString("N0")
         'actl_tray_qty_lbl.Text = (CInt(RXD.Substring(19, 4))).ToString("N0")

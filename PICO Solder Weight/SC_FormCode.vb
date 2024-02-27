@@ -146,9 +146,9 @@ Module Cutter2_Module
         Master_login.PanelWarning.Visible = False
         Form1.TimerErrorMsg.Enabled = False
 
-        Master_login.Label1.Text = "Please scan your finger. SPC only"
+        Master_login.Label1.Text = "Please scan your finger. SPC or Technician only"
         Master_login.ShowDialog()
-        If Master_login.F1_get_title = "SPC" Then
+        If Master_login.F1_get_title = "SPC" Or Master_login.F1_get_title = "Engineer" Or Master_login.F1_get_title = "Technician" Then
             SolderCutter_Form.to_PLC("@00WD00020002")
             Master_login.Close()
         Else

@@ -28,7 +28,7 @@ Public Class Add_Form
             MsgBox("Please enter a valid username and password!")
         Else
 
-            If Op_CheckBox.Checked = False And Eng_CheckBox.Checked = False And PO3_CheckBox.Checked = False And SPC_CheckBox.Checked = False And Tech_CheckBox.Checked = False And QA_CheckBox.Checked = False Then
+            If Op_CheckBox.Checked = False And Eng_CheckBox.Checked = False And PO3_CheckBox.Checked = False And SPC_CheckBox.Checked = False And Tech_CheckBox.Checked = False And QA_CheckBox.Checked = False And Production_CheckBox.Checked = False And Prod_CheckBox.Checked = False Then
                 MsgBox("Please select title")
             Else
                 check_valid()
@@ -105,6 +105,12 @@ Public Class Add_Form
         If QA_CheckBox.Checked = True Then
             F4_Title = "QA"
         End If
+        If Production_CheckBox.Checked = True Then
+            F4_Title = "Production"
+        End If
+        If Prod_CheckBox.Checked = True Then
+            F4_Title = "Product"
+        End If
         F4_Finger = fs_bytes
         'Console.WriteLine(F4_Finger)
         myconnection.ConnectionString = ("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\LF Database\SWMaster_db.accdb;Jet OLEDB:Database Password=lfswmaster")
@@ -138,7 +144,11 @@ Public Class Add_Form
         Op_CheckBox.Checked = False
         Eng_CheckBox.Checked = False
         PO3_CheckBox.Checked = False
-
+        SPC_CheckBox.Checked = False
+        Tech_CheckBox.Checked = False
+        QA_CheckBox.Checked = False
+        Production_CheckBox.Checked = False
+        Prod_CheckBox.Checked = False
     End Sub
 
     Private Sub Add_User_Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load

@@ -158,16 +158,34 @@
     <Compile Include="Add_Form.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AfterPurgeSample_Form.Designer.vb">
+      <DependentUpon>AfterPurgeSample_Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AfterPurgeSample_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="askChangeCutterSet_Form.Designer.vb">
       <DependentUpon>askChangeCutterSet_Form.vb</DependentUpon>
     </Compile>
     <Compile Include="askChangeCutterSet_Form.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="askEval_Form.Designer.vb">
+      <DependentUpon>askEval_Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="askEval_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="askInterruption_Form.Designer.vb">
       <DependentUpon>askInterruption_Form.vb</DependentUpon>
     </Compile>
     <Compile Include="askInterruption_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuyOff_Form.Designer.vb">
+      <DependentUpon>BuyOff_Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BuyOff_Form.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ChangeComPort_Code.vb" />
@@ -183,6 +201,13 @@
     <Compile Include="ChangeSpoolMsg_Form.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Eval_Form.Designer.vb">
+      <DependentUpon>Eval_Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Eval_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Eval_FormCode.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -280,17 +305,29 @@
     <EmbeddedResource Include="Add_Form.resx">
       <DependentUpon>Add_Form.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AfterPurgeSample_Form.resx">
+      <DependentUpon>AfterPurgeSample_Form.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="askChangeCutterSet_Form.resx">
       <DependentUpon>askChangeCutterSet_Form.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="askEval_Form.resx">
+      <DependentUpon>askEval_Form.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="askInterruption_Form.resx">
       <DependentUpon>askInterruption_Form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuyOff_Form.resx">
+      <DependentUpon>BuyOff_Form.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeComPort_Form.resx">
       <DependentUpon>ChangeComPort_Form.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeSpoolMsg_Form.resx">
       <DependentUpon>ChangeSpoolMsg_Form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Eval_Form.resx">
+      <DependentUpon>Eval_Form.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>

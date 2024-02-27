@@ -52,4 +52,12 @@ Public Class Main_Form
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Function_Module.PurgingSample()
     End Sub
+
+    Private Sub btnBuyOff_Click(sender As Object, e As EventArgs) Handles btnBuyOff.Click
+        BuyOffBiometrics()
+    End Sub
+
+    Private Sub btnEval_Click(sender As Object, e As EventArgs) Handles btnEval.Click
+        EvalBiometrics()
+    End Sub
 End Class

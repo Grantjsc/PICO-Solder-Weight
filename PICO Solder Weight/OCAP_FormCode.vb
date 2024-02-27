@@ -5,7 +5,7 @@ Module OCAP_Module
 
     Public CutSetChanged As Boolean = False
     Sub SaveData()
-        Dim alarm, associate, mach, _date, partno, lotnum, test, root, action As String
+        Dim alarm, associate, mach, _date, partno, lotnum, test, root, action, cutset As String
         Dim command As String
 
         alarm = OCAP_Form.txtAlarm.Text
@@ -17,12 +17,13 @@ Module OCAP_Module
         test = OCAP_Form.txtTest.Text
         root = OCAP_Form.cboRootCause.Text & OCAP_Form.txtOtherRC.Text
         action = OCAP_Form.cboAction.Text & OCAP_Form.txtOthersA.Text
+        cutset = Form1.txtCutterSet.Text
 
         Dim con As OleDbConnection = New OleDbConnection
         con.ConnectionString = ("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\LF Database\PICO Solder Weight.accdb;Persist Security Info=True;Jet OLEDB:Database Password=lfpicosolder")
         Try
             con.Open()
-            command = "INSERT INTO [OCAP_tb] ([Alarm],[Associate],[_date],[Machine],[Part_number],[Lot_number],[Test],[Root_cause],[Action]) VALUES (@alarm, @associate, @_date, @Machine, @Part_number, @Lot_number, @test, @Root_cause, @Action)"
+            command = "INSERT INTO [OCAP_tb] ([Alarm],[Associate],[_date],[Machine],[Part_number],[Lot_number],[Test],[Root_cause],[Action],[Cutter_Setting]) VALUES (@alarm, @associate, @_date, @Machine, @Part_number, @Lot_number, @test, @Root_cause, @Action, @CutterSetting)"
             Using cmd3 As OleDbCommand = New OleDbCommand(command, con)
                 cmd3.Parameters.AddWithValue("@alarm", alarm)
                 cmd3.Parameters.AddWithValue("@associate", associate)
@@ -33,6 +34,7 @@ Module OCAP_Module
                 cmd3.Parameters.AddWithValue("@test", test)
                 cmd3.Parameters.AddWithValue("@Root_cause", root)
                 cmd3.Parameters.AddWithValue("@Action", action)
+                cmd3.Parameters.AddWithValue("@CutterSetting", cutset)
                 cmd3.ExecuteNonQuery()
             End Using
             con.Close()
@@ -92,6 +94,7 @@ Module OCAP_Module
             OCAP_Form.txtOtherRC.Enabled = True
         Else
             OCAP_Form.txtOtherRC.Enabled = False
+            OCAP_Form.txtOtherRC.Text = ""
         End If
     End Sub
 
@@ -100,6 +103,7 @@ Module OCAP_Module
             OCAP_Form.txtOthersA.Enabled = True
         Else
             OCAP_Form.txtOthersA.Enabled = False
+            OCAP_Form.txtOthersA.Text = ""
         End If
     End Sub
 End Module

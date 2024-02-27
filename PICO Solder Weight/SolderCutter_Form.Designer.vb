@@ -100,7 +100,7 @@ Partial Class SolderCutter_Form
         Me.Guna2CustomGradientPanel2.Location = New System.Drawing.Point(0, 0)
         Me.Guna2CustomGradientPanel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Guna2CustomGradientPanel2.Name = "Guna2CustomGradientPanel2"
-        Me.Guna2CustomGradientPanel2.Size = New System.Drawing.Size(1425, 101)
+        Me.Guna2CustomGradientPanel2.Size = New System.Drawing.Size(1425, 131)
         Me.Guna2CustomGradientPanel2.TabIndex = 8
         '
         'Label1
@@ -128,10 +128,10 @@ Partial Class SolderCutter_Form
         Me.Panel2.Controls.Add(Me.btnC1Start)
         Me.Panel2.Controls.Add(Me.Label2)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel2.Location = New System.Drawing.Point(0, 101)
+        Me.Panel2.Location = New System.Drawing.Point(0, 131)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(353, 978)
+        Me.Panel2.Size = New System.Drawing.Size(353, 948)
         Me.Panel2.TabIndex = 1
         '
         'PanelCut1EM
@@ -358,10 +358,10 @@ Partial Class SolderCutter_Form
         Me.Panel1.Controls.Add(Me.btnC2Start)
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel1.Location = New System.Drawing.Point(353, 101)
+        Me.Panel1.Location = New System.Drawing.Point(353, 131)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(345, 978)
+        Me.Panel1.Size = New System.Drawing.Size(345, 948)
         Me.Panel1.TabIndex = 2
         '
         'lblQty109
@@ -688,10 +688,10 @@ Partial Class SolderCutter_Form
         Me.Panel3.Controls.Add(Me.btnC3Start)
         Me.Panel3.Controls.Add(Me.Label4)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel3.Location = New System.Drawing.Point(698, 101)
+        Me.Panel3.Location = New System.Drawing.Point(698, 131)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(365, 978)
+        Me.Panel3.Size = New System.Drawing.Size(365, 948)
         Me.Panel3.TabIndex = 3
         '
         'PanelCut3EM
@@ -907,10 +907,10 @@ Partial Class SolderCutter_Form
         Me.Panel4.Controls.Add(Me.btnC4Start)
         Me.Panel4.Controls.Add(Me.Label5)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel4.Location = New System.Drawing.Point(1063, 101)
+        Me.Panel4.Location = New System.Drawing.Point(1063, 131)
         Me.Panel4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(362, 978)
+        Me.Panel4.Size = New System.Drawing.Size(362, 948)
         Me.Panel4.TabIndex = 4
         '
         'PanelCut4EM

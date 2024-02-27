@@ -1,5 +1,6 @@
 ﻿Imports System.Data.OleDb
 Imports System.IO.Ports
+Imports System.Threading
 
 Module SameLotQuery_Module
     Public myconnection As OleDbConnection = New OleDbConnection
@@ -131,12 +132,40 @@ Module SameLotCondition_Module
     End Sub
 
     Sub InterruptionYes()
-        Dim NewQty As Integer
-        NewQty = CInt(Form1.txtQty.Text) - CInt(SolderCutter_Form.lblC2counter.Text)
-        Form1.txtQty.Text = NewQty
-        Form1.txtSolderWire.Focus()
-        InterruptionCheck = True
-        askInterruption_Form.Close()
+        Dim Fngerprint = False
+        While Fngerprint = False
+            'Master_login.lblErrorMsg.Text = "Please perform OCAP!"
+            'Master_login.PanelWarning.Visible = True
+            'Form1.TimerErrorMsg.Enabled = True
+
+            Master_login.Label1.Text = "Perform OCAP, please scan your finger after performing OCAP. SPC or Technician only"
+            Master_login.ShowDialog()
+            If Master_login.F1_get_title = "SPC" Or Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "Engineer" Then
+
+                If CInt(Form1.txtQty.Text) <> CInt(SolderCutter_Form.lblC2counter.Text) And CInt(Form1.txtQty.Text) > CInt(SolderCutter_Form.lblC2counter.Text) Then
+                    Dim NewQty As Integer
+                    NewQty = CInt(Form1.txtQty.Text) - CInt(SolderCutter_Form.lblC2counter.Text)
+                    Form1.txtQty.Text = NewQty
+                    Form1.txtSolderWire.Focus()
+                    InterruptionCheck = True
+                    askInterruption_Form.Close()
+                Else
+                    MsgBox("Cutting was finished for the set quantity!", MsgBoxStyle.Critical)
+                    SamelotNo()
+                    askInterruption_Form.Close()
+                End If
+
+                Form1.txtSolderWire.Focus()
+                InterruptionCheck = True
+                askInterruption_Form.Close()
+
+                Fngerprint = True
+            Else
+
+                MsgBox("Authorized personnel only!", MsgBoxStyle.Exclamation)
+                Master_login.Close()
+            End If
+        End While
     End Sub
 
     Sub InterruptionNo()

@@ -8,12 +8,17 @@
     End Sub
 
     Private Sub btnOkay_Click(sender As Object, e As EventArgs) Handles btnOkay.Click
-        Form1.txtCutterSet.Text = txtNewCutSet.Text
-        Me.Close()
-        Function_Module.PurgeAfterOCAP()
+        If txtNewCutSet.Text = "" Then
+            MsgBox("Please enter new cutter setting", MsgBoxStyle.Critical)
+        Else
+            Form1.txtCutterSet.Text = txtNewCutSet.Text
+            Me.Close()
+            Function_Module.PurgeAfterOCAP()
+        End If
     End Sub
 
     Private Sub NewCutterSet_Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        txtNewCutSet.Text = ""
         txtNewCutSet.Focus()
         Dim txtCenter As Point = txtNewCutSet.PointToScreen(New Point(txtNewCutSet.Width \ 2, txtNewCutSet.Height \ 2))
 

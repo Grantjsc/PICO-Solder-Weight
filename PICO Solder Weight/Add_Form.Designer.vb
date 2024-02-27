@@ -50,6 +50,8 @@ Partial Class Add_Form
         Me.Label2 = New System.Windows.Forms.Label()
         Me.PictureBox6 = New System.Windows.Forms.PictureBox()
         Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        Me.Production_CheckBox = New System.Windows.Forms.CheckBox()
+        Me.Prod_CheckBox = New System.Windows.Forms.CheckBox()
         Me.Panel2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -72,7 +74,7 @@ Partial Class Add_Form
         Me.Panel2.Location = New System.Drawing.Point(55, 654)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(639, 409)
+        Me.Panel2.Size = New System.Drawing.Size(639, 421)
         Me.Panel2.TabIndex = 79
         '
         'TextBox1
@@ -116,6 +118,8 @@ Partial Class Add_Form
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Prod_CheckBox)
+        Me.GroupBox1.Controls.Add(Me.Production_CheckBox)
         Me.GroupBox1.Controls.Add(Me.QA_CheckBox)
         Me.GroupBox1.Controls.Add(Me.Tech_CheckBox)
         Me.GroupBox1.Controls.Add(Me.SPC_CheckBox)
@@ -128,7 +132,7 @@ Partial Class Add_Form
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.GroupBox1.Size = New System.Drawing.Size(609, 275)
+        Me.GroupBox1.Size = New System.Drawing.Size(609, 286)
         Me.GroupBox1.TabIndex = 66
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Title:"
@@ -138,7 +142,7 @@ Partial Class Add_Form
         Me.QA_CheckBox.AutoSize = True
         Me.QA_CheckBox.Font = New System.Drawing.Font("Arial", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.QA_CheckBox.ForeColor = System.Drawing.Color.Black
-        Me.QA_CheckBox.Location = New System.Drawing.Point(397, 139)
+        Me.QA_CheckBox.Location = New System.Drawing.Point(397, 154)
         Me.QA_CheckBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.QA_CheckBox.Name = "QA_CheckBox"
         Me.QA_CheckBox.Size = New System.Drawing.Size(100, 49)
@@ -151,7 +155,7 @@ Partial Class Add_Form
         Me.Tech_CheckBox.AutoSize = True
         Me.Tech_CheckBox.Font = New System.Drawing.Font("Arial", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Tech_CheckBox.ForeColor = System.Drawing.Color.Black
-        Me.Tech_CheckBox.Location = New System.Drawing.Point(125, 139)
+        Me.Tech_CheckBox.Location = New System.Drawing.Point(125, 154)
         Me.Tech_CheckBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Tech_CheckBox.Name = "Tech_CheckBox"
         Me.Tech_CheckBox.Size = New System.Drawing.Size(225, 49)
@@ -190,7 +194,7 @@ Partial Class Add_Form
         Me.Eng_CheckBox.AutoSize = True
         Me.Eng_CheckBox.Font = New System.Drawing.Font("Arial", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Eng_CheckBox.ForeColor = System.Drawing.Color.Black
-        Me.Eng_CheckBox.Location = New System.Drawing.Point(125, 94)
+        Me.Eng_CheckBox.Location = New System.Drawing.Point(125, 100)
         Me.Eng_CheckBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.Eng_CheckBox.Name = "Eng_CheckBox"
         Me.Eng_CheckBox.Size = New System.Drawing.Size(198, 49)
@@ -203,7 +207,7 @@ Partial Class Add_Form
         Me.PO3_CheckBox.AutoSize = True
         Me.PO3_CheckBox.Font = New System.Drawing.Font("Arial", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.PO3_CheckBox.ForeColor = System.Drawing.Color.Black
-        Me.PO3_CheckBox.Location = New System.Drawing.Point(397, 94)
+        Me.PO3_CheckBox.Location = New System.Drawing.Point(397, 100)
         Me.PO3_CheckBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PO3_CheckBox.Name = "PO3_CheckBox"
         Me.PO3_CheckBox.Size = New System.Drawing.Size(122, 49)
@@ -426,6 +430,32 @@ Partial Class Add_Form
         Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(1441, 122)
         Me.Guna2CustomGradientPanel1.TabIndex = 77
         '
+        'Production_CheckBox
+        '
+        Me.Production_CheckBox.AutoSize = True
+        Me.Production_CheckBox.Font = New System.Drawing.Font("Arial", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Production_CheckBox.ForeColor = System.Drawing.Color.Black
+        Me.Production_CheckBox.Location = New System.Drawing.Point(125, 207)
+        Me.Production_CheckBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Production_CheckBox.Name = "Production_CheckBox"
+        Me.Production_CheckBox.Size = New System.Drawing.Size(229, 49)
+        Me.Production_CheckBox.TabIndex = 58
+        Me.Production_CheckBox.Text = "Production"
+        Me.Production_CheckBox.UseVisualStyleBackColor = True
+        '
+        'Prod_CheckBox
+        '
+        Me.Prod_CheckBox.AutoSize = True
+        Me.Prod_CheckBox.Font = New System.Drawing.Font("Arial", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Prod_CheckBox.ForeColor = System.Drawing.Color.Black
+        Me.Prod_CheckBox.Location = New System.Drawing.Point(397, 207)
+        Me.Prod_CheckBox.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Prod_CheckBox.Name = "Prod_CheckBox"
+        Me.Prod_CheckBox.Size = New System.Drawing.Size(178, 49)
+        Me.Prod_CheckBox.TabIndex = 59
+        Me.Prod_CheckBox.Text = "Product"
+        Me.Prod_CheckBox.UseVisualStyleBackColor = True
+        '
         'Add_Form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -485,4 +515,6 @@ Partial Class Add_Form
     Friend WithEvents Label2 As Label
     Friend WithEvents PictureBox6 As PictureBox
     Friend WithEvents Guna2CustomGradientPanel1 As Guna.UI2.WinForms.Guna2CustomGradientPanel
+    Friend WithEvents Prod_CheckBox As CheckBox
+    Friend WithEvents Production_CheckBox As CheckBox
 End Class

@@ -9,22 +9,19 @@ Public Class ChangeSpoolMsg_Form
             .BringToFront()
             .Show()
 
-            'SerialPort2.WriteLine("B") 'deactivate door lock
-
             Form1.count = 0
             Form1.lstResult.Items.Clear()
             Array.Clear(Form1.data, 0, Form1.data.Length)
-            'Form1.cboAssociate.Text = Nothing
             Thread.Sleep(500)
             If Form1.SerialPort1.IsOpen Then
                 Form1.SerialPort1.Close()
             End If
 
-            'If CInt(SolderCutter_Form.lblC2counter.Text) <> CInt(Form1.txtQty.Text) Then
-            Dim NewQty As Integer
-            NewQty = CInt(Form1.txtQty.Text) - CInt(SolderCutter_Form.lblC2counter.Text)
-            Form1.txtQty.Text = NewQty
-            'End If
+            If CInt(SolderCutter_Form.lblC2counter.Text) <> CInt(Form1.txtQty.Text) And CInt(Form1.txtQty.Text) > CInt(SolderCutter_Form.lblC2counter.Text) Then
+                Dim NewQty As Integer
+                NewQty = CInt(Form1.txtQty.Text) - CInt(SolderCutter_Form.lblC2counter.Text)
+                Form1.txtQty.Text = NewQty
+            End If
 
             Form1.txtReading.Text = ""
             'Form1.txtQty.ReadOnly = False
@@ -33,8 +30,6 @@ Public Class ChangeSpoolMsg_Form
             Form1.btnNewLot.Enabled = False
             Form1.cboAssociate.Text = Nothing
             Form1.cboAssociate.Focus()
-
-            'SolderCutter_Form.to_PLC("@00WD00000000")
 
             'GetLockSerialName()
             'SerialPort2.PortName = LockSerial
