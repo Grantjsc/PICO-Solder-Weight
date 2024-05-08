@@ -12,6 +12,7 @@
         Eval_Form.txtWeight.Visible = True
         Eval_Form.lblWeight.Visible = True
         Eval_Form.Label2.Visible = True
+        Eval_Form.btnSave.Enabled = False
         Me.Close()
     End Sub
 End Class

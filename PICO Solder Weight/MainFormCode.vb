@@ -5,6 +5,11 @@
         Main_Form.PanelBuyOff.Visible = False
         Main_Form.PanelEval.Visible = False
 
+        Main_Form.btnSolderWeight.Image = My.Resources.scale_colored
+        Main_Form.btnSolderCutter.Image = My.Resources.Spool
+        Main_Form.btnBuyOff.Image = My.Resources.buyoff
+        Main_Form.btnEval.Image = My.Resources.evaluation
+
         Main_Form.btnSolderWeight.FillColor = Color.FromArgb(250, 250, 250)
         Main_Form.btnSolderCutter.FillColor = Color.Transparent
         Main_Form.btnBuyOff.FillColor = Color.Transparent
@@ -31,6 +36,11 @@
         Main_Form.PanelBuyOff.Visible = False
         Main_Form.PanelEval.Visible = False
 
+        Main_Form.btnSolderWeight.Image = My.Resources.scale
+        Main_Form.btnSolderCutter.Image = My.Resources.Spool_colored
+        Main_Form.btnBuyOff.Image = My.Resources.buyoff
+        Main_Form.btnEval.Image = My.Resources.evaluation
+
         Main_Form.btnSolderWeight.FillColor = Color.Transparent
         Main_Form.btnSolderCutter.FillColor = Color.FromArgb(250, 250, 250)
         Main_Form.btnBuyOff.FillColor = Color.Transparent
@@ -56,6 +66,11 @@
         Main_Form.PanelBuyOff.Visible = True
         Main_Form.PanelEval.Visible = False
 
+        Main_Form.btnSolderWeight.Image = My.Resources.scale
+        Main_Form.btnSolderCutter.Image = My.Resources.Spool
+        Main_Form.btnBuyOff.Image = My.Resources.buyoff_colored
+        Main_Form.btnEval.Image = My.Resources.evaluation
+
         Main_Form.btnSolderWeight.FillColor = Color.Transparent
         Main_Form.btnSolderCutter.FillColor = Color.Transparent
         Main_Form.btnBuyOff.FillColor = Color.FromArgb(250, 250, 250)
@@ -77,19 +92,20 @@
 
     Sub BuyOffBiometrics()
         Dim Fngerprint = False
-        While Fngerprint = False
+        'While Fngerprint = False
 
-            Master_login.Label1.Text = "Please scan your finger. SPC, P03 or Production only"
+        Master_login.Label1.Text = "Please scan your finger. SPC, P03 or Production only"
             Master_login.ShowDialog()
             If Master_login.F1_get_title = "SPC" Or Master_login.F1_get_title = "PO3" Or Master_login.F1_get_title = "Engineer" Or Master_login.F1_get_title = "Production" Then
-                ButtonBuyOff()
-                Fngerprint = True
+            ButtonBuyOff()
+            Master_login.Close()
+            Fngerprint = True
             Else
 
                 MsgBox("Authorized personnel only!", MsgBoxStyle.Exclamation)
                 Master_login.Close()
             End If
-        End While
+        'End While
     End Sub
 
     Sub ButtonEval()
@@ -97,6 +113,11 @@
         Main_Form.PanelSC.Visible = False
         Main_Form.PanelBuyOff.Visible = False
         Main_Form.PanelEval.Visible = True
+
+        Main_Form.btnSolderWeight.Image = My.Resources.scale
+        Main_Form.btnSolderCutter.Image = My.Resources.Spool
+        Main_Form.btnBuyOff.Image = My.Resources.buyoff
+        Main_Form.btnEval.Image = My.Resources.evaluation_colored
 
         Main_Form.btnSolderWeight.FillColor = Color.Transparent
         Main_Form.btnSolderCutter.FillColor = Color.Transparent
@@ -119,18 +140,19 @@
 
     Sub EvalBiometrics()
         Dim Fngerprint = False
-        While Fngerprint = False
+        'While Fngerprint = False
 
-            Master_login.Label1.Text = "Please scan your finger. SPC, QA or Product only"
+        Master_login.Label1.Text = "Please scan your finger. SPC, QA or Product only"
             Master_login.ShowDialog()
             If Master_login.F1_get_title = "SPC" Or Master_login.F1_get_title = "QA" Or Master_login.F1_get_title = "Engineer" Or Master_login.F1_get_title = "Product" Then
-                askEval_Form.ShowDialog()
-                Fngerprint = True
+            askEval_Form.ShowDialog()
+            Master_login.Close()
+            Fngerprint = True
             Else
 
                 MsgBox("Authorized personnel only!", MsgBoxStyle.Exclamation)
                 Master_login.Close()
             End If
-        End While
+        'End While
     End Sub
 End Module

@@ -138,7 +138,7 @@ Module SameLotCondition_Module
             'Master_login.PanelWarning.Visible = True
             'Form1.TimerErrorMsg.Enabled = True
 
-            Master_login.Label1.Text = "Perform OCAP, please scan your finger after performing OCAP. SPC or Technician only"
+            Master_login.Label1.Text = "Please scan your finger. SPC or Technician only"
             Master_login.ShowDialog()
             If Master_login.F1_get_title = "SPC" Or Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "Engineer" Then
 
@@ -160,6 +160,7 @@ Module SameLotCondition_Module
                 askInterruption_Form.Close()
 
                 Fngerprint = True
+                Master_login.Close()
             Else
 
                 MsgBox("Authorized personnel only!", MsgBoxStyle.Exclamation)

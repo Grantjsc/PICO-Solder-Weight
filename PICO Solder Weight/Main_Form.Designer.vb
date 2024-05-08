@@ -25,6 +25,10 @@ Partial Class Main_Form
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main_Form))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.PanelEval = New System.Windows.Forms.Panel()
+        Me.btnEval = New Guna.UI2.WinForms.Guna2Button()
+        Me.PanelBuyOff = New System.Windows.Forms.Panel()
+        Me.btnBuyOff = New Guna.UI2.WinForms.Guna2Button()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -35,19 +39,15 @@ Partial Class Main_Form
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.lblCR = New System.Windows.Forms.Label()
         Me.lblfooter = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PanelMain = New System.Windows.Forms.Panel()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.PanelBuyOff = New System.Windows.Forms.Panel()
-        Me.btnBuyOff = New Guna.UI2.WinForms.Guna2Button()
-        Me.PanelEval = New System.Windows.Forms.Panel()
-        Me.btnEval = New Guna.UI2.WinForms.Guna2Button()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelMain.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -74,6 +74,76 @@ Partial Class Main_Form
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(280, 1055)
         Me.Panel1.TabIndex = 0
+        '
+        'PanelEval
+        '
+        Me.PanelEval.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.PanelEval.Location = New System.Drawing.Point(0, 454)
+        Me.PanelEval.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PanelEval.Name = "PanelEval"
+        Me.PanelEval.Size = New System.Drawing.Size(11, 46)
+        Me.PanelEval.TabIndex = 83
+        Me.PanelEval.Visible = False
+        '
+        'btnEval
+        '
+        Me.btnEval.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.btnEval.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.btnEval.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.btnEval.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.btnEval.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnEval.FillColor = System.Drawing.Color.Transparent
+        Me.btnEval.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnEval.ForeColor = System.Drawing.Color.White
+        Me.btnEval.HoverState.FillColor = System.Drawing.SystemColors.Control
+        Me.btnEval.HoverState.ForeColor = System.Drawing.Color.Black
+        Me.btnEval.HoverState.Image = Global.PICO_Solder_Weight.My.Resources.Resources.evaluation_colored
+        Me.btnEval.Image = Global.PICO_Solder_Weight.My.Resources.Resources.evaluation
+        Me.btnEval.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.btnEval.ImageOffset = New System.Drawing.Point(10, 0)
+        Me.btnEval.ImageSize = New System.Drawing.Size(30, 30)
+        Me.btnEval.Location = New System.Drawing.Point(0, 456)
+        Me.btnEval.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnEval.Name = "btnEval"
+        Me.btnEval.Size = New System.Drawing.Size(280, 46)
+        Me.btnEval.TabIndex = 84
+        Me.btnEval.Text = "Eval"
+        Me.btnEval.TextOffset = New System.Drawing.Point(15, 0)
+        '
+        'PanelBuyOff
+        '
+        Me.PanelBuyOff.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.PanelBuyOff.Location = New System.Drawing.Point(0, 408)
+        Me.PanelBuyOff.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PanelBuyOff.Name = "PanelBuyOff"
+        Me.PanelBuyOff.Size = New System.Drawing.Size(11, 46)
+        Me.PanelBuyOff.TabIndex = 81
+        Me.PanelBuyOff.Visible = False
+        '
+        'btnBuyOff
+        '
+        Me.btnBuyOff.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.btnBuyOff.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.btnBuyOff.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.btnBuyOff.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.btnBuyOff.Dock = System.Windows.Forms.DockStyle.Top
+        Me.btnBuyOff.FillColor = System.Drawing.Color.Transparent
+        Me.btnBuyOff.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBuyOff.ForeColor = System.Drawing.Color.White
+        Me.btnBuyOff.HoverState.FillColor = System.Drawing.SystemColors.Control
+        Me.btnBuyOff.HoverState.ForeColor = System.Drawing.Color.Black
+        Me.btnBuyOff.HoverState.Image = Global.PICO_Solder_Weight.My.Resources.Resources.buyoff_colored
+        Me.btnBuyOff.Image = Global.PICO_Solder_Weight.My.Resources.Resources.buyoff
+        Me.btnBuyOff.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.btnBuyOff.ImageOffset = New System.Drawing.Point(10, 0)
+        Me.btnBuyOff.ImageSize = New System.Drawing.Size(30, 30)
+        Me.btnBuyOff.Location = New System.Drawing.Point(0, 410)
+        Me.btnBuyOff.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnBuyOff.Name = "btnBuyOff"
+        Me.btnBuyOff.Size = New System.Drawing.Size(280, 46)
+        Me.btnBuyOff.TabIndex = 82
+        Me.btnBuyOff.Text = "Buy-off"
+        Me.btnBuyOff.TextOffset = New System.Drawing.Point(15, 0)
         '
         'TextBox2
         '
@@ -129,19 +199,22 @@ Partial Class Main_Form
         Me.btnSolderCutter.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.btnSolderCutter.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnSolderCutter.FillColor = System.Drawing.Color.Transparent
-        Me.btnSolderCutter.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSolderCutter.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSolderCutter.ForeColor = System.Drawing.Color.White
         Me.btnSolderCutter.HoverState.FillColor = System.Drawing.SystemColors.Control
         Me.btnSolderCutter.HoverState.ForeColor = System.Drawing.Color.Black
+        Me.btnSolderCutter.HoverState.Image = Global.PICO_Solder_Weight.My.Resources.Resources.Spool_colored
+        Me.btnSolderCutter.Image = Global.PICO_Solder_Weight.My.Resources.Resources.Spool
         Me.btnSolderCutter.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.btnSolderCutter.ImageOffset = New System.Drawing.Point(5, 0)
-        Me.btnSolderCutter.ImageSize = New System.Drawing.Size(35, 35)
+        Me.btnSolderCutter.ImageOffset = New System.Drawing.Point(10, 0)
+        Me.btnSolderCutter.ImageSize = New System.Drawing.Size(30, 30)
         Me.btnSolderCutter.Location = New System.Drawing.Point(0, 364)
         Me.btnSolderCutter.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnSolderCutter.Name = "btnSolderCutter"
         Me.btnSolderCutter.Size = New System.Drawing.Size(280, 46)
         Me.btnSolderCutter.TabIndex = 37
         Me.btnSolderCutter.Text = "Solder Cutter"
+        Me.btnSolderCutter.TextOffset = New System.Drawing.Point(20, 0)
         '
         'btnSolderWeight
         '
@@ -151,19 +224,22 @@ Partial Class Main_Form
         Me.btnSolderWeight.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.btnSolderWeight.Dock = System.Windows.Forms.DockStyle.Top
         Me.btnSolderWeight.FillColor = System.Drawing.Color.Transparent
-        Me.btnSolderWeight.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSolderWeight.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnSolderWeight.ForeColor = System.Drawing.Color.White
         Me.btnSolderWeight.HoverState.FillColor = System.Drawing.SystemColors.Control
         Me.btnSolderWeight.HoverState.ForeColor = System.Drawing.Color.Black
+        Me.btnSolderWeight.HoverState.Image = Global.PICO_Solder_Weight.My.Resources.Resources.scale_colored
+        Me.btnSolderWeight.Image = Global.PICO_Solder_Weight.My.Resources.Resources.scale
         Me.btnSolderWeight.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.btnSolderWeight.ImageOffset = New System.Drawing.Point(5, 0)
-        Me.btnSolderWeight.ImageSize = New System.Drawing.Size(35, 35)
+        Me.btnSolderWeight.ImageOffset = New System.Drawing.Point(10, 0)
+        Me.btnSolderWeight.ImageSize = New System.Drawing.Size(30, 30)
         Me.btnSolderWeight.Location = New System.Drawing.Point(0, 318)
         Me.btnSolderWeight.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnSolderWeight.Name = "btnSolderWeight"
         Me.btnSolderWeight.Size = New System.Drawing.Size(280, 46)
         Me.btnSolderWeight.TabIndex = 35
         Me.btnSolderWeight.Text = "Solder Weight"
+        Me.btnSolderWeight.TextOffset = New System.Drawing.Point(20, 0)
         '
         'Panel2
         '
@@ -198,6 +274,19 @@ Partial Class Main_Form
         Me.lblfooter.TabIndex = 33
         Me.lblfooter.Text = "LITTELFUSE PHILIPPINES INC." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(280, 207)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 4
+        Me.PictureBox1.TabStop = False
+        '
         'PanelMain
         '
         Me.PanelMain.AutoScroll = True
@@ -209,6 +298,18 @@ Partial Class Main_Form
         Me.PanelMain.Name = "PanelMain"
         Me.PanelMain.Size = New System.Drawing.Size(1324, 1055)
         Me.PanelMain.TabIndex = 1
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
+        Me.PictureBox2.Location = New System.Drawing.Point(530, 428)
+        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(493, 127)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 5
+        Me.PictureBox2.TabStop = False
         '
         'Label1
         '
@@ -225,95 +326,6 @@ Partial Class Main_Form
         'Timer1
         '
         '
-        'PanelBuyOff
-        '
-        Me.PanelBuyOff.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.PanelBuyOff.Location = New System.Drawing.Point(0, 408)
-        Me.PanelBuyOff.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.PanelBuyOff.Name = "PanelBuyOff"
-        Me.PanelBuyOff.Size = New System.Drawing.Size(11, 46)
-        Me.PanelBuyOff.TabIndex = 81
-        Me.PanelBuyOff.Visible = False
-        '
-        'btnBuyOff
-        '
-        Me.btnBuyOff.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.btnBuyOff.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.btnBuyOff.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.btnBuyOff.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.btnBuyOff.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnBuyOff.FillColor = System.Drawing.Color.Transparent
-        Me.btnBuyOff.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBuyOff.ForeColor = System.Drawing.Color.White
-        Me.btnBuyOff.HoverState.FillColor = System.Drawing.SystemColors.Control
-        Me.btnBuyOff.HoverState.ForeColor = System.Drawing.Color.Black
-        Me.btnBuyOff.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.btnBuyOff.ImageOffset = New System.Drawing.Point(5, 0)
-        Me.btnBuyOff.ImageSize = New System.Drawing.Size(35, 35)
-        Me.btnBuyOff.Location = New System.Drawing.Point(0, 410)
-        Me.btnBuyOff.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.btnBuyOff.Name = "btnBuyOff"
-        Me.btnBuyOff.Size = New System.Drawing.Size(280, 46)
-        Me.btnBuyOff.TabIndex = 82
-        Me.btnBuyOff.Text = "Buy-off"
-        '
-        'PanelEval
-        '
-        Me.PanelEval.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.PanelEval.Location = New System.Drawing.Point(0, 454)
-        Me.PanelEval.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.PanelEval.Name = "PanelEval"
-        Me.PanelEval.Size = New System.Drawing.Size(11, 46)
-        Me.PanelEval.TabIndex = 83
-        Me.PanelEval.Visible = False
-        '
-        'btnEval
-        '
-        Me.btnEval.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.btnEval.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.btnEval.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.btnEval.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.btnEval.Dock = System.Windows.Forms.DockStyle.Top
-        Me.btnEval.FillColor = System.Drawing.Color.Transparent
-        Me.btnEval.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnEval.ForeColor = System.Drawing.Color.White
-        Me.btnEval.HoverState.FillColor = System.Drawing.SystemColors.Control
-        Me.btnEval.HoverState.ForeColor = System.Drawing.Color.Black
-        Me.btnEval.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.btnEval.ImageOffset = New System.Drawing.Point(5, 0)
-        Me.btnEval.ImageSize = New System.Drawing.Size(35, 35)
-        Me.btnEval.Location = New System.Drawing.Point(0, 456)
-        Me.btnEval.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.btnEval.Name = "btnEval"
-        Me.btnEval.Size = New System.Drawing.Size(280, 46)
-        Me.btnEval.TabIndex = 84
-        Me.btnEval.Text = "Eval"
-        '
-        'PictureBox2
-        '
-        Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(530, 428)
-        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(493, 127)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox2.TabIndex = 5
-        Me.PictureBox2.TabStop = False
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
-        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(280, 207)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 4
-        Me.PictureBox1.TabStop = False
-        '
         'Main_Form
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -327,10 +339,10 @@ Partial Class Main_Form
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelMain.ResumeLayout(False)
         Me.PanelMain.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

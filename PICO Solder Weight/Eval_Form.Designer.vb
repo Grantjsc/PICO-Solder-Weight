@@ -27,11 +27,12 @@ Partial Class Eval_Form
         Me.Guna2CustomGradientPanel2 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtReading = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.txtEvalReading = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lstResult = New System.Windows.Forms.ListBox()
         Me.btnSave = New Guna.UI2.WinForms.Guna2Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnExitEval = New Guna.UI2.WinForms.Guna2Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblWeight = New System.Windows.Forms.Label()
@@ -88,36 +89,37 @@ Partial Class Eval_Form
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "PICO Solder Eval"
         '
-        'txtReading
+        'txtEvalReading
         '
-        Me.txtReading.BackColor = System.Drawing.Color.Transparent
-        Me.txtReading.BorderColor = System.Drawing.Color.Black
-        Me.txtReading.BorderRadius = 20
-        Me.txtReading.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtReading.DefaultText = ""
-        Me.txtReading.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.txtReading.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.txtReading.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtReading.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtReading.FillColor = System.Drawing.Color.Black
-        Me.txtReading.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtReading.Font = New System.Drawing.Font("Lucida Fax", 25.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtReading.ForeColor = System.Drawing.Color.Lime
-        Me.txtReading.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtReading.Location = New System.Drawing.Point(585, 94)
-        Me.txtReading.Margin = New System.Windows.Forms.Padding(5, 7, 5, 7)
-        Me.txtReading.Name = "txtReading"
-        Me.txtReading.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.txtReading.PlaceholderText = ""
-        Me.txtReading.SelectedText = ""
-        Me.txtReading.ShadowDecoration.BorderRadius = 30
-        Me.txtReading.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.txtReading.ShadowDecoration.Enabled = True
-        Me.txtReading.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 10, 10)
-        Me.txtReading.Size = New System.Drawing.Size(495, 88)
-        Me.txtReading.TabIndex = 33
-        Me.txtReading.TabStop = False
-        Me.txtReading.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txtEvalReading.BackColor = System.Drawing.Color.Transparent
+        Me.txtEvalReading.BorderColor = System.Drawing.Color.Black
+        Me.txtEvalReading.BorderRadius = 20
+        Me.txtEvalReading.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtEvalReading.DefaultText = ""
+        Me.txtEvalReading.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.txtEvalReading.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txtEvalReading.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtEvalReading.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtEvalReading.FillColor = System.Drawing.Color.Black
+        Me.txtEvalReading.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtEvalReading.Font = New System.Drawing.Font("Lucida Fax", 25.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEvalReading.ForeColor = System.Drawing.Color.Lime
+        Me.txtEvalReading.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtEvalReading.Location = New System.Drawing.Point(585, 94)
+        Me.txtEvalReading.Margin = New System.Windows.Forms.Padding(5, 7, 5, 7)
+        Me.txtEvalReading.Name = "txtEvalReading"
+        Me.txtEvalReading.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.txtEvalReading.PlaceholderText = ""
+        Me.txtEvalReading.ReadOnly = True
+        Me.txtEvalReading.SelectedText = ""
+        Me.txtEvalReading.ShadowDecoration.BorderRadius = 30
+        Me.txtEvalReading.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.txtEvalReading.ShadowDecoration.Enabled = True
+        Me.txtEvalReading.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0, 0, 10, 10)
+        Me.txtEvalReading.Size = New System.Drawing.Size(495, 88)
+        Me.txtEvalReading.TabIndex = 33
+        Me.txtEvalReading.TabStop = False
+        Me.txtEvalReading.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label3
         '
@@ -164,7 +166,7 @@ Partial Class Eval_Form
         Me.btnSave.HoverState.ForeColor = System.Drawing.Color.White
         Me.btnSave.Image = CType(resources.GetObject("btnSave.Image"), System.Drawing.Image)
         Me.btnSave.ImageSize = New System.Drawing.Size(30, 30)
-        Me.btnSave.Location = New System.Drawing.Point(222, 503)
+        Me.btnSave.Location = New System.Drawing.Point(128, 503)
         Me.btnSave.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.ShadowDecoration.BorderRadius = 18
@@ -182,6 +184,7 @@ Partial Class Eval_Form
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(222, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.btnExitEval)
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.lblWeight)
@@ -193,11 +196,43 @@ Partial Class Eval_Form
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.btnSave)
         Me.Panel1.Controls.Add(Me.lstResult)
-        Me.Panel1.Controls.Add(Me.txtReading)
+        Me.Panel1.Controls.Add(Me.txtEvalReading)
         Me.Panel1.Location = New System.Drawing.Point(136, 203)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1060, 779)
         Me.Panel1.TabIndex = 35
+        '
+        'btnExitEval
+        '
+        Me.btnExitEval.BackColor = System.Drawing.Color.Transparent
+        Me.btnExitEval.BorderColor = System.Drawing.Color.Red
+        Me.btnExitEval.BorderRadius = 18
+        Me.btnExitEval.BorderThickness = 3
+        Me.btnExitEval.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnExitEval.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.btnExitEval.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.btnExitEval.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.btnExitEval.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.btnExitEval.FillColor = System.Drawing.Color.White
+        Me.btnExitEval.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExitEval.ForeColor = System.Drawing.Color.Red
+        Me.btnExitEval.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnExitEval.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnExitEval.HoverState.FillColor = System.Drawing.Color.Red
+        Me.btnExitEval.HoverState.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExitEval.HoverState.ForeColor = System.Drawing.Color.White
+        Me.btnExitEval.ImageSize = New System.Drawing.Size(30, 30)
+        Me.btnExitEval.Location = New System.Drawing.Point(323, 503)
+        Me.btnExitEval.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnExitEval.Name = "btnExitEval"
+        Me.btnExitEval.ShadowDecoration.BorderRadius = 18
+        Me.btnExitEval.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnExitEval.ShadowDecoration.Depth = 20
+        Me.btnExitEval.ShadowDecoration.Enabled = True
+        Me.btnExitEval.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(8)
+        Me.btnExitEval.Size = New System.Drawing.Size(151, 68)
+        Me.btnExitEval.TabIndex = 48
+        Me.btnExitEval.Text = "Exit"
         '
         'Label4
         '
@@ -367,7 +402,7 @@ Partial Class Eval_Form
     Friend WithEvents Guna2CustomGradientPanel2 As Guna.UI2.WinForms.Guna2CustomGradientPanel
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents txtReading As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents txtEvalReading As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents lstResult As ListBox
     Friend WithEvents btnSave As Guna.UI2.WinForms.Guna2Button
@@ -382,4 +417,5 @@ Partial Class Eval_Form
     Friend WithEvents txtWeight As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label4 As Label
+    Friend WithEvents btnExitEval As Guna.UI2.WinForms.Guna2Button
 End Class

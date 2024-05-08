@@ -224,19 +224,19 @@ Module Function_Module
                         Select Case Limit
 
                             Case 12
-                                If CDec(Form1.RealData) >= 12.57 Then
+                                If CDec(Form1.RealData) >= 12.6 Then
                                     OCAP_Form.txtAlarm.Text = ">UWL"
 
-                                ElseIf CDec(Form1.RealData) <= 11.41 Then
+                                ElseIf CDec(Form1.RealData) <= 11.4 Then
                                     OCAP_Form.txtAlarm.Text = "<LWL"
 
                                 End If
 
                             Case 14
-                                If CDec(Form1.RealData) >= 14.62 Then
+                                If CDec(Form1.RealData) >= 14.7 Then
                                     OCAP_Form.txtAlarm.Text = ">UWL"
 
-                                ElseIf CDec(Form1.RealData) <= 13.33 Then
+                                ElseIf CDec(Form1.RealData) <= 13.3 Then
                                     OCAP_Form.txtAlarm.Text = "<LWL"
 
                                 End If
@@ -281,19 +281,19 @@ Module Function_Module
                 Select Case Limit
 
                     Case 12
-                        If Form1.RealData >= 12.57 Then
+                        If Form1.RealData >= 12.6 Then
                             OCAP_Form.txtAlarm.Text = ">UWL"
 
-                        ElseIf Form1.RealData <= 11.41 Then
+                        ElseIf Form1.RealData <= 11.4 Then
                             OCAP_Form.txtAlarm.Text = "<LWL"
 
                         End If
 
                     Case 14
-                        If Form1.RealData >= 14.62 Then
+                        If Form1.RealData >= 14.7 Then
                             OCAP_Form.txtAlarm.Text = ">UWL"
 
-                        ElseIf Form1.RealData <= 13.33 Then
+                        ElseIf Form1.RealData <= 13.3 Then
                             OCAP_Form.txtAlarm.Text = "<LWL"
 
                         End If
@@ -536,6 +536,7 @@ Module Function_Module
             'SolderCutter_Form.to_PLC("@00WD00000000")
             SolderCutter_Form.TimerQtyChecking.Enabled = False
             Cutter2_Module.C2_ChagetoStart()
+            Main_Form.btnBuyOff.Enabled = True
         End If
     End Sub
 
@@ -580,7 +581,7 @@ Module Function_Module
         Select Case Limit
 
             Case 12 '12.57
-                If Form1.RealData >= 12.57 Or Form1.RealData <= 11.41 Then '11.41
+                If Form1.RealData >= 12.6 Or Form1.RealData <= 11.4 Then '11.41
                     Main_Form.btnSolderCutter.Enabled = False
                     Main_Form.btnSolderWeight.Enabled = False
                     Main_Form.btnBuyOff.Enabled = False
@@ -603,7 +604,7 @@ Module Function_Module
                 End If
 
             Case 14
-                If Form1.RealData >= 14.62 Or Form1.RealData <= 13.33 Then
+                If Form1.RealData >= 14.7 Or Form1.RealData <= 13.3 Then
                     Main_Form.btnSolderCutter.Enabled = False
                     Main_Form.btnSolderWeight.Enabled = False
                     Main_Form.btnBuyOff.Enabled = False
@@ -695,6 +696,7 @@ Module Function_Module
             SolderCutter_Form.TimerChangeSpool.Enabled = True
             Function_Module.RunMachine()
             Cutter2_Module.C2_ChagetoStop()
+            Main_Form.btnBuyOff.Enabled = False
             Form1.btnNewLot.Enabled = True
 
             InterruptionCheck = False
@@ -787,6 +789,31 @@ Module Function_Module
     Sub CloseSerialPort2()
         If Form1.SerialPort2.IsOpen Then
             Form1.SerialPort1.Close()
+        End If
+    End Sub
+
+    Sub ResetAll()
+        Master_login.Label1.Text = "Please scan your finger. SPC or Technician only"
+        Master_login.ShowDialog()
+        If Master_login.F1_get_title = "SPC" Or Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "Engineer" Then
+            SolderCutter_Form.to_PLC("@00WD00050000") ' Head 2 Set Purging to 0
+            Thread.Sleep(100)
+            SolderCutter_Form.to_PLC("@00WD00060000") ' Head 2 Set Cut samples t0 0
+            Thread.Sleep(100)
+            SolderCutter_Form.to_PLC("@00WD01050000") ' Head 2 For Signal done Purging
+            Thread.Sleep(100)
+            SolderCutter_Form.to_PLC("@00WD01060000") ' Head 2 For Signal done Cut samples
+            Thread.Sleep(100)
+            SolderCutter_Form.to_PLC("@00WD01070000") ' Head 2 Change Spool
+            Thread.Sleep(100)
+            SolderCutter_Form.to_PLC("@00WD01080000") ' Head 2 Counter
+            Thread.Sleep(100)
+            SolderCutter_Form.to_PLC("@00WD01090000") ' Head 2 Counter
+            Master_login.Close()
+        Else
+
+            MsgBox("Authorized personnel only!", MsgBoxStyle.Exclamation)
+            Master_login.Close()
         End If
     End Sub
 End Module

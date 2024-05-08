@@ -28,11 +28,12 @@ Partial Class BuyOff_Form
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnExitBuyOff = New Guna.UI2.WinForms.Guna2Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lblcounter = New System.Windows.Forms.Label()
         Me.btnStart = New Guna.UI2.WinForms.Guna2Button()
         Me.lblTitle = New System.Windows.Forms.Label()
-        Me.txtQty = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.txtBuyOffQty = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Guna2CustomGradientPanel2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,15 +87,48 @@ Partial Class BuyOff_Form
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(187, Byte), Integer), CType(CType(222, Byte), Integer), CType(CType(251, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.btnExitBuyOff)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.lblcounter)
         Me.Panel1.Controls.Add(Me.btnStart)
         Me.Panel1.Controls.Add(Me.lblTitle)
-        Me.Panel1.Controls.Add(Me.txtQty)
+        Me.Panel1.Controls.Add(Me.txtBuyOffQty)
         Me.Panel1.Location = New System.Drawing.Point(126, 215)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1060, 779)
         Me.Panel1.TabIndex = 36
+        '
+        'btnExitBuyOff
+        '
+        Me.btnExitBuyOff.BackColor = System.Drawing.Color.Transparent
+        Me.btnExitBuyOff.BorderColor = System.Drawing.Color.Red
+        Me.btnExitBuyOff.BorderRadius = 18
+        Me.btnExitBuyOff.BorderThickness = 3
+        Me.btnExitBuyOff.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnExitBuyOff.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.btnExitBuyOff.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.btnExitBuyOff.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.btnExitBuyOff.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.btnExitBuyOff.FillColor = System.Drawing.Color.White
+        Me.btnExitBuyOff.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExitBuyOff.ForeColor = System.Drawing.Color.Red
+        Me.btnExitBuyOff.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnExitBuyOff.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnExitBuyOff.HoverState.FillColor = System.Drawing.Color.Red
+        Me.btnExitBuyOff.HoverState.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExitBuyOff.HoverState.ForeColor = System.Drawing.Color.White
+        Me.btnExitBuyOff.ImageSize = New System.Drawing.Size(30, 30)
+        Me.btnExitBuyOff.Location = New System.Drawing.Point(629, 462)
+        Me.btnExitBuyOff.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.btnExitBuyOff.Name = "btnExitBuyOff"
+        Me.btnExitBuyOff.ShadowDecoration.BorderRadius = 18
+        Me.btnExitBuyOff.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.btnExitBuyOff.ShadowDecoration.Depth = 20
+        Me.btnExitBuyOff.ShadowDecoration.Enabled = True
+        Me.btnExitBuyOff.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(8)
+        Me.btnExitBuyOff.Size = New System.Drawing.Size(188, 63)
+        Me.btnExitBuyOff.TabIndex = 75
+        Me.btnExitBuyOff.Text = "Exit"
         '
         'Label2
         '
@@ -137,10 +171,10 @@ Partial Class BuyOff_Form
         Me.btnStart.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.btnStart.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.btnStart.HoverState.FillColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btnStart.HoverState.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnStart.HoverState.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnStart.HoverState.ForeColor = System.Drawing.Color.White
         Me.btnStart.ImageSize = New System.Drawing.Size(30, 30)
-        Me.btnStart.Location = New System.Drawing.Point(511, 460)
+        Me.btnStart.Location = New System.Drawing.Point(387, 462)
         Me.btnStart.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.btnStart.Name = "btnStart"
         Me.btnStart.ShadowDecoration.BorderRadius = 18
@@ -162,34 +196,34 @@ Partial Class BuyOff_Form
         Me.lblTitle.TabIndex = 39
         Me.lblTitle.Text = "Enter quantity"
         '
-        'txtQty
+        'txtBuyOffQty
         '
-        Me.txtQty.BackColor = System.Drawing.Color.Transparent
-        Me.txtQty.BorderColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.txtQty.BorderRadius = 20
-        Me.txtQty.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txtQty.DefaultText = ""
-        Me.txtQty.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.txtQty.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.txtQty.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtQty.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txtQty.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtQty.Font = New System.Drawing.Font("Segoe UI", 48.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtQty.ForeColor = System.Drawing.Color.Black
-        Me.txtQty.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtQty.Location = New System.Drawing.Point(321, 297)
-        Me.txtQty.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
-        Me.txtQty.Name = "txtQty"
-        Me.txtQty.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.txtQty.PlaceholderText = ""
-        Me.txtQty.SelectedText = ""
-        Me.txtQty.ShadowDecoration.BorderRadius = 30
-        Me.txtQty.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.txtQty.ShadowDecoration.Enabled = True
-        Me.txtQty.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0)
-        Me.txtQty.Size = New System.Drawing.Size(555, 113)
-        Me.txtQty.TabIndex = 36
-        Me.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.txtBuyOffQty.BackColor = System.Drawing.Color.Transparent
+        Me.txtBuyOffQty.BorderColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.txtBuyOffQty.BorderRadius = 20
+        Me.txtBuyOffQty.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtBuyOffQty.DefaultText = ""
+        Me.txtBuyOffQty.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.txtBuyOffQty.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txtBuyOffQty.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtBuyOffQty.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txtBuyOffQty.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtBuyOffQty.Font = New System.Drawing.Font("Segoe UI", 48.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBuyOffQty.ForeColor = System.Drawing.Color.Black
+        Me.txtBuyOffQty.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtBuyOffQty.Location = New System.Drawing.Point(321, 297)
+        Me.txtBuyOffQty.Margin = New System.Windows.Forms.Padding(8, 9, 8, 9)
+        Me.txtBuyOffQty.Name = "txtBuyOffQty"
+        Me.txtBuyOffQty.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.txtBuyOffQty.PlaceholderText = ""
+        Me.txtBuyOffQty.SelectedText = ""
+        Me.txtBuyOffQty.ShadowDecoration.BorderRadius = 30
+        Me.txtBuyOffQty.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.txtBuyOffQty.ShadowDecoration.Enabled = True
+        Me.txtBuyOffQty.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(0)
+        Me.txtBuyOffQty.Size = New System.Drawing.Size(555, 113)
+        Me.txtBuyOffQty.TabIndex = 36
+        Me.txtBuyOffQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Timer1
         '
@@ -218,9 +252,10 @@ Partial Class BuyOff_Form
     Friend WithEvents Label1 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents lblTitle As Label
-    Friend WithEvents txtQty As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents txtBuyOffQty As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents btnStart As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Label2 As Label
     Friend WithEvents lblcounter As Label
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents btnExitBuyOff As Guna.UI2.WinForms.Guna2Button
 End Class

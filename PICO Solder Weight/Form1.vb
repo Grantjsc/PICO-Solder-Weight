@@ -179,12 +179,11 @@ Public Class Form1
                    End Sub)
         End If
 
-        'If txt = "ES" Then
-        '    Thread.Sleep(5000)
-        '    SerialPort1.WriteLine("Z")
-        '    Thread.Sleep(1000)
-        '    SerialPort1.WriteLine("CP")
-        'End If
+        If txt = "ES" Then
+            btnZero.Visible = True
+        Else
+
+        End If
 
     End Sub
 
@@ -862,20 +861,20 @@ Public Class Form1
     Public get_FolderPath As String = "\\lffile001\infinity\Philippines\Buffer File\PICO\PICO Solder Weight NEW.csv"
     Public get_FolderPath14mg As String = "\\lffile001\infinity\Philippines\Buffer File\PICO\PICO Solder Weight 14mg.csv"
 
-    'Public get_FolderPath2 As String = "\\lffile001\infinity\Philippines\Nano Log\PICO Solder Weight.csv"
+    Public get_FolderPath2 As String = "C:\Backup\PICO Solder Weight Data History.csv"
     Public get_message As String
     Public get_message2 As String
     Public csvfull As Boolean = False
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        dateNtime = Date.Now.ToString("yyyy_MM_dd_HHmmtt ")
+        dateNtime = Date.Now.ToString("MM/dd/yyyy hh:mmtt")
 
         Dim isFileEmpty12mg As Boolean = IsCSVFileEmpty(get_FolderPath)
         Dim isFileEmpty14mg As Boolean = IsCSVFileEmpty(get_FolderPath14mg)
         Dim isFileEmpty As Boolean
 
         get_message = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & "," & """Solder Wire part number,""" & "," & """Bare Wire Lot #,""" & "," & """Cutter setting,""" & vbCrLf
-        'get_message2 = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & "," & """Date and Time,""" & vbCrLf
+        get_message2 = vbCrLf & """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & "," & """Solder Wire part number,""" & "," & """Bare Wire Lot #,""" & "," & """Cutter setting,""" & "," & "Date and Time" & vbCrLf
 
         Select Case CInt(txtWeight.Text)
             Case 12
@@ -891,19 +890,19 @@ Public Class Form1
                     For n As Integer = 0 To data.Length - 1
                         If data(n) > 0 Then
                             get_message = get_message & infi & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & txtSolderWire.Text & "," & txtBareWire.Text & "," & txtCutterSet.Text & vbCrLf
-                            'get_message2 = get_message2 & txtPartNo.Text & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & dateNtime & vbCrLf
+                            get_message2 = get_message2 & infi & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & txtSolderWire.Text & "," & txtBareWire.Text & "," & txtCutterSet.Text & "," & dateNtime & vbCrLf
                         End If
                     Next
 
                     Select Case CInt(txtWeight.Text)
                         Case 12
                             My.Computer.FileSystem.WriteAllText(get_FolderPath, get_message, False)
-                            'My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message, True)
+                            My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message2, True)
                             MessageBox.Show("The data is saved in " & get_FolderPath)
 
                         Case 14
                             My.Computer.FileSystem.WriteAllText(get_FolderPath14mg, get_message, False)
-                            'My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message, True)
+                            My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message2, True)
                             MessageBox.Show("The data is saved in " & get_FolderPath14mg)
                     End Select
 
@@ -924,7 +923,7 @@ Public Class Form1
                     txtReading.Text = ""
                     WeighingScaleOFF()
 
-                    ResetChangeSpool()
+                    'ResetChangeSpool()
 
                     checkSaving()
 
@@ -945,19 +944,19 @@ Public Class Form1
                     For n As Integer = 0 To data.Length - 1
                         If data(n) > 0 Then
                             get_message = get_message & infi & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & txtSolderWire.Text & "," & txtBareWire.Text & "," & txtCutterSet.Text & vbCrLf
-                            'get_message2 = get_message2 & txtPartNo.Text & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & dateNtime & vbCrLf
+                            get_message2 = get_message2 & infi & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & txtSolderWire.Text & "," & txtBareWire.Text & "," & txtCutterSet.Text & "," & dateNtime & vbCrLf
                         End If
                     Next
 
                     Select Case CInt(txtWeight.Text)
                         Case 12
                             My.Computer.FileSystem.WriteAllText(get_FolderPath, get_message, False)
-                            'My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message, True)
+                            My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message2, True)
                             MessageBox.Show("The data is saved in " & get_FolderPath)
 
                         Case 14
                             My.Computer.FileSystem.WriteAllText(get_FolderPath14mg, get_message, False)
-                            'My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message, True)
+                            My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message2, True)
                             MessageBox.Show("The data is saved in " & get_FolderPath14mg)
                     End Select
 
@@ -987,7 +986,7 @@ Public Class Form1
                     txtReading.Text = ""
                     WeighingScaleOFF()
 
-                    ResetChangeSpool()
+                    'ResetChangeSpool()
 
                     'SolderCutter_Form.TimerQtyChecking.Enabled = True
                     'SolderCutter_Form.TimerChangeSpool.Enabled = True
@@ -1019,7 +1018,7 @@ Public Class Form1
 
             Case 12 '12.57
                 For Each number In data
-                    If number >= 12.57 Or number <= 11.41 Then '11.41
+                    If number >= 12.6 Or number <= 11.4 Then '11.41
                         saw = True
                         Exit For
                     End If
@@ -1040,7 +1039,7 @@ Public Class Form1
             Case 14
 
                 For Each number In data
-                    If number >= 14.62 Or number <= 13.33 Then
+                    If number >= 14.7 Or number <= 13.3 Then
                         saw = True
                         Exit For
                     End If
@@ -1403,5 +1402,12 @@ Public Class Form1
 
     Private Sub ChangePoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangePoToolStripMenuItem.Click
         BiometricsChangeCOMName()
+    End Sub
+
+    Private Sub btnZero_Click(sender As Object, e As EventArgs) Handles btnZero.Click
+        SerialPort1.WriteLine("Z")
+        Thread.Sleep(500)
+        SerialPort1.WriteLine("CP")
+        btnZero.Visible = False
     End Sub
 End Class

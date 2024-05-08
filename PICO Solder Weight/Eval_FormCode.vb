@@ -49,6 +49,9 @@ Module Eval_Module
                 Thread.Sleep(500)
                 Eval_Form.SerialPort1.WriteLine("CP")
 
+                Eval_Form.btnExitEval.Enabled = False
+                Eval_Form.btnSave.Enabled = True
+
             End If
         Else
 
@@ -77,8 +80,11 @@ Module Eval_Module
                 My.Computer.FileSystem.WriteAllText(get_FolderPath, get_message, True)
                 'MessageBox.Show("The data is saved in " & get_FolderPath)
 
-                Eval_Form.txtReading.Text = ""
-                Eval_Form.SerialPort1.Close()
+                Eval_Form.txtEvalReading.Text = ""
+
+                If Eval_Form.SerialPort1.IsOpen Then
+                    Eval_Form.SerialPort1.Close()
+                End If
 
                 count = 0
                 Eval_Form.lstResult.Items.Clear()
@@ -90,6 +96,8 @@ Module Eval_Module
                 Main_Form.PanelEval.Visible = False
                 Main_Form.btnEval.FillColor = Color.Transparent
                 Main_Form.btnEval.ForeColor = Color.White
+
+                Main_Form.btnEval.Image = My.Resources.evaluation
 
                 Main_Form.btnSolderWeight.Enabled = True
                 Main_Form.btnSolderCutter.Enabled = True

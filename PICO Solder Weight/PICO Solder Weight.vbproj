@@ -28,7 +28,7 @@
     <UpdateUrl>\\btwebdev01\Websites\WindowsAppUpdater\TSG_Shared\PICO Solder Weight Closed Loop\</UpdateUrl>
     <ProductName>Solder Weight Closed Loop</ProductName>
     <PublisherName>Littelfuse Philippines %28TSG%29 - GCatapang</PublisherName>
-    <ApplicationRevision>74</ApplicationRevision>
+    <ApplicationRevision>100</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -408,6 +408,17 @@
     <Content Include="PICO Solder Weight.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\buyoff.png" />
+    <None Include="Resources\buyoff_colored.png" />
+    <None Include="Resources\Spool_colored.png" />
+    <None Include="Resources\Spool1.png" />
+    <None Include="Resources\evaluation1.png" />
+    <None Include="Resources\evaluation_colored1.png" />
+    <None Include="Resources\scale.png" />
+    <None Include="Resources\scale_colored.png" />
+    <None Include="Resources\Spool.png" />
+    <None Include="Resources\evaluation.png" />
+    <None Include="Resources\evaluation_colored.png" />
     <None Include="Resources\changes.png" />
     <None Include="Resources\question2.png" />
     <None Include="Resources\question.png" />

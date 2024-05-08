@@ -258,4 +258,7 @@
         Function_Module.ChangeSpool()
     End Sub
 
+    Private Sub btnResetAll_Click(sender As Object, e As EventArgs) Handles btnResetAll.Click
+        ResetAll()
+    End Sub
 End Class
