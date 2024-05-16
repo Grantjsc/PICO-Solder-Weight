@@ -134,6 +134,8 @@ Public Class Form1
                     txtReading.Text = ""
                     SerialPort1.Close()
 
+                    CheckRuleOne()
+
                 End If
             End If
         Else
@@ -986,6 +988,8 @@ Public Class Form1
                     txtReading.Text = ""
                     WeighingScaleOFF()
 
+                    SaveAverage()
+
                     'ResetChangeSpool()
 
                     'SolderCutter_Form.TimerQtyChecking.Enabled = True
@@ -1028,6 +1032,8 @@ Public Class Form1
                     TimerCheckCR.Enabled = True
                 Else
 
+                    'RuleOne_FlowTwo()
+
                     Function_Module.ResetOCAP()
                     Function_Module.ChangeOCAP()
 
@@ -1048,6 +1054,8 @@ Public Class Form1
                 If saw Then
                     TimerCheckCR.Enabled = True
                 Else
+
+                    'RuleOne_FlowTwo()
 
                     Function_Module.ResetOCAP()
                     Function_Module.ChangeOCAP()

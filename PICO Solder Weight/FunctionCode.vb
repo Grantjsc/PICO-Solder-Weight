@@ -1,4 +1,5 @@
 ﻿Imports System.Configuration
+Imports System.Data.OleDb
 Imports System.IO.Ports
 Imports System.Reflection
 Imports System.Runtime.Remoting.Lifetime
@@ -118,9 +119,9 @@ Module Function_Module
                 End If
 
                 SolderCutter_Form.to_PLC("@00WD01060000")
-                    Purging_Form.Close()
-                End If
+                Purging_Form.Close()
             End If
+        End If
     End Sub
 
     Sub CheckMg()
@@ -687,23 +688,25 @@ Module Function_Module
 
         If isFileEmpty Then
 
-            SolderCutter_Form.to_PLC("@00WD01080000")
-            Thread.Sleep(100)
-            SolderCutter_Form.to_PLC("@00WD01090000")
+            'SolderCutter_Form.to_PLC("@00WD01080000")
+            'Thread.Sleep(100)
+            'SolderCutter_Form.to_PLC("@00WD01090000")
 
-            Form1.TimerCheckInfi.Enabled = False
-            SolderCutter_Form.TimerQtyChecking.Enabled = True
-            SolderCutter_Form.TimerChangeSpool.Enabled = True
-            Function_Module.RunMachine()
-            Cutter2_Module.C2_ChagetoStop()
-            Main_Form.btnBuyOff.Enabled = False
-            Form1.btnNewLot.Enabled = True
+            'Form1.TimerCheckInfi.Enabled = False
+            'SolderCutter_Form.TimerQtyChecking.Enabled = True
+            'SolderCutter_Form.TimerChangeSpool.Enabled = True
+            'Function_Module.RunMachine()
+            'Cutter2_Module.C2_ChagetoStop()
+            'Main_Form.btnBuyOff.Enabled = False
+            'Form1.btnNewLot.Enabled = True
 
-            InterruptionCheck = False
-            ResetChangeSpool()
+            'InterruptionCheck = False
+            'ResetChangeSpool()
 
-            'OpenSerialPort2()
-            'SerialPort2.WriteLine("A") 'Activate door lock
+            ''OpenSerialPort2()
+            ''SerialPort2.WriteLine("A") 'Activate door lock
+
+            RuleOne_FlowTwo()
 
         Else
             Form1.TimerCheckInfi.Enabled = False
@@ -816,4 +819,259 @@ Module Function_Module
             Master_login.Close()
         End If
     End Sub
+End Module
+
+Module SPCRule_Module
+    Public average As Double
+    Sub RuleOne_FlowOne()
+        Dim sum As Decimal = 0
+        For Each number As Decimal In Form1.data
+            sum += number
+        Next
+        'Dim average As Double = sum / data.Length
+        average = sum / Form1.data.Length
+
+        'MsgBox("Average: " & average & vbNewLine & "Length: " & Form1.data.Length)
+
+        Dim Limit As String
+        Limit = CDec(Form1.txtWeight.Text)
+        Select Case Limit
+
+            Case 12
+                If average > 12.2435 Then '12.2435
+
+                    Thread.Sleep(100)
+                    Main_Form.btnSolderCutter.Enabled = False
+                    Main_Form.btnSolderWeight.Enabled = False
+                    Main_Form.btnBuyOff.Enabled = False
+                    Main_Form.btnEval.Enabled = False
+
+                    Thread.Sleep(500)
+
+                    BiometricsOCAP()
+                    OCAP_Form.txtAlarm.Text = ">cUCL"
+
+                ElseIf average < 11.7271 Then '11.7271
+
+                    Thread.Sleep(100)
+                    Main_Form.btnSolderCutter.Enabled = False
+                    Main_Form.btnSolderWeight.Enabled = False
+                    Main_Form.btnBuyOff.Enabled = False
+                    Main_Form.btnEval.Enabled = False
+
+                    Thread.Sleep(500)
+
+                    BiometricsOCAP()
+                    OCAP_Form.txtAlarm.Text = "<cLCL"
+
+                End If
+
+            Case 14
+                If average > 14.2127 Then
+
+                    Thread.Sleep(100)
+                    Main_Form.btnSolderCutter.Enabled = False
+                    Main_Form.btnSolderWeight.Enabled = False
+                    Main_Form.btnBuyOff.Enabled = False
+                    Main_Form.btnEval.Enabled = False
+
+                    Thread.Sleep(500)
+
+                    BiometricsOCAP()
+                    OCAP_Form.txtAlarm.Text = ">cUCL"
+
+                ElseIf average < 13.6764 Then
+
+                    Thread.Sleep(100)
+                    Main_Form.btnSolderCutter.Enabled = False
+                    Main_Form.btnSolderWeight.Enabled = False
+                    Main_Form.btnBuyOff.Enabled = False
+                    Main_Form.btnEval.Enabled = False
+
+                    Thread.Sleep(500)
+
+                    BiometricsOCAP()
+                    OCAP_Form.txtAlarm.Text = "<cLCL"
+
+                End If
+        End Select
+
+        'SaveAverage()
+
+    End Sub
+
+    Sub RuleOne_FlowTwo()
+        Dim sum As Decimal = 0
+        For Each number As Decimal In Form1.data
+            sum += number
+        Next
+        'Dim average As Double = sum / data.Length
+        average = sum / Form1.data.Length
+
+        'MsgBox("Average: " & average & vbNewLine & "Length: " & Form1.data.Length)
+
+        Dim Limit As String
+        Limit = CDec(Form1.txtWeight.Text)
+        Select Case Limit
+
+            Case 12
+                If average > 12.2435 Then '12.2435
+
+                    Form1.TimerCheckInfi.Enabled = False
+                    Thread.Sleep(100)
+                    Main_Form.btnSolderCutter.Enabled = False
+                    Main_Form.btnSolderWeight.Enabled = False
+                    Main_Form.btnBuyOff.Enabled = False
+                    Main_Form.btnEval.Enabled = False
+
+                    Thread.Sleep(500)
+
+                    BiometricsOCAP()
+                    OCAP_Form.txtAlarm.Text = ">cUCL"
+
+                ElseIf average < 11.7271 Then '11.7271
+
+                    Form1.TimerCheckInfi.Enabled = False
+                    Thread.Sleep(100)
+                    Main_Form.btnSolderCutter.Enabled = False
+                    Main_Form.btnSolderWeight.Enabled = False
+                    Main_Form.btnBuyOff.Enabled = False
+                    Main_Form.btnEval.Enabled = False
+
+                    Thread.Sleep(500)
+
+                    BiometricsOCAP()
+                    OCAP_Form.txtAlarm.Text = "<cLCL"
+
+                Else
+
+                    SolderCutter_Form.to_PLC("@00WD01080000")
+                    Thread.Sleep(100)
+                    SolderCutter_Form.to_PLC("@00WD01090000")
+
+                    Form1.TimerCheckInfi.Enabled = False
+                    SolderCutter_Form.TimerQtyChecking.Enabled = True
+                    SolderCutter_Form.TimerChangeSpool.Enabled = True
+                    Function_Module.RunMachine()
+                    Cutter2_Module.C2_ChagetoStop()
+                    Main_Form.btnBuyOff.Enabled = False
+                    Form1.btnNewLot.Enabled = True
+
+                    InterruptionCheck = False
+                    ResetChangeSpool()
+
+                    'OpenSerialPort2()
+                    'SerialPort2.WriteLine("A") 'Activate door lock
+
+                End If
+
+            Case 14
+                If average > 14.2127 Then
+
+                    Form1.TimerCheckInfi.Enabled = False
+                    Thread.Sleep(100)
+                    Main_Form.btnSolderCutter.Enabled = False
+                    Main_Form.btnSolderWeight.Enabled = False
+                    Main_Form.btnBuyOff.Enabled = False
+                    Main_Form.btnEval.Enabled = False
+
+                    Thread.Sleep(500)
+
+                    BiometricsOCAP()
+                    OCAP_Form.txtAlarm.Text = ">cUCL"
+
+                ElseIf average < 13.6764 Then
+
+                    Form1.TimerCheckInfi.Enabled = False
+                    Thread.Sleep(100)
+                    Main_Form.btnSolderCutter.Enabled = False
+                    Main_Form.btnSolderWeight.Enabled = False
+                    Main_Form.btnBuyOff.Enabled = False
+                    Main_Form.btnEval.Enabled = False
+
+                    Thread.Sleep(500)
+
+                    BiometricsOCAP()
+                    OCAP_Form.txtAlarm.Text = "<cLCL"
+
+                Else
+
+                    SolderCutter_Form.to_PLC("@00WD01080000")
+                    Thread.Sleep(100)
+                    SolderCutter_Form.to_PLC("@00WD01090000")
+
+                    Form1.TimerCheckInfi.Enabled = False
+                    SolderCutter_Form.TimerQtyChecking.Enabled = True
+                    SolderCutter_Form.TimerChangeSpool.Enabled = True
+                    Function_Module.RunMachine()
+                    Cutter2_Module.C2_ChagetoStop()
+                    Main_Form.btnBuyOff.Enabled = False
+                    Form1.btnNewLot.Enabled = True
+
+                    InterruptionCheck = False
+                    ResetChangeSpool()
+
+                    'OpenSerialPort2()
+                    'SerialPort2.WriteLine("A") 'Activate door lock
+
+                End If
+
+                SaveAverage()
+
+        End Select
+    End Sub
+
+    Sub CheckRuleOne()
+        If NewWeightmg = OldWeight And InterruptionCheck = False Then
+
+        Else
+            RuleOne_FlowOne()
+        End If
+    End Sub
+
+End Module
+
+Module AveQuery_Module
+    Sub SaveAverage()
+
+        Connect()
+        Dim mycommand As String
+
+        Dim Limit As String
+
+        Limit = CDec(Form1.txtWeight.Text)
+        Select Case Limit
+
+            Case 12
+
+                Try
+                    myconnection.Open()
+                    mycommand = "INSERT INTO [TopAve_tb] ([Average]) VALUES (@_average)"
+                    Using cmd As OleDbCommand = New OleDbCommand(mycommand, myconnection)
+                        cmd.Parameters.AddWithValue("@_average", average)
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    myconnection.Close()
+                Catch ex As Exception
+                    MsgBox(ex.Message, vbCritical)
+                End Try
+
+            Case 14
+
+                Try
+                    myconnection.Open()
+                    mycommand = "INSERT INTO [BottomAve_tb] ([Average]) VALUES (@_average)"
+                    Using cmd As OleDbCommand = New OleDbCommand(mycommand, myconnection)
+                        cmd.Parameters.AddWithValue("@_average", average)
+                        cmd.ExecuteNonQuery()
+                    End Using
+                    myconnection.Close()
+                Catch ex As Exception
+                    MsgBox(ex.Message, vbCritical)
+                End Try
+
+        End Select
+
+    End Sub
+
 End Module
