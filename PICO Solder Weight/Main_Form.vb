@@ -32,6 +32,7 @@ Public Class Main_Form
             If Form1.SerialPort1.IsOpen Then
                 Form1.SerialPort1.Close()
             End If
+            'OpenSerialPort2
             'SerialPort2.WriteLine("A") 'Activate door lock
             'CloseSerialPort2()
             Application.ExitThread()

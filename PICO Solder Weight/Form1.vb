@@ -980,15 +980,13 @@ Public Class Form1
 
                     'Function_Module.RunMachine()
                     'Cutter2_Module.C2_ChagetoStop()
-                    TimerCheckInfi.Interval = 60000
+                    TimerCheckInfi.Interval = 30000
                     TimerCheckInfi.Enabled = True
                     checkSaveCon = True
 
                     btnNewLot.Enabled = False
                     txtReading.Text = ""
                     WeighingScaleOFF()
-
-                    SaveAverage()
 
                     'ResetChangeSpool()
 

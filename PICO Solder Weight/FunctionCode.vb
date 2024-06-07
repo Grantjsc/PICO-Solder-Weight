@@ -134,6 +134,8 @@ Module Function_Module
                 Main_Form.PanelMain.Controls.Add(Purging_Form)
                 .WindowState = FormWindowState.Maximized
                 Purging_Form.lblMsg.Text = "The machine is cutting samples ..."
+                Purging_Form.btnStartCut.Visible = False
+                Purging_Form.btnCutSample.Visible = True
                 .BringToFront()
                 .Show()
             End With
@@ -148,6 +150,8 @@ Module Function_Module
                 .TopLevel = False
                 Main_Form.PanelMain.Controls.Add(Purging_Form)
                 .WindowState = FormWindowState.Maximized
+                Purging_Form.btnStartCut.Visible = True
+                Purging_Form.btnCutSample.Visible = False
                 .BringToFront()
                 .Show()
             End With
@@ -226,19 +230,19 @@ Module Function_Module
 
                             Case 12
                                 If CDec(Form1.RealData) >= 12.6 Then
-                                    OCAP_Form.txtAlarm.Text = ">UWL"
+                                    OCAP_Form.txtAlarm.Text = ">USL"
 
                                 ElseIf CDec(Form1.RealData) <= 11.4 Then
-                                    OCAP_Form.txtAlarm.Text = "<LWL"
+                                    OCAP_Form.txtAlarm.Text = "<LSL"
 
                                 End If
 
                             Case 14
                                 If CDec(Form1.RealData) >= 14.7 Then
-                                    OCAP_Form.txtAlarm.Text = ">UWL"
+                                    OCAP_Form.txtAlarm.Text = ">USL"
 
                                 ElseIf CDec(Form1.RealData) <= 13.3 Then
-                                    OCAP_Form.txtAlarm.Text = "<LWL"
+                                    OCAP_Form.txtAlarm.Text = "<LSL"
 
                                 End If
 
@@ -283,19 +287,19 @@ Module Function_Module
 
                     Case 12
                         If Form1.RealData >= 12.6 Then
-                            OCAP_Form.txtAlarm.Text = ">UWL"
+                            OCAP_Form.txtAlarm.Text = ">USL"
 
                         ElseIf Form1.RealData <= 11.4 Then
-                            OCAP_Form.txtAlarm.Text = "<LWL"
+                            OCAP_Form.txtAlarm.Text = "<LSL"
 
                         End If
 
                     Case 14
                         If Form1.RealData >= 14.7 Then
-                            OCAP_Form.txtAlarm.Text = ">UWL"
+                            OCAP_Form.txtAlarm.Text = ">USL"
 
                         ElseIf Form1.RealData <= 13.3 Then
-                            OCAP_Form.txtAlarm.Text = "<LWL"
+                            OCAP_Form.txtAlarm.Text = "<LSL"
 
                         End If
 
@@ -924,6 +928,8 @@ Module SPCRule_Module
                     Main_Form.btnBuyOff.Enabled = False
                     Main_Form.btnEval.Enabled = False
 
+                    SaveAverage()
+
                     Thread.Sleep(500)
 
                     BiometricsOCAP()
@@ -937,6 +943,8 @@ Module SPCRule_Module
                     Main_Form.btnSolderWeight.Enabled = False
                     Main_Form.btnBuyOff.Enabled = False
                     Main_Form.btnEval.Enabled = False
+
+                    SaveAverage()
 
                     Thread.Sleep(500)
 
@@ -959,6 +967,8 @@ Module SPCRule_Module
 
                     InterruptionCheck = False
                     ResetChangeSpool()
+
+                    SaveAverage()
 
                     'OpenSerialPort2()
                     'SerialPort2.WriteLine("A") 'Activate door lock
@@ -975,6 +985,8 @@ Module SPCRule_Module
                     Main_Form.btnBuyOff.Enabled = False
                     Main_Form.btnEval.Enabled = False
 
+                    SaveAverage()
+
                     Thread.Sleep(500)
 
                     BiometricsOCAP()
@@ -988,6 +1000,8 @@ Module SPCRule_Module
                     Main_Form.btnSolderWeight.Enabled = False
                     Main_Form.btnBuyOff.Enabled = False
                     Main_Form.btnEval.Enabled = False
+
+                    SaveAverage()
 
                     Thread.Sleep(500)
 
@@ -1011,12 +1025,12 @@ Module SPCRule_Module
                     InterruptionCheck = False
                     ResetChangeSpool()
 
+                    SaveAverage()
+
                     'OpenSerialPort2()
                     'SerialPort2.WriteLine("A") 'Activate door lock
 
                 End If
-
-                SaveAverage()
 
         End Select
     End Sub
@@ -1034,6 +1048,12 @@ End Module
 Module AveQuery_Module
     Sub SaveAverage()
 
+        Dim partno, lotno, _date As String
+
+        partno = Form1.txtPartNo.Text
+        lotno = Form1.txtLotNo.Text
+        _date = Date.Now.ToString("MM/dd/yyyy hh:mmtt")
+
         Connect()
         Dim mycommand As String
 
@@ -1046,9 +1066,13 @@ Module AveQuery_Module
 
                 Try
                     myconnection.Open()
-                    mycommand = "INSERT INTO [TopAve_tb] ([Average]) VALUES (@_average)"
+                    mycommand = "INSERT INTO [TopAve_tb] ([Average], [Part_Number], [Lot_Number], [_DateandTime]) 
+                                   VALUES (@_average, @partnum, @lotnum, @_dateNtime)"
                     Using cmd As OleDbCommand = New OleDbCommand(mycommand, myconnection)
                         cmd.Parameters.AddWithValue("@_average", average)
+                        cmd.Parameters.AddWithValue("@partnum", partno)
+                        cmd.Parameters.AddWithValue("@lotnum", lotno)
+                        cmd.Parameters.AddWithValue("@_dateNtime", _date)
                         cmd.ExecuteNonQuery()
                     End Using
                     myconnection.Close()
@@ -1060,9 +1084,13 @@ Module AveQuery_Module
 
                 Try
                     myconnection.Open()
-                    mycommand = "INSERT INTO [BottomAve_tb] ([Average]) VALUES (@_average)"
+                    mycommand = "INSERT INTO [BottomAve_tb] ([Average], [Part_Number], [Lot_Number], [_DateandTime]) 
+                                 VALUES (@_average, @partnum, @lotnum, @_dateNtime)"
                     Using cmd As OleDbCommand = New OleDbCommand(mycommand, myconnection)
                         cmd.Parameters.AddWithValue("@_average", average)
+                        cmd.Parameters.AddWithValue("@partnum", partno)
+                        cmd.Parameters.AddWithValue("@lotnum", lotno)
+                        cmd.Parameters.AddWithValue("@_dateNtime", _date)
                         cmd.ExecuteNonQuery()
                     End Using
                     myconnection.Close()

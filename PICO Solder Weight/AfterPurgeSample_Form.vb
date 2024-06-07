@@ -12,6 +12,8 @@ Public Class AfterPurgeSample_Form
         Purging_Form.TimerPurgingAndSamples.Enabled = True
         'PurgeDone = True
         Samples = True
+        Purging_Form.btnStartCut.Visible = False
+        Purging_Form.btnCutSample.Visible = True
 
         Me.Close()
     End Sub

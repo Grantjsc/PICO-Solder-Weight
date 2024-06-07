@@ -11,6 +11,8 @@ Module ChangeCOM_Module
     Public LockSerial As String
     Public NewWeighingSerial As String
     Public NewLockSerial As String
+    Public PLCSerial As String
+    Public NewPLCSerial As String
 
     Sub GetWeighingSerialName()
         Dim serial1 As String = System.Configuration.ConfigurationManager.AppSettings("WeighingCOM")
@@ -23,6 +25,10 @@ Module ChangeCOM_Module
         Console.WriteLine(serial2)
 
         LockSerial = serial2
+    End Sub
+
+    Sub GetPLCSerialName()
+
     End Sub
 
     Sub GetCOMport1()
