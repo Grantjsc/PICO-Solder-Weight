@@ -582,7 +582,7 @@ Public Class Form1
                     SerialPort2.PortName = LockSerial
                     OpenSerialPort2()
                     SerialPort2.WriteLine("A") ' door unlock
-                    CloseSerialPort2()
+                    'CloseSerialPort2()
 
                     Function_Module.WeighingScalebyON()
                     Thread.Sleep(100)
@@ -595,8 +595,8 @@ Public Class Form1
                     Timer1.Enabled = True
 
                     ''Real flow in prod if change spool always purge
-                    SolderCutter_Form.to_PLC("@00WD01070000")
-                    SolderCutter_Form.TimerChangeSpool.Enabled = True
+                    'SolderCutter_Form.to_PLC("@00WD01070000")
+                    'SolderCutter_Form.TimerChangeSpool.Enabled = True
 
                     Thread.Sleep(100)
                     SolderCutter_Form.to_PLC("@00WD01080000")
@@ -611,7 +611,7 @@ Public Class Form1
                     SerialPort2.PortName = LockSerial
                     OpenSerialPort2()
                     SerialPort2.WriteLine("A") ' door unlock
-                    CloseSerialPort2()
+                    'CloseSerialPort2()
 
                     SolderCutter_Form.to_PLC("@00WD01080000")
                     Thread.Sleep(100)
@@ -714,6 +714,7 @@ Public Class Form1
 
         Timer1.Enabled = False
         SolderCutter_Form.TimerChangeSpool.Enabled = False
+        SolderCutter_Form.TimerQtyChecking.Enabled = False
 
         txtReading.Text = ""
         If SerialPort1.IsOpen Then
@@ -1019,11 +1020,11 @@ Public Class Form1
                     'SolderCutter_Form.TimerQtyChecking.Enabled = True
                     'SolderCutter_Form.TimerChangeSpool.Enabled = True
 
-                    GetLockSerialName()
-                    SerialPort2.PortName = LockSerial
-                    OpenSerialPort2()
-                    SerialPort2.WriteLine("B") 'door locked
-                    CloseSerialPort2()
+                    'GetLockSerialName()
+                    'SerialPort2.PortName = LockSerial
+                    'OpenSerialPort2()
+                    'SerialPort2.WriteLine("B") 'door locked
+                    'CloseSerialPort2()
 
                 Else
                     csvfull = True
@@ -1456,12 +1457,30 @@ Public Class Form1
     Public DoorState As Boolean = False
 
     Private Sub SerialPort2_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort2.DataReceived
-        DoorSignal = SerialPort2.ReadExisting()
-        DoorSignal = DoorSignal.Replace(vbCrLf, "")
-        Console.WriteLine(DoorSignal)
 
-        If DoorSignal = 1 Then
-            DoorState = True
-        End If
+        Try
+            DoorSignal = SerialPort2.ReadExisting()
+            DoorSignal = DoorSignal.Replace(vbCrLf, "")
+            DoorSignal = DoorSignal.Replace("?", "")
+            Console.WriteLine(DoorSignal)
+            'DoorState = True
+
+            Select Case DoorSignal
+                Case 1
+                    DoorState = True
+
+                Case 0
+                    DoorState = False
+
+                Case Else
+                    DoorState = False
+            End Select
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical)
+        End Try
+
+        'If DoorSignal = 1 Then
+        '    DoorState = True
+        'End If
     End Sub
 End Class

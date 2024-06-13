@@ -12,6 +12,11 @@
             MsgBox("Please enter new cutter setting", MsgBoxStyle.Critical)
         Else
             Form1.txtCutterSet.Text = txtNewCutSet.Text
+
+            OpenSerialPort2()
+            Form1.SerialPort2.WriteLine("A") 'door unlock
+            'CloseSerialPort2()
+
             Me.Close()
             Function_Module.PurgeAfterOCAP()
         End If

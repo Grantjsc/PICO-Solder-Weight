@@ -2,6 +2,9 @@
 
 Public Class askChangeCutterSet_Form
     Private Sub btnNo_Click(sender As Object, e As EventArgs) Handles btnNo.Click
+        OpenSerialPort2()
+        Form1.SerialPort2.WriteLine("A") 'door unlock
+        'CloseSerialPort2()
         Me.Close()
         Function_Module.PurgeAfterOCAP()
     End Sub

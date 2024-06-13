@@ -7,4 +7,9 @@
 
         Me.Close()
     End Sub
+
+    Private Sub DoorOpen_Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'OpenSerialPort2()
+    End Sub
+
 End Class

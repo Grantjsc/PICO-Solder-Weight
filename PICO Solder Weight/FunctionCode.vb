@@ -211,9 +211,9 @@ Module Function_Module
                 Master_login.ShowDialog()
                 If Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "Engineer" Then
 
-                    OpenSerialPort2()
-                    Form1.SerialPort2.WriteLine("A") 'door unlocked
-                    CloseSerialPort2()
+                    'OpenSerialPort2()
+                    'Form1.SerialPort2.WriteLine("A") 'door unlock
+                    'CloseSerialPort2()
 
                     Form1.DoorState = False
 
@@ -238,10 +238,12 @@ Module Function_Module
                                 SetLowLimit = CDec(Form1.TopLowLim)
                                 SetUpperLimit = CDec(Form1.TopUppLim)
 
-                                If CDec(Form1.RealData) >= SetUpperLimit Then
+                                'Form1.RealData >= 12.6 Or Form1.RealData <= 11.4
+
+                                If CDec(Form1.RealData) >= 12.6 Then
                                     OCAP_Form.txtAlarm.Text = ">USL"
 
-                                ElseIf CDec(Form1.RealData) <= SetLowLimit Then
+                                ElseIf CDec(Form1.RealData) <= 11.4 Then
                                     OCAP_Form.txtAlarm.Text = "<LSL"
 
                                 End If
@@ -250,10 +252,12 @@ Module Function_Module
                                 SetLowLimit = CDec(Form1.BotLowLim)
                                 SetUpperLimit = CDec(Form1.BotUppLim)
 
-                                If CDec(Form1.RealData) >= SetUpperLimit Then
+                                'Form1.RealData >= 14.7 Or Form1.RealData <= 13.3
+
+                                If CDec(Form1.RealData) >= 14.7 Then
                                     OCAP_Form.txtAlarm.Text = ">USL"
 
-                                ElseIf CDec(Form1.RealData) <= SetLowLimit Then
+                                ElseIf CDec(Form1.RealData) <= 13.3 Then
                                     OCAP_Form.txtAlarm.Text = "<LSL"
 
                                 End If
@@ -282,9 +286,9 @@ Module Function_Module
             IncOCAP()
             ChangeOCAP()
 
-            OpenSerialPort2()
-            Form1.SerialPort2.WriteLine("A") 'door unlocked
-            CloseSerialPort2()
+            'OpenSerialPort2()
+            'Form1.SerialPort2.WriteLine("A") 'door unlocked
+            'CloseSerialPort2()
 
             Form1.DoorState = False
 
@@ -308,10 +312,12 @@ Module Function_Module
                         SetLowLimit = CDec(Form1.TopLowLim)
                         SetUpperLimit = CDec(Form1.TopUppLim)
 
-                        If CDec(Form1.RealData) >= SetUpperLimit Then
+                        'Form1.RealData >= 12.6 Or Form1.RealData <= 11.4
+
+                        If CDec(Form1.RealData) >= 12.6 Then
                             OCAP_Form.txtAlarm.Text = ">USL"
 
-                        ElseIf CDec(Form1.RealData) <= SetLowLimit Then
+                        ElseIf CDec(Form1.RealData) <= 11.4 Then
                             OCAP_Form.txtAlarm.Text = "<LSL"
 
                         End If
@@ -320,10 +326,12 @@ Module Function_Module
                         SetLowLimit = CDec(Form1.BotLowLim)
                         SetUpperLimit = CDec(Form1.BotUppLim)
 
-                        If CDec(Form1.RealData) >= SetUpperLimit Then
+                        'Form1.RealData >= 14.7 Or Form1.RealData <= 13.3
+
+                        If CDec(Form1.RealData) >= 14.7 Then
                             OCAP_Form.txtAlarm.Text = ">USL"
 
-                        ElseIf CDec(Form1.RealData) <= SetLowLimit Then
+                        ElseIf CDec(Form1.RealData) <= 13.3 Then
                             OCAP_Form.txtAlarm.Text = "<LSL"
 
                         End If
@@ -358,7 +366,7 @@ Module Function_Module
 
                     OpenSerialPort2()
                     Form1.SerialPort2.WriteLine("A") 'door unlocked
-                    CloseSerialPort2()
+                    'CloseSerialPort2()
 
                     Form1.DoorState = False
 
@@ -407,7 +415,7 @@ Module Function_Module
 
                     OpenSerialPort2()
                     Form1.SerialPort2.WriteLine("A") 'door unlocked
-                    CloseSerialPort2()
+                    'CloseSerialPort2()
 
                     Form1.DoorState = False
 
@@ -646,9 +654,11 @@ Module Function_Module
                 SetLowLimit = CDec(Form1.TopLowLim)
                 SetUpperLimit = CDec(Form1.TopUppLim)
 
+                'Form1.RealData >= SetUpperLimit Or Form1.RealData <= SetLowLimit
+
                 'Form1.RealData >= 12.6 Or Form1.RealData <= 11.4
 
-                If Form1.RealData >= SetUpperLimit Or Form1.RealData <= SetLowLimit Then
+                If Form1.RealData >= 12.6 Or Form1.RealData <= 11.4 Then
                     Main_Form.btnSolderCutter.Enabled = False
                     Main_Form.btnSolderWeight.Enabled = False
                     Main_Form.btnBuyOff.Enabled = False
@@ -673,10 +683,11 @@ Module Function_Module
             Case 14
                 SetLowLimit = CDec(Form1.BotLowLim)
                 SetUpperLimit = CDec(Form1.BotUppLim)
+                'Form1.RealData >= SetUpperLimit Or Form1.RealData <= SetLowLimit
 
                 'Form1.RealData >= 14.7 Or Form1.RealData <= 13.3
 
-                If Form1.RealData >= SetUpperLimit Or Form1.RealData <= SetLowLimit Then
+                If Form1.RealData >= 14.7 Or Form1.RealData <= 13.3 Then
                     Main_Form.btnSolderCutter.Enabled = False
                     Main_Form.btnSolderWeight.Enabled = False
                     Main_Form.btnBuyOff.Enabled = False
@@ -754,7 +765,7 @@ Module Function_Module
 
             OpenSerialPort2()
             Form1.SerialPort2.WriteLine("B") 'door locked
-            CloseSerialPort2()
+            'CloseSerialPort2()
 
             Form1.DoorState = False
 
@@ -882,7 +893,7 @@ Module Function_Module
 End Module
 
 Module SPCRule_Module
-    Public average As Double
+    Public average As Decimal
 
     Public ConStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\LF Database\PICO Solder Weight.accdb;Persist Security Info=True;Jet OLEDB:Database Password=lfpicosolder"
     Public Connection As New OleDbConnection(ConStr)
@@ -990,7 +1001,11 @@ Module SPCRule_Module
         Select Case Limit
 
             Case 12
-                If average > 12.2435 Then '12.2435
+
+                SetLowLimit = CDec(Form1.TopLowLim)
+                SetUpperLimit = CDec(Form1.TopUppLim)
+
+                If average > SetUpperLimit Then '12.2435
 
                     Thread.Sleep(100)
                     Main_Form.btnSolderCutter.Enabled = False
@@ -1003,7 +1018,7 @@ Module SPCRule_Module
                     BiometricsOCAP()
                     OCAP_Form.txtAlarm.Text = ">cUCL"
 
-                ElseIf average < 11.7271 Then '11.7271
+                ElseIf average < SetLowLimit Then '11.7271
 
                     Thread.Sleep(100)
                     Main_Form.btnSolderCutter.Enabled = False
@@ -1019,7 +1034,11 @@ Module SPCRule_Module
                 End If
 
             Case 14
-                If average > 14.2127 Then
+
+                SetLowLimit = CDec(Form1.BotLowLim)
+                SetUpperLimit = CDec(Form1.BotUppLim)
+
+                If average > SetUpperLimit Then
 
                     Thread.Sleep(100)
                     Main_Form.btnSolderCutter.Enabled = False
@@ -1032,7 +1051,7 @@ Module SPCRule_Module
                     BiometricsOCAP()
                     OCAP_Form.txtAlarm.Text = ">cUCL"
 
-                ElseIf average < 13.6764 Then
+                ElseIf average < SetLowLimit Then
 
                     Thread.Sleep(100)
                     Main_Form.btnSolderCutter.Enabled = False
@@ -1067,7 +1086,11 @@ Module SPCRule_Module
         Select Case Limit
 
             Case 12
-                If average > 12.2435 Then '12.2435
+
+                SetLowLimit = CDec(Form1.TopLowLim)
+                SetUpperLimit = CDec(Form1.TopUppLim)
+
+                If average > SetUpperLimit Then '12.2435
 
                     Form1.TimerCheckInfi.Enabled = False
                     Thread.Sleep(100)
@@ -1083,7 +1106,7 @@ Module SPCRule_Module
                     BiometricsOCAP()
                     OCAP_Form.txtAlarm.Text = ">cUCL"
 
-                ElseIf average < 11.7271 Then '11.7271
+                ElseIf average < SetLowLimit Then '11.7271
 
                     Form1.TimerCheckInfi.Enabled = False
                     Thread.Sleep(100)
@@ -1133,7 +1156,11 @@ Module SPCRule_Module
                 End If
 
             Case 14
-                If average > 14.2127 Then
+
+                SetLowLimit = CDec(Form1.BotLowLim)
+                SetUpperLimit = CDec(Form1.BotUppLim)
+
+                If average > SetUpperLimit Then
 
                     Form1.TimerCheckInfi.Enabled = False
                     Thread.Sleep(100)
@@ -1149,7 +1176,7 @@ Module SPCRule_Module
                     BiometricsOCAP()
                     OCAP_Form.txtAlarm.Text = ">cUCL"
 
-                ElseIf average < 13.6764 Then
+                ElseIf average < SetLowLimit Then
 
                     Form1.TimerCheckInfi.Enabled = False
                     Thread.Sleep(100)
