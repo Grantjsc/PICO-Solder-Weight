@@ -355,8 +355,8 @@ Public Class Form1
                 '       "Bottom Lower Limit: " & BotLowLim & vbNewLine &
                 '       "Bottom Upper Limit: " & BotUppLim & vbNewLine)
 
-                If Timer1.Enabled = False Then
-                    Timer1.Enabled = True
+                If SolderCutter_Form.Timer1.Enabled = False Then
+                    SolderCutter_Form.Timer1.Enabled = True
                 End If
 
                 'Console.WriteLine(infi)
@@ -595,8 +595,8 @@ Public Class Form1
                     Timer1.Enabled = True
 
                     ''Real flow in prod if change spool always purge
-                    'SolderCutter_Form.to_PLC("@00WD01070000")
-                    'SolderCutter_Form.TimerChangeSpool.Enabled = True
+                    SolderCutter_Form.to_PLC("@00WD01070000")
+                    SolderCutter_Form.TimerChangeSpool.Enabled = True
 
                     Thread.Sleep(100)
                     SolderCutter_Form.to_PLC("@00WD01080000")

@@ -1031,14 +1031,14 @@ Partial Class Form1
         '
         Me.AddAssociateToolStripMenuItem.Image = CType(resources.GetObject("AddAssociateToolStripMenuItem.Image"), System.Drawing.Image)
         Me.AddAssociateToolStripMenuItem.Name = "AddAssociateToolStripMenuItem"
-        Me.AddAssociateToolStripMenuItem.Size = New System.Drawing.Size(185, 26)
+        Me.AddAssociateToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
         Me.AddAssociateToolStripMenuItem.Text = "Add Associate"
         '
         'ChangePoToolStripMenuItem
         '
         Me.ChangePoToolStripMenuItem.Image = Global.PICO_Solder_Weight.My.Resources.Resources.changes
         Me.ChangePoToolStripMenuItem.Name = "ChangePoToolStripMenuItem"
-        Me.ChangePoToolStripMenuItem.Size = New System.Drawing.Size(185, 26)
+        Me.ChangePoToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
         Me.ChangePoToolStripMenuItem.Text = "Change COM Name"
         '
         'SPCToolStripMenuItem
@@ -1053,8 +1053,12 @@ Partial Class Form1
         '
         Me.RulesToolStripMenuItem.Image = CType(resources.GetObject("RulesToolStripMenuItem.Image"), System.Drawing.Image)
         Me.RulesToolStripMenuItem.Name = "RulesToolStripMenuItem"
-        Me.RulesToolStripMenuItem.Size = New System.Drawing.Size(184, 26)
+        Me.RulesToolStripMenuItem.Size = New System.Drawing.Size(104, 22)
         Me.RulesToolStripMenuItem.Text = "Rules"
+        '
+        'SerialPort2
+        '
+        Me.SerialPort2.PortName = "COM8"
         '
         'TimerErrorMsg
         '

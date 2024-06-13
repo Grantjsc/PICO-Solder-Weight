@@ -210,7 +210,13 @@ Module Function_Module
                 Master_login.Label1.Text = "Perform OCAP, please scan your finger. Technician only"
                 Master_login.ShowDialog()
                 If Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "Engineer" Then
-                    'SerialPort1.WriteLine("A")
+
+                    OpenSerialPort2()
+                    Form1.SerialPort2.WriteLine("A") 'door unlocked
+                    CloseSerialPort2()
+
+                    Form1.DoorState = False
+
                     'Wite to PLC Reset Error
                     ResetOCAP()
                     ChangeOCAP()
@@ -275,6 +281,13 @@ Module Function_Module
 
             IncOCAP()
             ChangeOCAP()
+
+            OpenSerialPort2()
+            Form1.SerialPort2.WriteLine("A") 'door unlocked
+            CloseSerialPort2()
+
+            Form1.DoorState = False
+
             'SolderCutter_Form.to_PLC("@00WD00000000")
             MsgBox("Please perform OCAP!", MessageBoxIcon.Error)
 
@@ -343,6 +356,12 @@ Module Function_Module
                 Master_login.ShowDialog()
                 If Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "Engineer" Then
 
+                    OpenSerialPort2()
+                    Form1.SerialPort2.WriteLine("A") 'door unlocked
+                    CloseSerialPort2()
+
+                    Form1.DoorState = False
+
                     ResetOCAP()
                     ChangeOCAP()
 
@@ -385,6 +404,12 @@ Module Function_Module
                 Master_login.Label1.Text = "Perform OCAP, please scan your finger after performing OCAP. SPC only"
                 Master_login.ShowDialog()
                 If Master_login.F1_get_title = "SPC" Or Master_login.F1_get_title = "Engineer" Then
+
+                    OpenSerialPort2()
+                    Form1.SerialPort2.WriteLine("A") 'door unlocked
+                    CloseSerialPort2()
+
+                    Form1.DoorState = False
 
                     Form1.btnEnable.Visible = False
                     Form1.btnReset.Visible = True
@@ -731,6 +756,8 @@ Module Function_Module
             Form1.SerialPort2.WriteLine("B") 'door locked
             CloseSerialPort2()
 
+            Form1.DoorState = False
+
             Select Case CInt(Form1.txtWeight.Text)
                 Case 12
                     isFileEmpty = isFileEmpty12mg
@@ -819,12 +846,12 @@ Module Function_Module
 
     Sub OpenSerialPort2()
         If Not Form1.SerialPort2.IsOpen Then
-            Form1.SerialPort1.Open()
+            Form1.SerialPort2.Open()
         End If
     End Sub
     Sub CloseSerialPort2()
         If Form1.SerialPort2.IsOpen Then
-            Form1.SerialPort1.Close()
+            Form1.SerialPort2.Close()
         End If
     End Sub
 

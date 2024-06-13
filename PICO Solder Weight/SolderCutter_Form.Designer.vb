@@ -630,9 +630,9 @@ Partial Class SolderCutter_Form
         Me.lblSpool107.Location = New System.Drawing.Point(220, 366)
         Me.lblSpool107.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lblSpool107.Name = "lblSpool107"
-        Me.lblSpool107.Size = New System.Drawing.Size(34, 13)
+        Me.lblSpool107.Size = New System.Drawing.Size(31, 13)
         Me.lblSpool107.TabIndex = 80
-        Me.lblSpool107.Text = "Spool"
+        Me.lblSpool107.Text = "0000"
         Me.lblSpool107.Visible = False
         '
         'lblC2counter

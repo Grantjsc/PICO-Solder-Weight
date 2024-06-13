@@ -62,7 +62,7 @@ Partial Class DoorOpen_Form
         Me.lblSavingError.Name = "lblSavingError"
         Me.lblSavingError.Size = New System.Drawing.Size(462, 107)
         Me.lblSavingError.TabIndex = 19
-        Me.lblSavingError.Text = "Please close the door!"
+        Me.lblSavingError.Text = "Kindly close the door."
         Me.lblSavingError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'PictureBox1

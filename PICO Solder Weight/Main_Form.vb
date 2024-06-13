@@ -23,6 +23,10 @@ Public Class Main_Form
 
         'Form1.SerialPort1.Open()
         'Form1.SerialPort2.Open()
+
+        OpenSerialPort2()
+        Form1.SerialPort2.WriteLine("B") 'door locked
+        CloseSerialPort2()
     End Sub
 
     Private Sub Main_Form_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
