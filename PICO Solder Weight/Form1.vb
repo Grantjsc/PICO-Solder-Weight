@@ -182,6 +182,14 @@ Public Class Form1
             e.Cancel = True
         Else
             SerialPort1.Close()
+
+            If Not SerialPort2.IsOpen Then
+                SerialPort2.Open()
+            End If
+
+            SerialPort2.WriteLine("B") 'door locked
+            SerialPort2.Close()
+
             Application.ExitThread()
         End If
     End Sub
@@ -447,19 +455,26 @@ Public Class Form1
             MsgBox("Please enter Lot Numbwe!", MsgBoxStyle.Exclamation)
         Else
 
+            If Not SerialPort2.IsOpen Then
+                SerialPort2.Open()
+            End If
+
+            SerialPort2.WriteLine("A") 'door unlocked
+            SerialPort2.Close()
+
             Associate()
 
-            'btnWeight.Focus()
-            SerialPort1.Open()
+                'btnWeight.Focus()
+                SerialPort1.Open()
 
-            SerialPort1.WriteLine("Z")
-            Thread.Sleep(500)
-            SerialPort1.WriteLine("CP")
-            Timer1.Enabled = True
+                SerialPort1.WriteLine("Z")
+                Thread.Sleep(500)
+                SerialPort1.WriteLine("CP")
+                Timer1.Enabled = True
 
-            btnWeight.Enabled = True
-            btnWeight.Focus()
-        End If
+                btnWeight.Enabled = True
+                btnWeight.Focus()
+            End If
     End Sub
 
     Private Sub cboAssociate_MouseClick(sender As Object, e As MouseEventArgs) Handles cboAssociate.MouseClick
@@ -616,43 +631,48 @@ Public Class Form1
     Public get_message As String
     Public get_message2 As String
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        Dim isFileEmpty As Boolean = IsCSVFileEmpty(get_FolderPath)
-        get_message = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & vbCrLf
-        'get_message2 = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & "," & """Date and Time,""" & vbCrLf
-        Try
-            If isFileEmpty Then
-                For n As Integer = 0 To data.Length - 1
-                    If data(n) > 0 Then
-                        get_message = get_message & infi & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & vbCrLf
-                        'get_message2 = get_message2 & txtPartNo.Text & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & dateNtime & vbCrLf
-                    End If
-                Next
-                My.Computer.FileSystem.WriteAllText(get_FolderPath, get_message, False)
-                'My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message, True)
-                MessageBox.Show("The data is saved in " & get_FolderPath)
-                btnNewLot.Enabled = True
-                btnSave.Enabled = False
+        If DoorState = True Then
+            Dim isFileEmpty As Boolean = IsCSVFileEmpty(get_FolderPath)
+            get_message = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & vbCrLf
+            'get_message2 = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & "," & """Date and Time,""" & vbCrLf
+            Try
+                If isFileEmpty Then
+                    For n As Integer = 0 To data.Length - 1
+                        If data(n) > 0 Then
+                            get_message = get_message & infi & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & vbCrLf
+                            'get_message2 = get_message2 & txtPartNo.Text & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & dateNtime & vbCrLf
+                        End If
+                    Next
+                    My.Computer.FileSystem.WriteAllText(get_FolderPath, get_message, False)
+                    'My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message, True)
+                    MessageBox.Show("The data is saved in " & get_FolderPath)
+                    btnNewLot.Enabled = True
+                    btnSave.Enabled = False
 
-                Timer1.Enabled = False
+                    Timer1.Enabled = False
 
-                btnEnable.Visible = True
-                btnReset.Visible = False
+                    btnEnable.Visible = True
+                    btnReset.Visible = False
 
-                btnEnable.Focus()
-
-
-                'txtReading.Text = ""
-                'SerialPort1.Close()
-
-            Else
-
-                MessageBox.Show("Cannot Proceed Saving!!! There is a file for upload at Infinity. Please add the data In Infinity, then click Save.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            End If
-        Catch ex As Exception
-            MsgBox(ex, vbCritical)
-        End Try
+                    btnEnable.Focus()
 
 
+                    'txtReading.Text = ""
+                    'SerialPort1.Close()
+
+                    DoorState = False
+
+                Else
+
+                    MessageBox.Show("Cannot Proceed Saving!!! There is a file for upload at Infinity." & vbNewLine & "Please add the data In Infinity, then click Save.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                End If
+            Catch ex As Exception
+                MsgBox(ex, vbCritical)
+            End Try
+
+        Else
+            MessageBox.Show("The door is still open. Kindly close the door.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
     End Sub
 
     Private Function IsCSVFileEmpty(filePath As String) As Boolean
@@ -711,5 +731,18 @@ Public Class Form1
         btnEnable.Visible = False
         btnReset.Visible = True
         btnSave.Focus()
+    End Sub
+
+    Public DoorSignal As String
+    Public DoorState As Boolean = False
+
+    Private Sub SerialPort2_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort2.DataReceived
+        DoorSignal = SerialPort2.ReadExisting()
+        DoorSignal = DoorSignal.Replace(vbCrLf, "")
+        Console.WriteLine(DoorSignal)
+
+        If DoorSignal = 1 Then
+            DoorState = True
+        End If
     End Sub
 End Class
