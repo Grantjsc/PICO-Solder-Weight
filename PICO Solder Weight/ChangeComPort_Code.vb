@@ -28,7 +28,10 @@ Module ChangeCOM_Module
     End Sub
 
     Sub GetPLCSerialName()
+        Dim serial3 As String = System.Configuration.ConfigurationManager.AppSettings("PLCCom")
+        Console.WriteLine(serial3)
 
+        PLCSerial = serial3
     End Sub
 
     Sub GetCOMport1()
@@ -49,6 +52,17 @@ Module ChangeCOM_Module
 
         ConfigurationManager.RefreshSection("appSettings") 'refresh
     End Sub
+
+    Sub GetCOMport3()
+        NewPLCSerial = ChangeComPort_Form.cboPLC.Text
+    End Sub
+    Sub ChangePLCPort()
+        config.AppSettings.Settings("PLCCom").Value = NewPLCSerial ' Rewrite Door Lock (Arduino) COM name
+        config.Save(ConfigurationSaveMode.Modified) ' save the new value
+
+        ConfigurationManager.RefreshSection("appSettings") 'refresh
+    End Sub
+
     Sub LoadComPort1()
         Dim portNameWS As String() = SerialPort.GetPortNames()
         For Each portName As String In portNameWS
@@ -63,32 +77,87 @@ Module ChangeCOM_Module
         Next
     End Sub
 
-    Sub ChangeNames()
-        If ChangeComPort_Form.cboWeighing.Text = "" And ChangeComPort_Form.cboLock.Text = "" Then
-            MsgBox("Please select SerialPort name!", MessageBoxIcon.Error)
-        ElseIf String.IsNullOrEmpty(ChangeComPort_Form.cboWeighing.Text) Then
-            GetCOMport2()
-            ChangeLockComPort()
+    Sub LoadComPort3()
+        Dim PLCportName As String() = SerialPort.GetPortNames()
+        For Each ComPortName As String In PLCportName
+            ChangeComPort_Form.cboPLC.Items.Add(ComPortName)
+        Next
+    End Sub
 
-            ChangeComPort_Form.cboWeighing.Items.Clear()
-            ChangeComPort_Form.cboLock.Items.Clear()
-            ChangeComPort_Form.Close()
-        ElseIf String.IsNullOrEmpty(ChangeComPort_Form.cboLock.Text) Then
+    Sub ChangeNames()
+        If ChangeComPort_Form.cboWeighing.Text = "" And ChangeComPort_Form.cboLock.Text = "" And ChangeComPort_Form.cboPLC.Text = "" Then
+            MsgBox("Please select SerialPort name!", MessageBoxIcon.Error)
+        ElseIf String.IsNullOrEmpty(ChangeComPort_Form.cboPLC.Text) And String.IsNullOrEmpty(ChangeComPort_Form.cboLock.Text) Then
             GetCOMport1()
             ChangeWeighingComPort()
 
             ChangeComPort_Form.cboWeighing.Items.Clear()
             ChangeComPort_Form.cboLock.Items.Clear()
+            ChangeComPort_Form.cboPLC.Items.Clear()
+            ChangeComPort_Form.Close()
+
+        ElseIf String.IsNullOrEmpty(ChangeComPort_Form.cboWeighing.Text) And String.IsNullOrEmpty(ChangeComPort_Form.cboPLC.Text) Then
+            GetCOMport2()
+            ChangeLockComPort()
+
+            ChangeComPort_Form.cboWeighing.Items.Clear()
+            ChangeComPort_Form.cboLock.Items.Clear()
+            ChangeComPort_Form.cboPLC.Items.Clear()
+            ChangeComPort_Form.Close()
+
+        ElseIf String.IsNullOrEmpty(ChangeComPort_Form.cboWeighing.Text) And String.IsNullOrEmpty(ChangeComPort_Form.cboLock.Text) Then
+            GetCOMport3()
+            ChangePLCPort()
+
+            ChangeComPort_Form.cboWeighing.Items.Clear()
+            ChangeComPort_Form.cboLock.Items.Clear()
+            ChangeComPort_Form.cboPLC.Items.Clear()
+            ChangeComPort_Form.Close()
+
+        ElseIf String.IsNullOrEmpty(ChangeComPort_Form.cboWeighing.Text) Then
+            GetCOMport2()
+            GetCOMport3()
+            ChangeLockComPort()
+            ChangePLCPort()
+
+            ChangeComPort_Form.cboWeighing.Items.Clear()
+            ChangeComPort_Form.cboLock.Items.Clear()
+            ChangeComPort_Form.cboPLC.Items.Clear()
+            ChangeComPort_Form.Close()
+
+        ElseIf String.IsNullOrEmpty(ChangeComPort_Form.cboLock.Text) Then
+            GetCOMport1()
+            GetCOMport3()
+            ChangeWeighingComPort()
+            ChangePLCPort()
+
+            ChangeComPort_Form.cboWeighing.Items.Clear()
+            ChangeComPort_Form.cboLock.Items.Clear()
+            ChangeComPort_Form.cboPLC.Items.Clear()
+            ChangeComPort_Form.Close()
+
+        ElseIf String.IsNullOrEmpty(ChangeComPort_Form.cboPLC.Text) Then
+            GetCOMport1()
+            GetCOMport2()
+            ChangeLockComPort()
+            ChangeWeighingComPort()
+
+            ChangeComPort_Form.cboWeighing.Items.Clear()
+            ChangeComPort_Form.cboLock.Items.Clear()
+            ChangeComPort_Form.cboPLC.Items.Clear()
             ChangeComPort_Form.Close()
         Else
 
             GetCOMport1()
             GetCOMport2()
+            GetCOMport3()
             ChangeWeighingComPort()
             ChangeLockComPort()
+            ChangePLCPort()
 
             ChangeComPort_Form.cboWeighing.Items.Clear()
             ChangeComPort_Form.cboLock.Items.Clear()
+            ChangeComPort_Form.cboPLC.Items.Clear()
             ChangeComPort_Form.Close()
 
         End If

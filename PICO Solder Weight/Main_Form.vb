@@ -11,13 +11,15 @@ Public Class Main_Form
 
     Private Sub Main_Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.WindowState = FormWindowState.Maximized
-        SolderCutter_Form.Timer1.Enabled = True
+        'SolderCutter_Form.Timer1.Enabled = True
 
         GetLockSerialName()
         GetWeighingSerialName()
+        GetPLCSerialName()
 
         Form1.SerialPort1.PortName = WeighingSerial
         Form1.SerialPort2.PortName = LockSerial
+        SolderCutter_Form.SerialPort1.PortName = PLCSerial
 
         'Form1.SerialPort1.Open()
         'Form1.SerialPort2.Open()
@@ -32,9 +34,9 @@ Public Class Main_Form
             If Form1.SerialPort1.IsOpen Then
                 Form1.SerialPort1.Close()
             End If
-            'OpenSerialPort2
-            'SerialPort2.WriteLine("A") 'Activate door lock
-            'CloseSerialPort2()
+            OpenSerialPort2()
+            Form1.SerialPort2.WriteLine("B") 'door locked
+            CloseSerialPort2()
             Application.ExitThread()
             End If
     End Sub

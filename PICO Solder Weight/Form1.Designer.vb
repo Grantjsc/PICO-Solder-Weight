@@ -29,6 +29,7 @@ Partial Class Form1
         Me.txtEmployee = New Guna.UI2.WinForms.Guna2TextBox()
         Me.txtLotNo = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2CustomGradientPanel1 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        Me.btnZero = New Guna.UI2.WinForms.Guna2Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
@@ -76,11 +77,12 @@ Partial Class Form1
         Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddAssociateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChangePoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SPCToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RulesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SerialPort2 = New System.IO.Ports.SerialPort(Me.components)
         Me.TimerErrorMsg = New System.Windows.Forms.Timer(Me.components)
         Me.TimerCheckInfi = New System.Windows.Forms.Timer(Me.components)
         Me.TimerCheckCR = New System.Windows.Forms.Timer(Me.components)
-        Me.btnZero = New Guna.UI2.WinForms.Guna2Button()
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         Me.Guna2CustomGradientPanel2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -239,16 +241,49 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel1.FillColor3 = System.Drawing.SystemColors.Control
         Me.Guna2CustomGradientPanel1.FillColor4 = System.Drawing.SystemColors.Control
         Me.Guna2CustomGradientPanel1.Location = New System.Drawing.Point(0, 133)
-        Me.Guna2CustomGradientPanel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Guna2CustomGradientPanel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Guna2CustomGradientPanel1.Name = "Guna2CustomGradientPanel1"
         Me.Guna2CustomGradientPanel1.ShadowDecoration.BorderRadius = 35
         Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(975, 715)
         Me.Guna2CustomGradientPanel1.TabIndex = 0
         '
+        'btnZero
+        '
+        Me.btnZero.BackColor = System.Drawing.Color.Transparent
+        Me.btnZero.BorderColor = System.Drawing.Color.RoyalBlue
+        Me.btnZero.BorderRadius = 18
+        Me.btnZero.BorderThickness = 3
+        Me.btnZero.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnZero.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.btnZero.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.btnZero.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.btnZero.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.btnZero.FillColor = System.Drawing.Color.White
+        Me.btnZero.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnZero.ForeColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btnZero.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btnZero.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btnZero.HoverState.FillColor = System.Drawing.Color.RoyalBlue
+        Me.btnZero.HoverState.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnZero.HoverState.ForeColor = System.Drawing.Color.White
+        Me.btnZero.ImageSize = New System.Drawing.Size(30, 30)
+        Me.btnZero.Location = New System.Drawing.Point(830, 615)
+        Me.btnZero.Margin = New System.Windows.Forms.Padding(2)
+        Me.btnZero.Name = "btnZero"
+        Me.btnZero.ShadowDecoration.BorderRadius = 18
+        Me.btnZero.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.btnZero.ShadowDecoration.Depth = 20
+        Me.btnZero.ShadowDecoration.Enabled = True
+        Me.btnZero.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(8)
+        Me.btnZero.Size = New System.Drawing.Size(113, 55)
+        Me.btnZero.TabIndex = 53
+        Me.btnZero.Text = "Zero"
+        Me.btnZero.Visible = False
+        '
         'Button7
         '
         Me.Button7.Location = New System.Drawing.Point(676, 678)
-        Me.Button7.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button7.Margin = New System.Windows.Forms.Padding(2)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(56, 37)
         Me.Button7.TabIndex = 52
@@ -259,7 +294,7 @@ Partial Class Form1
         'Button6
         '
         Me.Button6.Location = New System.Drawing.Point(676, 632)
-        Me.Button6.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button6.Margin = New System.Windows.Forms.Padding(2)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(56, 37)
         Me.Button6.TabIndex = 51
@@ -270,7 +305,7 @@ Partial Class Form1
         'Button5
         '
         Me.Button5.Location = New System.Drawing.Point(605, 633)
-        Me.Button5.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button5.Margin = New System.Windows.Forms.Padding(2)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(56, 37)
         Me.Button5.TabIndex = 50
@@ -281,7 +316,7 @@ Partial Class Form1
         'Button4
         '
         Me.Button4.Location = New System.Drawing.Point(739, 647)
-        Me.Button4.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button4.Margin = New System.Windows.Forms.Padding(2)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(56, 37)
         Me.Button4.TabIndex = 49
@@ -331,7 +366,7 @@ Partial Class Form1
         'Button3
         '
         Me.Button3.Location = New System.Drawing.Point(739, 688)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(2)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(51, 37)
         Me.Button3.TabIndex = 46
@@ -342,7 +377,7 @@ Partial Class Form1
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(879, 688)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(2)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(74, 37)
         Me.Button2.TabIndex = 45
@@ -353,7 +388,7 @@ Partial Class Form1
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(796, 688)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(2)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(74, 37)
         Me.Button1.TabIndex = 44
@@ -550,7 +585,7 @@ Partial Class Form1
         Me.btnEnable.Image = CType(resources.GetObject("btnEnable.Image"), System.Drawing.Image)
         Me.btnEnable.ImageSize = New System.Drawing.Size(30, 30)
         Me.btnEnable.Location = New System.Drawing.Point(479, 678)
-        Me.btnEnable.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnEnable.Margin = New System.Windows.Forms.Padding(2)
         Me.btnEnable.Name = "btnEnable"
         Me.btnEnable.ShadowDecoration.BorderRadius = 18
         Me.btnEnable.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -612,7 +647,7 @@ Partial Class Form1
         Me.btnWeight.Image = CType(resources.GetObject("btnWeight.Image"), System.Drawing.Image)
         Me.btnWeight.ImageSize = New System.Drawing.Size(30, 30)
         Me.btnWeight.Location = New System.Drawing.Point(44, 691)
-        Me.btnWeight.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnWeight.Margin = New System.Windows.Forms.Padding(2)
         Me.btnWeight.Name = "btnWeight"
         Me.btnWeight.ShadowDecoration.BorderRadius = 18
         Me.btnWeight.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -754,7 +789,7 @@ Partial Class Form1
         Me.btnReset.Image = CType(resources.GetObject("btnReset.Image"), System.Drawing.Image)
         Me.btnReset.ImageSize = New System.Drawing.Size(30, 30)
         Me.btnReset.Location = New System.Drawing.Point(483, 678)
-        Me.btnReset.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnReset.Margin = New System.Windows.Forms.Padding(2)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.ShadowDecoration.BorderRadius = 18
         Me.btnReset.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
@@ -771,7 +806,7 @@ Partial Class Form1
         Me.lstResult.FormattingEnabled = True
         Me.lstResult.ItemHeight = 29
         Me.lstResult.Location = New System.Drawing.Point(733, 171)
-        Me.lstResult.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.lstResult.Margin = New System.Windows.Forms.Padding(2)
         Me.lstResult.Name = "lstResult"
         Me.lstResult.Size = New System.Drawing.Size(282, 439)
         Me.lstResult.TabIndex = 19
@@ -799,7 +834,7 @@ Partial Class Form1
         Me.btnNewLot.Image = CType(resources.GetObject("btnNewLot.Image"), System.Drawing.Image)
         Me.btnNewLot.ImageSize = New System.Drawing.Size(30, 30)
         Me.btnNewLot.Location = New System.Drawing.Point(130, 678)
-        Me.btnNewLot.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnNewLot.Margin = New System.Windows.Forms.Padding(2)
         Me.btnNewLot.Name = "btnNewLot"
         Me.btnNewLot.ShadowDecoration.BorderRadius = 18
         Me.btnNewLot.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -832,7 +867,7 @@ Partial Class Form1
         Me.btnSave.Image = CType(resources.GetObject("btnSave.Image"), System.Drawing.Image)
         Me.btnSave.ImageSize = New System.Drawing.Size(30, 30)
         Me.btnSave.Location = New System.Drawing.Point(308, 678)
-        Me.btnSave.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnSave.Margin = New System.Windows.Forms.Padding(2)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.ShadowDecoration.BorderRadius = 18
         Me.btnSave.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -859,7 +894,7 @@ Partial Class Form1
         Me.cboShift.IntegralHeight = False
         Me.cboShift.ItemHeight = 30
         Me.cboShift.Location = New System.Drawing.Point(391, 388)
-        Me.cboShift.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboShift.Margin = New System.Windows.Forms.Padding(2)
         Me.cboShift.Name = "cboShift"
         Me.cboShift.ShadowDecoration.BorderRadius = 30
         Me.cboShift.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -885,7 +920,7 @@ Partial Class Form1
         Me.cboProcess.IntegralHeight = False
         Me.cboProcess.ItemHeight = 30
         Me.cboProcess.Location = New System.Drawing.Point(392, 478)
-        Me.cboProcess.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboProcess.Margin = New System.Windows.Forms.Padding(2)
         Me.cboProcess.MaxDropDownItems = 15
         Me.cboProcess.Name = "cboProcess"
         Me.cboProcess.ShadowDecoration.BorderRadius = 30
@@ -911,7 +946,7 @@ Partial Class Form1
         Me.cboAssociate.IntegralHeight = False
         Me.cboAssociate.ItemHeight = 30
         Me.cboAssociate.Location = New System.Drawing.Point(391, 574)
-        Me.cboAssociate.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboAssociate.Margin = New System.Windows.Forms.Padding(2)
         Me.cboAssociate.Name = "cboAssociate"
         Me.cboAssociate.ShadowDecoration.BorderRadius = 30
         Me.cboAssociate.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -931,7 +966,7 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel2.FillColor3 = System.Drawing.Color.DarkGreen
         Me.Guna2CustomGradientPanel2.FillColor4 = System.Drawing.Color.DarkGreen
         Me.Guna2CustomGradientPanel2.Location = New System.Drawing.Point(0, 24)
-        Me.Guna2CustomGradientPanel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Guna2CustomGradientPanel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Guna2CustomGradientPanel2.Name = "Guna2CustomGradientPanel2"
         Me.Guna2CustomGradientPanel2.Size = New System.Drawing.Size(975, 109)
         Me.Guna2CustomGradientPanel2.TabIndex = 7
@@ -941,7 +976,7 @@ Partial Class Form1
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(16, 4)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(104, 90)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -976,7 +1011,7 @@ Partial Class Form1
         'MenuStrip1
         '
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuToolStripMenuItem, Me.SPCToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(4, 2, 0, 2)
@@ -996,15 +1031,30 @@ Partial Class Form1
         '
         Me.AddAssociateToolStripMenuItem.Image = CType(resources.GetObject("AddAssociateToolStripMenuItem.Image"), System.Drawing.Image)
         Me.AddAssociateToolStripMenuItem.Name = "AddAssociateToolStripMenuItem"
-        Me.AddAssociateToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.AddAssociateToolStripMenuItem.Size = New System.Drawing.Size(185, 26)
         Me.AddAssociateToolStripMenuItem.Text = "Add Associate"
         '
         'ChangePoToolStripMenuItem
         '
         Me.ChangePoToolStripMenuItem.Image = Global.PICO_Solder_Weight.My.Resources.Resources.changes
         Me.ChangePoToolStripMenuItem.Name = "ChangePoToolStripMenuItem"
-        Me.ChangePoToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.ChangePoToolStripMenuItem.Size = New System.Drawing.Size(185, 26)
         Me.ChangePoToolStripMenuItem.Text = "Change COM Name"
+        '
+        'SPCToolStripMenuItem
+        '
+        Me.SPCToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RulesToolStripMenuItem})
+        Me.SPCToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SPCToolStripMenuItem.Name = "SPCToolStripMenuItem"
+        Me.SPCToolStripMenuItem.Size = New System.Drawing.Size(40, 20)
+        Me.SPCToolStripMenuItem.Text = "SPC"
+        '
+        'RulesToolStripMenuItem
+        '
+        Me.RulesToolStripMenuItem.Image = CType(resources.GetObject("RulesToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.RulesToolStripMenuItem.Name = "RulesToolStripMenuItem"
+        Me.RulesToolStripMenuItem.Size = New System.Drawing.Size(184, 26)
+        Me.RulesToolStripMenuItem.Text = "Rules"
         '
         'TimerErrorMsg
         '
@@ -1018,39 +1068,6 @@ Partial Class Form1
         '
         Me.TimerCheckCR.Interval = 30000
         '
-        'btnZero
-        '
-        Me.btnZero.BackColor = System.Drawing.Color.Transparent
-        Me.btnZero.BorderColor = System.Drawing.Color.RoyalBlue
-        Me.btnZero.BorderRadius = 18
-        Me.btnZero.BorderThickness = 3
-        Me.btnZero.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnZero.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.btnZero.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.btnZero.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.btnZero.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.btnZero.FillColor = System.Drawing.Color.White
-        Me.btnZero.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnZero.ForeColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btnZero.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btnZero.HoverState.CustomBorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btnZero.HoverState.FillColor = System.Drawing.Color.RoyalBlue
-        Me.btnZero.HoverState.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnZero.HoverState.ForeColor = System.Drawing.Color.White
-        Me.btnZero.ImageSize = New System.Drawing.Size(30, 30)
-        Me.btnZero.Location = New System.Drawing.Point(830, 615)
-        Me.btnZero.Margin = New System.Windows.Forms.Padding(2)
-        Me.btnZero.Name = "btnZero"
-        Me.btnZero.ShadowDecoration.BorderRadius = 18
-        Me.btnZero.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.btnZero.ShadowDecoration.Depth = 20
-        Me.btnZero.ShadowDecoration.Enabled = True
-        Me.btnZero.ShadowDecoration.Shadow = New System.Windows.Forms.Padding(8)
-        Me.btnZero.Size = New System.Drawing.Size(113, 55)
-        Me.btnZero.TabIndex = 53
-        Me.btnZero.Text = "Zero"
-        Me.btnZero.Visible = False
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1062,7 +1079,7 @@ Partial Class Form1
         Me.Controls.Add(Me.MenuStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -1134,4 +1151,6 @@ Partial Class Form1
     Friend WithEvents TimerCheckCR As Timer
     Friend WithEvents ChangePoToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents btnZero As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents SPCToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RulesToolStripMenuItem As ToolStripMenuItem
 End Class

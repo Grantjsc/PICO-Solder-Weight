@@ -16,7 +16,9 @@
     End Sub
 
     Private Sub SolderCutter_Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Timer1.Enabled = True
+        If Timer1.Enabled = False Then
+            Timer1.Enabled = True
+        End If
     End Sub
 
     Public TX As String

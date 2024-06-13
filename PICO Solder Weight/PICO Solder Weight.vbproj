@@ -36,7 +36,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
@@ -201,6 +201,12 @@
     <Compile Include="ChangeSpoolMsg_Form.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DoorOpen_Form.Designer.vb">
+      <DependentUpon>DoorOpen_Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="DoorOpen_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Eval_Form.Designer.vb">
       <DependentUpon>Eval_Form.vb</DependentUpon>
     </Compile>
@@ -295,6 +301,12 @@
     <Compile Include="SolderCutter_Form.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SPCRules_Form.Designer.vb">
+      <DependentUpon>SPCRules_Form.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SPCRules_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SWMaster_dbDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -325,6 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeSpoolMsg_Form.resx">
       <DependentUpon>ChangeSpoolMsg_Form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoorOpen_Form.resx">
+      <DependentUpon>DoorOpen_Form.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Eval_Form.resx">
       <DependentUpon>Eval_Form.vb</DependentUpon>
@@ -364,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SolderCutter_Form.resx">
       <DependentUpon>SolderCutter_Form.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SPCRules_Form.resx">
+      <DependentUpon>SPCRules_Form.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

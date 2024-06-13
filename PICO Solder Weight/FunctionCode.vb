@@ -229,19 +229,25 @@ Module Function_Module
                         Select Case Limit
 
                             Case 12
-                                If CDec(Form1.RealData) >= 12.6 Then
+                                SetLowLimit = CDec(Form1.TopLowLim)
+                                SetUpperLimit = CDec(Form1.TopUppLim)
+
+                                If CDec(Form1.RealData) >= SetUpperLimit Then
                                     OCAP_Form.txtAlarm.Text = ">USL"
 
-                                ElseIf CDec(Form1.RealData) <= 11.4 Then
+                                ElseIf CDec(Form1.RealData) <= SetLowLimit Then
                                     OCAP_Form.txtAlarm.Text = "<LSL"
 
                                 End If
 
                             Case 14
-                                If CDec(Form1.RealData) >= 14.7 Then
+                                SetLowLimit = CDec(Form1.BotLowLim)
+                                SetUpperLimit = CDec(Form1.BotUppLim)
+
+                                If CDec(Form1.RealData) >= SetUpperLimit Then
                                     OCAP_Form.txtAlarm.Text = ">USL"
 
-                                ElseIf CDec(Form1.RealData) <= 13.3 Then
+                                ElseIf CDec(Form1.RealData) <= SetLowLimit Then
                                     OCAP_Form.txtAlarm.Text = "<LSL"
 
                                 End If
@@ -286,19 +292,25 @@ Module Function_Module
                 Select Case Limit
 
                     Case 12
-                        If Form1.RealData >= 12.6 Then
+                        SetLowLimit = CDec(Form1.TopLowLim)
+                        SetUpperLimit = CDec(Form1.TopUppLim)
+
+                        If CDec(Form1.RealData) >= SetUpperLimit Then
                             OCAP_Form.txtAlarm.Text = ">USL"
 
-                        ElseIf Form1.RealData <= 11.4 Then
+                        ElseIf CDec(Form1.RealData) <= SetLowLimit Then
                             OCAP_Form.txtAlarm.Text = "<LSL"
 
                         End If
 
                     Case 14
-                        If Form1.RealData >= 14.7 Then
+                        SetLowLimit = CDec(Form1.BotLowLim)
+                        SetUpperLimit = CDec(Form1.BotUppLim)
+
+                        If CDec(Form1.RealData) >= SetUpperLimit Then
                             OCAP_Form.txtAlarm.Text = ">USL"
 
-                        ElseIf Form1.RealData <= 13.3 Then
+                        ElseIf CDec(Form1.RealData) <= SetLowLimit Then
                             OCAP_Form.txtAlarm.Text = "<LSL"
 
                         End If
@@ -459,6 +471,23 @@ Module Function_Module
         End If
     End Sub
 
+    Sub BiometricsSPCRules()
+        Master_login.lblErrorMsg.Visible = False
+        Master_login.PanelWarning.Visible = False
+        Form1.TimerErrorMsg.Enabled = False
+
+        Master_login.Label1.Text = "Please scan your finger Engineer only."
+        Master_login.ShowDialog()
+        If Master_login.F1_get_title = "Engineer" Then
+            Master_login.Close()
+            SPCRules_Form.ShowDialog()
+        Else
+
+            MsgBox("Authorized personnel only!", MsgBoxStyle.Exclamation)
+            Master_login.Close()
+        End If
+    End Sub
+
     Sub RunMachine()
         Dim CutQty As String
         Dim QtyLength As String
@@ -579,14 +608,22 @@ Module Function_Module
         End If
     End Sub
 
+    Public SetUpperLimit As String
+    Public SetLowLimit As String
     Sub WeightLimits()
         Dim Limit As String
         Limit = CDec(Form1.txtWeight.Text)
 
+
         Select Case Limit
 
-            Case 12 '12.57
-                If Form1.RealData >= 12.6 Or Form1.RealData <= 11.4 Then '11.41
+            Case 12
+                SetLowLimit = CDec(Form1.TopLowLim)
+                SetUpperLimit = CDec(Form1.TopUppLim)
+
+                'Form1.RealData >= 12.6 Or Form1.RealData <= 11.4
+
+                If Form1.RealData >= SetUpperLimit Or Form1.RealData <= SetLowLimit Then
                     Main_Form.btnSolderCutter.Enabled = False
                     Main_Form.btnSolderWeight.Enabled = False
                     Main_Form.btnBuyOff.Enabled = False
@@ -609,7 +646,12 @@ Module Function_Module
                 End If
 
             Case 14
-                If Form1.RealData >= 14.7 Or Form1.RealData <= 13.3 Then
+                SetLowLimit = CDec(Form1.BotLowLim)
+                SetUpperLimit = CDec(Form1.BotUppLim)
+
+                'Form1.RealData >= 14.7 Or Form1.RealData <= 13.3
+
+                If Form1.RealData >= SetUpperLimit Or Form1.RealData <= SetLowLimit Then
                     Main_Form.btnSolderCutter.Enabled = False
                     Main_Form.btnSolderWeight.Enabled = False
                     Main_Form.btnBuyOff.Enabled = False
@@ -683,45 +725,32 @@ Module Function_Module
         Dim isFileEmpty14mg As Boolean = Form1.IsCSVFileEmpty(Form1.get_FolderPath14mg)
         Dim isFileEmpty As Boolean
 
-        Select Case CInt(Form1.txtWeight.Text)
-            Case 12
-                isFileEmpty = isFileEmpty12mg
-            Case 14
-                isFileEmpty = isFileEmpty14mg
-        End Select
+        If Form1.DoorState = True Then
 
-        If isFileEmpty Then
+            OpenSerialPort2()
+            Form1.SerialPort2.WriteLine("B") 'door locked
+            CloseSerialPort2()
 
-            'SolderCutter_Form.to_PLC("@00WD01080000")
-            'Thread.Sleep(100)
-            'SolderCutter_Form.to_PLC("@00WD01090000")
+            Select Case CInt(Form1.txtWeight.Text)
+                Case 12
+                    isFileEmpty = isFileEmpty12mg
+                Case 14
+                    isFileEmpty = isFileEmpty14mg
+            End Select
 
-            'Form1.TimerCheckInfi.Enabled = False
-            'SolderCutter_Form.TimerQtyChecking.Enabled = True
-            'SolderCutter_Form.TimerChangeSpool.Enabled = True
-            'Function_Module.RunMachine()
-            'Cutter2_Module.C2_ChagetoStop()
-            'Main_Form.btnBuyOff.Enabled = False
-            'Form1.btnNewLot.Enabled = True
+            If isFileEmpty Then
 
-            'InterruptionCheck = False
-            'ResetChangeSpool()
+                RuleOne_FlowTwo()
 
-            ''OpenSerialPort2()
-            ''SerialPort2.WriteLine("A") 'Activate door lock
+            Else
+                Form1.TimerCheckInfi.Enabled = False
+                SavingError_Form.ShowDialog()
 
-            RuleOne_FlowTwo()
+            End If
 
         Else
             Form1.TimerCheckInfi.Enabled = False
-            SavingError_Form.ShowDialog()
-
-            'Dim dialog As DialogResult
-            'dialog = MessageBox.Show("Cannot proceed to run the machine!!!" & ControlChars.NewLine & "There is a file for upload at Infinity." & ControlChars.NewLine & "Please add the data in Infinity.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            'If dialog = DialogResult.OK Then
-            '    Form1.TimerCheckInfi.Interval = 10000
-            '    Form1.TimerCheckInfi.Enabled = True
-            'End If
+            DoorOpen_Form.ShowDialog()
         End If
     End Sub
 
@@ -827,6 +856,98 @@ End Module
 
 Module SPCRule_Module
     Public average As Double
+
+    Public ConStr As String = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\LF Database\PICO Solder Weight.accdb;Persist Security Info=True;Jet OLEDB:Database Password=lfpicosolder"
+    Public Connection As New OleDbConnection(ConStr)
+
+    Public AverageData(7) As Decimal
+    Sub Get_Top8()
+        Connection.Open()
+        Dim query As String = "SELECT TOP 8 * FROM TopAve_tb ORDER BY ID DESC"
+
+        Using cmd As OleDbCommand = New OleDbCommand(query, Connection)
+
+            Using reader As OleDbDataReader = cmd.ExecuteReader()
+                Dim index As Integer = 0
+                While reader.Read() AndAlso index < 8
+                    AverageData(index) = Convert.ToDecimal(reader("Average"))
+                    index += 1
+                End While
+            End Using
+        End Using
+        Connection.Close()
+
+        For Each val As Decimal In AverageData
+            Console.WriteLine(val)
+        Next
+    End Sub
+
+    Sub Get_Bottom8()
+        Connection.Open()
+        Dim query As String = "SELECT TOP 8 * FROM BottomAve_tb ORDER BY ID DESC"
+
+        Using cmd As OleDbCommand = New OleDbCommand(query, Connection)
+
+            Using reader As OleDbDataReader = cmd.ExecuteReader()
+                Dim index As Integer = 0
+                While reader.Read() AndAlso index < 8
+                    AverageData(index) = Convert.ToDecimal(reader("Average"))
+                    index += 1
+                End While
+            End Using
+        End Using
+        Connection.Close()
+
+        For Each val As Decimal In AverageData
+            Console.WriteLine(val)
+        Next
+    End Sub
+
+    Public Low2s As Decimal
+    Public Low1s As Decimal
+    Public CenterL As Decimal
+    Public Upp1s As Decimal
+    Public Upp2s As Decimal
+
+    Sub Get_Sigma()
+
+        Dim Upp As Decimal
+        Dim Low As Decimal
+
+        Dim Limit As String
+        Limit = CDec(Form1.txtWeight.Text)
+        Select Case Limit
+
+            Case 12
+                Low = CDec(Form1.TopLowLim)
+                Upp = CDec(Form1.TopUppLim)
+                Get_Top8()
+
+            Case 14
+                Low = CDec(Form1.BotLowLim)
+                Upp = CDec(Form1.BotUppLim)
+                Get_Bottom8()
+
+        End Select
+
+        Dim n As Decimal = (Upp - Low) / 6
+
+        Low2s = Math.Round(n + Low, 4)
+        Low1s = Math.Round(Low2s + n, 4)
+        CenterL = Math.Round(Low1s + n, 4)
+        Upp1s = Math.Round(CenterL + n, 4)
+        Upp2s = Math.Round(Upp1s + n, 4)
+
+        'MsgBox("Upp Lim: " & Upp & vbNewLine &
+        '       Upp2s & vbNewLine &
+        '       Upp1s & vbNewLine &
+        '       "CL: " & CenterL & vbNewLine &
+        '       Low1s & vbNewLine &
+        '       Low2s & vbNewLine &
+        '       "Low Lim: " & Low)
+
+    End Sub
+
     Sub RuleOne_FlowOne()
         Dim sum As Decimal = 0
         For Each number As Decimal In Form1.data
@@ -953,25 +1074,34 @@ Module SPCRule_Module
 
                 Else
 
-                    SolderCutter_Form.to_PLC("@00WD01080000")
-                    Thread.Sleep(100)
-                    SolderCutter_Form.to_PLC("@00WD01090000")
-
-                    Form1.TimerCheckInfi.Enabled = False
-                    SolderCutter_Form.TimerQtyChecking.Enabled = True
-                    SolderCutter_Form.TimerChangeSpool.Enabled = True
-                    Function_Module.RunMachine()
-                    Cutter2_Module.C2_ChagetoStop()
-                    Main_Form.btnBuyOff.Enabled = False
-                    Form1.btnNewLot.Enabled = True
-
-                    InterruptionCheck = False
-                    ResetChangeSpool()
-
                     SaveAverage()
+                    GetRule4()
 
-                    'OpenSerialPort2()
-                    'SerialPort2.WriteLine("A") 'Activate door lock
+                    If Rule4State = "True" Then
+                        Rule4()
+                    Else
+
+                        SolderCutter_Form.to_PLC("@00WD01080000")
+                        Thread.Sleep(100)
+                        SolderCutter_Form.to_PLC("@00WD01090000")
+
+                        Form1.TimerCheckInfi.Enabled = False
+                        SolderCutter_Form.TimerQtyChecking.Enabled = True
+                        SolderCutter_Form.TimerChangeSpool.Enabled = True
+                        Function_Module.RunMachine()
+                        Cutter2_Module.C2_ChagetoStop()
+                        Main_Form.btnBuyOff.Enabled = False
+                        Form1.btnNewLot.Enabled = True
+
+                        InterruptionCheck = False
+                        ResetChangeSpool()
+
+                        'SaveAverage()
+
+                        'OpenSerialPort2()
+                        'SerialPort2.WriteLine("A") 'Activate door lock
+
+                    End If
 
                 End If
 
@@ -1010,25 +1140,34 @@ Module SPCRule_Module
 
                 Else
 
-                    SolderCutter_Form.to_PLC("@00WD01080000")
-                    Thread.Sleep(100)
-                    SolderCutter_Form.to_PLC("@00WD01090000")
-
-                    Form1.TimerCheckInfi.Enabled = False
-                    SolderCutter_Form.TimerQtyChecking.Enabled = True
-                    SolderCutter_Form.TimerChangeSpool.Enabled = True
-                    Function_Module.RunMachine()
-                    Cutter2_Module.C2_ChagetoStop()
-                    Main_Form.btnBuyOff.Enabled = False
-                    Form1.btnNewLot.Enabled = True
-
-                    InterruptionCheck = False
-                    ResetChangeSpool()
-
                     SaveAverage()
+                    GetRule4()
 
-                    'OpenSerialPort2()
-                    'SerialPort2.WriteLine("A") 'Activate door lock
+                    If Rule4State = "True" Then
+                        Rule4()
+                    Else
+
+                        SolderCutter_Form.to_PLC("@00WD01080000")
+                        Thread.Sleep(100)
+                        SolderCutter_Form.to_PLC("@00WD01090000")
+
+                        Form1.TimerCheckInfi.Enabled = False
+                        SolderCutter_Form.TimerQtyChecking.Enabled = True
+                        SolderCutter_Form.TimerChangeSpool.Enabled = True
+                        Function_Module.RunMachine()
+                        Cutter2_Module.C2_ChagetoStop()
+                        Main_Form.btnBuyOff.Enabled = False
+                        Form1.btnNewLot.Enabled = True
+
+                        InterruptionCheck = False
+                        ResetChangeSpool()
+
+                        'SaveAverage()
+
+                        'OpenSerialPort2()
+                        'SerialPort2.WriteLine("A") 'Activate door lock
+
+                    End If
 
                 End If
 
@@ -1041,6 +1180,156 @@ Module SPCRule_Module
         Else
             RuleOne_FlowOne()
         End If
+    End Sub
+
+    Sub Rule4()
+
+        GetRule5()
+        Get_Sigma()
+
+        Dim OneLessThanCenterline As Boolean = False
+        Dim OneGreaterThanCenterline As Boolean = False
+        Dim hasEqualCenterline As Boolean = False
+
+        For Each number In AverageData
+            If number = CenterL Then
+                hasEqualCenterline = True
+            End If
+            If number < CenterL Then
+                OneLessThanCenterline = True
+            End If
+            If number > CenterL Then
+                OneGreaterThanCenterline = True
+            End If
+        Next
+
+        If OneGreaterThanCenterline = True And OneLessThanCenterline = True Then
+            If Rule5State = "True" Then
+                Rule5()
+            Else
+                SolderCutter_Form.to_PLC("@00WD01080000")
+                Thread.Sleep(100)
+                SolderCutter_Form.to_PLC("@00WD01090000")
+
+                Form1.TimerCheckInfi.Enabled = False
+                SolderCutter_Form.TimerQtyChecking.Enabled = True
+                SolderCutter_Form.TimerChangeSpool.Enabled = True
+                Function_Module.RunMachine()
+                Cutter2_Module.C2_ChagetoStop()
+                Main_Form.btnBuyOff.Enabled = False
+                Form1.btnNewLot.Enabled = True
+
+                InterruptionCheck = False
+                ResetChangeSpool()
+
+                'SaveAverage()
+
+                'OpenSerialPort2()
+                'SerialPort2.WriteLine("A") 'Activate door lock
+            End If
+        End If
+
+        If (hasEqualCenterline = True And OneGreaterThanCenterline = False) Or (hasEqualCenterline = True And OneLessThanCenterline = False) Or OneGreaterThanCenterline = False Or OneLessThanCenterline = False Then
+            BiometricsOCAP()
+            OCAP_Form.txtAlarm.Text = "SPC Rule 4"
+        End If
+
+    End Sub
+
+    Sub Rule5()
+
+        ' check if all numbers are increasing
+        Dim increasing As Boolean = CheckIncreasing(AverageData)
+
+        If increasing Then
+            BiometricsOCAP()
+            OCAP_Form.txtAlarm.Text = "SPC Rule 5"
+        Else
+
+            SolderCutter_Form.to_PLC("@00WD01080000")
+            Thread.Sleep(100)
+            SolderCutter_Form.to_PLC("@00WD01090000")
+
+            Form1.TimerCheckInfi.Enabled = False
+            SolderCutter_Form.TimerQtyChecking.Enabled = True
+            SolderCutter_Form.TimerChangeSpool.Enabled = True
+            Function_Module.RunMachine()
+            Cutter2_Module.C2_ChagetoStop()
+            Main_Form.btnBuyOff.Enabled = False
+            Form1.btnNewLot.Enabled = True
+
+            InterruptionCheck = False
+            ResetChangeSpool()
+
+            'SaveAverage()
+
+            'OpenSerialPort2()
+            'SerialPort2.WriteLine("A") 'Activate door lock
+
+        End If
+    End Sub
+
+    Function CheckIncreasing(numbers() As Decimal) As Boolean
+
+        For i As Integer = 1 To numbers.Length - 1
+            ' Check if the current number is less than or equal to the previous number
+            If numbers(i) <= numbers(i - 1) Then
+                ' If found, return false
+                Return False
+            End If
+        Next
+
+        Return True
+    End Function
+
+    Public config As Configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None)
+
+    Public Rule4State As String
+    Public Rule5State As String
+
+    Public NewRule4_State As String
+    Public NewRule5_State As String
+
+    Sub GetRule4()
+        Dim state As String = System.Configuration.ConfigurationManager.AppSettings("SPCRule4")
+        Console.WriteLine(state)
+
+        Rule4State = state
+    End Sub
+
+    Sub GetRule5()
+        Dim state As String = System.Configuration.ConfigurationManager.AppSettings("SPCRule5")
+        Console.WriteLine(state)
+
+        Rule5State = state
+    End Sub
+
+    Sub GetNew4_State()
+        If SPCRules_Form.chkRule4.Checked = True Then
+            NewRule4_State = "True"
+        Else
+            NewRule4_State = "False"
+        End If
+    End Sub
+    Sub ChangeRule4_state()
+        config.AppSettings.Settings("SPCRule4").Value = NewRule4_State
+        config.Save(ConfigurationSaveMode.Modified) ' save the new value
+
+        ConfigurationManager.RefreshSection("appSettings") 'refresh
+    End Sub
+
+    Sub GetNew5_State()
+        If SPCRules_Form.chkRule5.Checked = True Then
+            NewRule5_State = "True"
+        Else
+            NewRule5_State = "False"
+        End If
+    End Sub
+    Sub ChangeRule5_state()
+        config.AppSettings.Settings("SPCRule5").Value = NewRule5_State
+        config.Save(ConfigurationSaveMode.Modified) ' save the new value
+
+        ConfigurationManager.RefreshSection("appSettings") 'refresh
     End Sub
 
 End Module

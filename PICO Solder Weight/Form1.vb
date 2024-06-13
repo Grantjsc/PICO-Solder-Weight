@@ -309,7 +309,14 @@ Public Class Form1
 
 
     End Sub
+
     Public infi As String
+    Public TopLowLim As String
+    Public TopUppLim As String
+    Public BotLowLim As String
+    Public BotUppLim As String
+    Public SG As String
+
     Public Sub EmployeeBasis()
 
         Dim con As OleDbConnection = New OleDbConnection
@@ -335,6 +342,23 @@ Public Class Form1
                 txtEmployee.Text = Data.Rows(0).Item("_sample").ToString
                 txtEmployee.ForeColor = Color.Black
                 infi = Data.Rows(0).Item("part_number").ToString
+
+                TopLowLim = Data.Rows(0).Item("TOP_LCL").ToString
+                TopUppLim = Data.Rows(0).Item("TOP_UCL").ToString
+                BotLowLim = Data.Rows(0).Item("BOTTOM_LCL").ToString
+                BotUppLim = Data.Rows(0).Item("BOTTOM_UCL").ToString
+                SG = Data.Rows(0).Item("Series_Group").ToString
+
+                'MsgBox("Series Group: " & SG & vbNewLine &
+                '       "Top Lower Limit: " & TopLowLim & vbNewLine &
+                '       "Top Upper Limit: " & TopUppLim & vbNewLine &
+                '       "Bottom Lower Limit: " & BotLowLim & vbNewLine &
+                '       "Bottom Upper Limit: " & BotUppLim & vbNewLine)
+
+                If Timer1.Enabled = False Then
+                    Timer1.Enabled = True
+                End If
+
                 'Console.WriteLine(infi)
                 txtLotNo.Focus()
                 txtPartNo.ReadOnly = True
@@ -554,10 +578,11 @@ Public Class Form1
                 If SolderCutter_Form.lblSpool107.Text = CInt("100") Or InterruptionCheck = True Then
                     Associate()
 
-                    'GetLockSerialName()
-                    'SerialPort2.PortName = LockSerial
-                    'OpenSerialPort2()
-                    'SerialPort2.WriteLine("B") 'deactivate door lock
+                    GetLockSerialName()
+                    SerialPort2.PortName = LockSerial
+                    OpenSerialPort2()
+                    SerialPort2.WriteLine("A") ' door unlock
+                    CloseSerialPort2()
 
                     Function_Module.WeighingScalebyON()
                     Thread.Sleep(100)
@@ -582,10 +607,11 @@ Public Class Form1
                 Else
                     Associate()
 
-                    'GetLockSerialName()
-                    'SerialPort2.PortName = LockSerial
-                    'OpenSerialPort2()
-                    'SerialPort2.WriteLine("B") 'deactivate door lock
+                    GetLockSerialName()
+                    SerialPort2.PortName = LockSerial
+                    OpenSerialPort2()
+                    SerialPort2.WriteLine("A") ' door unlock
+                    CloseSerialPort2()
 
                     SolderCutter_Form.to_PLC("@00WD01080000")
                     Thread.Sleep(100)
@@ -993,7 +1019,11 @@ Public Class Form1
                     'SolderCutter_Form.TimerQtyChecking.Enabled = True
                     'SolderCutter_Form.TimerChangeSpool.Enabled = True
 
-                    'SerialPort2.WriteLine("A") 'activate door lock
+                    GetLockSerialName()
+                    SerialPort2.PortName = LockSerial
+                    OpenSerialPort2()
+                    SerialPort2.WriteLine("B") 'door locked
+                    CloseSerialPort2()
 
                 Else
                     csvfull = True
@@ -1415,5 +1445,23 @@ Public Class Form1
         Thread.Sleep(500)
         SerialPort1.WriteLine("CP")
         btnZero.Visible = False
+    End Sub
+
+    Private Sub RulesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RulesToolStripMenuItem.Click
+        BiometricsSPCRules()
+        'SPCRules_Form.ShowDialog()
+    End Sub
+
+    Public DoorSignal As String
+    Public DoorState As Boolean = False
+
+    Private Sub SerialPort2_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort2.DataReceived
+        DoorSignal = SerialPort2.ReadExisting()
+        DoorSignal = DoorSignal.Replace(vbCrLf, "")
+        Console.WriteLine(DoorSignal)
+
+        If DoorSignal = 1 Then
+            DoorState = True
+        End If
     End Sub
 End Class
