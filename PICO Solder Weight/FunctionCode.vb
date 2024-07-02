@@ -670,10 +670,6 @@ Module Function_Module
                     Form1.SerialPort1.Close()
                     Form1.txtReading.Text = ""
 
-                    'Form1.count = 0
-                    'Form1.lstResult.Items.Clear()
-                    'Array.Clear(Form1.data, 0, Form1.data.Length)
-                    'Form1.cboAssociate.Text = Nothing
                     Thread.Sleep(500)
 
                     BiometricsOCAP()
@@ -699,10 +695,6 @@ Module Function_Module
                     Form1.SerialPort1.Close()
                     Form1.txtReading.Text = ""
 
-                    'Form1.count = 0
-                    'Form1.lstResult.Items.Clear()
-                    'Array.Clear(Form1.data, 0, Form1.data.Length)
-                    'Form1.cboAssociate.Text = Nothing
                     Thread.Sleep(500)
 
                     BiometricsOCAP()
@@ -817,12 +809,6 @@ Module Function_Module
             Form1.TimerCheckCR.Enabled = False
             SavingError_Form.ShowDialog()
 
-            'Dim dialog As DialogResult
-            'dialog = MessageBox.Show("Cannot proceed to run the machine!!!" & ControlChars.NewLine & "There is a file for upload at Infinity." & ControlChars.NewLine & "Please add the data in Infinity.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-            'If dialog = DialogResult.OK Then
-            '    Form1.TimerCheckCR.Interval = 10000
-            '    Form1.TimerCheckCR.Enabled = True
-            'End If
         End If
     End Sub
 

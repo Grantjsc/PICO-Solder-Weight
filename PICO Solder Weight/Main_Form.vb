@@ -27,6 +27,24 @@ Public Class Main_Form
         OpenSerialPort2()
         Form1.SerialPort2.WriteLine("B") 'door locked
         CloseSerialPort2()
+
+
+        'Dim Fngerprint = False
+        'While Fngerprint = False
+
+        '    Master_login.Label1.Text = "Please scan your finger."
+        '    Master_login.ShowDialog()
+        '    If Master_login.F1_get_title = "Engineer" Then
+        '        Me.WindowState = FormWindowState.Maximized
+        '        Master_login.Close()
+        '        Fngerprint = True
+        '    Else
+
+        '        MsgBox("Authorized personnel only!", MsgBoxStyle.Exclamation)
+        '        Master_login.Close()
+        '    End If
+
+        'End While
     End Sub
 
     Private Sub Main_Form_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
