@@ -257,7 +257,10 @@
     End Sub
 
     Private Sub TimerChangeSpool_Tick(sender As Object, e As EventArgs) Handles TimerChangeSpool.Tick
-        Function_Module.ChangeSpool()
+        Invoke(Sub()
+                   Function_Module.ChangeSpool()
+               End Sub)
+        'Function_Module.ChangeSpool()
     End Sub
 
     Private Sub btnResetAll_Click(sender As Object, e As EventArgs) Handles btnResetAll.Click

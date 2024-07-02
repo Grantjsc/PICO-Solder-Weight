@@ -28,7 +28,7 @@
     <UpdateUrl>\\btwebdev01\Websites\WindowsAppUpdater\TSG_Shared\PICO Solder Weight Closed Loop\</UpdateUrl>
     <ProductName>Solder Weight Closed Loop</ProductName>
     <PublisherName>Littelfuse Philippines %28TSG%29 - GCatapang</PublisherName>
-    <ApplicationRevision>136</ApplicationRevision>
+    <ApplicationRevision>137</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -36,7 +36,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
