@@ -542,7 +542,6 @@ Partial Class SolderCutter_Form
         Me.Label14.Size = New System.Drawing.Size(77, 13)
         Me.Label14.TabIndex = 81
         Me.Label14.Text = "Change Spool:"
-        Me.Label14.Visible = False
         '
         'btnC2cut
         '
@@ -633,7 +632,6 @@ Partial Class SolderCutter_Form
         Me.lblSpool107.Size = New System.Drawing.Size(31, 13)
         Me.lblSpool107.TabIndex = 80
         Me.lblSpool107.Text = "0000"
-        Me.lblSpool107.Visible = False
         '
         'lblC2counter
         '

@@ -211,10 +211,6 @@ Module Function_Module
                 Master_login.ShowDialog()
                 If Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "Engineer" Then
 
-                    'OpenSerialPort2()
-                    'Form1.SerialPort2.WriteLine("A") 'door unlock
-                    'CloseSerialPort2()
-
                     Form1.DoorState = False
 
                     'Wite to PLC Reset Error
@@ -285,10 +281,6 @@ Module Function_Module
 
             IncOCAP()
             ChangeOCAP()
-
-            'OpenSerialPort2()
-            'Form1.SerialPort2.WriteLine("A") 'door unlocked
-            'CloseSerialPort2()
 
             Form1.DoorState = False
 
@@ -1134,8 +1126,7 @@ Module SPCRule_Module
 
                         'SaveAverage()
 
-                        'OpenSerialPort2()
-                        'SerialPort2.WriteLine("A") 'Activate door lock
+                        CloseSerialPort2()
 
                     End If
 
@@ -1204,8 +1195,7 @@ Module SPCRule_Module
 
                         'SaveAverage()
 
-                        'OpenSerialPort2()
-                        'SerialPort2.WriteLine("A") 'Activate door lock
+                        CloseSerialPort2()
 
                     End If
 

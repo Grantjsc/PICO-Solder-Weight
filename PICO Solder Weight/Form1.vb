@@ -578,8 +578,6 @@ Public Class Form1
                 If SolderCutter_Form.lblSpool107.Text = CInt("100") Or InterruptionCheck = True Then
                     Associate()
 
-                    GetLockSerialName()
-                    SerialPort2.PortName = LockSerial
                     OpenSerialPort2()
                     SerialPort2.WriteLine("A") ' door unlock
                     'CloseSerialPort2()
@@ -607,8 +605,6 @@ Public Class Form1
                 Else
                     Associate()
 
-                    GetLockSerialName()
-                    SerialPort2.PortName = LockSerial
                     OpenSerialPort2()
                     SerialPort2.WriteLine("A") ' door unlock
                     'CloseSerialPort2()
