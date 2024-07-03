@@ -176,21 +176,28 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        Dim dialog As DialogResult
-        dialog = MessageBox.Show("Do you really want to exit?", "Exit application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If dialog = DialogResult.No Then
-            e.Cancel = True
-        Else
-            SerialPort1.Close()
+        If DoorState = True Then
 
-            If Not SerialPort2.IsOpen Then
-                SerialPort2.Open()
+            DoorState = False
+
+            Dim dialog As DialogResult
+        dialog = MessageBox.Show("Do you really want to exit?", "Exit application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If dialog = DialogResult.No Then
+                e.Cancel = True
+            Else
+
+                If Not SerialPort2.IsOpen Then
+                    SerialPort2.Open()
+                End If
+
+                SerialPort2.WriteLine("B") 'door locked
+                SerialPort2.Close()
+
+                Application.ExitThread()
             End If
 
-            SerialPort2.WriteLine("B") 'door locked
-            SerialPort2.Close()
-
-            Application.ExitThread()
+        Else
+            DoorOpen_Form.ShowDialog()
         End If
     End Sub
 
@@ -737,12 +744,26 @@ Public Class Form1
     Public DoorState As Boolean = False
 
     Private Sub SerialPort2_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort2.DataReceived
-        DoorSignal = SerialPort2.ReadExisting()
-        DoorSignal = DoorSignal.Replace(vbCrLf, "")
-        Console.WriteLine(DoorSignal)
 
-        If DoorSignal = 1 Then
-            DoorState = True
-        End If
+        Try
+            DoorSignal = SerialPort2.ReadExisting()
+            DoorSignal = DoorSignal.Replace(vbCrLf, "")
+            DoorSignal = DoorSignal.Replace("?", "")
+            Console.WriteLine(DoorSignal)
+            'DoorState = True
+
+            Select Case DoorSignal
+                Case 1
+                    DoorState = True
+
+                Case 0
+                    DoorState = False
+
+                Case Else
+                    DoorState = False
+            End Select
+        Catch ex As Exception
+            MsgBox(ex.Message, vbCritical)
+        End Try
     End Sub
 End Class
