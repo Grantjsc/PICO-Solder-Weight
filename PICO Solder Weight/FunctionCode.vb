@@ -1260,6 +1260,7 @@ Module SPCRule_Module
         End If
 
         If (hasEqualCenterline = True And OneGreaterThanCenterline = False) Or (hasEqualCenterline = True And OneLessThanCenterline = False) Or OneGreaterThanCenterline = False Or OneLessThanCenterline = False Then
+            Form1.TimerCheckInfi.Enabled = False
             BiometricsOCAP()
             OCAP_Form.txtAlarm.Text = "SPC Rule 4"
         End If
@@ -1272,6 +1273,7 @@ Module SPCRule_Module
         Dim increasing As Boolean = CheckIncreasing(AverageData)
 
         If increasing Then
+            Form1.TimerCheckInfi.Enabled = False
             BiometricsOCAP()
             OCAP_Form.txtAlarm.Text = "SPC Rule 5"
         Else
