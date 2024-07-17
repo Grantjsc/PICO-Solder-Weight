@@ -48,19 +48,30 @@ Public Class Main_Form
     End Sub
 
     Private Sub Main_Form_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        Dim dialog As DialogResult
-        dialog = MessageBox.Show("Do you really want to exit?", "Exit application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If dialog = DialogResult.No Then
-            e.Cancel = True
-        Else
-            If Form1.SerialPort1.IsOpen Then
-                Form1.SerialPort1.Close()
-            End If
+        If Form1.DoorState = True Then
+
             OpenSerialPort2()
             Form1.SerialPort2.WriteLine("B") 'door locked
-            CloseSerialPort2()
-            Application.ExitThread()
+
+            Form1.DoorState = False
+
+            Dim dialog As DialogResult
+            dialog = MessageBox.Show("Do you really want to exit?", "Exit application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If dialog = DialogResult.No Then
+                e.Cancel = True
+            Else
+                If Form1.SerialPort1.IsOpen Then
+                    Form1.SerialPort1.Close()
+                End If
+                OpenSerialPort2()
+                Form1.SerialPort2.WriteLine("B") 'door locked
+                CloseSerialPort2()
+                Application.ExitThread()
             End If
+
+        Else
+            MsgBox("Kindly close the door.", MsgBoxStyle.Information)
+        End If
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click

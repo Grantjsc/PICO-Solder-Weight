@@ -2,9 +2,12 @@
 
 Public Class ChangeSpoolMsg_Form
     Private Sub btnOkay_Click(sender As Object, e As EventArgs) Handles btnOkay.Click
-        If Form1.DoorState = True Then
+        'If Form1.DoorState = True Then
 
-            With Form1
+        '    OpenSerialPort2()
+        '    Form1.SerialPort2.WriteLine("B") 'door locked
+
+        With Form1
                 .TopLevel = False
                 Main_Form.PanelMain.Controls.Add(Form1)
                 .WindowState = FormWindowState.Maximized
@@ -43,10 +46,11 @@ Public Class ChangeSpoolMsg_Form
             Thread.Sleep(100)
             ReEnterName_Form.ShowDialog()
 
-        Else
-            MsgBox("Kindly close the door.", MsgBoxStyle.Information)
-            'DoorOpen_Form.ShowDialog()
-        End If
+        'Else
+        '    MsgBox("Kindly close the door.", MsgBoxStyle.Information)
+        '    OpenSerialPort2()
+        '    'DoorOpen_Form.ShowDialog()
+        'End If
     End Sub
 
     Private Sub ChangeSpoolMsg_Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load

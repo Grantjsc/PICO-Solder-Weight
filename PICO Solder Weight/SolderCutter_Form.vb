@@ -257,9 +257,7 @@
     End Sub
 
     Private Sub TimerChangeSpool_Tick(sender As Object, e As EventArgs) Handles TimerChangeSpool.Tick
-        Invoke(Sub()
-                   Function_Module.ChangeSpool()
-               End Sub)
+        Function_Module.ChangeSpool()
         'Function_Module.ChangeSpool()
     End Sub
 
