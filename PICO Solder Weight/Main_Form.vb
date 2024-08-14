@@ -70,7 +70,13 @@ Public Class Main_Form
             End If
 
         Else
-            MsgBox("Kindly close the door.", MsgBoxStyle.Information)
+            Dim dialog As DialogResult
+            dialog = MessageBox.Show("Kindly close the door.", "PICO Solder Weight Closed loop", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            If dialog = DialogResult.OK Then
+                e.Cancel = True
+                OpenSerialPort2()
+            End If
+            'MsgBox("Kindly close the door.", MsgBoxStyle.Information)
         End If
     End Sub
 
