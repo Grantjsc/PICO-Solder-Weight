@@ -50,16 +50,17 @@ Public Class Main_Form
     Private Sub Main_Form_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         If Form1.DoorState = True Then
 
-            OpenSerialPort2()
-            Form1.SerialPort2.WriteLine("B") 'door locked
-
-            Form1.DoorState = False
-
             Dim dialog As DialogResult
             dialog = MessageBox.Show("Do you really want to exit?", "Exit application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If dialog = DialogResult.No Then
                 e.Cancel = True
             Else
+
+                OpenSerialPort2()
+                Form1.SerialPort2.WriteLine("B") 'door locked
+
+                Form1.DoorState = False
+
                 If Form1.SerialPort1.IsOpen Then
                     Form1.SerialPort1.Close()
                 End If
