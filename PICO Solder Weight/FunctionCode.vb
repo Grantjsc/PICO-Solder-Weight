@@ -211,7 +211,9 @@ Module Function_Module
                 Master_login.ShowDialog()
                 If Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "Engineer" Then
 
-                    Form1.DoorState = False
+                    'Form1.DoorState = False
+                    OpenSerialPort2()
+                    Form1.SerialPort2.WriteLine("A") ' door unlock
 
                     'Wite to PLC Reset Error
                     ResetOCAP()
@@ -286,6 +288,9 @@ Module Function_Module
 
             'SolderCutter_Form.to_PLC("@00WD00000000")
             MsgBox("Please perform OCAP!", MessageBoxIcon.Error)
+
+            OpenSerialPort2()
+            Form1.SerialPort2.WriteLine("A") ' door unlock
 
             Form1.count = 0
             Form1.lstResult.Items.Clear()
@@ -745,13 +750,12 @@ Module Function_Module
         Dim isFileEmpty14mg As Boolean = Form1.IsCSVFileEmpty(Form1.get_FolderPath14mg)
         Dim isFileEmpty As Boolean
 
+        OpenSerialPort2()
         If Form1.DoorState = True Then
 
             OpenSerialPort2()
             Form1.SerialPort2.WriteLine("B") 'door locked
             'CloseSerialPort2()
-
-            Form1.DoorState = False
 
             Select Case CInt(Form1.txtWeight.Text)
                 Case 12

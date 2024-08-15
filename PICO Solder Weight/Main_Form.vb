@@ -48,6 +48,8 @@ Public Class Main_Form
     End Sub
 
     Private Sub Main_Form_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        OpenSerialPort2()
+
         If Form1.DoorState = True Then
 
             Dim dialog As DialogResult
@@ -55,11 +57,6 @@ Public Class Main_Form
             If dialog = DialogResult.No Then
                 e.Cancel = True
             Else
-
-                OpenSerialPort2()
-                Form1.SerialPort2.WriteLine("B") 'door locked
-
-                Form1.DoorState = False
 
                 If Form1.SerialPort1.IsOpen Then
                     Form1.SerialPort1.Close()

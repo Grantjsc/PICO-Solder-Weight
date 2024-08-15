@@ -892,13 +892,12 @@ Public Class Form1
     Public csvfull As Boolean = False
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        OpenSerialPort2()
         If DoorState = True Then
 
             OpenSerialPort2()
             SerialPort2.WriteLine("B") 'door locked
             'CloseSerialPort2()
-
-            DoorState = False
 
             dateNtime = Date.Now.ToString("MM/dd/yyyy hh:mmtt")
 
@@ -1469,7 +1468,7 @@ Public Class Form1
     End Sub
 
     Public DoorSignal As String
-    Public DoorState As Boolean = False
+    Public DoorState As Boolean = True
 
     Private Sub SerialPort2_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort2.DataReceived
 
@@ -1478,7 +1477,6 @@ Public Class Form1
             DoorSignal = DoorSignal.Replace(vbCrLf, "")
             DoorSignal = DoorSignal.Replace("?", "")
             Console.WriteLine(DoorSignal)
-            'DoorState = True
 
             Select Case DoorSignal
                 Case 1
@@ -1487,15 +1485,11 @@ Public Class Form1
                 Case 0
                     DoorState = False
 
-                Case Else
-                    DoorState = False
+                    'Case Else
+                    '    DoorState = False
             End Select
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical)
         End Try
-
-        'If DoorSignal = 1 Then
-        '    DoorState = True
-        'End If
     End Sub
 End Class
