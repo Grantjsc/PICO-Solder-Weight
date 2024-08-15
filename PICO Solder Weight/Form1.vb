@@ -176,12 +176,14 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If Not SerialPort2.IsOpen Then
+            SerialPort2.Open()
+        End If
+
         If DoorState = True Then
 
-            DoorState = False
-
             Dim dialog As DialogResult
-        dialog = MessageBox.Show("Do you really want to exit?", "Exit application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            dialog = MessageBox.Show("Do you really want to exit?", "Exit application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If dialog = DialogResult.No Then
                 e.Cancel = True
             Else
@@ -467,7 +469,7 @@ Public Class Form1
             End If
 
             SerialPort2.WriteLine("A") 'door unlocked
-            SerialPort2.Close()
+            'SerialPort2.Close()
 
             Associate()
 
@@ -638,6 +640,11 @@ Public Class Form1
     Public get_message As String
     Public get_message2 As String
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+
+        If Not SerialPort2.IsOpen Then
+            SerialPort2.Open()
+        End If
+
         If DoorState = True Then
             Dim isFileEmpty As Boolean = IsCSVFileEmpty(get_FolderPath)
             get_message = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & vbCrLf
@@ -667,7 +674,7 @@ Public Class Form1
                     'txtReading.Text = ""
                     'SerialPort1.Close()
 
-                    DoorState = False
+                    SerialPort2.Close()
 
                 Else
 
@@ -741,7 +748,7 @@ Public Class Form1
     End Sub
 
     Public DoorSignal As String
-    Public DoorState As Boolean = False
+    Public DoorState As Boolean = True
 
     Private Sub SerialPort2_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort2.DataReceived
 
@@ -759,8 +766,8 @@ Public Class Form1
                 Case 0
                     DoorState = False
 
-                Case Else
-                    DoorState = False
+                    'Case Else
+                    '    DoorState = False
             End Select
         Catch ex As Exception
             MsgBox(ex.Message, vbCritical)
