@@ -892,7 +892,7 @@ Public Class Form1
     Public csvfull As Boolean = False
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        OpenSerialPort2()
+        'OpenSerialPort2()
         If DoorState = True Then
 
             OpenSerialPort2()
