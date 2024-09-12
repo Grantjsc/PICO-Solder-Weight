@@ -199,7 +199,15 @@ Public Class Form1
             End If
 
         Else
-            DoorOpen_Form.ShowDialog()
+            Dim dialog As DialogResult
+            dialog = MessageBox.Show("Kindly close the door.", "PICO Solder Cutter", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            If dialog = DialogResult.OK Then
+                e.Cancel = True
+                If Not SerialPort2.IsOpen Then
+                    SerialPort2.Open()
+                End If
+            End If
+            'DoorOpen_Form.ShowDialog()
         End If
     End Sub
 
