@@ -24,11 +24,6 @@ Public Class Main_Form
         'Form1.SerialPort1.Open()
         'Form1.SerialPort2.Open()
 
-        OpenSerialPort2()
-        Form1.SerialPort2.WriteLine("B") 'door locked
-        CloseSerialPort2()
-
-
         'Dim Fngerprint = False
         'While Fngerprint = False
 
@@ -48,33 +43,19 @@ Public Class Main_Form
     End Sub
 
     Private Sub Main_Form_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        OpenSerialPort2()
-
-        If Form1.DoorState = True Then
-
-            Dim dialog As DialogResult
-            dialog = MessageBox.Show("Do you really want to exit?", "Exit application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If dialog = DialogResult.No Then
-                e.Cancel = True
-            Else
-
-                If Form1.SerialPort1.IsOpen Then
-                    Form1.SerialPort1.Close()
-                End If
-                OpenSerialPort2()
-                Form1.SerialPort2.WriteLine("B") 'door locked
-                CloseSerialPort2()
-                Application.ExitThread()
-            End If
-
+        Dim dialog As DialogResult
+        dialog = MessageBox.Show("Do you really want to exit?", "Exit application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If dialog = DialogResult.No Then
+            e.Cancel = True
         Else
-            Dim dialog As DialogResult
-            dialog = MessageBox.Show("Kindly close the door.", "PICO Solder Weight Closed loop", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            If dialog = DialogResult.OK Then
-                e.Cancel = True
-                OpenSerialPort2()
+
+            If Form1.SerialPort1.IsOpen Then
+                Form1.SerialPort1.Close()
             End If
-            'MsgBox("Kindly close the door.", MsgBoxStyle.Information)
+            OpenSerialPort2()
+            Form1.SerialPort2.WriteLine("B") 'door locked
+            CloseSerialPort2()
+            Application.ExitThread()
         End If
     End Sub
 

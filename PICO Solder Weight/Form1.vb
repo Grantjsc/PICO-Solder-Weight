@@ -578,10 +578,6 @@ Public Class Form1
                 If SolderCutter_Form.lblSpool107.Text = CInt("100") Or InterruptionCheck = True Then
                     Associate()
 
-                    OpenSerialPort2()
-                    SerialPort2.WriteLine("A") ' door unlock
-                    'CloseSerialPort2()
-
                     Function_Module.WeighingScalebyON()
                     Thread.Sleep(100)
                     'SerialPort1.Open()
@@ -592,10 +588,6 @@ Public Class Form1
 
                     Timer1.Enabled = True
 
-                    ''Real flow in prod if change spool always purge
-                    'SolderCutter_Form.to_PLC("@00WD01070000")
-                    'SolderCutter_Form.TimerChangeSpool.Enabled = True
-
                     Thread.Sleep(100)
                     SolderCutter_Form.to_PLC("@00WD01080000")
                     Thread.Sleep(100)
@@ -604,10 +596,6 @@ Public Class Form1
                     Function_Module.PurgeAfterOCAP() ' Same function if Change Spool
                 Else
                     Associate()
-
-                    OpenSerialPort2()
-                    SerialPort2.WriteLine("A") ' door unlock
-                    'CloseSerialPort2()
 
                     SolderCutter_Form.to_PLC("@00WD01080000")
                     Thread.Sleep(100)
@@ -618,19 +606,6 @@ Public Class Form1
                     Function_Module.GetOldmg()
 
                     Function_Module.CheckMg()
-
-                    ''btnWeight.Focus()
-                    'Function_Module.WeighingScalebyON()
-                    'Thread.Sleep(100)
-                    ''SerialPort1.Open()
-
-                    'SerialPort1.WriteLine("Z")
-                    'Thread.Sleep(100)
-                    'SerialPort1.WriteLine("CP")
-                    'Timer1.Enabled = True
-
-                    'btnWeight.Enabled = True
-                    'btnWeight.Focus()
 
                 End If
             End If
@@ -892,164 +867,136 @@ Public Class Form1
     Public csvfull As Boolean = False
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        'OpenSerialPort2()
-        If DoorState = True Then
 
-            OpenSerialPort2()
-            SerialPort2.WriteLine("B") 'door locked
-            'CloseSerialPort2()
+        dateNtime = Date.Now.ToString("MM/dd/yyyy hh:mmtt")
 
-            dateNtime = Date.Now.ToString("MM/dd/yyyy hh:mmtt")
+        Dim isFileEmpty12mg As Boolean = IsCSVFileEmpty(get_FolderPath)
+        Dim isFileEmpty14mg As Boolean = IsCSVFileEmpty(get_FolderPath14mg)
+        Dim isFileEmpty As Boolean
 
-            Dim isFileEmpty12mg As Boolean = IsCSVFileEmpty(get_FolderPath)
-            Dim isFileEmpty14mg As Boolean = IsCSVFileEmpty(get_FolderPath14mg)
-            Dim isFileEmpty As Boolean
+        get_message = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & "," & """Solder Wire part number,""" & "," & """Bare Wire Lot #,""" & "," & """Cutter setting,""" & vbCrLf
+        get_message2 = vbCrLf & """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & "," & """Solder Wire part number,""" & "," & """Bare Wire Lot #,""" & "," & """Cutter setting,""" & "," & "Date and Time" & vbCrLf
 
-            get_message = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & "," & """Solder Wire part number,""" & "," & """Bare Wire Lot #,""" & "," & """Cutter setting,""" & vbCrLf
-            get_message2 = vbCrLf & """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & "," & """Solder Wire part number,""" & "," & """Bare Wire Lot #,""" & "," & """Cutter setting,""" & "," & "Date and Time" & vbCrLf
+        Select Case CInt(txtWeight.Text)
+            Case 12
+                isFileEmpty = isFileEmpty12mg
+            Case 14
+                isFileEmpty = isFileEmpty14mg
+        End Select
 
-            Select Case CInt(txtWeight.Text)
-                Case 12
-                    isFileEmpty = isFileEmpty12mg
-                Case 14
-                    isFileEmpty = isFileEmpty14mg
-            End Select
+        If NewWeightmg = OldWeight Then
 
-            If NewWeightmg = OldWeight Then
+            Try
+                If isFileEmpty Then
+                    For n As Integer = 0 To data.Length - 1
+                        If data(n) > 0 Then
+                            get_message = get_message & infi & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & txtSolderWire.Text & "," & txtBareWire.Text & "," & txtCutterSet.Text & vbCrLf
+                            get_message2 = get_message2 & infi & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & txtSolderWire.Text & "," & txtBareWire.Text & "," & txtCutterSet.Text & "," & dateNtime & vbCrLf
+                        End If
+                    Next
 
-                Try
-                    If isFileEmpty Then
-                        For n As Integer = 0 To data.Length - 1
-                            If data(n) > 0 Then
-                                get_message = get_message & infi & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & txtSolderWire.Text & "," & txtBareWire.Text & "," & txtCutterSet.Text & vbCrLf
-                                get_message2 = get_message2 & infi & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & txtSolderWire.Text & "," & txtBareWire.Text & "," & txtCutterSet.Text & "," & dateNtime & vbCrLf
-                            End If
-                        Next
+                    Select Case CInt(txtWeight.Text)
+                        Case 12
+                            My.Computer.FileSystem.WriteAllText(get_FolderPath, get_message, False)
+                            My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message2, True)
+                            MessageBox.Show("The data is saved in " & get_FolderPath)
 
-                        Select Case CInt(txtWeight.Text)
-                            Case 12
-                                My.Computer.FileSystem.WriteAllText(get_FolderPath, get_message, False)
-                                My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message2, True)
-                                MessageBox.Show("The data is saved in " & get_FolderPath)
+                        Case 14
+                            My.Computer.FileSystem.WriteAllText(get_FolderPath14mg, get_message, False)
+                            My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message2, True)
+                            MessageBox.Show("The data is saved in " & get_FolderPath14mg)
+                    End Select
 
-                            Case 14
-                                My.Computer.FileSystem.WriteAllText(get_FolderPath14mg, get_message, False)
-                                My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message2, True)
-                                MessageBox.Show("The data is saved in " & get_FolderPath14mg)
-                        End Select
+                    btnNewLot.Enabled = True
+                    btnSave.Enabled = False
 
-                        btnNewLot.Enabled = True
-                        btnSave.Enabled = False
+                    Timer1.Enabled = False
 
-                        Timer1.Enabled = False
+                    btnEnable.Visible = True
+                    btnReset.Visible = False
 
-                        btnEnable.Visible = True
-                        btnReset.Visible = False
+                    btnEnable.Focus()
 
-                        btnEnable.Focus()
+                    Function_Module.GetNewmg()
+                    Function_Module.ChangeMg()
 
-                        Function_Module.GetNewmg()
-                        Function_Module.ChangeMg()
+                    btnNewLot.Enabled = False
+                    txtReading.Text = ""
+                    WeighingScaleOFF()
 
-                        btnNewLot.Enabled = False
-                        txtReading.Text = ""
-                        WeighingScaleOFF()
+                    'ResetChangeSpool()
 
-                        'ResetChangeSpool()
+                    checkSaving()
 
-                        checkSaving()
-
-                    Else
-                        csvfull = True
-                        SavingError_Form.lblSavingError.Text = "Cannot Proceed Saving!" & ControlChars.NewLine & "There is a file for upload at Infinity." & ControlChars.NewLine & "Please add the data In Infinity, then click save."
-                        SavingError_Form.ShowDialog()
-                        'MessageBox.Show("Cannot Proceed Saving!!! There is a file for upload at Infinity. Please add the data In Infinity, then click Save.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                    End If
-                Catch ex As Exception
-                    MsgBox(ex, vbCritical)
-                End Try
-
-            Else
-
-                Try
-                    If isFileEmpty Then
-                        For n As Integer = 0 To data.Length - 1
-                            If data(n) > 0 Then
-                                get_message = get_message & infi & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & txtSolderWire.Text & "," & txtBareWire.Text & "," & txtCutterSet.Text & vbCrLf
-                                get_message2 = get_message2 & infi & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & txtSolderWire.Text & "," & txtBareWire.Text & "," & txtCutterSet.Text & "," & dateNtime & vbCrLf
-                            End If
-                        Next
-
-                        Select Case CInt(txtWeight.Text)
-                            Case 12
-                                My.Computer.FileSystem.WriteAllText(get_FolderPath, get_message, False)
-                                My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message2, True)
-                                MessageBox.Show("The data is saved in " & get_FolderPath)
-
-                            Case 14
-                                My.Computer.FileSystem.WriteAllText(get_FolderPath14mg, get_message, False)
-                                My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message2, True)
-                                MessageBox.Show("The data is saved in " & get_FolderPath14mg)
-                        End Select
-
-                        btnNewLot.Enabled = True
-                        btnSave.Enabled = False
-
-                        Timer1.Enabled = False
-
-                        btnEnable.Visible = True
-                        btnReset.Visible = False
-
-                        btnEnable.Focus()
-
-                        Function_Module.GetNewmg()
-                        Function_Module.ChangeMg()
-
-                        Function_Module.ResetOCAP()
-                        Function_Module.ChangeOCAP()
-
-                        'Function_Module.RunMachine()
-                        'Cutter2_Module.C2_ChagetoStop()
-                        TimerCheckInfi.Interval = 30000
-                        TimerCheckInfi.Enabled = True
-                        checkSaveCon = True
-
-                        btnNewLot.Enabled = False
-                        txtReading.Text = ""
-                        WeighingScaleOFF()
-
-                        'ResetChangeSpool()
-
-                        'SolderCutter_Form.TimerQtyChecking.Enabled = True
-                        'SolderCutter_Form.TimerChangeSpool.Enabled = True
-
-                        'GetLockSerialName()
-                        'SerialPort2.PortName = LockSerial
-                        'OpenSerialPort2()
-                        'SerialPort2.WriteLine("B") 'door locked
-                        'CloseSerialPort2()
-
-                    Else
-                        csvfull = True
-                        SavingError_Form.lblSavingError.Text = "Cannot Proceed Saving!" & ControlChars.NewLine & "There is a file for upload at Infinity." & ControlChars.NewLine & "Please add the data In Infinity, then click Save."
-                        SavingError_Form.ShowDialog()
-                        'MessageBox.Show("Cannot Proceed Saving!!! There is a file for upload at Infinity. Please add the data In Infinity, then click Save.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                    End If
-                Catch ex As Exception
-                    MsgBox(ex, vbCritical)
-                End Try
-
-            End If
+                Else
+                    csvfull = True
+                    SavingError_Form.lblSavingError.Text = "Cannot Proceed Saving!" & ControlChars.NewLine & "There is a file for upload at Infinity." & ControlChars.NewLine & "Please add the data In Infinity, then click save."
+                    SavingError_Form.ShowDialog()
+                    'MessageBox.Show("Cannot Proceed Saving!!! There is a file for upload at Infinity. Please add the data In Infinity, then click Save.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                End If
+            Catch ex As Exception
+                MsgBox(ex, vbCritical)
+            End Try
 
         Else
 
-            Dim dialog As DialogResult
-            dialog = MessageBox.Show("Kindly close the door.", "PICO Solder Weight Closed loop", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            If dialog = DialogResult.OK Then
-                'e.Cancel = True
-                OpenSerialPort2()
-            End If
-            'MsgBox("Kindly close the door.", MsgBoxStyle.Information)
+            Try
+                If isFileEmpty Then
+                    For n As Integer = 0 To data.Length - 1
+                        If data(n) > 0 Then
+                            get_message = get_message & infi & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & txtSolderWire.Text & "," & txtBareWire.Text & "," & txtCutterSet.Text & vbCrLf
+                            get_message2 = get_message2 & infi & "," & cboProcess.Text & "," & cboShift.Text & "," & txtLotNo.Text & "," & cboAssociate.Text & "," & data(n).ToString & "," & txtSolderWire.Text & "," & txtBareWire.Text & "," & txtCutterSet.Text & "," & dateNtime & vbCrLf
+                        End If
+                    Next
+
+                    Select Case CInt(txtWeight.Text)
+                        Case 12
+                            My.Computer.FileSystem.WriteAllText(get_FolderPath, get_message, False)
+                            My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message2, True)
+                            MessageBox.Show("The data is saved in " & get_FolderPath)
+
+                        Case 14
+                            My.Computer.FileSystem.WriteAllText(get_FolderPath14mg, get_message, False)
+                            My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message2, True)
+                            MessageBox.Show("The data is saved in " & get_FolderPath14mg)
+                    End Select
+
+                    btnNewLot.Enabled = True
+                    btnSave.Enabled = False
+
+                    Timer1.Enabled = False
+
+                    btnEnable.Visible = True
+                    btnReset.Visible = False
+
+                    btnEnable.Focus()
+
+                    Function_Module.GetNewmg()
+                    Function_Module.ChangeMg()
+
+                    Function_Module.ResetOCAP()
+                    Function_Module.ChangeOCAP()
+
+                    'Function_Module.RunMachine()
+                    'Cutter2_Module.C2_ChagetoStop()
+                    TimerCheckInfi.Interval = 30000
+                    TimerCheckInfi.Enabled = True
+                    checkSaveCon = True
+
+                    btnNewLot.Enabled = False
+                    txtReading.Text = ""
+                    WeighingScaleOFF()
+
+                Else
+                    csvfull = True
+                    SavingError_Form.lblSavingError.Text = "Cannot Proceed Saving!" & ControlChars.NewLine & "There is a file for upload at Infinity." & ControlChars.NewLine & "Please add the data In Infinity, then click Save."
+                    SavingError_Form.ShowDialog()
+                    'MessageBox.Show("Cannot Proceed Saving!!! There is a file for upload at Infinity. Please add the data In Infinity, then click Save.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                End If
+            Catch ex As Exception
+                MsgBox(ex, vbCritical)
+            End Try
+
         End If
 
     End Sub
@@ -1467,29 +1414,29 @@ Public Class Form1
         'SPCRules_Form.ShowDialog()
     End Sub
 
-    Public DoorSignal As String
-    Public DoorState As Boolean = True
+    'Public DoorSignal As String
+    'Public DoorState As Boolean = True
 
     Private Sub SerialPort2_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort2.DataReceived
 
-        Try
-            DoorSignal = SerialPort2.ReadExisting()
-            DoorSignal = DoorSignal.Replace(vbCrLf, "")
-            DoorSignal = DoorSignal.Replace("?", "")
-            Console.WriteLine(DoorSignal)
+        'Try
+        '    DoorSignal = SerialPort2.ReadExisting()
+        '    DoorSignal = DoorSignal.Replace(vbCrLf, "")
+        '    DoorSignal = DoorSignal.Replace("?", "")
+        '    Console.WriteLine(DoorSignal)
 
-            Select Case DoorSignal
-                Case 1
-                    DoorState = True
+        '    Select Case DoorSignal
+        '        Case 1
+        '            DoorState = True
 
-                Case 0
-                    DoorState = False
+        '        Case 0
+        '            DoorState = False
 
-                    'Case Else
-                    '    DoorState = False
-            End Select
-        Catch ex As Exception
-            MsgBox(ex.Message, vbCritical)
-        End Try
+        '            'Case Else
+        '            '    DoorState = False
+        '    End Select
+        'Catch ex As Exception
+        '    MsgBox(ex.Message, vbCritical)
+        'End Try
     End Sub
 End Class

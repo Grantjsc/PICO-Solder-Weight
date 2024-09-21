@@ -284,13 +284,8 @@ Module Function_Module
             IncOCAP()
             ChangeOCAP()
 
-            Form1.DoorState = False
-
             'SolderCutter_Form.to_PLC("@00WD00000000")
             MsgBox("Please perform OCAP!", MessageBoxIcon.Error)
-
-            OpenSerialPort2()
-            Form1.SerialPort2.WriteLine("A") ' door unlock
 
             Form1.count = 0
             Form1.lstResult.Items.Clear()
@@ -361,12 +356,6 @@ Module Function_Module
                 Master_login.ShowDialog()
                 If Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "Engineer" Then
 
-                    OpenSerialPort2()
-                    Form1.SerialPort2.WriteLine("A") 'door unlocked
-                    'CloseSerialPort2()
-
-                    Form1.DoorState = False
-
                     ResetOCAP()
                     ChangeOCAP()
 
@@ -409,12 +398,6 @@ Module Function_Module
                 Master_login.Label1.Text = "Perform OCAP, please scan your finger after performing OCAP. SPC only"
                 Master_login.ShowDialog()
                 If Master_login.F1_get_title = "SPC" Or Master_login.F1_get_title = "Engineer" Then
-
-                    OpenSerialPort2()
-                    Form1.SerialPort2.WriteLine("A") 'door unlocked
-                    'CloseSerialPort2()
-
-                    Form1.DoorState = False
 
                     Form1.btnEnable.Visible = False
                     Form1.btnReset.Visible = True
@@ -750,34 +733,23 @@ Module Function_Module
         Dim isFileEmpty14mg As Boolean = Form1.IsCSVFileEmpty(Form1.get_FolderPath14mg)
         Dim isFileEmpty As Boolean
 
-        'OpenSerialPort2()
-        If Form1.DoorState = True Then
+        Select Case CInt(Form1.txtWeight.Text)
+            Case 12
+                isFileEmpty = isFileEmpty12mg
+            Case 14
+                isFileEmpty = isFileEmpty14mg
+        End Select
 
-            OpenSerialPort2()
-            Form1.SerialPort2.WriteLine("B") 'door locked
-            'CloseSerialPort2()
+        If isFileEmpty Then
 
-            Select Case CInt(Form1.txtWeight.Text)
-                Case 12
-                    isFileEmpty = isFileEmpty12mg
-                Case 14
-                    isFileEmpty = isFileEmpty14mg
-            End Select
-
-            If isFileEmpty Then
-
-                RuleOne_FlowTwo()
-
-            Else
-                Form1.TimerCheckInfi.Enabled = False
-                SavingError_Form.ShowDialog()
-
-            End If
+            RuleOne_FlowTwo()
 
         Else
             Form1.TimerCheckInfi.Enabled = False
-            DoorOpen_Form.ShowDialog()
+            SavingError_Form.ShowDialog()
+
         End If
+
     End Sub
 
     Sub CheckContinuesRun()
