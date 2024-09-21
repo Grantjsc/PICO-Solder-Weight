@@ -284,7 +284,7 @@ Module Function_Module
             IncOCAP()
             ChangeOCAP()
 
-            Form1.DoorState = False
+            'Form1.DoorState = False
 
             'SolderCutter_Form.to_PLC("@00WD00000000")
             MsgBox("Please perform OCAP!", MessageBoxIcon.Error)
@@ -365,7 +365,7 @@ Module Function_Module
                     Form1.SerialPort2.WriteLine("A") 'door unlocked
                     'CloseSerialPort2()
 
-                    Form1.DoorState = False
+                    'Form1.DoorState = False
 
                     ResetOCAP()
                     ChangeOCAP()
@@ -414,7 +414,7 @@ Module Function_Module
                     Form1.SerialPort2.WriteLine("A") 'door unlocked
                     'CloseSerialPort2()
 
-                    Form1.DoorState = False
+                    'Form1.DoorState = False
 
                     Form1.btnEnable.Visible = False
                     Form1.btnReset.Visible = True
