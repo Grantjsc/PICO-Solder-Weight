@@ -1122,7 +1122,7 @@ Public Class Form1
                 SerialPort1.Close()
             End If
 
-            CloseSerialPort2()
+            'CloseSerialPort2()
 
         Else
             Return
