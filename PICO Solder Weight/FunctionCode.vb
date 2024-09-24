@@ -1231,7 +1231,14 @@ Module SPCRule_Module
         ' check if all numbers are increasing
         Dim increasing As Boolean = CheckIncreasing(AverageData)
 
+        ' Check if the numbers are decreasing
+        Dim decreasing As Boolean = CheckDecreasing(AverageData)
+
         If increasing Then
+            Form1.TimerCheckInfi.Enabled = False
+            BiometricsOCAP()
+            OCAP_Form.txtAlarm.Text = "SPC Rule 5"
+        ElseIf decreasing Then
             Form1.TimerCheckInfi.Enabled = False
             BiometricsOCAP()
             OCAP_Form.txtAlarm.Text = "SPC Rule 5"
@@ -1261,6 +1268,19 @@ Module SPCRule_Module
             ' Check if the current number is less than or equal to the previous number
             If numbers(i) <= numbers(i - 1) Then
                 ' If found, return false
+                Return False
+            End If
+        Next
+
+        Return True
+    End Function
+
+    Function CheckDecreasing(numbers() As Decimal) As Boolean
+        ' Loop through the array starting from the second element
+        For i As Integer = 1 To numbers.Length - 1
+            ' Check if the current number is greater than or equal to the previous number
+            If numbers(i) >= numbers(i - 1) Then
+                ' If found, return false 
                 Return False
             End If
         Next
