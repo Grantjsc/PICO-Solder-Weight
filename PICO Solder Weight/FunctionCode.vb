@@ -750,6 +750,15 @@ Module Function_Module
         Dim isFileEmpty14mg As Boolean = Form1.IsCSVFileEmpty(Form1.get_FolderPath14mg)
         Dim isFileEmpty As Boolean
 
+        Select Case Form1.DoorSignal
+            Case 1
+                Form1.DoorState = True
+
+            Case 0
+                Form1.DoorState = False
+
+        End Select
+
         'OpenSerialPort2()
         If Form1.DoorState = True Then
 

@@ -50,6 +50,15 @@ Public Class Main_Form
     Private Sub Main_Form_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         OpenSerialPort2()
 
+        Select Case Form1.DoorSignal
+            Case 1
+                Form1.DoorState = True
+
+            Case 0
+                Form1.DoorState = False
+
+        End Select
+
         If Form1.DoorState = True Then
 
             Dim dialog As DialogResult
