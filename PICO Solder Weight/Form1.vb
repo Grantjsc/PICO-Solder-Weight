@@ -180,11 +180,25 @@ Public Class Form1
             SerialPort2.Open()
         End If
 
+        Select Case DoorSignal
+            Case 1
+                DoorState = True
+
+            Case 0
+                DoorState = False
+
+                'Case Else
+                '    DoorState = False
+        End Select
+
         If DoorState = True Then
 
             Dim dialog As DialogResult
             dialog = MessageBox.Show("Do you really want to exit?", "Exit application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If dialog = DialogResult.No Then
+                If SerialPort2.IsOpen Then
+                    SerialPort2.Close()
+                End If
                 e.Cancel = True
             Else
 
@@ -652,6 +666,17 @@ Public Class Form1
         If Not SerialPort2.IsOpen Then
             SerialPort2.Open()
         End If
+
+        Select Case DoorSignal
+            Case 1
+                DoorState = True
+
+            Case 0
+                DoorState = False
+
+                'Case Else
+                '    DoorState = False
+        End Select
 
         If DoorState = True Then
             Dim isFileEmpty As Boolean = IsCSVFileEmpty(get_FolderPath)
