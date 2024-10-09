@@ -64,6 +64,7 @@ Public Class Main_Form
             Dim dialog As DialogResult
             dialog = MessageBox.Show("Do you really want to exit?", "Exit application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If dialog = DialogResult.No Then
+                CloseSerialPort2()
                 e.Cancel = True
             Else
 
