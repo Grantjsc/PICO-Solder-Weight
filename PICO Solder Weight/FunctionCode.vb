@@ -1122,6 +1122,8 @@ Module SPCRule_Module
                         Rule4()
                     Else
 
+                        CloseSerialPort2()
+
                         SolderCutter_Form.to_PLC("@00WD01080000")
                         Thread.Sleep(100)
                         SolderCutter_Form.to_PLC("@00WD01090000")
@@ -1265,6 +1267,8 @@ Module SPCRule_Module
                 InterruptionCheck = False
                 ResetChangeSpool()
 
+                CloseSerialPort2()
+
                 'SaveAverage()
 
                 'OpenSerialPort2()
@@ -1312,6 +1316,8 @@ Module SPCRule_Module
 
             InterruptionCheck = False
             ResetChangeSpool()
+
+            CloseSerialPort2()
 
             'SaveAverage()
 
