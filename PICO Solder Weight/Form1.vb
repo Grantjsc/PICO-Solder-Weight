@@ -899,12 +899,16 @@ Public Class Form1
                         Case 12
                             My.Computer.FileSystem.WriteAllText(get_FolderPath, get_message, False)
                             My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message2, True)
-                            MessageBox.Show("The data is saved in " & get_FolderPath)
+                            'MessageBox.Show("The data is saved in " & get_FolderPath)
+
+                            MessageBox.Show("The data is saved!")
 
                         Case 14
                             My.Computer.FileSystem.WriteAllText(get_FolderPath14mg, get_message, False)
                             My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message2, True)
-                            MessageBox.Show("The data is saved in " & get_FolderPath14mg)
+                            'MessageBox.Show("The data is saved in " & get_FolderPath14mg)
+
+                            MessageBox.Show("The data is saved!")
                     End Select
 
                     btnNewLot.Enabled = True
@@ -930,7 +934,9 @@ Public Class Form1
 
                 Else
                     csvfull = True
-                    SavingError_Form.lblSavingError.Text = "Cannot Proceed Saving!" & ControlChars.NewLine & "There is a file for upload at Infinity." & ControlChars.NewLine & "Please add the data In Infinity, then click save."
+                    SavingError_Form.lblSavingError.Text = "Cannot Proceed Saving!" & vbNewLine &
+                                                           "There is a file for upload at Infinity." & vbNewLine &
+                                                           "Please add the data In Infinity, then click save."
                     SavingError_Form.ShowDialog()
                     'MessageBox.Show("Cannot Proceed Saving!!! There is a file for upload at Infinity. Please add the data In Infinity, then click Save.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 End If
@@ -953,12 +959,16 @@ Public Class Form1
                         Case 12
                             My.Computer.FileSystem.WriteAllText(get_FolderPath, get_message, False)
                             My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message2, True)
-                            MessageBox.Show("The data is saved in " & get_FolderPath)
+                            'MessageBox.Show("The data is saved in " & get_FolderPath)
+
+                            MessageBox.Show("The data is saved!")
 
                         Case 14
                             My.Computer.FileSystem.WriteAllText(get_FolderPath14mg, get_message, False)
                             My.Computer.FileSystem.WriteAllText(get_FolderPath2, get_message2, True)
-                            MessageBox.Show("The data is saved in " & get_FolderPath14mg)
+                            'MessageBox.Show("The data is saved in " & get_FolderPath14mg)
+
+                            MessageBox.Show("The data is saved!")
                     End Select
 
                     btnNewLot.Enabled = True
@@ -989,7 +999,9 @@ Public Class Form1
 
                 Else
                     csvfull = True
-                    SavingError_Form.lblSavingError.Text = "Cannot Proceed Saving!" & ControlChars.NewLine & "There is a file for upload at Infinity." & ControlChars.NewLine & "Please add the data In Infinity, then click Save."
+                    SavingError_Form.lblSavingError.Text = "Cannot Proceed Saving!" & vbNewLine &
+                                                           "There is a file for upload at Infinity." & vbNewLine &
+                                                           "Please add the data In Infinity, then click Save."
                     SavingError_Form.ShowDialog()
                     'MessageBox.Show("Cannot Proceed Saving!!! There is a file for upload at Infinity. Please add the data In Infinity, then click Save.", "PICO Solder Weight", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                 End If
