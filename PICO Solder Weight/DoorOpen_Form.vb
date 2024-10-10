@@ -5,11 +5,14 @@
         Form1.TimerCheckInfi.Enabled = True
         Form1.checkSaveCon = True
 
+
+        'Form1.DoorState = True
+
         Me.Close()
     End Sub
 
     Private Sub DoorOpen_Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'OpenSerialPort2()
+        OpenSerialPort2()
     End Sub
 
 End Class

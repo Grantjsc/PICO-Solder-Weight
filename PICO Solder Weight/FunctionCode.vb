@@ -1122,6 +1122,8 @@ Module SPCRule_Module
                         Rule4()
                     Else
 
+                        Form1.TimerCheckInfi.Enabled = False
+
                         CloseSerialPort2()
 
                         SolderCutter_Form.to_PLC("@00WD01080000")
@@ -1193,6 +1195,10 @@ Module SPCRule_Module
                         Rule4()
                     Else
 
+                        Form1.TimerCheckInfi.Enabled = False
+
+                        CloseSerialPort2()
+
                         SolderCutter_Form.to_PLC("@00WD01080000")
                         Thread.Sleep(100)
                         SolderCutter_Form.to_PLC("@00WD01090000")
@@ -1252,6 +1258,11 @@ Module SPCRule_Module
             If Rule5State = "True" Then
                 Rule5()
             Else
+
+                Form1.TimerCheckInfi.Enabled = False
+
+                CloseSerialPort2()
+
                 SolderCutter_Form.to_PLC("@00WD01080000")
                 Thread.Sleep(100)
                 SolderCutter_Form.to_PLC("@00WD01090000")
@@ -1301,6 +1312,10 @@ Module SPCRule_Module
             BiometricsOCAP()
             OCAP_Form.txtAlarm.Text = "SPC Rule 5"
         Else
+
+            Form1.TimerCheckInfi.Enabled = False
+
+            CloseSerialPort2()
 
             SolderCutter_Form.to_PLC("@00WD01080000")
             Thread.Sleep(100)

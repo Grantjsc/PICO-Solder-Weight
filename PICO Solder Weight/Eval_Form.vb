@@ -1,4 +1,5 @@
-﻿Imports System.Text.RegularExpressions
+﻿Imports System.IO.Ports
+Imports System.Text.RegularExpressions
 Imports System.Threading
 
 Public Class Eval_Form
@@ -21,6 +22,9 @@ Public Class Eval_Form
         txtName.Text = ""
         txtKindOfEval.Text = ""
         txtWeight.Text = ""
+        OpenSerialPort2()
+        Form1.SerialPort2.WriteLine("A") ' door unlock
+        'CloseSerialPort2()
     End Sub
 
     Private Sub SerialPort1_DataReceived(sender As Object, e As IO.Ports.SerialDataReceivedEventArgs) Handles SerialPort1.DataReceived
@@ -53,7 +57,32 @@ Public Class Eval_Form
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        saveEval()
+        Select Case Form1.DoorSignal
+            Case 1
+                Form1.DoorState = True
+
+            Case 0
+                Form1.DoorState = False
+
+        End Select
+
+        'OpenSerialPort2()
+        If Form1.DoorState = True Then
+            OpenSerialPort2()
+            Form1.SerialPort2.WriteLine("B") ' door locked
+            CloseSerialPort2()
+
+            saveEval()
+        Else
+
+            Dim dialog As DialogResult
+            dialog = MessageBox.Show("Kindly close the door.", "PICO Solder Weight Closed loop", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            If dialog = DialogResult.OK Then
+                'e.Cancel = True
+                OpenSerialPort2()
+            End If
+            'MsgBox("Kindly close the door.", MsgBoxStyle.Information)
+        End If
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -87,24 +116,51 @@ Public Class Eval_Form
     End Sub
 
     Private Sub btnExitEval_Click(sender As Object, e As EventArgs) Handles btnExitEval.Click
-        Timer1.Enabled = False
-        txtEvalReading.Text = ""
+        Select Case Form1.DoorSignal
+            Case 1
+                Form1.DoorState = True
 
-        Main_Form.PanelEval.Visible = False
-        Main_Form.btnEval.FillColor = Color.Transparent
-        Main_Form.btnEval.ForeColor = Color.White
+            Case 0
+                Form1.DoorState = False
 
-        Main_Form.btnEval.Image = My.Resources.evaluation
+        End Select
 
-        Main_Form.btnSolderWeight.Enabled = True
-        Main_Form.btnSolderCutter.Enabled = True
-        Main_Form.btnBuyOff.Enabled = True
-        Evaluation = False
+        'OpenSerialPort2()
+        If Form1.DoorState = True Then
 
-        'If SerialPort1.IsOpen Then
-        '    SerialPort1.Close()
-        'End If
+            OpenSerialPort2()
+            Form1.SerialPort2.WriteLine("B") ' door locked
+            CloseSerialPort2()
 
-        Me.Close()
+            Timer1.Enabled = False
+            txtEvalReading.Text = ""
+
+            Main_Form.PanelEval.Visible = False
+            Main_Form.btnEval.FillColor = Color.Transparent
+            Main_Form.btnEval.ForeColor = Color.White
+
+            Main_Form.btnEval.Image = My.Resources.evaluation
+
+            Main_Form.btnSolderWeight.Enabled = True
+            Main_Form.btnSolderCutter.Enabled = True
+            Main_Form.btnBuyOff.Enabled = True
+            Evaluation = False
+
+            'If SerialPort1.IsOpen Then
+            '    SerialPort1.Close()
+            'End If
+
+            Me.Close()
+
+        Else
+
+            Dim dialog As DialogResult
+            dialog = MessageBox.Show("Kindly close the door.", "PICO Solder Weight Closed loop", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            If dialog = DialogResult.OK Then
+                'e.Cancel = True
+                OpenSerialPort2()
+            End If
+            'MsgBox("Kindly close the door.", MsgBoxStyle.Information)
+        End If
     End Sub
 End Class
