@@ -707,6 +707,12 @@ Public Class Form1
                     'txtReading.Text = ""
                     'SerialPort1.Close()
 
+                    If Not SerialPort2.IsOpen Then
+                        SerialPort2.Open()
+                    End If
+
+                    SerialPort2.WriteLine("B") 'door locked
+
                     SerialPort2.Close()
 
                 Else
