@@ -38,7 +38,7 @@
             End
         End Try
         'Check DM AREA DM486 data update; range: 9
-        TX = "@00RD01050005"
+        TX = "@00RD01050006"
         GetFCS()
         'Console.WriteLine(FCS)
         communicate()
@@ -51,6 +51,7 @@
         lblSpool107.Text = RXD.Substring(15, 4)
         lblQty108.Text = RXD.Substring(19, 4)
         lblQty109.Text = RXD.Substring(23, 4)
+        lblDoor_110.Text = RXD.Substring(27, 4)
 
         lblC2counter.Text = (CInt(RXD.Substring(23, 4) & RXD.Substring(19, 4))).ToString("N0")
         BuyOff_Form.lblcounter.Text = (CInt(RXD.Substring(23, 4) & RXD.Substring(19, 4))).ToString("N0")

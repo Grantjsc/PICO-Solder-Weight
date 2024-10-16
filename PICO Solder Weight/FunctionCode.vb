@@ -211,9 +211,7 @@ Module Function_Module
                 Master_login.ShowDialog()
                 If Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "Engineer" Then
 
-                    'Form1.DoorState = False
-                    OpenSerialPort2()
-                    Form1.SerialPort2.WriteLine("A") ' door unlock
+                    SolderCutter_Form.to_PLC("@00WD01070000") ' door unlocked
 
                     'Wite to PLC Reset Error
                     ResetOCAP()
@@ -289,8 +287,7 @@ Module Function_Module
             'SolderCutter_Form.to_PLC("@00WD00000000")
             MsgBox("Please perform OCAP!", MessageBoxIcon.Error)
 
-            OpenSerialPort2()
-            Form1.SerialPort2.WriteLine("A") ' door unlock
+            SolderCutter_Form.to_PLC("@00WD01070000") ' door unlocked
 
             Form1.count = 0
             Form1.lstResult.Items.Clear()
@@ -361,8 +358,7 @@ Module Function_Module
                 Master_login.ShowDialog()
                 If Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "Engineer" Then
 
-                    OpenSerialPort2()
-                    Form1.SerialPort2.WriteLine("A") 'door unlocked
+                    SolderCutter_Form.to_PLC("@00WD01070000") 'door unlocked
                     'CloseSerialPort2()
 
                     'Form1.DoorState = False
@@ -410,8 +406,7 @@ Module Function_Module
                 Master_login.ShowDialog()
                 If Master_login.F1_get_title = "SPC" Or Master_login.F1_get_title = "Engineer" Then
 
-                    OpenSerialPort2()
-                    Form1.SerialPort2.WriteLine("A") 'door unlocked
+                    SolderCutter_Form.to_PLC("@00WD01070000") 'door unlocked
                     'CloseSerialPort2()
 
                     'Form1.DoorState = False
@@ -750,21 +745,9 @@ Module Function_Module
         Dim isFileEmpty14mg As Boolean = Form1.IsCSVFileEmpty(Form1.get_FolderPath14mg)
         Dim isFileEmpty As Boolean
 
-        Select Case Form1.DoorSignal
-            Case 1
-                Form1.DoorState = True
+        If SolderCutter_Form.lblDoor_110.Text = 1 Then
 
-            Case 0
-                Form1.DoorState = False
-
-        End Select
-
-        'OpenSerialPort2()
-        If Form1.DoorState = True Then
-
-            OpenSerialPort2()
-            Form1.SerialPort2.WriteLine("B") 'door locked
-            'CloseSerialPort2()
+            SolderCutter_Form.to_PLC("@00WD01070000") 'door locked
 
             Select Case CInt(Form1.txtWeight.Text)
                 Case 12
@@ -1124,7 +1107,7 @@ Module SPCRule_Module
 
                         Form1.TimerCheckInfi.Enabled = False
 
-                        CloseSerialPort2()
+                        'CloseSerialPort2()
 
                         SolderCutter_Form.to_PLC("@00WD01080000")
                         Thread.Sleep(100)
@@ -1143,7 +1126,7 @@ Module SPCRule_Module
 
                         'SaveAverage()
 
-                        CloseSerialPort2()
+                        'CloseSerialPort2()
 
                     End If
 
@@ -1197,7 +1180,7 @@ Module SPCRule_Module
 
                         Form1.TimerCheckInfi.Enabled = False
 
-                        CloseSerialPort2()
+                        'CloseSerialPort2()
 
                         SolderCutter_Form.to_PLC("@00WD01080000")
                         Thread.Sleep(100)
@@ -1216,7 +1199,7 @@ Module SPCRule_Module
 
                         'SaveAverage()
 
-                        CloseSerialPort2()
+                        'CloseSerialPort2()
 
                     End If
 
@@ -1261,7 +1244,7 @@ Module SPCRule_Module
 
                 Form1.TimerCheckInfi.Enabled = False
 
-                CloseSerialPort2()
+                'CloseSerialPort2()
 
                 SolderCutter_Form.to_PLC("@00WD01080000")
                 Thread.Sleep(100)
@@ -1278,7 +1261,7 @@ Module SPCRule_Module
                 InterruptionCheck = False
                 ResetChangeSpool()
 
-                CloseSerialPort2()
+                'CloseSerialPort2()
 
                 'SaveAverage()
 
@@ -1315,7 +1298,7 @@ Module SPCRule_Module
 
             Form1.TimerCheckInfi.Enabled = False
 
-            CloseSerialPort2()
+            'CloseSerialPort2()
 
             SolderCutter_Form.to_PLC("@00WD01080000")
             Thread.Sleep(100)
@@ -1332,7 +1315,7 @@ Module SPCRule_Module
             InterruptionCheck = False
             ResetChangeSpool()
 
-            CloseSerialPort2()
+            'CloseSerialPort2()
 
             'SaveAverage()
 

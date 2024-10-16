@@ -67,7 +67,7 @@ Partial Class ChangeComPort_Form
         Me.Label4.BackColor = System.Drawing.Color.Transparent
         Me.Label4.Font = New System.Drawing.Font("Arial", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(116, 214)
+        Me.Label4.Location = New System.Drawing.Point(116, 177)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(48, 22)
@@ -78,7 +78,7 @@ Partial Class ChangeComPort_Form
         '
         Me.cboPLC.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboPLC.FormattingEnabled = True
-        Me.cboPLC.Location = New System.Drawing.Point(260, 208)
+        Me.cboPLC.Location = New System.Drawing.Point(260, 171)
         Me.cboPLC.Margin = New System.Windows.Forms.Padding(2)
         Me.cboPLC.Name = "cboPLC"
         Me.cboPLC.Size = New System.Drawing.Size(152, 28)
@@ -122,22 +122,24 @@ Partial Class ChangeComPort_Form
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("Arial", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(116, 163)
+        Me.Label3.Location = New System.Drawing.Point(116, 230)
         Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(140, 22)
         Me.Label3.TabIndex = 76
         Me.Label3.Text = "Door Lock(Ard)"
+        Me.Label3.Visible = False
         '
         'cboLock
         '
         Me.cboLock.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboLock.FormattingEnabled = True
-        Me.cboLock.Location = New System.Drawing.Point(260, 157)
+        Me.cboLock.Location = New System.Drawing.Point(260, 224)
         Me.cboLock.Margin = New System.Windows.Forms.Padding(2)
         Me.cboLock.Name = "cboLock"
         Me.cboLock.Size = New System.Drawing.Size(152, 28)
         Me.cboLock.TabIndex = 75
+        Me.cboLock.Visible = False
         '
         'Label2
         '
@@ -145,7 +147,7 @@ Partial Class ChangeComPort_Form
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Arial", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(116, 113)
+        Me.Label2.Location = New System.Drawing.Point(116, 129)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(143, 22)
@@ -156,7 +158,7 @@ Partial Class ChangeComPort_Form
         '
         Me.cboWeighing.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboWeighing.FormattingEnabled = True
-        Me.cboWeighing.Location = New System.Drawing.Point(260, 107)
+        Me.cboWeighing.Location = New System.Drawing.Point(260, 123)
         Me.cboWeighing.Margin = New System.Windows.Forms.Padding(2)
         Me.cboWeighing.Name = "cboWeighing"
         Me.cboWeighing.Size = New System.Drawing.Size(152, 28)

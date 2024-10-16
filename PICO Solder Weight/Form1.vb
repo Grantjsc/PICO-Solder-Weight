@@ -578,9 +578,7 @@ Public Class Form1
                 If SolderCutter_Form.lblSpool107.Text = CInt("100") Or InterruptionCheck = True Then
                     Associate()
 
-                    OpenSerialPort2()
-                    SerialPort2.WriteLine("A") ' door unlock
-                    'CloseSerialPort2()
+                    SolderCutter_Form.to_PLC("@00WD01070000") 'door unlocked
 
                     Function_Module.WeighingScalebyON()
                     Thread.Sleep(100)
@@ -605,9 +603,7 @@ Public Class Form1
                 Else
                     Associate()
 
-                    OpenSerialPort2()
-                    SerialPort2.WriteLine("A") ' door unlock
-                    'CloseSerialPort2()
+                    SolderCutter_Form.to_PLC("@00WD01070000") 'door unlocked
 
                     SolderCutter_Form.to_PLC("@00WD01080000")
                     Thread.Sleep(100)
@@ -892,22 +888,11 @@ Public Class Form1
     Public csvfull As Boolean = False
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        OpenSerialPort2()
 
-        Select Case DoorSignal
-            Case 1
-                DoorState = True
+        If SolderCutter_Form.lblDoor_110.Text = 1 Then
 
-            Case 0
-                DoorState = False
+            SolderCutter_Form.to_PLC("@00WD01070000") 'door locked
 
-        End Select
-
-        If DoorState = True Then
-
-            OpenSerialPort2()
-            SerialPort2.WriteLine("B") 'door locked
-            'CloseSerialPort2()
 
             dateNtime = Date.Now.ToString("MM/dd/yyyy hh:mmtt")
 
@@ -1057,7 +1042,7 @@ Public Class Form1
             dialog = MessageBox.Show("Kindly close the door.", "PICO Solder Weight Closed loop", MessageBoxButtons.OK, MessageBoxIcon.Information)
             If dialog = DialogResult.OK Then
                 'e.Cancel = True
-                OpenSerialPort2()
+
             End If
             'MsgBox("Kindly close the door.", MsgBoxStyle.Information)
         End If

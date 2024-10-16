@@ -38,6 +38,8 @@ Partial Class SolderCutter_Form
         Me.btnC1Start = New Guna.UI2.WinForms.Guna2GradientButton()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lblDoor_110 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.lblQty109 = New System.Windows.Forms.Label()
         Me.lblPurge105 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -365,6 +367,8 @@ Partial Class SolderCutter_Form
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.lblDoor_110)
+        Me.Panel1.Controls.Add(Me.Label13)
         Me.Panel1.Controls.Add(Me.lblQty109)
         Me.Panel1.Controls.Add(Me.lblPurge105)
         Me.Panel1.Controls.Add(Me.Label8)
@@ -392,6 +396,26 @@ Partial Class SolderCutter_Form
         Me.Panel1.Size = New System.Drawing.Size(259, 771)
         Me.Panel1.TabIndex = 2
         '
+        'lblDoor_110
+        '
+        Me.lblDoor_110.AutoSize = True
+        Me.lblDoor_110.Location = New System.Drawing.Point(92, 411)
+        Me.lblDoor_110.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblDoor_110.Name = "lblDoor_110"
+        Me.lblDoor_110.Size = New System.Drawing.Size(31, 13)
+        Me.lblDoor_110.TabIndex = 86
+        Me.lblDoor_110.Text = "0000"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(32, 411)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(60, 13)
+        Me.Label13.TabIndex = 85
+        Me.Label13.Text = "Door Lock:"
+        '
         'lblQty109
         '
         Me.lblQty109.AutoSize = True
@@ -417,7 +441,7 @@ Partial Class SolderCutter_Form
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(24, 390)
+        Me.Label8.Location = New System.Drawing.Point(27, 390)
         Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(65, 13)
@@ -428,7 +452,7 @@ Partial Class SolderCutter_Form
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(148, 390)
+        Me.Label11.Location = New System.Drawing.Point(145, 390)
         Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(73, 13)
@@ -1260,4 +1284,6 @@ Partial Class SolderCutter_Form
     Friend WithEvents TimerQtyChecking As Timer
     Friend WithEvents TimerChangeSpool As Timer
     Friend WithEvents btnResetAll As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents lblDoor_110 As Label
+    Friend WithEvents Label13 As Label
 End Class

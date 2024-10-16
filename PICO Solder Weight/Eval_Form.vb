@@ -22,9 +22,7 @@ Public Class Eval_Form
         txtName.Text = ""
         txtKindOfEval.Text = ""
         txtWeight.Text = ""
-        OpenSerialPort2()
-        Form1.SerialPort2.WriteLine("A") ' door unlock
-        'CloseSerialPort2()
+        SolderCutter_Form.to_PLC("@00WD01070000") 'door unlocked
     End Sub
 
     Private Sub SerialPort1_DataReceived(sender As Object, e As IO.Ports.SerialDataReceivedEventArgs) Handles SerialPort1.DataReceived
@@ -57,20 +55,9 @@ Public Class Eval_Form
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        Select Case Form1.DoorSignal
-            Case 1
-                Form1.DoorState = True
 
-            Case 0
-                Form1.DoorState = False
-
-        End Select
-
-        'OpenSerialPort2()
-        If Form1.DoorState = True Then
-            OpenSerialPort2()
-            Form1.SerialPort2.WriteLine("B") ' door locked
-            CloseSerialPort2()
+        If SolderCutter_Form.lblDoor_110.Text = 1 Then
+            SolderCutter_Form.to_PLC("@00WD01070000") 'door locked
 
             saveEval()
         Else
@@ -116,21 +103,10 @@ Public Class Eval_Form
     End Sub
 
     Private Sub btnExitEval_Click(sender As Object, e As EventArgs) Handles btnExitEval.Click
-        Select Case Form1.DoorSignal
-            Case 1
-                Form1.DoorState = True
 
-            Case 0
-                Form1.DoorState = False
+        If SolderCutter_Form.lblDoor_110.Text = 1 Then
 
-        End Select
-
-        'OpenSerialPort2()
-        If Form1.DoorState = True Then
-
-            OpenSerialPort2()
-            Form1.SerialPort2.WriteLine("B") ' door locked
-            CloseSerialPort2()
+            SolderCutter_Form.to_PLC("@00WD01070000") 'door locked
 
             Timer1.Enabled = False
             txtEvalReading.Text = ""

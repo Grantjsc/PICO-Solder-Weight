@@ -11,7 +11,11 @@ Public Class Main_Form
 
     Private Sub Main_Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.WindowState = FormWindowState.Maximized
-        'SolderCutter_Form.Timer1.Enabled = True
+
+        If SolderCutter_Form.Timer1.Enabled = False Then
+            SolderCutter_Form.Timer1.Enabled = True
+        End If
+
 
         GetLockSerialName()
         GetWeighingSerialName()
@@ -24,10 +28,8 @@ Public Class Main_Form
         'Form1.SerialPort1.Open()
         'Form1.SerialPort2.Open()
 
-        OpenSerialPort2()
-        Form1.SerialPort2.WriteLine("B") 'door locked
-        CloseSerialPort2()
-
+        SolderCutter_Form.to_PLC("@00WD01070000") 'door locked
+        SolderCutter_Form.to_PLC("@00WD01070000") 'Software is open
 
         'Dim Fngerprint = False
         'While Fngerprint = False
@@ -48,32 +50,20 @@ Public Class Main_Form
     End Sub
 
     Private Sub Main_Form_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        OpenSerialPort2()
 
-        Select Case Form1.DoorSignal
-            Case 1
-                Form1.DoorState = True
-
-            Case 0
-                Form1.DoorState = False
-
-        End Select
-
-        If Form1.DoorState = True Then
+        If SolderCutter_Form.lblDoor_110.Text = 1 Then
 
             Dim dialog As DialogResult
             dialog = MessageBox.Show("Do you really want to exit?", "Exit application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If dialog = DialogResult.No Then
-                CloseSerialPort2()
                 e.Cancel = True
             Else
 
                 If Form1.SerialPort1.IsOpen Then
                     Form1.SerialPort1.Close()
                 End If
-                OpenSerialPort2()
-                Form1.SerialPort2.WriteLine("B") 'door locked
-                CloseSerialPort2()
+                SolderCutter_Form.to_PLC("@00WD01070000") 'door unlocked
+                SolderCutter_Form.to_PLC("@00WD01070000") 'Software is Close
                 Application.ExitThread()
             End If
 
@@ -82,7 +72,6 @@ Public Class Main_Form
             dialog = MessageBox.Show("Kindly close the door.", "PICO Solder Weight Closed loop", MessageBoxButtons.OK, MessageBoxIcon.Information)
             If dialog = DialogResult.OK Then
                 e.Cancel = True
-                OpenSerialPort2()
             End If
             'MsgBox("Kindly close the door.", MsgBoxStyle.Information)
         End If
