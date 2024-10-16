@@ -62,6 +62,13 @@ Partial Class Form1
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.SerialPort2 = New System.IO.Ports.SerialPort(Me.components)
+        Me.TimerPLC = New System.Windows.Forms.Timer(Me.components)
+        Me.send_status_lbl = New System.Windows.Forms.Label()
+        Me.lblDoor_110 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.lblQty109 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.lblQty108 = New System.Windows.Forms.Label()
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         Me.Guna2CustomGradientPanel2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -133,7 +140,7 @@ Partial Class Form1
         Me.btnNewLot.Image = CType(resources.GetObject("btnNewLot.Image"), System.Drawing.Image)
         Me.btnNewLot.ImageSize = New System.Drawing.Size(30, 30)
         Me.btnNewLot.Location = New System.Drawing.Point(68, 553)
-        Me.btnNewLot.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnNewLot.Margin = New System.Windows.Forms.Padding(2)
         Me.btnNewLot.Name = "btnNewLot"
         Me.btnNewLot.ShadowDecoration.BorderRadius = 18
         Me.btnNewLot.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -166,7 +173,7 @@ Partial Class Form1
         Me.btnSave.Image = CType(resources.GetObject("btnSave.Image"), System.Drawing.Image)
         Me.btnSave.ImageSize = New System.Drawing.Size(30, 30)
         Me.btnSave.Location = New System.Drawing.Point(220, 556)
-        Me.btnSave.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnSave.Margin = New System.Windows.Forms.Padding(2)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.ShadowDecoration.BorderRadius = 18
         Me.btnSave.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -269,7 +276,7 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel1.FillColor3 = System.Drawing.SystemColors.Control
         Me.Guna2CustomGradientPanel1.FillColor4 = System.Drawing.SystemColors.Control
         Me.Guna2CustomGradientPanel1.Location = New System.Drawing.Point(0, 99)
-        Me.Guna2CustomGradientPanel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Guna2CustomGradientPanel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Guna2CustomGradientPanel1.Name = "Guna2CustomGradientPanel1"
         Me.Guna2CustomGradientPanel1.ShadowDecoration.BorderRadius = 35
         Me.Guna2CustomGradientPanel1.Size = New System.Drawing.Size(548, 652)
@@ -297,7 +304,7 @@ Partial Class Form1
         Me.btnEnable.Image = CType(resources.GetObject("btnEnable.Image"), System.Drawing.Image)
         Me.btnEnable.ImageSize = New System.Drawing.Size(30, 30)
         Me.btnEnable.Location = New System.Drawing.Point(381, 553)
-        Me.btnEnable.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnEnable.Margin = New System.Windows.Forms.Padding(2)
         Me.btnEnable.Name = "btnEnable"
         Me.btnEnable.ShadowDecoration.BorderRadius = 18
         Me.btnEnable.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -355,7 +362,7 @@ Partial Class Form1
         Me.btnWeight.Image = CType(resources.GetObject("btnWeight.Image"), System.Drawing.Image)
         Me.btnWeight.ImageSize = New System.Drawing.Size(30, 30)
         Me.btnWeight.Location = New System.Drawing.Point(191, 607)
-        Me.btnWeight.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnWeight.Margin = New System.Windows.Forms.Padding(2)
         Me.btnWeight.Name = "btnWeight"
         Me.btnWeight.ShadowDecoration.BorderRadius = 18
         Me.btnWeight.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -535,7 +542,7 @@ Partial Class Form1
         Me.btnReset.Image = CType(resources.GetObject("btnReset.Image"), System.Drawing.Image)
         Me.btnReset.ImageSize = New System.Drawing.Size(30, 30)
         Me.btnReset.Location = New System.Drawing.Point(375, 553)
-        Me.btnReset.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnReset.Margin = New System.Windows.Forms.Padding(2)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.ShadowDecoration.BorderRadius = 18
         Me.btnReset.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
@@ -552,7 +559,7 @@ Partial Class Form1
         Me.lstResult.FormattingEnabled = True
         Me.lstResult.ItemHeight = 29
         Me.lstResult.Location = New System.Drawing.Point(292, 134)
-        Me.lstResult.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.lstResult.Margin = New System.Windows.Forms.Padding(2)
         Me.lstResult.Name = "lstResult"
         Me.lstResult.Size = New System.Drawing.Size(229, 381)
         Me.lstResult.TabIndex = 19
@@ -574,7 +581,7 @@ Partial Class Form1
         Me.cboShift.IntegralHeight = False
         Me.cboShift.ItemHeight = 30
         Me.cboShift.Location = New System.Drawing.Point(32, 327)
-        Me.cboShift.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboShift.Margin = New System.Windows.Forms.Padding(2)
         Me.cboShift.Name = "cboShift"
         Me.cboShift.ShadowDecoration.BorderRadius = 30
         Me.cboShift.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -600,7 +607,7 @@ Partial Class Form1
         Me.cboProcess.IntegralHeight = False
         Me.cboProcess.ItemHeight = 30
         Me.cboProcess.Location = New System.Drawing.Point(32, 412)
-        Me.cboProcess.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboProcess.Margin = New System.Windows.Forms.Padding(2)
         Me.cboProcess.MaxDropDownItems = 15
         Me.cboProcess.Name = "cboProcess"
         Me.cboProcess.ShadowDecoration.BorderRadius = 30
@@ -626,7 +633,7 @@ Partial Class Form1
         Me.cboAssociate.IntegralHeight = False
         Me.cboAssociate.ItemHeight = 30
         Me.cboAssociate.Location = New System.Drawing.Point(32, 479)
-        Me.cboAssociate.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cboAssociate.Margin = New System.Windows.Forms.Padding(2)
         Me.cboAssociate.Name = "cboAssociate"
         Me.cboAssociate.ShadowDecoration.BorderRadius = 30
         Me.cboAssociate.ShadowDecoration.Color = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
@@ -638,6 +645,12 @@ Partial Class Form1
         'Guna2CustomGradientPanel2
         '
         Me.Guna2CustomGradientPanel2.BorderRadius = 15
+        Me.Guna2CustomGradientPanel2.Controls.Add(Me.lblQty109)
+        Me.Guna2CustomGradientPanel2.Controls.Add(Me.Label11)
+        Me.Guna2CustomGradientPanel2.Controls.Add(Me.lblQty108)
+        Me.Guna2CustomGradientPanel2.Controls.Add(Me.lblDoor_110)
+        Me.Guna2CustomGradientPanel2.Controls.Add(Me.Label13)
+        Me.Guna2CustomGradientPanel2.Controls.Add(Me.send_status_lbl)
         Me.Guna2CustomGradientPanel2.Controls.Add(Me.PictureBox1)
         Me.Guna2CustomGradientPanel2.Controls.Add(Me.Label1)
         Me.Guna2CustomGradientPanel2.Controls.Add(Me.MenuStrip1)
@@ -647,7 +660,7 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel2.FillColor3 = System.Drawing.Color.DarkGreen
         Me.Guna2CustomGradientPanel2.FillColor4 = System.Drawing.Color.DarkGreen
         Me.Guna2CustomGradientPanel2.Location = New System.Drawing.Point(0, 0)
-        Me.Guna2CustomGradientPanel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Guna2CustomGradientPanel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Guna2CustomGradientPanel2.Name = "Guna2CustomGradientPanel2"
         Me.Guna2CustomGradientPanel2.Size = New System.Drawing.Size(548, 99)
         Me.Guna2CustomGradientPanel2.TabIndex = 7
@@ -657,7 +670,7 @@ Partial Class Form1
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(15, 15)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(79, 76)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -731,7 +744,80 @@ Partial Class Form1
         '
         'SerialPort2
         '
-        Me.SerialPort2.PortName = "COM8"
+        Me.SerialPort2.PortName = "COM4"
+        '
+        'TimerPLC
+        '
+        '
+        'send_status_lbl
+        '
+        Me.send_status_lbl.BackColor = System.Drawing.Color.Transparent
+        Me.send_status_lbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.send_status_lbl.Location = New System.Drawing.Point(98, 6)
+        Me.send_status_lbl.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.send_status_lbl.Name = "send_status_lbl"
+        Me.send_status_lbl.Size = New System.Drawing.Size(220, 28)
+        Me.send_status_lbl.TabIndex = 86
+        Me.send_status_lbl.Text = "Status"
+        Me.send_status_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblDoor_110
+        '
+        Me.lblDoor_110.AutoSize = True
+        Me.lblDoor_110.BackColor = System.Drawing.Color.Transparent
+        Me.lblDoor_110.Location = New System.Drawing.Point(494, 16)
+        Me.lblDoor_110.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblDoor_110.Name = "lblDoor_110"
+        Me.lblDoor_110.Size = New System.Drawing.Size(31, 13)
+        Me.lblDoor_110.TabIndex = 94
+        Me.lblDoor_110.Text = "0000"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.BackColor = System.Drawing.Color.Transparent
+        Me.Label13.Location = New System.Drawing.Point(434, 16)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(60, 13)
+        Me.Label13.TabIndex = 93
+        Me.Label13.Text = "Door Lock:"
+        '
+        'lblQty109
+        '
+        Me.lblQty109.AutoSize = True
+        Me.lblQty109.BackColor = System.Drawing.Color.Transparent
+        Me.lblQty109.Location = New System.Drawing.Point(350, 25)
+        Me.lblQty109.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblQty109.Name = "lblQty109"
+        Me.lblQty109.Size = New System.Drawing.Size(29, 13)
+        Me.lblQty109.TabIndex = 97
+        Me.lblQty109.Text = "Qty2"
+        Me.lblQty109.Visible = False
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.BackColor = System.Drawing.Color.Transparent
+        Me.Label11.Location = New System.Drawing.Point(278, 5)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(73, 13)
+        Me.Label11.TabIndex = 96
+        Me.Label11.Text = "Main Counter:"
+        Me.Label11.Visible = False
+        '
+        'lblQty108
+        '
+        Me.lblQty108.AutoSize = True
+        Me.lblQty108.BackColor = System.Drawing.Color.Transparent
+        Me.lblQty108.Location = New System.Drawing.Point(350, 5)
+        Me.lblQty108.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblQty108.Name = "lblQty108"
+        Me.lblQty108.Size = New System.Drawing.Size(29, 13)
+        Me.lblQty108.TabIndex = 95
+        Me.lblQty108.Text = "Qty1"
+        Me.lblQty108.Visible = False
         '
         'Form1
         '
@@ -742,7 +828,7 @@ Partial Class Form1
         Me.Controls.Add(Me.Guna2CustomGradientPanel2)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.MaximizeBox = False
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -795,4 +881,11 @@ Partial Class Form1
     Friend WithEvents lblTime As Label
     Friend WithEvents btnEnable As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents SerialPort2 As IO.Ports.SerialPort
+    Friend WithEvents TimerPLC As Timer
+    Friend WithEvents lblDoor_110 As Label
+    Friend WithEvents Label13 As Label
+    Friend WithEvents send_status_lbl As Label
+    Friend WithEvents lblQty109 As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents lblQty108 As Label
 End Class
