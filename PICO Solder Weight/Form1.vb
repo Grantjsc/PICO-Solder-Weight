@@ -81,6 +81,8 @@ Public Class Form1
             TimerPLC.Enabled = True
         End If
 
+        to_PLC("@00WD01070000") 'Software is Open
+
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -180,27 +182,17 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If Not SerialPort2.IsOpen Then
-            SerialPort2.Open()
-        End If
 
         If lblDoor_110.Text = 1 Then
 
             Dim dialog As DialogResult
             dialog = MessageBox.Show("Do you really want to exit?", "Exit application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If dialog = DialogResult.No Then
-                If SerialPort2.IsOpen Then
-                    SerialPort2.Close()
-                End If
                 e.Cancel = True
             Else
 
-                If Not SerialPort2.IsOpen Then
-                    SerialPort2.Open()
-                End If
-
-                SerialPort2.WriteLine("B") 'door locked
-                SerialPort2.Close()
+                to_PLC("@00WD01070000") 'Door locked
+                to_PLC("@00WD01070000") 'Software is close
 
                 Application.ExitThread()
             End If
@@ -210,9 +202,6 @@ Public Class Form1
             dialog = MessageBox.Show("Kindly close the door.", "PICO Solder Cutter", MessageBoxButtons.OK, MessageBoxIcon.Information)
             If dialog = DialogResult.OK Then
                 e.Cancel = True
-                If Not SerialPort2.IsOpen Then
-                    SerialPort2.Open()
-                End If
             End If
             'DoorOpen_Form.ShowDialog()
         End If
@@ -479,12 +468,7 @@ Public Class Form1
             MsgBox("Please enter Lot Numbwe!", MsgBoxStyle.Exclamation)
         Else
 
-            If Not SerialPort2.IsOpen Then
-                SerialPort2.Open()
-            End If
-
-            SerialPort2.WriteLine("A") 'door unlocked
-            'SerialPort2.Close()
+            to_PLC("@00WD01070000") 'Door unlocked
 
             Associate()
 
@@ -656,10 +640,6 @@ Public Class Form1
     Public get_message2 As String
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
-        If Not SerialPort2.IsOpen Then
-            SerialPort2.Open()
-        End If
-
         If lblDoor_110.Text = 1 Then
             Dim isFileEmpty As Boolean = IsCSVFileEmpty(get_FolderPath)
             get_message = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & vbCrLf
@@ -689,13 +669,7 @@ Public Class Form1
                     'txtReading.Text = ""
                     'SerialPort1.Close()
 
-                    If Not SerialPort2.IsOpen Then
-                        SerialPort2.Open()
-                    End If
-
-                    SerialPort2.WriteLine("B") 'door locked
-
-                    SerialPort2.Close()
+                    to_PLC("@00WD01070000") 'Door locked
 
                 Else
 
@@ -773,26 +747,6 @@ Public Class Form1
 
     Private Sub SerialPort2_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort2.DataReceived
 
-        'Try
-        '    DoorSignal = SerialPort2.ReadExisting()
-        '    DoorSignal = DoorSignal.Replace(vbCrLf, "")
-        '    DoorSignal = DoorSignal.Replace("?", "")
-        '    Console.WriteLine(DoorSignal)
-        '    'DoorState = True
-
-        '    Select Case DoorSignal
-        '        Case 1
-        '            DoorState = True
-
-        '        Case 0
-        '            DoorState = False
-
-        '            'Case Else
-        '            '    DoorState = False
-        '    End Select
-        'Catch ex As Exception
-        '    MsgBox(ex.Message, vbCritical)
-        'End Try
     End Sub
 
     '******************* PLC Door Lock Connection ***********************
