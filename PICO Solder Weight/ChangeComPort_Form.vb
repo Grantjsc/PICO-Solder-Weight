@@ -2,6 +2,7 @@
     Private Sub ChangeComPort_Form_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadComPort1()
         LoadComPort2()
+        LoadComPort3()
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
