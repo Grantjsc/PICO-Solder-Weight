@@ -64,6 +64,14 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Windows.Forms.Control.CheckForIllegalCrossThreadCalls = False
 
+        GetLockSerialName()
+        GetWeighingSerialName()
+        GetPLCSerialName()
+
+        SerialPort1.PortName = WeighingSerial
+        'Form1.SerialPort2.PortName = LockSerial
+        SerialPort2.PortName = PLCSerial
+
         'Get_portname()
         'SerialName()
         'SerialPort1.Open()
@@ -77,11 +85,11 @@ Public Class Form1
         'Timer1.Enabled = True
         Timer2.Enabled = True
 
-        If Not TimerPLC.Enabled = True Then
-            TimerPLC.Enabled = True
-        End If
+        'If Not TimerPLC.Enabled = True Then
+        '    TimerPLC.Enabled = True
+        'End If
 
-        to_PLC("@00WD01070000") 'Software is Open
+        'to_PLC("@00WD01070000") 'Software is Open
 
     End Sub
 
@@ -411,6 +419,13 @@ Public Class Form1
                 'CheckPartNo()
                 EmployeeBasis()
                 'txtPartNo.Enabled = False
+
+
+                If Not TimerPLC.Enabled = True Then
+                    TimerPLC.Enabled = True
+                End If
+
+                to_PLC("@00WD01070000") 'Software is Open
             End If
         End If
     End Sub
@@ -911,5 +926,19 @@ Public Class Form1
             'If an error occurs then indicate communication error
             MsgBox(ex.Message, vbCritical)
         End Try
+    End Sub
+
+    Private Sub ChangeCOMNameToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChangeCOMNameToolStripMenuItem.Click
+
+        Master_login.Label1.Text = "Please scan your finger. PO3, SPC or Technician only"
+        Master_login.ShowDialog()
+        If Master_login.F1_get_title = "PO3" Or Master_login.F1_get_title = "SPC" Or Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "Engineer" Then
+            Master_login.Close()
+            ChangeComPort_Form.ShowDialog()
+        Else
+
+            MsgBox("Authorized personnel only!", MsgBoxStyle.Exclamation)
+            Master_login.Close()
+        End If
     End Sub
 End Class

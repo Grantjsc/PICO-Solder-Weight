@@ -52,6 +52,12 @@ Partial Class Form1
         Me.cboProcess = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.cboAssociate = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Guna2CustomGradientPanel2 = New Guna.UI2.WinForms.Guna2CustomGradientPanel()
+        Me.lblQty109 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.lblQty108 = New System.Windows.Forms.Label()
+        Me.lblDoor_110 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.send_status_lbl = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
@@ -63,16 +69,15 @@ Partial Class Form1
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.SerialPort2 = New System.IO.Ports.SerialPort(Me.components)
         Me.TimerPLC = New System.Windows.Forms.Timer(Me.components)
-        Me.send_status_lbl = New System.Windows.Forms.Label()
-        Me.lblDoor_110 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.lblQty109 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.lblQty108 = New System.Windows.Forms.Label()
+        Me.MenuStrip2 = New System.Windows.Forms.MenuStrip()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ChangeCOMNameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         Me.Guna2CustomGradientPanel2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
+        Me.MenuStrip2.SuspendLayout()
         Me.SuspendLayout()
         '
         'txtPartNo
@@ -652,6 +657,7 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel2.Controls.Add(Me.Label13)
         Me.Guna2CustomGradientPanel2.Controls.Add(Me.send_status_lbl)
         Me.Guna2CustomGradientPanel2.Controls.Add(Me.PictureBox1)
+        Me.Guna2CustomGradientPanel2.Controls.Add(Me.MenuStrip2)
         Me.Guna2CustomGradientPanel2.Controls.Add(Me.Label1)
         Me.Guna2CustomGradientPanel2.Controls.Add(Me.MenuStrip1)
         Me.Guna2CustomGradientPanel2.Dock = System.Windows.Forms.DockStyle.Top
@@ -665,14 +671,84 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel2.Size = New System.Drawing.Size(548, 99)
         Me.Guna2CustomGradientPanel2.TabIndex = 7
         '
+        'lblQty109
+        '
+        Me.lblQty109.AutoSize = True
+        Me.lblQty109.BackColor = System.Drawing.Color.Transparent
+        Me.lblQty109.Location = New System.Drawing.Point(350, 25)
+        Me.lblQty109.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblQty109.Name = "lblQty109"
+        Me.lblQty109.Size = New System.Drawing.Size(29, 13)
+        Me.lblQty109.TabIndex = 97
+        Me.lblQty109.Text = "Qty2"
+        Me.lblQty109.Visible = False
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.BackColor = System.Drawing.Color.Transparent
+        Me.Label11.Location = New System.Drawing.Point(278, 5)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(73, 13)
+        Me.Label11.TabIndex = 96
+        Me.Label11.Text = "Main Counter:"
+        Me.Label11.Visible = False
+        '
+        'lblQty108
+        '
+        Me.lblQty108.AutoSize = True
+        Me.lblQty108.BackColor = System.Drawing.Color.Transparent
+        Me.lblQty108.Location = New System.Drawing.Point(350, 5)
+        Me.lblQty108.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblQty108.Name = "lblQty108"
+        Me.lblQty108.Size = New System.Drawing.Size(29, 13)
+        Me.lblQty108.TabIndex = 95
+        Me.lblQty108.Text = "Qty1"
+        Me.lblQty108.Visible = False
+        '
+        'lblDoor_110
+        '
+        Me.lblDoor_110.AutoSize = True
+        Me.lblDoor_110.BackColor = System.Drawing.Color.Transparent
+        Me.lblDoor_110.Location = New System.Drawing.Point(494, 16)
+        Me.lblDoor_110.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblDoor_110.Name = "lblDoor_110"
+        Me.lblDoor_110.Size = New System.Drawing.Size(31, 13)
+        Me.lblDoor_110.TabIndex = 94
+        Me.lblDoor_110.Text = "0000"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.BackColor = System.Drawing.Color.Transparent
+        Me.Label13.Location = New System.Drawing.Point(434, 16)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(60, 13)
+        Me.Label13.TabIndex = 93
+        Me.Label13.Text = "Door Lock:"
+        '
+        'send_status_lbl
+        '
+        Me.send_status_lbl.BackColor = System.Drawing.Color.Transparent
+        Me.send_status_lbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.send_status_lbl.Location = New System.Drawing.Point(98, 6)
+        Me.send_status_lbl.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.send_status_lbl.Name = "send_status_lbl"
+        Me.send_status_lbl.Size = New System.Drawing.Size(220, 28)
+        Me.send_status_lbl.TabIndex = 86
+        Me.send_status_lbl.Text = "Status"
+        Me.send_status_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'PictureBox1
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(15, 15)
+        Me.PictureBox1.Location = New System.Drawing.Point(15, 26)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(79, 76)
+        Me.PictureBox1.Size = New System.Drawing.Size(75, 65)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 3
         Me.PictureBox1.TabStop = False
@@ -697,7 +773,7 @@ Partial Class Form1
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(4, 2, 0, 2)
-        Me.MenuStrip1.Size = New System.Drawing.Size(548, 23)
+        Me.MenuStrip1.Size = New System.Drawing.Size(548, 24)
         Me.MenuStrip1.TabIndex = 22
         Me.MenuStrip1.Text = "MenuStrip1"
         Me.MenuStrip1.Visible = False
@@ -706,7 +782,7 @@ Partial Class Form1
         '
         Me.MenuToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddAssociateToolStripMenuItem})
         Me.MenuToolStripMenuItem.Name = "MenuToolStripMenuItem"
-        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(50, 19)
+        Me.MenuToolStripMenuItem.Size = New System.Drawing.Size(50, 20)
         Me.MenuToolStripMenuItem.Text = "Menu"
         '
         'AddAssociateToolStripMenuItem
@@ -749,75 +825,34 @@ Partial Class Form1
         'TimerPLC
         '
         '
-        'send_status_lbl
+        'MenuStrip2
         '
-        Me.send_status_lbl.BackColor = System.Drawing.Color.Transparent
-        Me.send_status_lbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.send_status_lbl.Location = New System.Drawing.Point(98, 6)
-        Me.send_status_lbl.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.send_status_lbl.Name = "send_status_lbl"
-        Me.send_status_lbl.Size = New System.Drawing.Size(220, 28)
-        Me.send_status_lbl.TabIndex = 86
-        Me.send_status_lbl.Text = "Status"
-        Me.send_status_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.MenuStrip2.BackColor = System.Drawing.Color.Transparent
+        Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SettingsToolStripMenuItem})
+        Me.MenuStrip2.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip2.Name = "MenuStrip2"
+        Me.MenuStrip2.Size = New System.Drawing.Size(548, 24)
+        Me.MenuStrip2.TabIndex = 98
+        Me.MenuStrip2.Text = "MenuStrip2"
         '
-        'lblDoor_110
+        'ContextMenuStrip1
         '
-        Me.lblDoor_110.AutoSize = True
-        Me.lblDoor_110.BackColor = System.Drawing.Color.Transparent
-        Me.lblDoor_110.Location = New System.Drawing.Point(494, 16)
-        Me.lblDoor_110.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.lblDoor_110.Name = "lblDoor_110"
-        Me.lblDoor_110.Size = New System.Drawing.Size(31, 13)
-        Me.lblDoor_110.TabIndex = 94
-        Me.lblDoor_110.Text = "0000"
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
         '
-        'Label13
+        'SettingsToolStripMenuItem
         '
-        Me.Label13.AutoSize = True
-        Me.Label13.BackColor = System.Drawing.Color.Transparent
-        Me.Label13.Location = New System.Drawing.Point(434, 16)
-        Me.Label13.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(60, 13)
-        Me.Label13.TabIndex = 93
-        Me.Label13.Text = "Door Lock:"
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangeCOMNameToolStripMenuItem})
+        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
+        Me.SettingsToolStripMenuItem.Text = "Settings"
         '
-        'lblQty109
+        'ChangeCOMNameToolStripMenuItem
         '
-        Me.lblQty109.AutoSize = True
-        Me.lblQty109.BackColor = System.Drawing.Color.Transparent
-        Me.lblQty109.Location = New System.Drawing.Point(350, 25)
-        Me.lblQty109.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.lblQty109.Name = "lblQty109"
-        Me.lblQty109.Size = New System.Drawing.Size(29, 13)
-        Me.lblQty109.TabIndex = 97
-        Me.lblQty109.Text = "Qty2"
-        Me.lblQty109.Visible = False
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.BackColor = System.Drawing.Color.Transparent
-        Me.Label11.Location = New System.Drawing.Point(278, 5)
-        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(73, 13)
-        Me.Label11.TabIndex = 96
-        Me.Label11.Text = "Main Counter:"
-        Me.Label11.Visible = False
-        '
-        'lblQty108
-        '
-        Me.lblQty108.AutoSize = True
-        Me.lblQty108.BackColor = System.Drawing.Color.Transparent
-        Me.lblQty108.Location = New System.Drawing.Point(350, 5)
-        Me.lblQty108.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.lblQty108.Name = "lblQty108"
-        Me.lblQty108.Size = New System.Drawing.Size(29, 13)
-        Me.lblQty108.TabIndex = 95
-        Me.lblQty108.Text = "Qty1"
-        Me.lblQty108.Visible = False
+        Me.ChangeCOMNameToolStripMenuItem.Image = CType(resources.GetObject("ChangeCOMNameToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.ChangeCOMNameToolStripMenuItem.Name = "ChangeCOMNameToolStripMenuItem"
+        Me.ChangeCOMNameToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ChangeCOMNameToolStripMenuItem.Text = "Change COM name"
         '
         'Form1
         '
@@ -840,6 +875,8 @@ Partial Class Form1
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        Me.MenuStrip2.ResumeLayout(False)
+        Me.MenuStrip2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -888,4 +925,8 @@ Partial Class Form1
     Friend WithEvents lblQty109 As Label
     Friend WithEvents Label11 As Label
     Friend WithEvents lblQty108 As Label
+    Friend WithEvents MenuStrip2 As MenuStrip
+    Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents ChangeCOMNameToolStripMenuItem As ToolStripMenuItem
 End Class
