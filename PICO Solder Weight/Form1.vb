@@ -190,6 +190,9 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If Not TimerPLC.Enabled = True Then
+            TimerPLC.Enabled = True
+        End If
 
         If lblDoor_110.Text = 1 Then
 
@@ -199,8 +202,8 @@ Public Class Form1
                 e.Cancel = True
             Else
 
-                to_PLC("@00WD01070000") 'Door locked
-                to_PLC("@00WD01070000") 'Software is close
+                to_PLC("@00WD00030000") 'Door locked
+                'to_PLC("@00WD01070000") 'Software is close
 
                 Application.ExitThread()
             End If
@@ -421,11 +424,11 @@ Public Class Form1
                 'txtPartNo.Enabled = False
 
 
-                If Not TimerPLC.Enabled = True Then
+                If TimerPLC.Enabled = False Then
                     TimerPLC.Enabled = True
                 End If
 
-                to_PLC("@00WD01070000") 'Software is Open
+                'to_PLC("@00WD01070000") 'Software is Open
             End If
         End If
     End Sub
@@ -483,7 +486,7 @@ Public Class Form1
             MsgBox("Please enter Lot Numbwe!", MsgBoxStyle.Exclamation)
         Else
 
-            to_PLC("@00WD01070000") 'Door unlocked
+            to_PLC("@00WD00030001") 'Door unlocked
 
             Associate()
 
@@ -684,7 +687,7 @@ Public Class Form1
                     'txtReading.Text = ""
                     'SerialPort1.Close()
 
-                    to_PLC("@00WD01070000") 'Door locked
+                    to_PLC("@00WD00030000") 'Door locked
 
                 Else
 
