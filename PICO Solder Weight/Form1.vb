@@ -889,7 +889,7 @@ Public Class Form1
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
-        If SolderCutter_Form.lblDoor_110.Text = 1 Then
+        If SolderCutter_Form.lblDoor_112.Text = 1 Then
 
             SolderCutter_Form.to_PLC("@00WD00030000") 'door locked
 

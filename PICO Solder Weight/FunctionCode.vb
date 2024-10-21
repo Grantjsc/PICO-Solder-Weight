@@ -745,7 +745,7 @@ Module Function_Module
         Dim isFileEmpty14mg As Boolean = Form1.IsCSVFileEmpty(Form1.get_FolderPath14mg)
         Dim isFileEmpty As Boolean
 
-        If SolderCutter_Form.lblDoor_110.Text = 1 Then
+        If SolderCutter_Form.lblDoor_112.Text = 1 Then
 
             SolderCutter_Form.to_PLC("@00WD00030000") 'door locked
 

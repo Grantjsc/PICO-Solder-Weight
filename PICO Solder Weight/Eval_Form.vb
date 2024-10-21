@@ -56,7 +56,7 @@ Public Class Eval_Form
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
-        If SolderCutter_Form.lblDoor_110.Text = 1 Then
+        If SolderCutter_Form.lblDoor_112.Text = 1 Then
             SolderCutter_Form.to_PLC("@00WD00030000") 'door locked
 
             saveEval()
@@ -104,7 +104,7 @@ Public Class Eval_Form
 
     Private Sub btnExitEval_Click(sender As Object, e As EventArgs) Handles btnExitEval.Click
 
-        If SolderCutter_Form.lblDoor_110.Text = 1 Then
+        If SolderCutter_Form.lblDoor_112.Text = 1 Then
 
             SolderCutter_Form.to_PLC("@00WD00030000") 'door locked
 

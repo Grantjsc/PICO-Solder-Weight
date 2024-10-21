@@ -51,7 +51,7 @@ Public Class Main_Form
 
     Private Sub Main_Form_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
 
-        If SolderCutter_Form.lblDoor_110.Text = 1 Then
+        If SolderCutter_Form.lblDoor_112.Text = 1 Then
 
             Dim dialog As DialogResult
             dialog = MessageBox.Show("Do you really want to exit?", "Exit application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)

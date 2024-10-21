@@ -38,7 +38,7 @@ Partial Class SolderCutter_Form
         Me.btnC1Start = New Guna.UI2.WinForms.Guna2GradientButton()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.lblDoor_110 = New System.Windows.Forms.Label()
+        Me.lblDoor_112 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.lblQty109 = New System.Windows.Forms.Label()
         Me.lblPurge105 = New System.Windows.Forms.Label()
@@ -159,7 +159,7 @@ Partial Class SolderCutter_Form
         Me.Panel2.Location = New System.Drawing.Point(0, 106)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(265, 771)
+        Me.Panel2.Size = New System.Drawing.Size(265, 788)
         Me.Panel2.TabIndex = 1
         '
         'PanelCut1EM
@@ -367,7 +367,7 @@ Partial Class SolderCutter_Form
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel1.Controls.Add(Me.lblDoor_110)
+        Me.Panel1.Controls.Add(Me.lblDoor_112)
         Me.Panel1.Controls.Add(Me.Label13)
         Me.Panel1.Controls.Add(Me.lblQty109)
         Me.Panel1.Controls.Add(Me.lblPurge105)
@@ -393,18 +393,18 @@ Partial Class SolderCutter_Form
         Me.Panel1.Location = New System.Drawing.Point(265, 106)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(259, 771)
+        Me.Panel1.Size = New System.Drawing.Size(259, 788)
         Me.Panel1.TabIndex = 2
         '
-        'lblDoor_110
+        'lblDoor_112
         '
-        Me.lblDoor_110.AutoSize = True
-        Me.lblDoor_110.Location = New System.Drawing.Point(92, 411)
-        Me.lblDoor_110.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.lblDoor_110.Name = "lblDoor_110"
-        Me.lblDoor_110.Size = New System.Drawing.Size(31, 13)
-        Me.lblDoor_110.TabIndex = 86
-        Me.lblDoor_110.Text = "0000"
+        Me.lblDoor_112.AutoSize = True
+        Me.lblDoor_112.Location = New System.Drawing.Point(92, 411)
+        Me.lblDoor_112.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblDoor_112.Name = "lblDoor_112"
+        Me.lblDoor_112.Size = New System.Drawing.Size(31, 13)
+        Me.lblDoor_112.TabIndex = 86
+        Me.lblDoor_112.Text = "0000"
         '
         'Label13
         '
@@ -756,7 +756,7 @@ Partial Class SolderCutter_Form
         Me.Panel3.Location = New System.Drawing.Point(524, 106)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(274, 771)
+        Me.Panel3.Size = New System.Drawing.Size(274, 788)
         Me.Panel3.TabIndex = 3
         '
         'PanelCut3EM
@@ -977,7 +977,7 @@ Partial Class SolderCutter_Form
         Me.Panel4.Location = New System.Drawing.Point(798, 106)
         Me.Panel4.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(272, 771)
+        Me.Panel4.Size = New System.Drawing.Size(272, 788)
         Me.Panel4.TabIndex = 4
         '
         'PanelCut4EM
@@ -1203,7 +1203,7 @@ Partial Class SolderCutter_Form
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(1060, 894)
+        Me.ClientSize = New System.Drawing.Size(1060, 911)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel1)
@@ -1284,6 +1284,6 @@ Partial Class SolderCutter_Form
     Friend WithEvents TimerQtyChecking As Timer
     Friend WithEvents TimerChangeSpool As Timer
     Friend WithEvents btnResetAll As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents lblDoor_110 As Label
+    Friend WithEvents lblDoor_112 As Label
     Friend WithEvents Label13 As Label
 End Class
