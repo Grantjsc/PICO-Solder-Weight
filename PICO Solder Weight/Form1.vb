@@ -194,7 +194,7 @@ Public Class Form1
             TimerPLC.Enabled = True
         End If
 
-        If lblDoor_110.Text = 1 Then
+        If lblDoor_112.Text = 1 Then
 
             Dim dialog As DialogResult
             dialog = MessageBox.Show("Do you really want to exit?", "Exit application", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -490,17 +490,17 @@ Public Class Form1
 
             Associate()
 
-                'btnWeight.Focus()
-                SerialPort1.Open()
+            'btnWeight.Focus()
+            SerialPort1.Open()
 
-                SerialPort1.WriteLine("Z")
-                Thread.Sleep(500)
-                SerialPort1.WriteLine("CP")
-                Timer1.Enabled = True
+            SerialPort1.WriteLine("Z")
+            Thread.Sleep(500)
+            SerialPort1.WriteLine("CP")
+            Timer1.Enabled = True
 
-                btnWeight.Enabled = True
-                btnWeight.Focus()
-            End If
+            btnWeight.Enabled = True
+            btnWeight.Focus()
+        End If
     End Sub
 
     Private Sub cboAssociate_MouseClick(sender As Object, e As MouseEventArgs) Handles cboAssociate.MouseClick
@@ -658,7 +658,7 @@ Public Class Form1
     Public get_message2 As String
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
-        If lblDoor_110.Text = 1 Then
+        If lblDoor_112.Text = 1 Then
             Dim isFileEmpty As Boolean = IsCSVFileEmpty(get_FolderPath)
             get_message = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & vbCrLf
             'get_message2 = """Part Number,""" & "," & """Process,""" & "," & """Pico-Shift,""" & "," & """Pico-Lot Number,""" & "," & """Pico Premelt Associate,""" & "," & """Solder Weight,""" & "," & """Date and Time,""" & vbCrLf
@@ -786,7 +786,7 @@ Public Class Form1
             End
         End Try
         'Check DM AREA DM486 data update; range: 9
-        TX = "@00RD01050006"
+        TX = "@00RD01050008"
         GetFCS()
         'Console.WriteLine(FCS)
         communicate()
@@ -799,7 +799,8 @@ Public Class Form1
         'lblSpool107.Text = RXD.Substring(15, 4)
         'lblQty108.Text = RXD.Substring(19, 4)
         'lblQty109.Text = RXD.Substring(23, 4)
-        lblDoor_110.Text = RXD.Substring(27, 4)
+        'lblDoor_112.Text = RXD.Substring(27, 4)
+        lblDoor_112.Text = RXD.Substring(35, 4)
 
         'lblC2counter.Text = (CInt(RXD.Substring(23, 4) & RXD.Substring(19, 4))).ToString("N0")
 

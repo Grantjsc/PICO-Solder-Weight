@@ -55,10 +55,13 @@ Partial Class Form1
         Me.lblQty109 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.lblQty108 = New System.Windows.Forms.Label()
-        Me.lblDoor_110 = New System.Windows.Forms.Label()
+        Me.lblDoor_112 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.send_status_lbl = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.MenuStrip2 = New System.Windows.Forms.MenuStrip()
+        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ChangeCOMNameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.MenuToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -69,15 +72,12 @@ Partial Class Form1
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.SerialPort2 = New System.IO.Ports.SerialPort(Me.components)
         Me.TimerPLC = New System.Windows.Forms.Timer(Me.components)
-        Me.MenuStrip2 = New System.Windows.Forms.MenuStrip()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ChangeCOMNameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         Me.Guna2CustomGradientPanel2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.MenuStrip1.SuspendLayout()
         Me.MenuStrip2.SuspendLayout()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'txtPartNo
@@ -653,7 +653,7 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel2.Controls.Add(Me.lblQty109)
         Me.Guna2CustomGradientPanel2.Controls.Add(Me.Label11)
         Me.Guna2CustomGradientPanel2.Controls.Add(Me.lblQty108)
-        Me.Guna2CustomGradientPanel2.Controls.Add(Me.lblDoor_110)
+        Me.Guna2CustomGradientPanel2.Controls.Add(Me.lblDoor_112)
         Me.Guna2CustomGradientPanel2.Controls.Add(Me.Label13)
         Me.Guna2CustomGradientPanel2.Controls.Add(Me.send_status_lbl)
         Me.Guna2CustomGradientPanel2.Controls.Add(Me.PictureBox1)
@@ -707,16 +707,17 @@ Partial Class Form1
         Me.lblQty108.Text = "Qty1"
         Me.lblQty108.Visible = False
         '
-        'lblDoor_110
+        'lblDoor_112
         '
-        Me.lblDoor_110.AutoSize = True
-        Me.lblDoor_110.BackColor = System.Drawing.Color.Transparent
-        Me.lblDoor_110.Location = New System.Drawing.Point(494, 16)
-        Me.lblDoor_110.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.lblDoor_110.Name = "lblDoor_110"
-        Me.lblDoor_110.Size = New System.Drawing.Size(31, 13)
-        Me.lblDoor_110.TabIndex = 94
-        Me.lblDoor_110.Text = "0000"
+        Me.lblDoor_112.AutoSize = True
+        Me.lblDoor_112.BackColor = System.Drawing.Color.Transparent
+        Me.lblDoor_112.Location = New System.Drawing.Point(494, 16)
+        Me.lblDoor_112.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lblDoor_112.Name = "lblDoor_112"
+        Me.lblDoor_112.Size = New System.Drawing.Size(31, 13)
+        Me.lblDoor_112.TabIndex = 94
+        Me.lblDoor_112.Text = "0000"
+        Me.lblDoor_112.Visible = False
         '
         'Label13
         '
@@ -728,6 +729,7 @@ Partial Class Form1
         Me.Label13.Size = New System.Drawing.Size(60, 13)
         Me.Label13.TabIndex = 93
         Me.Label13.Text = "Door Lock:"
+        Me.Label13.Visible = False
         '
         'send_status_lbl
         '
@@ -740,6 +742,7 @@ Partial Class Form1
         Me.send_status_lbl.TabIndex = 86
         Me.send_status_lbl.Text = "Status"
         Me.send_status_lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.send_status_lbl.Visible = False
         '
         'PictureBox1
         '
@@ -752,6 +755,30 @@ Partial Class Form1
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 3
         Me.PictureBox1.TabStop = False
+        '
+        'MenuStrip2
+        '
+        Me.MenuStrip2.BackColor = System.Drawing.Color.Transparent
+        Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SettingsToolStripMenuItem})
+        Me.MenuStrip2.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip2.Name = "MenuStrip2"
+        Me.MenuStrip2.Size = New System.Drawing.Size(548, 24)
+        Me.MenuStrip2.TabIndex = 98
+        Me.MenuStrip2.Text = "MenuStrip2"
+        '
+        'SettingsToolStripMenuItem
+        '
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangeCOMNameToolStripMenuItem})
+        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
+        Me.SettingsToolStripMenuItem.Text = "Settings"
+        '
+        'ChangeCOMNameToolStripMenuItem
+        '
+        Me.ChangeCOMNameToolStripMenuItem.Image = CType(resources.GetObject("ChangeCOMNameToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.ChangeCOMNameToolStripMenuItem.Name = "ChangeCOMNameToolStripMenuItem"
+        Me.ChangeCOMNameToolStripMenuItem.Size = New System.Drawing.Size(179, 22)
+        Me.ChangeCOMNameToolStripMenuItem.Text = "Change COM name"
         '
         'Label1
         '
@@ -825,34 +852,10 @@ Partial Class Form1
         'TimerPLC
         '
         '
-        'MenuStrip2
-        '
-        Me.MenuStrip2.BackColor = System.Drawing.Color.Transparent
-        Me.MenuStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SettingsToolStripMenuItem})
-        Me.MenuStrip2.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip2.Name = "MenuStrip2"
-        Me.MenuStrip2.Size = New System.Drawing.Size(548, 24)
-        Me.MenuStrip2.TabIndex = 98
-        Me.MenuStrip2.Text = "MenuStrip2"
-        '
         'ContextMenuStrip1
         '
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
-        '
-        'SettingsToolStripMenuItem
-        '
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ChangeCOMNameToolStripMenuItem})
-        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
-        Me.SettingsToolStripMenuItem.Text = "Settings"
-        '
-        'ChangeCOMNameToolStripMenuItem
-        '
-        Me.ChangeCOMNameToolStripMenuItem.Image = CType(resources.GetObject("ChangeCOMNameToolStripMenuItem.Image"), System.Drawing.Image)
-        Me.ChangeCOMNameToolStripMenuItem.Name = "ChangeCOMNameToolStripMenuItem"
-        Me.ChangeCOMNameToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.ChangeCOMNameToolStripMenuItem.Text = "Change COM name"
         '
         'Form1
         '
@@ -873,10 +876,10 @@ Partial Class Form1
         Me.Guna2CustomGradientPanel2.ResumeLayout(False)
         Me.Guna2CustomGradientPanel2.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
         Me.MenuStrip2.ResumeLayout(False)
         Me.MenuStrip2.PerformLayout()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -919,7 +922,7 @@ Partial Class Form1
     Friend WithEvents btnEnable As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents SerialPort2 As IO.Ports.SerialPort
     Friend WithEvents TimerPLC As Timer
-    Friend WithEvents lblDoor_110 As Label
+    Friend WithEvents lblDoor_112 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents send_status_lbl As Label
     Friend WithEvents lblQty109 As Label
