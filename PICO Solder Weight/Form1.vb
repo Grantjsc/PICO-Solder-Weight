@@ -578,7 +578,7 @@ Public Class Form1
                 If SolderCutter_Form.lblSpool107.Text = CInt("100") Or InterruptionCheck = True Then
                     Associate()
 
-                    SolderCutter_Form.to_PLC("@00WD01070000") 'door unlocked
+                    SolderCutter_Form.to_PLC("@00WD00030001") 'door unlocked
 
                     Function_Module.WeighingScalebyON()
                     Thread.Sleep(100)
@@ -603,7 +603,7 @@ Public Class Form1
                 Else
                     Associate()
 
-                    SolderCutter_Form.to_PLC("@00WD01070000") 'door unlocked
+                    SolderCutter_Form.to_PLC("@00WD00030001") 'door unlocked
 
                     SolderCutter_Form.to_PLC("@00WD01080000")
                     Thread.Sleep(100)
@@ -891,7 +891,7 @@ Public Class Form1
 
         If SolderCutter_Form.lblDoor_110.Text = 1 Then
 
-            SolderCutter_Form.to_PLC("@00WD01070000") 'door locked
+            SolderCutter_Form.to_PLC("@00WD00030000") 'door locked
 
 
             dateNtime = Date.Now.ToString("MM/dd/yyyy hh:mmtt")

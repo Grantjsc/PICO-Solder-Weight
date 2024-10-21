@@ -211,7 +211,7 @@ Module Function_Module
                 Master_login.ShowDialog()
                 If Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "Engineer" Then
 
-                    SolderCutter_Form.to_PLC("@00WD01070000") ' door unlocked
+                    SolderCutter_Form.to_PLC("@00WD00030001") ' door unlocked
 
                     'Wite to PLC Reset Error
                     ResetOCAP()
@@ -287,7 +287,7 @@ Module Function_Module
             'SolderCutter_Form.to_PLC("@00WD00000000")
             MsgBox("Please perform OCAP!", MessageBoxIcon.Error)
 
-            SolderCutter_Form.to_PLC("@00WD01070000") ' door unlocked
+            SolderCutter_Form.to_PLC("@00WD00030001") ' door unlocked
 
             Form1.count = 0
             Form1.lstResult.Items.Clear()
@@ -358,7 +358,7 @@ Module Function_Module
                 Master_login.ShowDialog()
                 If Master_login.F1_get_title = "Technician" Or Master_login.F1_get_title = "Engineer" Then
 
-                    SolderCutter_Form.to_PLC("@00WD01070000") 'door unlocked
+                    SolderCutter_Form.to_PLC("@00WD00030001") 'door unlocked
                     'CloseSerialPort2()
 
                     'Form1.DoorState = False
@@ -406,7 +406,7 @@ Module Function_Module
                 Master_login.ShowDialog()
                 If Master_login.F1_get_title = "SPC" Or Master_login.F1_get_title = "Engineer" Then
 
-                    SolderCutter_Form.to_PLC("@00WD01070000") 'door unlocked
+                    SolderCutter_Form.to_PLC("@00WD00030001") 'door unlocked
                     'CloseSerialPort2()
 
                     'Form1.DoorState = False
@@ -747,7 +747,7 @@ Module Function_Module
 
         If SolderCutter_Form.lblDoor_110.Text = 1 Then
 
-            SolderCutter_Form.to_PLC("@00WD01070000") 'door locked
+            SolderCutter_Form.to_PLC("@00WD00030000") 'door locked
 
             Select Case CInt(Form1.txtWeight.Text)
                 Case 12

@@ -28,8 +28,8 @@ Public Class Main_Form
         'Form1.SerialPort1.Open()
         'Form1.SerialPort2.Open()
 
-        SolderCutter_Form.to_PLC("@00WD01070000") 'door locked
-        SolderCutter_Form.to_PLC("@00WD01070000") 'Software is open
+        'SolderCutter_Form.to_PLC("@00WD00030000") 'door locked
+        'SolderCutter_Form.to_PLC("@00WD01070000") 'Software is open
 
         'Dim Fngerprint = False
         'While Fngerprint = False
@@ -62,8 +62,8 @@ Public Class Main_Form
                 If Form1.SerialPort1.IsOpen Then
                     Form1.SerialPort1.Close()
                 End If
-                SolderCutter_Form.to_PLC("@00WD01070000") 'door unlocked
-                SolderCutter_Form.to_PLC("@00WD01070000") 'Software is Close
+                SolderCutter_Form.to_PLC("@00WD00030000") 'door locked
+                'SolderCutter_Form.to_PLC("@00WD01070000") 'Software is Close
                 Application.ExitThread()
             End If
 

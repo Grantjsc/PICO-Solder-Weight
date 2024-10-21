@@ -22,7 +22,7 @@ Public Class Eval_Form
         txtName.Text = ""
         txtKindOfEval.Text = ""
         txtWeight.Text = ""
-        SolderCutter_Form.to_PLC("@00WD01070000") 'door unlocked
+        SolderCutter_Form.to_PLC("@00WD00030001") 'door unlocked
     End Sub
 
     Private Sub SerialPort1_DataReceived(sender As Object, e As IO.Ports.SerialDataReceivedEventArgs) Handles SerialPort1.DataReceived
@@ -57,7 +57,7 @@ Public Class Eval_Form
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
         If SolderCutter_Form.lblDoor_110.Text = 1 Then
-            SolderCutter_Form.to_PLC("@00WD01070000") 'door locked
+            SolderCutter_Form.to_PLC("@00WD00030000") 'door locked
 
             saveEval()
         Else
@@ -106,7 +106,7 @@ Public Class Eval_Form
 
         If SolderCutter_Form.lblDoor_110.Text = 1 Then
 
-            SolderCutter_Form.to_PLC("@00WD01070000") 'door locked
+            SolderCutter_Form.to_PLC("@00WD00030000") 'door locked
 
             Timer1.Enabled = False
             txtEvalReading.Text = ""

@@ -16,19 +16,19 @@ Module Eval_Module
     Public isTimerRunning As Boolean = False
     Public Evaluation As Boolean = False
     Sub Weighing()
-        If RealData > 3.0 Then
+        If RealData > 2.0 Then
             If RealData > Weight Then
                 Weight = RealData
-                Stopwatch.Restart()
+                stopwatch.Restart()
             ElseIf RealData = 0.00 AndAlso isTimerRunning Then
-                Stopwatch.Stop()
+                stopwatch.Stop()
                 Weight = 0.00
                 isTimerRunning = False
             ElseIf RealData > 0.00 Then
                 isTimerRunning = True
             End If
 
-            If Stopwatch.ElapsedMilliseconds >= 4000 Then
+            If stopwatch.ElapsedMilliseconds >= 4000 Then
 
                 Eval_Form.SerialPort1.WriteLine("SP")
                 Thread.Sleep(100)
