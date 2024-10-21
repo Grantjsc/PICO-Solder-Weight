@@ -190,8 +190,8 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If Not TimerPLC.Enabled = True Then
-            TimerPLC.Enabled = True
+        If Not Timer3.Enabled = True Then
+            Timer3.Enabled = True
         End If
 
         If lblDoor_112.Text = 1 Then
@@ -202,13 +202,16 @@ Public Class Form1
                 e.Cancel = True
             Else
 
+                If SerialPort1.IsOpen = True Then
+                    SerialPort1.Close()
+                End If
+
                 to_PLC("@00WD00030000") 'Door locked
-                'to_PLC("@00WD01070000") 'Software is close
+                    'to_PLC("@00WD01070000") 'Software is close
+                    Application.ExitThread()
+                End If
 
-                Application.ExitThread()
-            End If
-
-        Else
+                Else
             Dim dialog As DialogResult
             dialog = MessageBox.Show("Kindly close the door.", "PICO Solder Cutter", MessageBoxButtons.OK, MessageBoxIcon.Information)
             If dialog = DialogResult.OK Then
@@ -414,19 +417,20 @@ Public Class Form1
 
     Private Sub txtPartNo_KeyUp(sender As Object, e As KeyEventArgs) Handles txtPartNo.KeyUp
 
+
+        If Timer3.Enabled = False Then
+            Timer3.Enabled = True
+        End If
+
         If e.KeyCode = Keys.Enter Then
             If txtPartNo.Text = "" Then
                 MsgBox("Please enter Part Number!", MsgBoxStyle.Exclamation)
                 txtPartNo.Text = ""
             Else
+
                 'CheckPartNo()
                 EmployeeBasis()
                 'txtPartNo.Enabled = False
-
-
-                If TimerPLC.Enabled = False Then
-                    TimerPLC.Enabled = True
-                End If
 
                 'to_PLC("@00WD01070000") 'Software is Open
             End If
@@ -763,18 +767,14 @@ Public Class Form1
     'Public DoorSignal As String
     'Public DoorState As Boolean = True
 
-    Private Sub SerialPort2_DataReceived(sender As Object, e As SerialDataReceivedEventArgs) Handles SerialPort2.DataReceived
-
-    End Sub
-
     '******************* PLC Door Lock Connection ***********************
 
     Public TX As String
     Public FCS As String
     Public RXD As String
 
-    Private Sub TimerPLC_Tick(sender As Object, e As EventArgs) Handles TimerPLC.Tick
-        TimerPLC.Enabled = False
+    Private Sub Timer3_Tick(sender As Object, e As EventArgs) Handles Timer3.Tick
+        Timer3.Enabled = False
         'Display current date and time
         'timetoday.Text = System.DateTime.Now
         Try
@@ -818,7 +818,7 @@ Public Class Form1
         Else
             send_status_lbl.Text = "Connected to PLC."
         End If
-        TimerPLC.Enabled = True
+        Timer3.Enabled = True
     End Sub
 
     Private Sub GetFCS()

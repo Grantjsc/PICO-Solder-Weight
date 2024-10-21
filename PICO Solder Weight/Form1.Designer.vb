@@ -71,7 +71,7 @@ Partial Class Form1
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.SerialPort2 = New System.IO.Ports.SerialPort(Me.components)
-        Me.TimerPLC = New System.Windows.Forms.Timer(Me.components)
+        Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.Guna2CustomGradientPanel1.SuspendLayout()
         Me.Guna2CustomGradientPanel2.SuspendLayout()
@@ -847,9 +847,12 @@ Partial Class Form1
         '
         'SerialPort2
         '
+        Me.SerialPort2.DataBits = 7
+        Me.SerialPort2.Parity = System.IO.Ports.Parity.Even
         Me.SerialPort2.PortName = "COM4"
+        Me.SerialPort2.StopBits = System.IO.Ports.StopBits.Two
         '
-        'TimerPLC
+        'Timer3
         '
         '
         'ContextMenuStrip1
@@ -921,7 +924,7 @@ Partial Class Form1
     Friend WithEvents lblTime As Label
     Friend WithEvents btnEnable As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents SerialPort2 As IO.Ports.SerialPort
-    Friend WithEvents TimerPLC As Timer
+    Friend WithEvents Timer3 As Timer
     Friend WithEvents lblDoor_112 As Label
     Friend WithEvents Label13 As Label
     Friend WithEvents send_status_lbl As Label
