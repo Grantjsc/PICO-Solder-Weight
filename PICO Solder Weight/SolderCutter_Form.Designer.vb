@@ -159,7 +159,7 @@ Partial Class SolderCutter_Form
         Me.Panel2.Location = New System.Drawing.Point(0, 106)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(265, 788)
+        Me.Panel2.Size = New System.Drawing.Size(265, 805)
         Me.Panel2.TabIndex = 1
         '
         'PanelCut1EM
@@ -393,7 +393,7 @@ Partial Class SolderCutter_Form
         Me.Panel1.Location = New System.Drawing.Point(265, 106)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(259, 788)
+        Me.Panel1.Size = New System.Drawing.Size(259, 805)
         Me.Panel1.TabIndex = 2
         '
         'lblDoor_112
@@ -405,6 +405,7 @@ Partial Class SolderCutter_Form
         Me.lblDoor_112.Size = New System.Drawing.Size(31, 13)
         Me.lblDoor_112.TabIndex = 86
         Me.lblDoor_112.Text = "0000"
+        Me.lblDoor_112.Visible = False
         '
         'Label13
         '
@@ -415,6 +416,7 @@ Partial Class SolderCutter_Form
         Me.Label13.Size = New System.Drawing.Size(60, 13)
         Me.Label13.TabIndex = 85
         Me.Label13.Text = "Door Lock:"
+        Me.Label13.Visible = False
         '
         'lblQty109
         '
@@ -756,7 +758,7 @@ Partial Class SolderCutter_Form
         Me.Panel3.Location = New System.Drawing.Point(524, 106)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(274, 788)
+        Me.Panel3.Size = New System.Drawing.Size(274, 805)
         Me.Panel3.TabIndex = 3
         '
         'PanelCut3EM
@@ -977,7 +979,7 @@ Partial Class SolderCutter_Form
         Me.Panel4.Location = New System.Drawing.Point(798, 106)
         Me.Panel4.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(272, 788)
+        Me.Panel4.Size = New System.Drawing.Size(272, 805)
         Me.Panel4.TabIndex = 4
         '
         'PanelCut4EM
@@ -1203,7 +1205,7 @@ Partial Class SolderCutter_Form
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
-        Me.ClientSize = New System.Drawing.Size(1060, 911)
+        Me.ClientSize = New System.Drawing.Size(1060, 928)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel1)
