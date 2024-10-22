@@ -34,7 +34,7 @@
                 SerialPort1.Open()
             End If
         Catch ex As Exception
-            MsgBox(ex.Message & vbCr & "Connect to PLC Error!", vbCritical)
+            MsgBox(ex.Message & vbCr & "Connect to PLC Error! " & vbCr & "Please close other software!", vbCritical)
             End
         End Try
         'Check DM AREA DM486 data update; range: 9
