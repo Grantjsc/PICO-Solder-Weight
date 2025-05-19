@@ -234,12 +234,21 @@ Module Function_Module
                                 SetLowLimit = CDec(Form1.TopLowLim)
                                 SetUpperLimit = CDec(Form1.TopUppLim)
 
+                                Specs_Upper_Lim = CDec(Form1.TopUppSpecL)
+                                Specs_Lower_Lim = CDec(Form1.TopLowSpecL)
+
                                 'Form1.RealData >= 12.6 Or Form1.RealData <= 11.4
 
-                                If CDec(Form1.RealData) >= 12.6 Then
+                                'CDec(Form1.RealData) >= 12.6
+                                'CDec(Form1.RealData) >= Specs_Upper_Lim
+
+                                If CDec(Form1.RealData) >= Specs_Upper_Lim Then
                                     OCAP_Form.txtAlarm.Text = ">USL"
 
-                                ElseIf CDec(Form1.RealData) <= 11.4 Then
+
+                                    'CDec(Form1.RealData) <= 11.4
+                                    'CDec(Form1.RealData) <= Specs_Lower_Lim
+                                ElseIf CDec(Form1.RealData) <= Specs_Lower_Lim Then
                                     OCAP_Form.txtAlarm.Text = "<LSL"
 
                                 End If
@@ -248,12 +257,20 @@ Module Function_Module
                                 SetLowLimit = CDec(Form1.BotLowLim)
                                 SetUpperLimit = CDec(Form1.BotUppLim)
 
+                                Specs_Upper_Lim = CDec(Form1.BotUppSpecL)
+                                Specs_Lower_Lim = CDec(Form1.BotLowSpecL)
+
                                 'Form1.RealData >= 14.7 Or Form1.RealData <= 13.3
 
-                                If CDec(Form1.RealData) >= 14.7 Then
+                                'CDec(Form1.RealData) >= 14.7
+                                'CDec(Form1.RealData) >= Specs_Upper_Lim
+
+                                If CDec(Form1.RealData) >= Specs_Upper_Lim Then
                                     OCAP_Form.txtAlarm.Text = ">USL"
 
-                                ElseIf CDec(Form1.RealData) <= 13.3 Then
+                                    'CDec(Form1.RealData) <= 13.3
+                                    'CDec(Form1.RealData) <= Specs_Lower_Lim
+                                ElseIf CDec(Form1.RealData) <= Specs_Lower_Lim Then
                                     OCAP_Form.txtAlarm.Text = "<LSL"
 
                                 End If
@@ -306,12 +323,19 @@ Module Function_Module
                         SetLowLimit = CDec(Form1.TopLowLim)
                         SetUpperLimit = CDec(Form1.TopUppLim)
 
+                        Specs_Upper_Lim = CDec(Form1.TopUppSpecL)
+                        Specs_Lower_Lim = CDec(Form1.TopLowSpecL)
+
                         'Form1.RealData >= 12.6 Or Form1.RealData <= 11.4
 
-                        If CDec(Form1.RealData) >= 12.6 Then
+                        'CDec(Form1.RealData) >= 12.6
+                        'CDec(Form1.RealData) >= Specs_Upper_Lim
+                        If CDec(Form1.RealData) >= Specs_Upper_Lim Then
                             OCAP_Form.txtAlarm.Text = ">USL"
 
-                        ElseIf CDec(Form1.RealData) <= 11.4 Then
+                            'CDec(Form1.RealData) <= 11.4
+                            'CDec(Form1.RealData) <= Specs_Lower_Lim
+                        ElseIf CDec(Form1.RealData) <= Specs_Lower_Lim Then
                             OCAP_Form.txtAlarm.Text = "<LSL"
 
                         End If
@@ -320,12 +344,19 @@ Module Function_Module
                         SetLowLimit = CDec(Form1.BotLowLim)
                         SetUpperLimit = CDec(Form1.BotUppLim)
 
+                        Specs_Upper_Lim = CDec(Form1.BotUppSpecL)
+                        Specs_Lower_Lim = CDec(Form1.BotLowSpecL)
+
                         'Form1.RealData >= 14.7 Or Form1.RealData <= 13.3
 
-                        If CDec(Form1.RealData) >= 14.7 Then
+                        'CDec(Form1.RealData) >= 14.7
+                        'CDec(Form1.RealData) >= Specs_Upper_Lim
+                        If CDec(Form1.RealData) >= Specs_Upper_Lim Then
                             OCAP_Form.txtAlarm.Text = ">USL"
 
-                        ElseIf CDec(Form1.RealData) <= 13.3 Then
+                            'CDec(Form1.RealData) <= 13.3
+                            'CDec(Form1.RealData) <= Specs_Lower_Lim
+                        ElseIf CDec(Form1.RealData) <= Specs_Lower_Lim Then
                             OCAP_Form.txtAlarm.Text = "<LSL"
 
                         End If
@@ -635,6 +666,10 @@ Module Function_Module
 
     Public SetUpperLimit As String
     Public SetLowLimit As String
+
+    Public Specs_Upper_Lim As String
+    Public Specs_Lower_Lim As String
+
     Sub WeightLimits()
         Dim Limit As String
         Limit = CDec(Form1.txtWeight.Text)
@@ -646,11 +681,16 @@ Module Function_Module
                 SetLowLimit = CDec(Form1.TopLowLim)
                 SetUpperLimit = CDec(Form1.TopUppLim)
 
+                Specs_Upper_Lim = CDec(Form1.TopUppSpecL)
+                Specs_Lower_Lim = CDec(Form1.TopLowSpecL)
+
                 'Form1.RealData >= SetUpperLimit Or Form1.RealData <= SetLowLimit
 
                 'Form1.RealData >= 12.6 Or Form1.RealData <= 11.4
 
-                If Form1.RealData >= 12.6 Or Form1.RealData <= 11.4 Then
+                'Form1.RealData >= Specs_Upper_Lim Or Form1.RealData <= Specs_Lower_Lim
+
+                If Form1.RealData >= Specs_Upper_Lim Or Form1.RealData <= Specs_Lower_Lim Then
                     Main_Form.btnSolderCutter.Enabled = False
                     Main_Form.btnSolderWeight.Enabled = False
                     Main_Form.btnBuyOff.Enabled = False
@@ -671,11 +711,17 @@ Module Function_Module
             Case 14
                 SetLowLimit = CDec(Form1.BotLowLim)
                 SetUpperLimit = CDec(Form1.BotUppLim)
+
+                Specs_Upper_Lim = CDec(Form1.BotUppSpecL)
+                Specs_Lower_Lim = CDec(Form1.BotLowSpecL)
+
                 'Form1.RealData >= SetUpperLimit Or Form1.RealData <= SetLowLimit
 
                 'Form1.RealData >= 14.7 Or Form1.RealData <= 13.3
 
-                If Form1.RealData >= 14.7 Or Form1.RealData <= 13.3 Then
+                'Form1.RealData >= Specs_Upper_Lim Or Form1.RealData <= Specs_Lower_Lim
+
+                If Form1.RealData >= Specs_Upper_Lim Or Form1.RealData <= Specs_Lower_Lim Then
                     Main_Form.btnSolderCutter.Enabled = False
                     Main_Form.btnSolderWeight.Enabled = False
                     Main_Form.btnBuyOff.Enabled = False
@@ -1073,32 +1119,45 @@ Module SPCRule_Module
                     Main_Form.btnBuyOff.Enabled = False
                     Main_Form.btnEval.Enabled = False
 
-                    SaveAverage()
+                    If Form1.SG = "Barrier 242" Or Form1.SG = "Barrier 304" Or Form1.SG = "Barrier 305" Then
+
+                        SaveAverage()
+
+                    End If
 
                     Thread.Sleep(500)
 
-                    BiometricsOCAP()
-                    OCAP_Form.txtAlarm.Text = ">cUCL"
+                        BiometricsOCAP()
+                        OCAP_Form.txtAlarm.Text = ">cUCL"
 
-                ElseIf average < SetLowLimit Then '11.7271
+                    ElseIf average < SetLowLimit Then '11.7271
 
-                    Form1.TimerCheckInfi.Enabled = False
-                    Thread.Sleep(100)
-                    Main_Form.btnSolderCutter.Enabled = False
-                    Main_Form.btnSolderWeight.Enabled = False
-                    Main_Form.btnBuyOff.Enabled = False
-                    Main_Form.btnEval.Enabled = False
+                        Form1.TimerCheckInfi.Enabled = False
+                        Thread.Sleep(100)
+                        Main_Form.btnSolderCutter.Enabled = False
+                        Main_Form.btnSolderWeight.Enabled = False
+                        Main_Form.btnBuyOff.Enabled = False
+                        Main_Form.btnEval.Enabled = False
 
-                    SaveAverage()
+                    If Form1.SG = "Barrier 242" Or Form1.SG = "Barrier 304" Or Form1.SG = "Barrier 305" Then
+
+                        SaveAverage()
+
+                    End If
 
                     Thread.Sleep(500)
 
-                    BiometricsOCAP()
-                    OCAP_Form.txtAlarm.Text = "<cLCL"
+                        BiometricsOCAP()
+                        OCAP_Form.txtAlarm.Text = "<cLCL"
 
-                Else
+                    Else
 
-                    SaveAverage()
+                    If Form1.SG = "Barrier 242" Or Form1.SG = "Barrier 304" Or Form1.SG = "Barrier 305" Then
+
+                        SaveAverage()
+
+                    End If
+
                     GetRule4()
 
                     If Rule4State = "True" Then
@@ -1146,7 +1205,11 @@ Module SPCRule_Module
                     Main_Form.btnBuyOff.Enabled = False
                     Main_Form.btnEval.Enabled = False
 
-                    SaveAverage()
+                    If Form1.SG = "Barrier 242" Or Form1.SG = "Barrier 304" Or Form1.SG = "Barrier 305" Then
+
+                        SaveAverage()
+
+                    End If
 
                     Thread.Sleep(500)
 
@@ -1162,7 +1225,11 @@ Module SPCRule_Module
                     Main_Form.btnBuyOff.Enabled = False
                     Main_Form.btnEval.Enabled = False
 
-                    SaveAverage()
+                    If Form1.SG = "Barrier 242" Or Form1.SG = "Barrier 304" Or Form1.SG = "Barrier 305" Then
+
+                        SaveAverage()
+
+                    End If
 
                     Thread.Sleep(500)
 
@@ -1171,7 +1238,12 @@ Module SPCRule_Module
 
                 Else
 
-                    SaveAverage()
+                    If Form1.SG = "Barrier 242" Or Form1.SG = "Barrier 304" Or Form1.SG = "Barrier 305" Then
+
+                        SaveAverage()
+
+                    End If
+
                     GetRule4()
 
                     If Rule4State = "True" Then

@@ -35,7 +35,7 @@
             End If
         Catch ex As Exception
             MsgBox(ex.Message & vbCr & "Connect to PLC Error! " & vbCr & "Please close other software!", vbCritical)
-            End
+            Exit Sub
         End Try
         'Check DM AREA DM486 data update; range: 9
         TX = "@00RD01050008"

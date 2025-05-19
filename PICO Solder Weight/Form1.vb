@@ -317,6 +317,11 @@ Public Class Form1
     Public BotUppLim As String
     Public SG As String
 
+    Public TopLowSpecL As String
+    Public TopUppSpecL As String
+    Public BotLowSpecL As String
+    Public BotUppSpecL As String
+
     Public Sub EmployeeBasis()
 
         Dim con As OleDbConnection = New OleDbConnection
@@ -348,6 +353,12 @@ Public Class Form1
                 BotLowLim = Data.Rows(0).Item("BOTTOM_LCL").ToString
                 BotUppLim = Data.Rows(0).Item("BOTTOM_UCL").ToString
                 SG = Data.Rows(0).Item("Series_Group").ToString
+
+                TopUppSpecL = Data.Rows(0).Item("USL_Top").ToString
+                TopLowSpecL = Data.Rows(0).Item("LSL_Top").ToString
+                BotUppSpecL = Data.Rows(0).Item("USL_Bottom").ToString
+                BotLowSpecL = Data.Rows(0).Item("LSL_Bottom").ToString
+
 
                 'MsgBox("Series Group: " & SG & vbNewLine &
                 '       "Top Lower Limit: " & TopLowLim & vbNewLine &
@@ -1058,9 +1069,9 @@ Public Class Form1
 
         Select Case Wt
 
-            Case 12 '12.57
+            Case 12 '12.57 / 12.6
                 For Each number In data
-                    If number >= 12.6 Or number <= 11.4 Then '11.41
+                    If number >= Specs_Upper_Lim Or number <= Specs_Lower_Lim Then '11.41 / 11.4
                         saw = True
                         Exit For
                     End If
@@ -1080,10 +1091,10 @@ Public Class Form1
                     checkSaveCon = True
                 End If
 
-            Case 14
+            Case 14 '14.7
 
                 For Each number In data
-                    If number >= 14.7 Or number <= 13.3 Then
+                    If number >= Specs_Upper_Lim Or number <= Specs_Lower_Lim Then '13.3
                         saw = True
                         Exit For
                     End If

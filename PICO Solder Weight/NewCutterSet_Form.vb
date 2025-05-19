@@ -13,9 +13,10 @@
         Else
             Form1.txtCutterSet.Text = txtNewCutSet.Text
 
-            OpenSerialPort2()
-            Form1.SerialPort2.WriteLine("A") 'door unlock
+            'OpenSerialPort2()
+            'Form1.SerialPort2.WriteLine("A") 'door unlock
             'CloseSerialPort2()
+            SolderCutter_Form.to_PLC("@00WD00030001") 'door unlocked
 
             Me.Close()
             Function_Module.PurgeAfterOCAP()
